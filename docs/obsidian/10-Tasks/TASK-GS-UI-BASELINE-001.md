@@ -1,6 +1,6 @@
 # TASK GS-UI-BASELINE-001 — Mock Data Draft v1 initial import
 
-- Status: Verified locally; Git publication pending
+- Status: Draft PR open for owner review
 - Objective: Preserve the existing local GisSino UI and establish its first reviewable GitHub baseline.
 - Original source: `C:\Users\User\GisSino_FN`
 - Staging checkout: `C:\Users\User\.codex\visualizations\2026\10\15\01a14008-e046-7cb3-8d14-e47859210e82\GisSino_FN_PR_STAGE`
@@ -39,10 +39,12 @@ The original source directory has no Git metadata and remains the preservation s
 
 ## Git and review state
 
-- Local commit: pending
-- Remote branch SHA: pending
-- Push: pending
-- Draft PR: pending
+- Initial import commit: `267aa64db50791d1489ff18d1fffebf3e1dab8e6`
+- Initial verified remote branch SHA: `267aa64db50791d1489ff18d1fffebf3e1dab8e6`
+- Push: successful to `origin/task/mock-data-draft-v1-initial-import`
+- Draft PR: [#1 — feat(ui): GisSino FN — Mock Data Draft v1](https://github.com/kraveerachat/GisSino-Fn/pull/1)
+- Draft PR state at verification: open, Draft, merge state clean
+- Documentation sync: this note update is a controlled follow-up commit; the remote task branch head is authoritative
 - Merge: not requested
 
 ## Limitations
@@ -51,4 +53,4 @@ This is a local UI source baseline with synthetic in-memory data. It does not pr
 
 ## Next action
 
-Review the staged diff and publication scan, then commit, push, verify the remote SHA, and create the Draft PR.
+Owner reviews Draft PR #1. Keep it unmerged until review is complete.
