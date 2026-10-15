@@ -1,0 +1,13 @@
+{
+  "name": "gissino-ui-preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-only, synthetic-data GisSino design preview",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
