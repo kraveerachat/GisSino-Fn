@@ -1,4 +1,5 @@
 const paths = {
+  panel: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16m4-11h4m-4 6h4"/>',
   home: '<path d="m3 10 9-7 9 7v10H3Z"/><path d="M9 20v-7h6v7"/>',
   activity: '<path d="M4 7h16M4 12h16M4 17h10"/><path d="m17 15 3 2-3 2"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',

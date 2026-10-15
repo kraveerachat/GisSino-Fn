@@ -1,5 +1,7 @@
 # Design tokens
 
+Desktop shell adds shared roles in tokens.css: sidebar-collapsed72px, sidebar-expanded240px, sidebar-open240ms, sidebar-close190ms, sidebar-label-reveal140ms, z-sidebar20. It reuses surface/text/accent/key-shadow/inset-shadow roles. Native modal top-layer remains above the sidebar.
+
 Floating navigation uses existing theme roles plus `--island-height:64px`, `--island-bottom:12px`, `--island-gap:10px`, `--popup-open:220ms`, and `--popup-close:160ms` in `src/styles/navigation.css`. Safe-area padding is additive; Add is a separate 56px circle. The More panel uses existing enamel, border, shadow, and focus tokens. Footer labels stay 11px at 320px.
 
 Canonical implementation: `src/styles/tokens.css`.

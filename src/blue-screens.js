@@ -1,6 +1,7 @@
 import { icon } from './icons.js';
 import { preview, accounts, transactions, creditCard, dailySpending } from './fixtures.js';
 import { money, escapeHTML as esc } from './i18n.js';
+import { desktopAdd } from './navigation.js';
 
 const amount = (value, state, decimals = false) => state.balanceVisible ? money(value, state.locale, decimals) : '••••••';
 const heading = (text, action = '') => `<div class="blue-section-heading"><h2>${text}</h2>${action}</div>`;
@@ -9,8 +10,8 @@ const note = (t) => `<p class="blue-preview-note">${icon('shield')}${t('blueSamp
 
 export function coverHeader(state, t, title = '') {
   return title
-    ? `<header class="cover-header subpage-header"><a href="#${state.route === 'credit-card' ? (state.cardReturn||'bills') : 'home'}" class="icon-plate" aria-label="${t('back')}">${icon('arrow','back-icon')}</a><h1>${title}</h1><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button></header>`
-    : `<header class="cover-header"><button class="cover-profile" data-action="settings" aria-label="${t('profile')}"><span class="profile-disc">${icon('party')}</span><span><small>${t('welcomeBack')}</small><strong>${t('profileName')}</strong></span></button><div class="cover-tools"><a class="icon-plate" href="#party" aria-label="${t('myProgress')}">${icon('trophy')}</a><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button></div></header>`;
+    ? `<header class="cover-header subpage-header"><a href="#${state.route === 'credit-card' ? (state.cardReturn||'bills') : 'home'}" class="icon-plate" aria-label="${t('back')}">${icon('arrow','back-icon')}</a><h1>${title}</h1><div class="cover-tools"><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button>${desktopAdd(t)}</div></header>`
+    : `<header class="cover-header"><button class="cover-profile" data-action="settings" aria-label="${t('profile')}"><span class="profile-disc">${icon('party')}</span><span><small>${t('welcomeBack')}</small><strong>${t('profileName')}</strong></span></button><div class="cover-tools"><a class="icon-plate" href="#party" aria-label="${t('myProgress')}">${icon('trophy')}</a><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button>${desktopAdd(t)}</div></header>`;
 }
 function accountList(state,t) {
   return `<div class="enamel-list account-list">${accounts.map(a=>`<button class="blue-account-row" data-action="account" data-id="${a.id}"><span class="mini-plate ${a.id==='savings'?'savings-plate':''}">${icon(a.kind)}</span><span class="row-copy"><strong>${t(a.name)}</strong><small>${t('demoSuffix',{suffix:a.suffix})}</small></span><span class="row-amount">${amount(a.amount,state)}</span>${icon('chevron','row-chevron')}</button>`).join('')}</div>`;

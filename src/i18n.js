@@ -178,6 +178,14 @@ Object.assign(messages.en, {
   walletLiabilities:'Credit cards · liabilities', walletCashEmpty:'No cash account in this sample',
   walletBoundary:'Synthetic design data. No real accounts are connected. Adding accounts and reconciliation are not available yet.',
 });
+Object.assign(messages.th, {
+  desktopNavigation:'แถบนำทางเดสก์ท็อป',
+  pinSidebar:'ขยายและปักหมุดแถบนำทาง', collapseSidebar:'เลิกปักหมุดและย่อแถบนำทาง',
+});
+Object.assign(messages.en, {
+  desktopNavigation:'Desktop navigation',
+  pinSidebar:'Expand and pin navigation', collapseSidebar:'Unpin and collapse navigation',
+});
 export function translator(locale) {
   const catalog = messages[locale] || messages.th;
   return (key, values = {}) => {

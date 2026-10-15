@@ -8,6 +8,8 @@ This is an Operate surface: balances, quick actions, upcoming obligations, and t
 
 The signature interaction is the separate tactile Add control on the right opening a native modal bottom sheet. Pressed surfaces settle rather than glow. A small no-spend seal provides the single celebratory moment, without changing a real streak.
 
-Self-host Noto Sans Thai. Use readable Thai/English copy and tabular financial numerals. Small content can wrap; no fixed phone-width frame. CSS custom properties own themes and material colors. Mobile uses bottom navigation; wide layouts retain the existing rail styling, with Wallet added.
+Self-host Noto Sans Thai. Use readable Thai/English copy and tabular financial numerals. Small content can wrap; no fixed phone-width frame. CSS custom properties own themes and material colors.
+
+GS-UI-002 desktop decision: at 1100px the shell uses a 72px icon rail, a temporary 240px overlay, or a pinned 240px sidebar. Only pin changes content offset. Keep the brand symbol and panel toggle at stable coordinates while revealing labels; keyboard focus may disclose labels without pinning. Five direct destinations are Home, Wallet, Activity, Bills and Party, with Settings under profile. A separate 48px enamel Add circle sits at the right of the existing page header and opens the shared Add sheet. Mobile Floating Island Navigation remains unchanged.
 
 Keep the sample-data banner visible. Every simulated financial action must explicitly say it is not saved. Party never shows account balances or transaction items. See docs/design for the detailed contract and verification limits.

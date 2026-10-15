@@ -45,6 +45,12 @@
   --radius-input: 12px; --radius-control: 14px; --radius-card: 20px; --radius-hero: 24px; --radius-sheet: 28px;
   --duration-press: 120ms; --duration-state: 180ms; --duration-sheet: 300ms;
   --ease-out: cubic-bezier(.16,1,.3,1);
+  --sidebar-collapsed:72px;
+  --sidebar-expanded:240px;
+  --sidebar-open:240ms;
+  --sidebar-close:190ms;
+  --sidebar-label-reveal:140ms;
+  --z-sidebar:20;
   --cover-top: #94dffc;
   --cover-bottom: #65bfee;
   --cover-lip: #66bdec;

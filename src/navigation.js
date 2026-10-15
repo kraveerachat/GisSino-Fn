@@ -11,6 +11,13 @@ export function navigationContext(route,cardReturn='bills') {
   if (route==='transfer') return 'wallet';
   return islandDestinations.includes(route) ? route : null;
 }
+export function desktopContext(route,cardReturn='bills') {
+  const context=navigationContext(route,cardReturn);
+  return context==='more'?(route==='party'?'party':'bills'):context;
+}
+export function desktopAdd(t) {
+  return `<button class="desktop-add" data-action="add" aria-label="${t('add')}" title="${t('add')}" aria-haspopup="dialog">${icon('plus')}</button>`;
+}
 export function floatingNavigation(state,t) {
   const context=navigationContext(state.route,state.cardReturn);
   return `<div class="mobile-navigation floating-islands"><nav class="navigation island-capsule" aria-label="${t('navLabel')}">${islandDestinations.map(route=>`<a class="nav-item ${context===route?'is-active':''}" href="#${route}" ${context===route?'aria-current="page"':''}>${icon(route)}<span>${t(route)}</span></a>`).join('')}<button class="nav-item more-trigger ${context==='more'?'is-active':''}" data-action="more" aria-expanded="false" aria-controls="more-panel" popovertarget="more-panel" aria-haspopup="dialog" ${context==='more'?'data-current-context="true"':''}><span class="more-symbol">${icon('more')}</span><span class="more-close-symbol">${icon('close')}</span><span>${t('more')}</span></button></nav><button class="island-add" data-action="add" aria-label="${t('add')}" aria-haspopup="dialog">${icon('plus')}</button></div>

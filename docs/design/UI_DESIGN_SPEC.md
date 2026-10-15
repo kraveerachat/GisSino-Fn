@@ -14,6 +14,8 @@ Latest mobile footer: Home / Wallet / Activity / More capsule and a separate rig
 
 ## Material and interaction
 
+Desktop navigation at 1100px follows GS-UI-002: 72px collapsed rail, 240px temporary overlay with unchanged 72px content offset, and 240px pinned layout offset. Hover entry/exit delays are 150/180ms; panel entry/exit transitions are 240/190ms and label reveal is 140ms. A stable toggle pins/unpins; unpin suppresses hover until a fresh pointer entry. Keyboard focus reveals navigation labels; Escape dismisses temporary expansion while retaining pin preference. The controller keeps pin in session memory, cancels stale timers and clears transient ownership when the shell rerenders. Home/Wallet/Activity/Bills/Party are direct desktop links; Add is one separate header action invoking the existing sheet. Desktop dimensions, motion and layering use shared tokens. Reduced motion removes spatial transitions; forced colors preserves boundaries/selection.
+
 Opaque enamel panels have a gentle upper-left highlight and restrained offset contact shadows. Inputs, selected segmented controls, and icon wells are recessed. Buttons have hover, pressed, focus-visible, and disabled states. No glass, decorative blur, continuous animation, neon, rainbow gradients, or third-party animation framework is used.
 
 The sheet enters in 300ms with ease-out; button state transitions are 120–180ms. No-spend preview has one brief seal response. Reduced-motion preferences remove those animations while retaining visible state. Native dialog provides modal keyboard containment and Escape; close returns focus to the opener. Sheets scroll independently and respect safe-area padding.
