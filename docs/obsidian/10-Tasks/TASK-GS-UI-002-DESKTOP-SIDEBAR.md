@@ -1,6 +1,6 @@
 # GS-UI-002 — Desktop Collapsible Sidebar Navigation
 
-- Status: verified locally; Draft PR pending
+- Status: verified, pushed, Draft PR open for owner review
 - Objective: approved desktop shell enhancement, preserving mobile and financial screens
 - Base: main at7047039b8a0c8bad9d63bfeaf5a0fcc0c8df72f4; initial import PR #1 verified merged
 - Branch: task/gs-ui-002-desktop-sidebar
@@ -23,10 +23,11 @@ Independent design critique29/40 and technical audit15/20 describe the pre-corre
 
 ## Git and next action
 
-- Implementation commit: pending
-- Push: pending
-- Draft PR URL: pending
-- Next action: push verified task branch, create one Draft PR, record URL in one controlled documentation checkpoint; owner review before merge
+- Implementation commit: f90a7598a065bfbd2232f1f8c59b655a8af03ce8
+- Push: successful to origin/task/gs-ui-002-desktop-sidebar
+- Draft PR URL: https://github.com/kraveerachat/GisSino-Fn/pull/2
+- Documentation sync: this URL record is one controlled follow-up commit; the branch head is authoritative
+- Next action: owner reviews Draft PR #2 before changing status or merging
 - Production mutation: NONE
 
 ## Limits
