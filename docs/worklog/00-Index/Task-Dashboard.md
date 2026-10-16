@@ -19,4 +19,4 @@ related:
 | [TASK-GS-UI-002-DESKTOP-SIDEBAR](../10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md) | EXTERNALLY ACCEPTED | [PR #2 merged](https://github.com/kraveerachat/GisSino-Fn/pull/2) | Desktop sidebar and S-Shield branding |
 | [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | EXTERNALLY ACCEPTED | [PR #3 merged](https://github.com/kraveerachat/GisSino-Fn/pull/3) | Documentation vault migration and hubs |
 | [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | EXTERNALLY ACCEPTED | [PR #4 merged](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S3 complete overlapping folders; 34 tests/375 keys, 29 browser groups; merged to main |
-| [TASK-GS-PLAN-005](../10-Tasks/TASK-GS-PLAN-005.md) | IN PROGRESS | Draft PR pending | Documentation-only planning for Pre-Home flow, Home v2, and screen roadmap |
+| [TASK-GS-PLAN-005](../10-Tasks/TASK-GS-PLAN-005.md) | CLOSED | [Draft PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) | Documentation-only planning for Pre-Home flow, Home v2, and screen roadmap; PR #5 draft open, receipt recorded |

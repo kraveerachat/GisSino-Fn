@@ -2,7 +2,7 @@
 id: TASK-GS-PLAN-005
 type: task
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -12,6 +12,7 @@ related:
   - ../../project/FEATURE_MAP.md
   - ../../project/HOME_AND_LEADERBOARD_SPEC.md
   - ../../project/OPEN_QUESTIONS.md
+  - ../90-Receipts/20261017-020500-TASK-GS-PLAN-005-FINAL.md
 ---
 # TASK-GS-PLAN-005 — Onboarding, Home v2, and Feature Roadmap
 
@@ -86,6 +87,7 @@ Separated into:
 ## Sessions
 
 - [Session S1](../20-Sessions/TASK-GS-PLAN-005-S1.md) — Documentation drafting, verification, commit, push, and Draft PR creation.
+- [Session S2](../20-Sessions/TASK-GS-PLAN-005-S2.md) — Four owner-directed corrections: (1) auth parameters → [PROPOSED]; (2) age bands and minor consent threshold → [OPEN/VERIFY]; (3) E-Wallet list aligned to Provider Catalog (TrueMoney, ShopeePay, Paotang confirmed; Rabbit Line Pay removed as unverified); (4) negative Safe-to-Spend display corrected to show actual negative amount, never ฿0.00.
 
 ## Touches
 
@@ -108,6 +110,8 @@ Separated into:
 ## Delivery & PR
 
 - Branch: `task/gs-plan-005-onboarding-home-v2`
-- Commit: `docs(plan): map onboarding and Home v2 requirements`
+- Commit: `df20e02` (`docs(plan): map onboarding and Home v2 requirements`)
 - PR Title: `docs(plan): define onboarding, Home v2 and future screen roadmap`
-- GitHub PR Status: Open as Draft; owner review pending.
+- Draft PR URL: [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5)
+- GitHub PR Status: OPEN and DRAFT; owner review and merge pending.
+- Final Receipt: [Final immutable receipt](../90-Receipts/20261017-020500-TASK-GS-PLAN-005-FINAL.md)

@@ -10,6 +10,7 @@ related:
   - ../../pages/auth/Page-Auth.md
   - ../../pages/home/Page-Home.md
   - ../../project/OPEN_QUESTIONS.md
+  - ../90-Receipts/20261017-020500-TASK-GS-PLAN-005-FINAL.md
 ---
 # Session S1 — Onboarding, Home v2, and Roadmap Documentation
 
@@ -54,4 +55,4 @@ Following the note decision procedure in [VAULT_RULES.md §5](../../governance/V
 
 ## Next step
 
-Owner reviews the planning Draft PR andloopback documentation. Next coding tasks can proceed in small slices starting with S1 (Home v2 preview) or S2 (Activity Summary tab).
+Draft [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) is open for owner review. Verified immutable receipt recorded in [Final Receipt](../90-Receipts/20261017-020500-TASK-GS-PLAN-005-FINAL.md). Next coding tasks can proceed in small slices starting with S1 (Home v2 preview) or S2 (Activity Summary tab).
