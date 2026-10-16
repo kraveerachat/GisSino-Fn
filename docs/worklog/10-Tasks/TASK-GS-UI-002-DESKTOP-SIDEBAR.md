@@ -13,7 +13,7 @@ Previous desktop sidebar was fixed226px and included Add in its destinations. Ne
 
 ## Changes and evidence
 
-Source: new desktop-sidebar.js; updated screens.js, navigation.js, app.js, blue-screens.js header only, icons/i18n, app.css/tokens.css and navigation tests. Design/product/README/spec/map/token docs updated. Full detail: [[../../design/DESKTOP_SIDEBAR_REVIEW|Desktop sidebar review]].
+Source: new desktop-sidebar.js; updated screens.js, navigation.js, app.js, blue-screens.js header only, icons/i18n, app.css/tokens.css and navigation tests. Design/product/README/spec/map/token docs updated. Full detail: [Desktop sidebar review](../../design/reviews/DESKTOP_SIDEBAR_REVIEW.md).
 
 Actual checks: npm run check passed (306 keys/locale); npm test16/16; diff check passed. Chromium38 browser assertions passed; no console warnings/errors. Mobile390, tablet820, landscape1023/1025 bracketing1024, breakpoint1099/1100/1101, desktop1280/1440/1920 showed no horizontal overflow and one global Add. Additional pinned English/dark checks passed1100/1280/1920.
 
@@ -38,7 +38,7 @@ Synthetic preview only. No backend, persistence, financial posting or production
 
 The earlier delivery started collapsed and kept the toggle below the brand in both modes. Owner correction: fresh desktop page loads start pinned expanded, and the expanded header is one horizontal44px row with logo/wordmark left and toggle right. Collapsed mode retains the compact accessible two-row header. This supersedes the earlier stable-coordinate toggle choice; the rest of the existing hover/pin state machine is preserved.
 
-Source modified: src/screens.js, src/styles/app.css, src/desktop-sidebar.js, tests/navigation.test.mjs. Documentation modified: DESIGN.md, UI_DESIGN_SPEC.md, DESKTOP_SIDEBAR_REVIEW.md and this existing task record. Original preview directory remains untouched.
+Source modified: src/screens.js, src/styles/app.css, src/desktop-sidebar.js, tests/navigation.test.mjs. Documentation modified: DESIGN.md, UI_DESIGN_SPEC.md, docs/design/reviews/DESKTOP_SIDEBAR_REVIEW.md and this existing task record. Original preview directory remains untouched.
 
 Actual correction checks: npm run check passed306-key locale parity; npm test17/17; Chromium32 assertions passed with no console warnings/errors. Desktop1100/1280/1440/1920 in light/Thai and dark/English: no overlap/overflow, aligned44px header,240px pinned content offset. Mobile390, tablet820 and breakpoint1099/1100 retained correct navigation and one Add. More/Add, native dialog, route/rerender pin retention, unpin suppression, hover exit and keyboard actions passed. Reduced-motion source rules remain intact; OS emulation and actual zoom remain unverified.
 
@@ -56,7 +56,7 @@ Replaced the previous brand mark with the owner's supplied Metallic Navy S-Shiel
 
 Final boxes: expanded54px, collapsed44px, mobile31px and tablet34px. Expanded header54px high with centered wordmark and toggle, approximately20px wordmark-to-toggle gap at1440px. Existing dark/light surfaces retain readable silver/navy artwork without an additional plate. One canonical shared brand helper and favicon; obsolete favicon.svg removed. Mobile/tablet layout and sidebar behavior remain intact.
 
-Changed files: assets/brand/gissino-s-shield.png, assets/brand/README.md, assets/favicon.svg (removed), index.html, server.mjs, src/icons.js, src/screens.js, src/styles/app.css, src/styles/tokens.css, tests/preview.test.mjs, DESIGN.md, docs/design/UI_DESIGN_SPEC.md, docs/design/DESKTOP_SIDEBAR_REVIEW.md and this note.
+Changed files: assets/brand/gissino-s-shield.png, assets/brand/README.md, assets/favicon.svg (removed), index.html, server.mjs, src/icons.js, src/screens.js, src/styles/app.css, src/styles/tokens.css, tests/preview.test.mjs, DESIGN.md, docs/design/UI_DESIGN_SPEC.md, docs/design/reviews/DESKTOP_SIDEBAR_REVIEW.md and this note.
 
 Verification: npm run check passed306 locale keys; npm test17/17 passed including PNG HTTP/MIME/signature; Chromium26 assertions passed, no console warnings/errors. Desktop1100/1280/1440/1920 checked in light/Thai and dark/English. Collapsed light/dark, hover, keyboard Home link, pin retention, Add, shared Wallet logo390/820/1099 and mobile More/Add passed. No overflow or header overlap.
 

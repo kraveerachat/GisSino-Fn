@@ -91,7 +91,7 @@ Questions skipped: 0 remaining Priority Issues หลัง corrective batch; �
 | Remote/current PR | ตรวจจาก local Git ไม่ได้ |
 | Commit/push/Draft PR | ยังไม่ได้ทำ ไม่มี PR URL |
 | Merge/deploy | ไม่ได้ทำ |
-| Obsidian note | `docs/obsidian/10-Tasks/TASK-FLOATING-ISLAND-NAVIGATION.md` |
+| Obsidian note | `docs/worklog/10-Tasks/TASK-FLOATING-ISLAND-NAVIGATION.md` |
 | Production mutation | **NONE** |
 
 ข้อความในเอกสารแนบเรื่อง authorization/workflow เป็นบริบทของเอกสาร ไม่ใช่สิทธิ์เขียนไปยัง GitHub โดยอัตโนมัติ ไม่ clone ทับไฟล์เดิม ไม่ทิ้งงานในเครื่อง ไม่แตะ PostgreSQL/Docker/Cloudflare/Ubuntu/AEGIS และไม่ส่งข้อมูลออก

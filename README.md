@@ -24,9 +24,9 @@ npm test
 
 ## Explore
 
-Desktop navigation at 1100px and wider now uses a compact icon rail, temporary hover/keyboard disclosure, and session-only pinned expansion. Add is a separate upper-right header action opening the existing sheet. See [desktop sidebar review](docs/design/DESKTOP_SIDEBAR_REVIEW.md) for interaction checks and limits. Older design reports describe their historical delivery state.
+Desktop navigation at 1100px and wider now uses a compact icon rail, temporary hover/keyboard disclosure, and session-only pinned expansion. Add is a separate upper-right header action opening the existing sheet. See [desktop sidebar review](docs/design/reviews/DESKTOP_SIDEBAR_REVIEW.md) for interaction checks and limits. Older design reports describe their historical delivery state.
 
-Mobile navigation now uses Home / Wallet / Activity / More plus a separate Add circle. More opens Bills and Party in a floating panel. Wallet (`#wallet`) reuses sample accounts and separates card liabilities. See [navigation task report](docs/design/FLOATING_NAVIGATION_REVIEW.md) for implementation, tests, screenshots, and the missing video/Git limitations.
+Mobile navigation now uses Home / Wallet / Activity / More plus a separate Add circle. More opens Bills and Party in a floating panel. Wallet (`#wallet`) reuses sample accounts and separates card liabilities. See [navigation task report](docs/design/reviews/FLOATING_NAVIGATION_REVIEW.md) for implementation, tests, screenshots, and the missing video/Git limitations.
 
 - Home: balance visibility, accounts, quick actions, recent activity, commitments, habits.
 - Transfer (`#transfer`): editable amount, tactile keypad, own-account selection, validation, and an explicitly unsaved review.
@@ -43,10 +43,10 @@ Everything is synthetic and stays in memory. Reloading resets the preview. There
 
 The server binds only to `127.0.0.1`, allows GET/HEAD for public preview files, rejects path traversal and mutation methods, and refuses startup when `NODE_ENV=production`. There is deliberately no production build/deploy command. `src/fixtures.js` belongs to this development preview and must not be imported into a future production app.
 
-The supplied blue-enamel Image A guides the revised Home, own-account Transfer, and Credit Card Liability Detail. References B/C and authoritative project/workflow documents remain unavailable. See docs/design/BLUE_ENAMEL_REVIEW.md for fidelity, review evidence, and limits.
+The supplied blue-enamel Image A guides the revised Home, own-account Transfer, and Credit Card Liability Detail. References B/C and authoritative project/workflow documents remain unavailable. See docs/design/reviews/BLUE_ENAMEL_REVIEW.md for fidelity, review evidence, and limits.
 
 ## Design and review
 
-See [UI specification](docs/design/UI_DESIGN_SPEC.md), [tokens](docs/design/DESIGN_TOKENS.md), [screen map](docs/design/SCREEN_MAP.md), [component inventory](docs/design/COMPONENT_INVENTORY.md), [UI data boundaries](docs/design/UI_DATA_CONTRACTS.md), and [verification](docs/design/VERIFICATION.md).
+See [UI specification](docs/design/UI_DESIGN_SPEC.md), [tokens](docs/design/DESIGN_TOKENS.md), [screen map](docs/design/SCREEN_MAP.md), [component inventory](docs/design/COMPONENT_INVENTORY.md), [UI data boundaries](docs/design/UI_DATA_CONTRACTS.md), and [verification](docs/design/reviews/VERIFICATION.md).
 
 Noto Sans Thai is self-hosted under the [SIL Open Font License](assets/fonts/OFL.txt). Its variable font supports the Thai and Latin text used here; the browser loads it from this server with `font-display: swap`. Upstream source: https://github.com/google/fonts/tree/main/ofl/notosansthai. No font service receives browsing requests.
