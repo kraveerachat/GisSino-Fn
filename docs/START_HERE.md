@@ -27,7 +27,7 @@ updated: 2026-10-16
 
 ## Current focus
 
-[TASK-VAULT-STRUCTURE-001](worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md) reorganizes documentation into this vault structure. Application behavior and production systems are outside its scope.
+[TASK-VAULT-STRUCTURE-001](worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md) has prepared this vault structure in [Draft PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) for owner review. Application behavior and production systems are outside its scope.
 
 ## Agent reading order
 

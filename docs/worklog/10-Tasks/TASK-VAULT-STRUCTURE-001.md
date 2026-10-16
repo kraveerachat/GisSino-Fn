@@ -2,7 +2,7 @@
 id: TASK-VAULT-STRUCTURE-001
 type: task
 level: log
-status: IN PROGRESS
+status: LOCALLY VERIFIED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -51,16 +51,21 @@ Reorganize `docs/` as the canonical Obsidian vault, add the center and hubs, pre
 
 ## Verification
 
-Pending vault health checks, `npm run check`, and `npm test`.
+- Vault health: PASS — 40 notes, 40 unique IDs, all reachable from `START_HERE.md` within three clicks, with no broken links, parent listings, required metadata, personal paths, or secret signatures detected.
+- Stale old-path references outside preserved governance/migration history: 0 (from 11 raw target mentions before migration).
+- `npm run check`: PASS.
+- `npm test`: PASS — 17/17.
+- `git diff --check origin/main..HEAD`: PASS.
+- Application source and tests changed: NONE.
 
 ## Delivery
 
 - Commit 1: `9fcd944` — approved moves and reference fixes
-- Commit 2: pending
-- Draft PR: pending
-- GitHub state: PR #1 and PR #2 verified merged
+- Commit 2: `9e6e732` — vault center, hubs, page notes, governance sources, metadata, and status reconciliation
+- Draft PR: [#3 — docs(vault): establish GisSino documentation hub](https://github.com/kraveerachat/GisSino-Fn/pull/3)
+- GitHub state: PR #3 is open as Draft; PR #1 and PR #2 are merged
 - Receipt: pending
 
 ## Remaining work
 
-Complete health checks and tests, create the Draft PR, reconcile this note, and issue the final receipt.
+Issue the final receipt, then leave Draft PR #3 for owner review and merge.

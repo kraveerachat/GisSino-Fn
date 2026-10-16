@@ -17,4 +17,4 @@ related:
 | [TASK-BLUE-ENAMEL-REDESIGN](../10-Tasks/TASK-BLUE-ENAMEL-REDESIGN.md) | EXTERNALLY ACCEPTED | Included in PR #1 | Blue-enamel Home, transfer, and card detail |
 | [TASK-FLOATING-ISLAND-NAVIGATION](../10-Tasks/TASK-FLOATING-ISLAND-NAVIGATION.md) | EXTERNALLY ACCEPTED | Included in PR #1 | Mobile navigation decision and Wallet |
 | [TASK-GS-UI-002-DESKTOP-SIDEBAR](../10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md) | EXTERNALLY ACCEPTED | [PR #2 merged](https://github.com/kraveerachat/GisSino-Fn/pull/2) | Desktop sidebar and S-Shield branding |
-| [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | IN PROGRESS | Draft PR pending | Documentation vault migration and hubs |
+| [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | LOCALLY VERIFIED | [Draft PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) | Documentation vault migration and hubs |
