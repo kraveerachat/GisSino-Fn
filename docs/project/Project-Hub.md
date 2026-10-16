@@ -3,7 +3,7 @@ id: HUB-PROJECT
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../START_HERE.md
 related:
   - ../pages/Pages-Hub.md
@@ -16,6 +16,8 @@ Project identity, product intent, decisions, history, terminology, and unresolve
 | Note | Level | Status | Summary |
 |---|---:|---|---|
 | [Project Guide](PROJECT_GUIDE.md) | 2 | CURRENT | Canonical what, why, users, principles, and scope |
+| [Feature Map](FEATURE_MAP.md) | 2 | CURRENT | Owner-facing inventory of implemented vs planned features |
+| [Home & Leaderboard Spec](HOME_AND_LEADERBOARD_SPEC.md) | 2 | DRAFT | Owner-provided change specification for Home v2 and community boards |
 | [Decisions](DECISIONS.md) | 2 | CURRENT | Decision log with supersession history |
 | [Project History](PROJECT_HISTORY.md) | 2 | CURRENT | Append-only project timeline |
 | [Open Questions](OPEN_QUESTIONS.md) | 2 | CURRENT | Questions that require owner or external verification |

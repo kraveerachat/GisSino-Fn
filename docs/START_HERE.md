@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 # GisSino_FN — Start Here
 
@@ -13,7 +13,7 @@ updated: 2026-10-16
 - **Tagline:** “Protecting Wealth in the Asian Era.”
 - **Goal:** a calm daily-use personal-finance app for one person, family, and friends, covering wallets, daily activity, obligations, assisted entry, habits, and a family status/ranking party.
 - **System:** the current repository is a Thai-first, mobile-first, buildless HTML/CSS/JavaScript prototype with synthetic in-memory data and no backend. The proposed future system is an installable PWA backed by services on the owner’s home server through Cloudflare Tunnel. See the [Project Guide](project/PROJECT_GUIDE.md) and [System Architecture](architecture/SYSTEM_ARCHITECTURE.md).
-- **History:** work evolved from the earlier Sina_FN prototype and AEGIS lessons into a focused mock-data UI; the first baseline and desktop-sidebar PRs are merged. See [Project History](project/PROJECT_HISTORY.md) and [Decisions](project/DECISIONS.md).
+- **History:** work evolved from the earlier Sina_FN prototype and AEGIS lessons into a focused mock-data UI; the first baseline, desktop-sidebar, vault migration, and Account Board PRs are merged. See [Project History](project/PROJECT_HISTORY.md) and [Decisions](project/DECISIONS.md).
 
 ## Table of contents
 
@@ -27,7 +27,7 @@ updated: 2026-10-16
 
 ## Current focus
 
-[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) is delivered through [S3](worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): complete overlapping folders, vertical default and horizontal only in Settings. Existing provider assets, session profiles and Wallet context remain intact. Local verification is recorded; source checkpoint `763db1d` and fresh reviewer **ship** are confirmed, with S3 pushed to existing OPEN/DRAFT [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Implementation delivery is CLOSED; owner review/merge remain pending. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
+[TASK-GS-PLAN-005](worklog/10-Tasks/TASK-GS-PLAN-005.md) establishes the comprehensive documentation-only planning roadmap: Pre-Home flow (A01–A10), Home v2 block specification (Today strip, Nearest Obligation, Streak with Party rank, one-line summary, compact Leaderboard card), 10-screen feature map, critical conflict analysis, and dual-track implementation milestones. PR #4 (Account Board full-folder deck) is verified MERGED to `main`. This planning task is documentation only; production mutation is NONE.
 
 ## Agent reading order
 
@@ -42,3 +42,4 @@ updated: 2026-10-16
 ## Change log
 
 - 2026-10-16 — Created as the vault center for [TASK-VAULT-STRUCTURE-001](worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+- 2026-10-17 — Updated current focus to [TASK-GS-PLAN-005](worklog/10-Tasks/TASK-GS-PLAN-005.md) (Onboarding, Home v2, and screen roadmap).

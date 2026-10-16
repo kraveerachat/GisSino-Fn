@@ -3,13 +3,14 @@ id: PAGE-settings
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../design/SCREEN_MAP.md
   - ../../project/OPEN_QUESTIONS.md
-tasks: [TASK-GS-UI-BASELINE-001]
+  - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
+tasks: [TASK-GS-UI-BASELINE-001, TASK-GS-PLAN-005]
 ---
 # Settings
 
@@ -42,3 +43,4 @@ Provider and infrastructure choices are tracked in [Open Questions](../../projec
 ## Change log
 
 - 2026-10-16 — Added from the current Settings prototype.
+- 2026-10-17 — Cross-linked with planned roadmap specifications for [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md).
