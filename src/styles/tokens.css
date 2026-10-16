@@ -50,6 +50,8 @@
   --sidebar-open:240ms;
   --sidebar-close:190ms;
   --sidebar-label-reveal:140ms;
+  --brand-sidebar-expanded:54px;
+  --brand-sidebar-collapsed:44px;
   --z-sidebar:20;
   --cover-top: #94dffc;
   --cover-bottom: #65bfee;

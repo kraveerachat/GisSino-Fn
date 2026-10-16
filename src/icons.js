@@ -48,4 +48,4 @@ const paths = {
 export function icon(name, extra = '') {
   return `<svg class="icon ${extra}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.info}</svg>`;
 }
-export const logo = '<svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="12" fill="currentColor"/><path d="M28 13h-9a7 7 0 1 0 0 14h8v-8h-8" fill="none" stroke="var(--on-accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+export const logo = '<img class="brand-mark" src="/assets/brand/gissino-s-shield.png" width="1254" height="1254" alt="" aria-hidden="true" decoding="async">';

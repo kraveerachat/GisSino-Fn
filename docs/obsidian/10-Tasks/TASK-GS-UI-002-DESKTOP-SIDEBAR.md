@@ -49,3 +49,21 @@ Screenshots (local only): artifacts/desktop-sidebar/header-correction/desktop-in
 - Delivery: correction and this SHA record are pushed to the same task branch; the branch head includes this controlled documentation checkpoint
 - Next action: owner reviews the updated Draft PR #2 before merging
 - Production mutation: NONE
+
+## Owner follow-up — Metallic Navy S-Shield
+
+Replaced the previous brand mark with the owner's supplied Metallic Navy S-Shield Emblem.png. Original1254×1254 RGBA source remains unchanged, SHA256 B26D5107C0B9DC62B5038596E1A067573859B3B90EED7F49017A1BF771055DD9. Web copy assets/brand/gissino-s-shield.png omits only nonvisual caBX/C2PA metadata; retained PNG chunks are byte-identical. Visible alpha bounds1072×1189; no crop, resize, recolor, filter or regeneration.
+
+Final boxes: expanded54px, collapsed44px, mobile31px and tablet34px. Expanded header54px high with centered wordmark and toggle, approximately20px wordmark-to-toggle gap at1440px. Existing dark/light surfaces retain readable silver/navy artwork without an additional plate. One canonical shared brand helper and favicon; obsolete favicon.svg removed. Mobile/tablet layout and sidebar behavior remain intact.
+
+Changed files: assets/brand/gissino-s-shield.png, assets/brand/README.md, assets/favicon.svg (removed), index.html, server.mjs, src/icons.js, src/screens.js, src/styles/app.css, src/styles/tokens.css, tests/preview.test.mjs, DESIGN.md, docs/design/UI_DESIGN_SPEC.md, docs/design/DESKTOP_SIDEBAR_REVIEW.md and this note.
+
+Verification: npm run check passed306 locale keys; npm test17/17 passed including PNG HTTP/MIME/signature; Chromium26 assertions passed, no console warnings/errors. Desktop1100/1280/1440/1920 checked in light/Thai and dark/English. Collapsed light/dark, hover, keyboard Home link, pin retention, Add, shared Wallet logo390/820/1099 and mobile More/Add passed. No overflow or header overlap.
+
+Screenshots: artifacts/desktop-sidebar/brand-shield/desktop-light-expanded.jpg, desktop-light-collapsed.jpg, desktop-hover.jpg, desktop-dark-expanded.jpg, desktop-dark-collapsed.jpg, wallet-390.jpg, wallet-820.jpg; browser-checks.json alongside. Local review artifacts are excluded from Git.
+
+- Brand integration commit: pending
+- PR: https://github.com/kraveerachat/GisSino-Fn/pull/2 (same task branch)
+- Next action: push this brand checkpoint and retain Draft for owner review
+- Limits: actual zoom, physical high-density display, screen-reader and touch hardware remain unverified
+- Production mutation: NONE

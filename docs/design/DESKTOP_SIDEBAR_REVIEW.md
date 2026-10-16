@@ -1,6 +1,6 @@
 # GS-UI-002 — Desktop Collapsible Sidebar
 
-Current owner follow-up: desktop starts pinned, and the expanded header is one horizontal row. The original implementation/critique below is historical evidence; the correction record at the end supersedes its default-collapse and fixed-toggle-placement decisions.
+Current owner follow-ups: desktop starts pinned; the expanded header is one horizontal54px row with the supplied metallic S-Shield, wordmark and toggle. The original implementation/critique below is historical evidence; correction records at the end supersede default-collapse, fixed-toggle placement, old emblem and44px expanded header decisions.
 
 ## Scope and implementation
 
@@ -117,3 +117,25 @@ Verification on the correction:
 - Reduced-motion rules remain intact and cover sidebar/workspace transitions. OS reduced-motion and actual zoom emulation remain unverified; no physical-device or assistive-technology certification.
 
 Direct screenshots and JSON, excluded from Git: artifacts/desktop-sidebar/header-correction/desktop-initial-pinned.jpg, desktop-collapsed.jpg, desktop-dark-english.jpg, mobile-regression.jpg, browser-checks.json. The1440px capture was visually compared with the owner's attached reference, retaining the existing dashboard while applying the written header correction.
+
+## Owner brand integration — Metallic Navy S-Shield
+
+Supplied source: Metallic Navy S-Shield Emblem.png,1254×1254 RGBA. Inspected original artwork and alpha bounds: x92..1163/y40..1228 at alpha>=16, or1072×1189 visible pixels. No crop or resampling was needed. Original SHA256 remains B26D5107C0B9DC62B5038596E1A067573859B3B90EED7F49017A1BF771055DD9 before and after integration.
+
+Canonical web copy: assets/brand/gissino-s-shield.png,1,655,531 bytes. Removed only the nonvisual caBX/C2PA metadata chunk from the web copy. Remaining IHDR/IDAT/IEND chunks match the source byte-for-byte; no hidden textual metadata is included. No generated substitute, color change, geometry change, CSS filter, glow or artwork clipping. Asset provenance and treatment are recorded in assets/brand/README.md.
+
+The shared logo helper in icons.js renders the PNG with intrinsic dimensions and decorative alt/ARIA inside a Home link named GisSino. Favicon uses the same PNG; obsolete favicon.svg removed from the task branch. Desktop logo boxes54×54 expanded and44×44 collapsed, object-fit:contain. At the alpha-bound threshold this gives approximately46×51px and38×42px of visible artwork, respectively. Expanded header grows to54px and centers the44px toggle on the same row. At1440px the measured wordmark-to-toggle gap is approximately20px. Mobile/tablet retain their31/34px boxes and existing header spacing.
+
+Light and dark captures show the silver/navy artwork clearly enough on existing opaque surfaces; no backing plate was needed. This is a rendered visual assessment, not a numeric contrast certification for every photographic/metallic pixel.
+
+Actual checks:
+- npm run check passed: syntax, local assets,306-key locale parity.
+- npm test17/17 passed; existing HTTP smoke test now verifies PNG200 status, image/png MIME and PNG signature. server.mjs adds only the required MIME mapping.
+- Chromium26 passing assertions; no console warnings/errors. PNG natural dimensions and complete loading verified.
+- Desktop1100/1280/1440/1920 in light/Thai and dark/English: no horizontal overflow, no clipping/overlap, centered image/wordmark/toggle. Collapsed light/dark44px logo, hover54px logo, pin retention, keyboard Home link, Add and mobile More/Add verified.
+- Shared Wallet branding inspected at390/820/1099; images loaded at31/34px, one accessible brand name, no horizontal overflow and no mobile sidebar offset. Returning to1100 restores desktop pin.
+- Local screenshots: artifacts/desktop-sidebar/brand-shield/desktop-light-expanded.jpg, desktop-light-collapsed.jpg, desktop-hover.jpg, desktop-dark-expanded.jpg, desktop-dark-collapsed.jpg, wallet-390.jpg, wallet-820.jpg. Browser measurements saved in browser-checks.json.
+
+Files changed in this brand slice: assets/brand/gissino-s-shield.png and README.md added; assets/favicon.svg removed; index.html, server.mjs, src/icons.js, src/screens.js, src/styles/app.css, src/styles/tokens.css, tests/preview.test.mjs, DESIGN.md, UI_DESIGN_SPEC.md, this review and the existing task note updated. No financial screen content, fixtures or sidebar state machine changes.
+
+Limits: original1254px asset retained for resolution headroom; physical high-density displays, actual browser zoom, screen readers and touch hardware were not tested. Existing CSS preserves proportions and named link/focus behavior; no device certification is claimed.
