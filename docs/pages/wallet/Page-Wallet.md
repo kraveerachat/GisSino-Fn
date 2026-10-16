@@ -15,13 +15,13 @@ tasks: [TASK-FLOATING-ISLAND-NAVIGATION]
 
 ## Current state
 
-A synthetic asset overview in [wallet.js](../../../src/wallet.js), with Bank, E-wallet, and Cash categories, separate card liabilities, account details, and entry into own-account transfer.
+A synthetic asset overview in [wallet.js](../../../src/wallet.js), with Bank, E-wallet, and Cash categories, separate card liabilities, account details, session-only profiles, and entry into own-account transfer. S3 changes Home account selection only; the canonical detail destination and shared provider/profile/financial contracts remain unchanged.
 
 ## Purpose and rules
 
 - A Wallet is a place money sits: bank, e-wallet, cash, or credit card [DECIDED].
 - Transfers between the user’s own accounts are never expenses [DECIDED].
-- Unsupported account creation and reconciliation remain clearly labeled [OPEN].
+- Session-only account profile creation/edit is implemented; production account creation and reconciliation remain unimplemented [OPEN].
 
 ## Sections and details
 
@@ -41,7 +41,7 @@ Mobile access is part of [D23](../../project/DECISIONS.md#d23--responsive-primar
 
 ## Shared account identity
 
-[wallet.js](../../../src/wallet.js) uses the same [account display adapter](../../../src/account-display.js) as Home. Assets are explicitly bank/ewallet/cash; card liabilities remain separate. Canonical `#wallet/account/<id>` opens read-only detail with matching provider/name/currency/suffix/balance; Escape returns focus to its Wallet row. Add Account is unavailable with explanatory copy. See [Provider Catalog](../../design/PROVIDER_CATALOG.md) and [review evidence](../../design/reviews/ACCOUNT_BOARD_REVIEW.md).
+[wallet.js](../../../src/wallet.js) uses the same [account display adapter](../../../src/account-display.js) as Home. Assets are explicitly bank/ewallet/cash; card liabilities remain separate. Canonical `#wallet/account/<id>` opens read-only detail with matching provider/name/currency/suffix/balance; Escape returns focus to its Wallet row. Add Account opens the session-only profile form; production account creation remains unavailable. See [Provider Catalog](../../design/PROVIDER_CATALOG.md) and [review evidence](../../design/reviews/ACCOUNT_BOARD_REVIEW.md).
 
 ## Change log
 
@@ -54,3 +54,6 @@ Mobile access is part of [D23](../../project/DECISIONS.md#d23--responsive-primar
 Supersedes the earlier unavailable Add Account description: Add now creates fictional session-only profiles; Edit is available in account detail. Provider/type/nickname/reference/label/appearance are editable while balance/ID/currency remain unchanged. New profiles show unavailable balance and reset on reload. The original transaction/transfer fixtures remain separate; this is no production ledger integration.
 
 -2026-10-16 — [Account Board S2](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).
+
+
+- 2026-10-16 — [Account Board S3](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) retains Wallet detail/profile context while replacing Home selection.

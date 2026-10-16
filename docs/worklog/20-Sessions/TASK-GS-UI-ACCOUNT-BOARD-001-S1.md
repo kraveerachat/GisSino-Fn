@@ -11,6 +11,8 @@ related:
 ---
 # Session S1 — Account Board
 
+> Historical checkpoint: S1/S2 tab-strip, Stack/Grid and wrapping-selection descriptions are SUPERSEDED by [S3](TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) on 2026-10-16. Provider/profile work and the recorded checks remain historical evidence; this session is not the current task state.
+
 ## Scope and evidence
 
 Verified main and three merged PRs; used an isolated task worktree. Read adopted governance/product/architecture/design notes. Researched provider identity against BOT and provider sites; withheld all unlicensed/unverified logo artwork. Implemented plain HTML/CSS/JavaScript with no new dependency.

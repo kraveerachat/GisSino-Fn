@@ -11,6 +11,8 @@ related:
 ---
 # Session S2 — Owner-directed Account Board refinement
 
+> Historical checkpoint: S1/S2 tab-strip, Stack/Grid and wrapping-selection descriptions are SUPERSEDED by [S3](TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) on 2026-10-16. Provider/profile work and the recorded checks remain historical evidence; this session is not the current task state.
+
 ## Current state
 
 Continuing the same task branch and OPEN/DRAFT PR#4. The owner requested direct implementation: straight aligned curved folders, no visible X-of-Y/helper/testing copy, compact mobile indicators, local provider assets, Paotang support and richer mock profile setup. The earlier S1 receipt remains immutable historical evidence.

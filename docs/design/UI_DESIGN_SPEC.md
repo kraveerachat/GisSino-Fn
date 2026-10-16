@@ -12,9 +12,13 @@ related:
 ---
 # UI design specification
 
+## Current state — S3
+
+Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. The source and evidence are recorded in [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
+
 ## Authority and scope
 
-The 16 October 2026 written brief, supplied blue-enamel Image A, and owner-selected HTML/CSS/JavaScript preview stack guide this work. This specification does not approve a production framework or financial domain implementation. Project guide, architecture, universal workflow, and references B/C remain unavailable. Image A now governs the three focused screens; B/C contents are not invented.
+The 16 October 2026 written brief, supplied blue-enamel Image A, and owner-selected HTML/CSS/JavaScript preview stack guide this work. This specification does not approve a production framework or financial domain implementation. The project guide, architecture and universal workflow are available and were read for this task; references B/C remain unavailable. Image A now governs the three focused screens; B/C contents are not invented.
 
 ## Screen composition
 
@@ -46,7 +50,7 @@ Primary reference: 390 CSS px. Supported layout target starts at 320px, with 600
 
 The preview server is loopback-only and refuses production startup. Production auth, finance, persistence, bank services, AI, subscription posting, PWA caching, and deployment remain outside this slice.
 
-## Account Board extension
+## S1 Account Board extension — SUPERSEDED
 
 Replace the earlier Home account rows with navy layered account folders while retaining the enamel hero/cover and navigation. Compact Stack is default; wide containers pair featured folder with direct list, and Grid adapts to one/two/three readable columns. Provider accents are proposed UI colors with original generic fallback badges; verified artwork is not bundled. Selection shuffles over220ms unless reduced motion is enabled. [Provider Catalog](PROVIDER_CATALOG.md), [Home](../pages/home/Page-Home.md), [Wallet](../pages/wallet/Page-Wallet.md) and [review](reviews/ACCOUNT_BOARD_REVIEW.md) define the current extension.
 
@@ -58,8 +62,18 @@ Authority correction: project guide, architecture and governance notes are now a
 
 - 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
 
-## S2 owner-directed refinement
+## S2 owner-directed refinement — SUPERSEDED presentation
 
 Supersedes the simple staggered folder and unavailable-profile presentation. Desktop tabs align on shared edges with a curved shoulder; mobile collapses mode controls into the title row and uses near-visual indicators with no instructional copy below. Assets are owner-supplied local PNGs, with explicit fallback. Profile setup/edit is session-only and no real finance/persistence is implied.
 
 -2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).
+
+
+## S3 complete-folder behavior
+
+Actual occlusion reveals complete 160–164px folders rather than decorative strip placeholders. Vertical exposure is 24px on narrow containers and 28px on wider ones, bounded to two/three rear cards. Cards share aligned edges, curved 20px shoulders, contained logos and contact shadows. Wide vertical composition retains its direct companion selector; horizontal card width is capped at 360px and the track remains clipped within the page. Home contains no mode selector, instruction paragraph or X-of-Y counter.
+
+The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows lateral movement directly. Native pointer capture and requestAnimationFrame update the existing card nodes continuously; a 240ms cubic ease-out settles without overshoot. Cancel/below-threshold restores source, reduced motion settles immediately, ordinary body touch scroll remains native. Bounded previous/next, axis arrows and Home/End select; wheel accumulation is throttled and releases scroll at ends/Ctrl. Explicit detail and active-only double-tap/double-click open detail; dragging does not. Inactive full-card overlays provide selection without exposing inactive detail controls.
+
+
+- 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.

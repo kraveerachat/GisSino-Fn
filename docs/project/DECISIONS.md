@@ -58,7 +58,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-
 ### D24 — Account Board preview and shared provider identity
 
 - Date: 2026-10-16; status: DECIDED for the mock UI; decided by owner through task and compact-folder clarification.
-- Statement: Home defaults to compact layered asset folders with Stack/Grid choice. Bank/E-Wallet/Cash identities share one registry and display adapter with Wallet; liabilities remain separate. Selection is distinct from opening detail.
+- Historical S1 statement — SUPERSEDED by the S3 follow-up below: Home defaults to compact layered asset folders with Stack/Grid choice. Bank/E-Wallet/Cash identities share one registry and display adapter with Wallet; liabilities remain separate. Selection is distinct from opening detail.
 - Provider artwork without confirmed rights uses original fallback icons; accent HEX values remain proposed UI tokens, not official brand certification.
 - Supersedes the prior simple Home account-list presentation only. No Accounts/Ledger, persistence or bank integration milestone is implied.
 - Source: [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md); affects [Home](../pages/home/Page-Home.md), [Wallet](../pages/wallet/Page-Wallet.md), [Provider Catalog](../design/PROVIDER_CATALOG.md).
@@ -68,3 +68,12 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-
 Owner-directed2026-10-16 refinement: straight curved folders, compact mobile visual indicators/no counter/helper, bundled owner-supplied bank/E-Wallet PNGs, Paotang profile and add/edit display metadata with appearance choices. This supersedes D24 baseline blanket logo withholding for the supplied13assets and unavailable Add behavior only. Everything remains mock/session-only.
 
 -2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).
+
+
+## D24 follow-up — complete overlapping folders (S3)
+
+- Date: 2026-10-16; status: DECIDED for the mock UI; decided by owner in attachment `892553f0-0076-4b38-94ac-703e530edd72/Pasted text.txt`, “Real Overlapping Folder Stack & Gesture Redesign.”
+- Statement: all accounts are complete reusable folders with actual overlap; vertical is default and horizontal is the only Settings alternate. Preserve selected ID across modes. Home has no mode toggle, tab-strip placeholders or conventional Grid.
+- Interaction: dedicated vertical touch grip holds 260ms before continuous drag; horizontal touch moves laterally; rAF transforms preserve card nodes; 240ms snap (immediate with reduced motion). Bounded arrows/buttons/Home/End/wheel, boundary/Ctrl release, normal folder-body scroll, explicit detail and active-only double-tap/double-click. Drag does not open detail.
+- Supersedes: S1/S2 Stack/Grid, strip-tab selection and wrapping index behavior only. Provider/profile/Wallet/financial contracts and the 13 supplied assets continue unchanged.
+- Source: [S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md); affects [Home](../pages/home/Page-Home.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md).

@@ -11,7 +11,11 @@ related:
 ---
 # Account Board design and verification
 
-## Current state
+## Current state — S3
+
+The owner’s complete-folder deck request supersedes the S1/S2 tab-strip and Stack/Grid model. This is an ordinary extension of the existing enamel world. S3 is implemented locally; source checkpoint is `763db1db7802f9ea011e83016bce57a1c8bd39b3`, final checks passed and the independent finish reviewer returned **ship** with no material fixes; S3 push/PR-head reconciliation remains PENDING. Earlier ship verdicts and remote SHAs below are historical S1/S2 evidence. See [S3](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
+
+## S1 current state — historical and SUPERSEDED presentation
 
 Code-led extension of the existing Blue Glossy Enamel world. The supplied stacked payment-card image informed folder overlap, rounded tabs, depth and compact composition only. No card network branding or unsupported banking controls were introduced. Independent finish reviewer returned ship for the scored fixes: selected-balance clearance and inactive-tab hierarchy. This verdict covers those fixes, not a new whole-surface accessibility certification.
 
@@ -83,3 +87,40 @@ Local `artifacts/account-refinement/` contains Stack/Grid at320,360,390,430,768,
 ### S2 documenter result
 
 Fresh documenter directly compared four requested captures and source: ordinary extension of the incumbent enamel system, no scoped fixes. DESIGN.md and system sidecar were preserved. Preexisting documentation format/coverage gaps and absent sidecar remain unmodified.
+
+
+## S3 dated addendum — 2026-10-16
+
+Authority: owner attachment `892553f0-0076-4b38-94ac-703e530edd72/Pasted text.txt`, “Real Overlapping Folder Stack & Gesture Redesign.” All six accounts now render the same complete provider/name/currency/balance/reference/detail component. Native pointer handling moves existing DOM cards through requestAnimationFrame transforms; 260ms vertical touch grip hold, direct horizontal touch and desktop drag settle with a 240ms cubic ease-out. Cancel/below-threshold restores source. Bounded keyboard/buttons/wheel preserve browser boundary/Ctrl release; normal folder-body scrolling remains native. Whole inactive-card selection overlays retain selection/detail separation. Settings is the sole mode preference and preserves selected ID.
+
+### S3 critique and finish disposition
+
+Method: dual-agent (A: `account_deck_design_a`; B: `account_deck_technical_b`). A completed before detector evidence entered the synthesis. The bundled detector scanned `src/account-board.js`, `src/screens.js` and `src/app.js` once; no ignore list or overlay injection was used. The runtime controller and CSS were covered by source/browser review. Questions skipped: the owner provided the correction and implementation direction. Each assessment closed its own browser contexts; the owner-review preview remains running intentionally.
+
+The parent’s independent preimplementation Nielsen assessment scored 20/40, with individual scores 2/2/2/2/2/3/1/2/3/1. The main failure was the full-folder metaphor: decorative strip tabs and a static featured panel did not satisfy real occlusion or continuous direct manipulation. S3 replaces those with complete shared folders, same-node continuous gesture transforms, Settings-only mode selection and bounded native controls. Fresh independent finish disposition is **ship**, material fixes **None**, after reviewing both modes, continuous frames/source/metrics, Settings, narrow typography/material/ground and preserved shell. No final numeric Nielsen rescore or physical-device/screen-reader certification is claimed.
+
+### Fresh documentation comparison
+
+Compared `src/account-board.js`, `src/account-deck.js`, `src/app.js`, `src/screens.js` and `src/styles/accounts.css` directly with `PRODUCT.md`, root `DESIGN.md` and `.impeccable/account-deck-direction.md`. Inspected ignored local `artifacts/account-deck/diagnostic-full.png` (1440px desktop), `vertical-390.png`, `horizontal-390.png`, `settings-390.png` and `dark-en-390.png`.
+
+Verdict: **ordinary extension verified; no scoped design-system fixes**. The captures retain the sky/cobalt enamel shell, navy folders, curved shoulder, contained provider artwork, tabular balance hierarchy, directional contact shadows and graphite/amber dark shell. Narrow vertical composition shows two genuinely occluded complete rear folders; horizontal composition reveals neighboring complete cards within the track. Settings owns the native select; the Home header has no mode control or instruction paragraph. The wide vertical companion selector and existing Home/Wallet/profile flow remain coherent with the incumbent Operate surface. This comparison is not the independent finish reviewer’s final disposition.
+
+Root `DESIGN.md` was preserved; `.impeccable/design.json` remains absent. Preexisting missing token frontmatter/sidecar and historical source-document availability wording in root design/product context were reported and left untouched, as required by the scoped document handoff. No visual-world replacement or new system authority is implied.
+
+### Actual evidence at documentation checkpoint
+
+- `artifacts/account-deck/functional.json`: 24 passed functional/browser groups, `errors: []`. Groups include six complete cards, continuous native vertical/horizontal tracking on the same DOM nodes, early-hold cancellation, below-threshold restore, pointer cancellation, folder-body scroll, desktop drag, accumulated/throttled wheel and boundary/Ctrl release, bounded keyboard, Settings ID preservation, explicit/active-only double activation detail, reduced motion, concealment, profile validation/Paotang/Wallet context, existing Add, reload reset and failed-logo fallback.
+- The same file records 18 responsive mode captures: vertical/horizontal at 320/360/390/430/820 portrait, 1024 landscape and 1280/1440/1920px, without horizontal page overflow. Measured six-card geometry is 160px high at 320–430px and 164px at the remaining widths. Vertical exposure is 24/28px according to component width with at most two/three rear folders.
+- `artifacts/account-deck/detector.json`: `[]`, one parent/technical pass, zero findings. It was not rerun by the documenter. Inline markup style attributes were removed; runtime transforms remain component-local style properties.
+- `artifacts/account-deck/console-confirm-b.json`: fresh 1440×1000 browser check records empty console, page-error and failed-request arrays after the CSP fix; selected `daily`, vertical, idle. This supersedes earlier diagnostic CSP errors for that confirmation gate.
+- Parent-confirmed final source checks: `npm run check` PASS, 375 keys per locale; `npm test` PASS, 34 tests; source `git diff --check` PASS. Source checkpoint `763db1db7802f9ea011e83016bce57a1c8bd39b3`. Later CSP markup assertion passed all 13 Account Board tests; test checkpoint is `e98171295ae32ab7409a31bb51484d44467da867`. No UI edits followed the captures. Supplemental `selection-extra.json` directly records 5 more passed groups with zero errors (29 functional groups across both files).
+
+S3 source boundary: new `src/account-deck.js`; modified `src/account-board.js`, `src/app.js`, `src/screens.js`, `src/i18n.js`, `src/styles/accounts.css` and `tests/account-board.test.mjs`. No asset changes; 13 provider logos, profile form, Wallet adapter and financial fixtures/contracts continue from S2. Physical-device, screen-reader, actual zoom and cross-browser certification remain unverified.
+
+- 2026-10-16 — [S3 session](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): current design contract and fresh documentation comparison; fresh reviewer **ship**, delivery synchronization pending.
+
+### S3 visual and motion inventory
+
+Ignored local `artifacts/account-deck/` retains `vertical-<width>.png` and `horizontal-<width>.png` for all nine widths above (exact viewport captures), `vertical-mid-drag.png`, `vertical-settled.png`, `horizontal-mid-drag.png`, `horizontal-settled.png`, `settings-390.png`, `dark-en-390.png`, `dark-en-1440.png`, `reduced-motion.png`, `sidebar-collapsed.png` and the valid additional desktop `diagnostic-full.png`. The canonical reviewer packet uses `.impeccable/review/mobile.png` and `desktop.png`. Early full-page compositor captures displaced the desktop margin despite correct measured layout; they were replaced by valid viewport captures, without a shell source change. Independent B additionally inspected 390×844 and the desktop diagnostic includes 1440×900.
+
+`account-deck-interactions.webm` records actual Chromium gesture/regression execution, including both modes. Native touch input and multiple midgesture displacement samples establish movement before release; static frames alone were not used to claim animation verification. This is an emulated Chromium recording, not physical-device evidence. Earlier S1/S2 artifacts and the supplied Pinterest reference remain separate from current-build evidence.
