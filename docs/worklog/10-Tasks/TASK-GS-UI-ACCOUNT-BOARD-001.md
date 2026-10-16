@@ -2,7 +2,7 @@
 id: TASK-GS-UI-ACCOUNT-BOARD-001
 type: task
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-S2 owner-directed refinement is implemented and being finalized on the same OPEN/DRAFT PR#4. Bank assets, compact aligned folders and session-only profile add/edit supersede the S1 UI below. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
+S2 owner-directed refinement is implemented, verified and delivered on the same OPEN/DRAFT PR#4. Bank assets, compact aligned folders and session-only profile add/edit supersede the S1 UI below. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
 
 ## Scope
 
@@ -63,4 +63,6 @@ Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider c
 
 ## S2 current refinement
 
-[Session S2](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md) records the latest request, code, copied assets and checks. See [provider artwork provenance](../../../assets/providers/README.md), [updated catalog](../../design/PROVIDER_CATALOG.md) and [review](../../design/reviews/ACCOUNT_BOARD_REVIEW.md). The S1 unavailable Add Account/all-logos-withheld descriptions are historical and superseded by this explicitly authorized follow-up. Current checks:367locale keys,30tests,12browsergroups,20responsivecases and13loaded logo assets. Final review and push synchronization pending; no production changes.
+[Session S2](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md) records the latest request, code, copied assets and checks. See [provider artwork provenance](../../../assets/providers/README.md), [updated catalog](../../design/PROVIDER_CATALOG.md) and [review](../../design/reviews/ACCOUNT_BOARD_REVIEW.md). The S1 unavailable Add Account/all-logos-withheld descriptions are historical and superseded by this explicitly authorized follow-up. Current checks:367locale keys,30tests,12browsergroups,20responsivecases and13loaded logo assets. Fresh finish reviewer: ship, no material fixes. Fresh documenter: ordinary extension verified. Source `05715916400ed7f8fc30ce599dc449c353d6dd24`; asset checkpoint `342e597`; pre-receipt remote/docs checkpoint `6b216f0ce48643e71bf93b0af9768f3872005f55` matched GitHub. PR#4 remains OPEN/DRAFT; owner review and merge pending.
+
+[Immutable S2 final receipt](../90-Receipts/20261016-194555-TASK-GS-UI-ACCOUNT-BOARD-001-S2-FINAL.md). Receipt-inclusive vault health: PASS,48 notes/48 unique IDs, all within3 clicks, zero metadata/link/parent/reachability errors. Preview: `http://127.0.0.1:4176/#home`. No production changes.

@@ -31,3 +31,5 @@ This timeline is append-only.
 
 - 2026-10-16 — Vault migration PR #3 verified merged; its earlier Draft timeline entry is superseded at this checkpoint.
 - 2026-10-16 — Responsive Account Board mock UI, shared provider display registry and Wallet identity delivered in [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4); owner review pending. See [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md). No production or Accounts/Ledger milestone.
+
+- 2026-10-16 — Account Board S2 owner-directed refinement delivered through the same [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4): aligned curved folders, compact mobile indicators,13 supplied logos/Paotang and session-only profile add/edit. See [S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md). Owner review pending; no production change.

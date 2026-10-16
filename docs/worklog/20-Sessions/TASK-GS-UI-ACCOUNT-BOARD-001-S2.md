@@ -44,3 +44,7 @@ Updated existing Home/Wallet, provider catalog, data contracts, components/token
 - Existing PR#4 remains the only task PR; documentation and remote synchronization follow.
 
 Fresh documenter comparison: ordinary extension verified with no scoped fixes; preexisting design-document drift preserved. Final npm check passed367-key parity and all30tests passed after the compact-header refinement.
+
+## Final synchronization
+
+PR#4 verified OPEN/DRAFT at remote checkpoint `6b216f0`; source checkpoint `0571591`. [Immutable S2 receipt](../90-Receipts/20261016-194555-TASK-GS-UI-ACCOUNT-BOARD-001-S2-FINAL.md) records final scope and limitations. Owner reviews the existing PR/loopback preview; no merge or production change. Receipt-inclusive vault health is48 notes with zero findings.

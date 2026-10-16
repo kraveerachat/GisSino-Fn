@@ -19,4 +19,4 @@ related:
 | [TASK-GS-UI-002-DESKTOP-SIDEBAR](../10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md) | EXTERNALLY ACCEPTED | [PR #2 merged](https://github.com/kraveerachat/GisSino-Fn/pull/2) | Desktop sidebar and S-Shield branding |
 | [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | EXTERNALLY ACCEPTED | [PR #3 merged](https://github.com/kraveerachat/GisSino-Fn/pull/3) | Documentation vault migration and hubs |
 
-| [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | IN PROGRESS | [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S2 aligned folders, local provider assets and session profile previews |
+| [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | CLOSED | [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S2 aligned folders, local provider assets and session profile previews |
