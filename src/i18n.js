@@ -1,5 +1,13 @@
 export const messages = {
   th: {
+    accountDisplayMode: "รูปแบบบัญชีบนหน้าหลัก",
+    verticalFolderStack: "แฟ้มซ้อนแนวตั้ง",
+    horizontalFolderCarousel: "แฟ้มเลื่อนแนวนอน",
+    folderDragHandle: "เลื่อนแฟ้มบัญชี",
+    verticalHandleHelp: "กดค้างที่ปุ่มจับแล้วลากขึ้นลง หรือใช้ปุ่มลูกศรขึ้นลง",
+    horizontalHandleHelp: "ลากซ้ายขวา หรือใช้ปุ่มลูกศรซ้ายขวา",
+    previousFolderUp: "บัญชีก่อนหน้า · ขึ้น",
+    nextFolderDown: "บัญชีถัดไป · ลง",
     editAccountProfile: "แก้ไขโปรไฟล์ตัวอย่าง",
     profileSessionNote: "โปรไฟล์ตัวอย่างใช้ในเซสชันนี้เท่านั้น รีโหลดแล้วจะหาย ไม่เชื่อมธนาคารและไม่บันทึกยอดเงิน กรุณาใช้ข้อมูลสมมติ",
     providerType: "ประเภทผู้ให้บริการ",
@@ -86,6 +94,14 @@ export const messages = {
     toggleSetting: 'เปลี่ยนการมองเห็นในตัวอย่าง', welcomeNote: 'ดูแลเงินวันนี้ เพื่อวันพรุ่งนี้ที่เบาขึ้น', overviewLabel: 'ภาพรวมบัญชี', demoSuffix: 'ตัวอย่าง • {suffix}',
   },
   en: {
+    accountDisplayMode: "Home account display",
+    verticalFolderStack: "Vertical folder stack",
+    horizontalFolderCarousel: "Horizontal folder carousel",
+    folderDragHandle: "Move account folders",
+    verticalHandleHelp: "Hold this handle then drag vertically, or use Up and Down arrows.",
+    horizontalHandleHelp: "Drag horizontally, or use Left and Right arrows.",
+    previousFolderUp: "Previous account · up",
+    nextFolderDown: "Next account · down",
     editAccountProfile: "Edit sample profile",
     profileSessionNote: "Sample profiles last only for this session and reset on reload. No bank connection or balance is saved. Use fictional details.",
     providerType: "Provider type",

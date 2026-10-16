@@ -5,8 +5,9 @@ import { transactions, bills, accounts, creditCard } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
 import { navigationOverlay } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
-import { accountBoard, stepAccount, swipeDirection, parseAccountHash } from './account-board.js';
+import { accountBoard, parseAccountHash } from './account-board.js';
 import { assetAccounts, accountPreview } from './account-display.js';
+import { mountAccountDeck } from './account-deck.js';
 import { accountProfileForm, profileDraft, applyProfile } from './account-profile.js';
 
 const app = document.querySelector('#app');
@@ -16,7 +17,7 @@ const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home',
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
-  accountSelected: 'daily', accountView: 'stack', accountState: 'sample',
+  accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
   accountProfiles: accounts.map(account=>({...account})),
   transferSource:'daily', transferDestination:'savings', transferAmount:'0', cardReminder:false,cardReturn:'bills'
 };
@@ -28,6 +29,7 @@ let suppressSheetFocus=false;
 let accountSheetClosingForNavigation=false;
 let accountDetailId=null;
 let editingProfileId=null;
+let accountDeck=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -37,12 +39,14 @@ function applyTheme() {
   document.querySelector('meta[name="theme-color"]').content = state.theme === 'dark' ? '#242323' : '#94dffc';
 }
 function render(focusMain = false) {
+  accountDeck?.destroy();accountDeck=null;
   applyTheme();
   document.documentElement.lang = state.locale;
   document.title = `${t('appName')} · ${t(state.route==='credit-card'?'creditCardTitle':state.route)} · Design Preview`;
   document.querySelector('#skip-link').textContent = t('skip');
   app.innerHTML = shell(state, t);
   sidebar.rendered();
+  mountDeck();
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
 }
 function announce(message) { document.querySelector('#announcer').textContent = message; }
@@ -125,58 +129,21 @@ function openProfile(id=null) {
 document.addEventListener('error',event=>{
   if(event.target.matches?.('.provider-badge img'))event.target.closest('.provider-badge').classList.add('logo-failed');
 },true);
-function refreshAccountBoard(focusSelector,shuffle=false) {
-  const board=document.querySelector('.account-board');
-  if(!board)return;
-  const demoOpen=board.querySelector('.board-demo-controls')?.open;
-  board.outerHTML=accountBoard(state,t);
-  if(demoOpen)document.querySelector('.board-demo-controls').open=true;
+function mountDeck() {
+  const root=document.querySelector('[data-account-deck]');
+  if(root)accountDeck=mountAccountDeck(root,{onSelect:id=>{state.accountSelected=id;},t});
+}
+function refreshAccountBoard(focusSelector) {
+  const board=document.querySelector('.account-board');if(!board)return;
+  accountDeck?.destroy();accountDeck=null;
+  board.outerHTML=accountBoard(state,t);mountDeck();
   if(focusSelector)document.querySelector(focusSelector)?.focus({preventScroll:true});
-  if(shuffle&&!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelector('.account-featured-folder')?.animate(
-      [{transform:'translateY(-8px)',opacity:.8},{transform:'translateY(0)',opacity:1}],
-      {duration:220,easing:'cubic-bezier(.16,1,.3,1)'}
-    );
-  }
 }
-function selectBoardAccount(id,focusSelector='[data-swipe-region]') {
-  if(!assetAccounts(state.accountProfiles).some(a=>a.id===id))return;
-  state.accountSelected=id;
-  refreshAccountBoard(focusSelector,true);
+function selectBoardAccount(id,focusSelector='[data-account-deck]') {
+  if(!assetAccounts(state.accountProfiles).some(account=>account.id===id))return;
+  accountDeck?.select(id);
+  document.querySelector(focusSelector)?.focus({preventScroll:true});
 }
-let boardGesture=null;
-let suppressBoardClickUntil=0;
-document.addEventListener('pointerdown',event=>{
-  const region=event.target.closest('[data-swipe-region]');
-  if(!region||event.target.closest('button')||!event.isPrimary||event.button!==0)return;
-  boardGesture={pointerId:event.pointerId,region,start:{x:event.clientX,y:event.clientY}};
-});
-document.addEventListener('pointerup',event=>{
-  if(!boardGesture||event.pointerId!==boardGesture.pointerId)return;
-  const gesture=boardGesture; boardGesture=null;
-  const direction=swipeDirection(gesture.start,{x:event.clientX,y:event.clientY});
-  if(!direction||!gesture.region.isConnected)return;
-  suppressBoardClickUntil=performance.now()+400;
-  selectBoardAccount(stepAccount(assetAccounts(state.accountProfiles),state.accountSelected,direction));
-});
-const cancelBoardGesture=()=>{boardGesture=null;};
-document.addEventListener('pointercancel',cancelBoardGesture);
-document.addEventListener('lostpointercapture',cancelBoardGesture);
-window.addEventListener('blur',cancelBoardGesture);
-document.addEventListener('click',event=>{
-  if(performance.now()<suppressBoardClickUntil&&event.target.closest('.account-stack')) {
-    event.preventDefault(); event.stopImmediatePropagation();
-  }
-},true);
-document.addEventListener('keydown',event=>{
-  if(!event.target.closest('[data-swipe-region]'))return;
-  const records=assetAccounts(state.accountProfiles);
-  const id=event.key==='Home'?records[0]?.id:event.key==='End'?records.at(-1)?.id:
-    event.key==='ArrowRight'?stepAccount(records,state.accountSelected,1):
-    event.key==='ArrowLeft'?stepAccount(records,state.accountSelected,-1):null;
-  if(!id)return;
-  event.preventDefault();selectBoardAccount(id);
-});
 
 document.addEventListener('click',event=>{
   const button = event.target.closest('[data-action]');
@@ -187,14 +154,9 @@ document.addEventListener('click',event=>{
   else if (action==='close') closeSheet();
   else if (action==='mode') openMode(button.dataset.mode);
   else if (action==='all-accounts') location.hash='wallet';
-  else if(action==='account-view') {
-    state.accountView=button.dataset.view==='grid'?'grid':'stack';
-    refreshAccountBoard(`[data-action="account-view"][data-view="${state.accountView}"]`);
-  } else if(action==='account-select') {
-    const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:button.classList.contains('board-indicator')?`.board-indicator[data-id="${button.dataset.id}"]`:'[data-swipe-region]';
+  else if(action==='account-select') {
+    const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:'[data-account-deck]';
     selectBoardAccount(button.dataset.id,focus);
-  } else if(action==='account-step') {
-    selectBoardAccount(stepAccount(assetAccounts(state.accountProfiles),state.accountSelected,Number(button.dataset.step)),`[data-action="account-step"][data-step="${button.dataset.step}"]`);
   } else if(action==='board-reset') {
     state.accountState='sample';refreshAccountBoard('[data-control="board-state"]');
   } else if(action==='add-account') {
@@ -286,6 +248,7 @@ document.addEventListener('change',event=>{
   }
   const control=event.target.dataset.control;
   if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
+  else if(control==='account-display-mode') {state.accountView=event.target.value==='horizontal'?'horizontal':'vertical';render();document.querySelector('#account-display-mode')?.focus({preventScroll:true});}
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }
   else if (control==='locale') { state.locale=event.target.value; render(); document.querySelector('#locale-select')?.focus({preventScroll:true}); announce(t('localeChanged')); }
