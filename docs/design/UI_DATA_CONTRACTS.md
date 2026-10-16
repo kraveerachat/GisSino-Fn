@@ -11,6 +11,10 @@ related:
 ---
 # UI data contracts and future boundaries
 
+## Current state — S3
+
+S3 adds presentation-only `accountView` (`vertical` by default or `horizontal`) and preserves `accountSelected` by stable account ID across Settings changes. All six account records render through one complete folder component; overlap and interaction use local geometry, not changed financial data. No card text is swapped during a gesture. Existing `accountProfiles`, ID/currency/minor balance preservation, unknown-provider fallback, hidden-value suppression and session-only profile boundaries continue unchanged. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records evidence.
+
 Wallet now reads explicit synthetic `accountType` metadata; `kind` selects an icon and must not determine financial classification. Existing daily/savings samples are bank assets. Empty E-wallet/Cash categories do not imply zero balances in real accounts. The existing total excludes the separate card liability. `cardReturn` is transient navigation context, never a financial record.
 
 Blue enamel additions: `creditCard` records synthetic outstanding/full amounts in integer minor units, statement/due day, currency, and display-only suffix. Minimum amount stays explicitly unrecorded. `dailySpending` supplies seven synthetic bars. These fixtures imply no backend schema. Amount helpers validate display entry without posting a transfer. Card actions and the reminder never call an issuer or persist data.
@@ -37,6 +41,23 @@ Replace synthetic fixtures with authorized view models through a future feature/
 
 The current server rejects production startup and serves no mutation endpoint. No production application or build exists in this slice; fixtures cannot be considered excluded from a future build until that build's integration is tested.
 
+## Account Board display adapter
+
+Supersedes the earlier two-bank-only fixture statement: six synthetic assets now include bank, ewallet and cash, totaling unchanged THB116,850. `id`, `accountType`, `providerId`, localized name/optional nickname, integer `balanceMinor`, THB/USD currency, optional safe suffix/context, archived flag and sort order are presentation data. Legacy `amount` stays consistent for existing form/transfer previews; this is not a production schema. No missing amount becomes zero.
+
+[providers.js](../../src/providers.js) contains identity/accent/provenance only, never financial values. [account-display.js](../../src/account-display.js) resolves safe fallback/theme, formats balance by account currency, escapes names and suppresses hidden balances consistently. [Provider Catalog](PROVIDER_CATALOG.md) records the current 19 identities and provenance for 13 owner-supplied PNGs; other providers retain safe fallbacks. The earlier 18-candidate/all-artwork-withheld statement was superseded by S2. A future production adapter must enforce ownership/visibility before data reaches the client; this UI toggle is not authorization.
+
 ## Change log
 
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+- 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 session account profiles
+
+state.accountProfiles starts as a copy of fixtures. Add/edit updates this array through account-profile.js with allowlisted bank/ewallet/cash type, matching provider, nickname<=60, suffix<=12, type-appropriate label, navy/cobalt/slate folderTone and provider/neutral accentTone. Existing records retain ID/currency/minor balance. New records have a generated sample ID,THB currency and undefined balanceMinor (never fabricated zero). Home/Wallet/detail use the same array; transfer/transaction demonstrations still use their original fixtures. No storage or network save.
+
+-2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).
+
+
+- 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.

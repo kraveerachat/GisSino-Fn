@@ -2,7 +2,7 @@
 id: TASK-VAULT-STRUCTURE-001
 type: task
 level: log
-status: CLOSED
+status: EXTERNALLY ACCEPTED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -69,4 +69,8 @@ Reorganize `docs/` as the canonical Obsidian vault, add the center and hubs, pre
 
 ## Remaining work
 
-Owner reviews and merges Draft PR #3. After merge, open `docs/` as a new Obsidian vault.
+PR #3 is merged; the owner may open `docs/` as the Obsidian vault.
+
+## Status reconciliation — 2026-10-16
+
+PR #3 was verified MERGED at 10:26:03 UTC. Its earlier Draft delivery statements are historical and superseded by this update. The original final receipt remains immutable. No merge was performed by this Account Board task.
