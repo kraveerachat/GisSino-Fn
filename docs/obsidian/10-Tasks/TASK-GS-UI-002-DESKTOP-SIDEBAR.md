@@ -44,7 +44,8 @@ Actual correction checks: npm run check passed306-key locale parity; npm test17/
 
 Screenshots (local only): artifacts/desktop-sidebar/header-correction/desktop-initial-pinned.jpg, desktop-collapsed.jpg, desktop-dark-english.jpg, mobile-regression.jpg. JSON: browser-checks.json alongside.
 
-- Correction commit: pending
+- Correction commit: f8d79dd0b48f39b33d99165ce317665339fa4119
 - Existing PR: https://github.com/kraveerachat/GisSino-Fn/pull/2
-- Next action: push correction to the same branch and retain Draft status for owner review
+- Delivery: correction and this SHA record are pushed to the same task branch; the branch head includes this controlled documentation checkpoint
+- Next action: owner reviews the updated Draft PR #2 before merging
 - Production mutation: NONE
