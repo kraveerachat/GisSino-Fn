@@ -62,8 +62,9 @@ Verification: npm run check passed306 locale keys; npm test17/17 passed includin
 
 Screenshots: artifacts/desktop-sidebar/brand-shield/desktop-light-expanded.jpg, desktop-light-collapsed.jpg, desktop-hover.jpg, desktop-dark-expanded.jpg, desktop-dark-collapsed.jpg, wallet-390.jpg, wallet-820.jpg; browser-checks.json alongside. Local review artifacts are excluded from Git.
 
-- Brand integration commit: pending
+- Brand integration commit: 40da7ee74c5bb8e7bcd544f948b755558fd95142
 - PR: https://github.com/kraveerachat/GisSino-Fn/pull/2 (same task branch)
-- Next action: push this brand checkpoint and retain Draft for owner review
+- Delivery: implementation and this SHA record share the existing task branch; the branch head includes this controlled documentation checkpoint
+- Next action: owner reviews the updated Draft PR #2 before merging
 - Limits: actual zoom, physical high-density display, screen-reader and touch hardware remain unverified
 - Production mutation: NONE
