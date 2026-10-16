@@ -358,6 +358,8 @@ progress::-moz-progress-bar { background: var(--action); border-radius: 6px; }
   .sidebar-toggle { grid-column:1; grid-row:2; background:var(--surface-raised); box-shadow:var(--key-shadow); border-radius:var(--radius-control); color:var(--muted); }
   .sidebar-toggle[aria-pressed="true"] { color:var(--accent-ink); background:var(--accent-well); box-shadow:var(--inset-shadow); }
   .sidebar[data-expanded="true"] .brand { width:max-content; }
+  .sidebar[data-expanded="true"] .sidebar-header { grid-template-columns:minmax(0,1fr) 44px; grid-template-rows:44px; column-gap:var(--space-2); }
+  .sidebar[data-expanded="true"] .sidebar-toggle { grid-column:2; grid-row:1; }
   .sidebar .sidebar-label { visibility:hidden; opacity:0; transition:opacity var(--sidebar-label-reveal),visibility var(--sidebar-label-reveal); }
   .sidebar[data-expanded="true"] .sidebar-label { visibility:visible; opacity:1; }
   .sidebar .navigation { display:flex; flex-direction:column; width:100%; gap:8px; flex-shrink:0; }

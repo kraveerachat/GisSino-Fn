@@ -33,3 +33,18 @@ Independent design critique29/40 and technical audit15/20 describe the pre-corre
 ## Limits
 
 Synthetic preview only. No backend, persistence, financial posting or production deployment. Physical touch, screen readers, OS reduced motion/forced colors, frame profiling and actual zoom remain unverified. Browser viewport emulation is layout evidence. Missing project/workflow documents remain a recorded limit. Task note is in-repository Markdown; no external Obsidian sync claimed.
+
+## Owner follow-up — same PR #2
+
+The earlier delivery started collapsed and kept the toggle below the brand in both modes. Owner correction: fresh desktop page loads start pinned expanded, and the expanded header is one horizontal44px row with logo/wordmark left and toggle right. Collapsed mode retains the compact accessible two-row header. This supersedes the earlier stable-coordinate toggle choice; the rest of the existing hover/pin state machine is preserved.
+
+Source modified: src/screens.js, src/styles/app.css, src/desktop-sidebar.js, tests/navigation.test.mjs. Documentation modified: DESIGN.md, UI_DESIGN_SPEC.md, DESKTOP_SIDEBAR_REVIEW.md and this existing task record. Original preview directory remains untouched.
+
+Actual correction checks: npm run check passed306-key locale parity; npm test17/17; Chromium32 assertions passed with no console warnings/errors. Desktop1100/1280/1440/1920 in light/Thai and dark/English: no overlap/overflow, aligned44px header,240px pinned content offset. Mobile390, tablet820 and breakpoint1099/1100 retained correct navigation and one Add. More/Add, native dialog, route/rerender pin retention, unpin suppression, hover exit and keyboard actions passed. Reduced-motion source rules remain intact; OS emulation and actual zoom remain unverified.
+
+Screenshots (local only): artifacts/desktop-sidebar/header-correction/desktop-initial-pinned.jpg, desktop-collapsed.jpg, desktop-dark-english.jpg, mobile-regression.jpg. JSON: browser-checks.json alongside.
+
+- Correction commit: pending
+- Existing PR: https://github.com/kraveerachat/GisSino-Fn/pull/2
+- Next action: push correction to the same branch and retain Draft status for owner review
+- Production mutation: NONE

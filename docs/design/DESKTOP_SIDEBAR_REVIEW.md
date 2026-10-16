@@ -1,5 +1,7 @@
 # GS-UI-002 — Desktop Collapsible Sidebar
 
+Current owner follow-up: desktop starts pinned, and the expanded header is one horizontal row. The original implementation/critique below is historical evidence; the correction record at the end supersedes its default-collapse and fixed-toggle-placement decisions.
+
 ## Scope and implementation
 
 Built from verified origin/main at 7047039b8a0c8bad9d63bfeaf5a0fcc0c8df72f4 after baseline PR #1 was verified merged. Repository visibility was PUBLIC. The original C:\Users\User\GisSino_FN preview directory remains untouched; this task uses the separate Git staging checkout.
@@ -95,3 +97,23 @@ The mobile navigation markup and overlay controller remain unchanged except for 
 No physical iOS/Android, screen reader, coarse-pointer synthesis, frame profiling, or OS reduced-motion/forced-colors emulation. Their code paths were inspected; no hardware/OS test claim. Browser zoom shortcut attempts produced no measured scale change, so zoom is not reported passed. The available browser evaluate API is read-only; no detector overlay injection or overlay server was attempted. Project guide, architecture and universal workflow remain unavailable. In-repository Markdown is the task record.
 
 Questions skipped: owner approved the implementation scope and all confirmed priority findings were addressed.
+
+## Owner correction — header alignment and pinned default
+
+Owner request: update the existing Draft PR #2 only. Expanded header now aligns the GisSino brand and panel toggle in one horizontal row, eliminating the second row and52px of reserved header height. Compact72px mode keeps its two-row brand/control layout. Existing tokens, icons, materials and navigation destinations are reused.
+
+sidebarState starts with pinned:true. The controller seeds the desktop layout offset before shell insertion; initial shell markup also starts expanded with matching ARIA. Synchronization applies effective pinned/expanded state only at1100px+, leaving mobile/tablet hidden and unshifted. User unpin survives normal rerenders; a new page load restores the pinned default. Hover timers, overlay behavior, suppression, pin retention and keyboard disclosure remain the existing state machine.
+
+Modified source: src/screens.js, src/styles/app.css, src/desktop-sidebar.js, tests/navigation.test.mjs. Updated documentation: DESIGN.md, UI_DESIGN_SPEC.md, this review and the existing task note. Local ignored .ui-craft/brief.md records both learned constraints and their rationale.
+
+Verification on the correction:
+- npm run check passed: syntax/assets,306 catalog keys per locale.
+- npm test passed17/17; added fresh-session default and unpin/rerender coverage, retained hover/pin/Escape/context regressions.
+- Chromium32 passing assertions, no console warnings/errors.
+- Actual desktop widths1100/1280/1440/1920 checked in light/Thai and dark/English. Header44px tall, brand and toggle top/bottom aligned, brand-to-toggle gap approximately31px, content offset240px, no overlap or horizontal overflow.
+- Fresh desktop pinned state, unpin, fresh hover entry, pointer exit, hover-to-pin, pinned pointer exit, Wallet route retention, original desktop Add, one visible global Add, Enter/Space, transient Escape, pinned Escape and preserved focus verified.
+- Effective mobile/tablet pin state false at390/820/1099; zero sidebar content offset. Fresh390 mobile More and Add exclusion passed. Returning to1100 restores the session pin preference.
+- First-paint ordering is established by synchronous pre-insertion layout seeding and initial markup; no filmstrip/per-frame flash profiling was performed.
+- Reduced-motion rules remain intact and cover sidebar/workspace transitions. OS reduced-motion and actual zoom emulation remain unverified; no physical-device or assistive-technology certification.
+
+Direct screenshots and JSON, excluded from Git: artifacts/desktop-sidebar/header-correction/desktop-initial-pinned.jpg, desktop-collapsed.jpg, desktop-dark-english.jpg, mobile-regression.jpg, browser-checks.json. The1440px capture was visually compared with the owner's attached reference, retaining the existing dashboard while applying the written header correction.

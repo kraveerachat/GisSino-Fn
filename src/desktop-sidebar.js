@@ -1,7 +1,7 @@
 // Session-only navigation preference. Hover is transient and never drives layout.
 export const sidebarTiming = Object.freeze({ enter:150, leave:180 });
 export function sidebarState() {
-  return { pinned:false, temporary:false, suppressed:false, pointerInside:false, focusInside:false };
+  return { pinned:true, temporary:false, suppressed:false, pointerInside:false, focusInside:false };
 }
 export function sidebarTransition(state,event) {
   const next={...state};
@@ -32,17 +32,19 @@ export function desktopSidebar(app,t) {
   let state=sidebarState(),enterTimer,leaveTimer;
   const desktop=matchMedia('(min-width:1100px)');
   const hover=matchMedia('(hover:hover) and (pointer:fine)');
+  // Seed the layout before inserting the shell, avoiding a collapsed first paint.
+  app.dataset.sidebarPinned=String(desktop.matches&&state.pinned);
   const rail=()=>app.querySelector('#desktop-sidebar');
   function sync() {
-    const expanded=state.pinned||state.temporary;
-    app.dataset.sidebarPinned=String(state.pinned);
+    const expanded=desktop.matches&&(state.pinned||state.temporary);
+    app.dataset.sidebarPinned=String(desktop.matches&&state.pinned);
     const element=rail();
     if(!element)return;
     element.dataset.expanded=String(expanded);
     element.dataset.temporary=String(state.temporary&&!state.pinned);
     const toggle=element.querySelector('[data-action="sidebar-toggle"]');
     toggle.setAttribute('aria-expanded',String(expanded));
-    toggle.setAttribute('aria-pressed',String(state.pinned));
+    toggle.setAttribute('aria-pressed',String(desktop.matches&&state.pinned));
     toggle.setAttribute('aria-label',t(state.pinned?'collapseSidebar':'pinSidebar'));
     toggle.title=t(state.pinned?'collapseSidebar':'pinSidebar');
   }
