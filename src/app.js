@@ -4,6 +4,7 @@ import { icon } from './icons.js';
 import { transactions, bills, accounts, creditCard } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
 import { navigationOverlay } from './navigation.js';
+import { desktopSidebar } from './desktop-sidebar.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
@@ -21,6 +22,7 @@ let searchTimer;
 let suppressSheetFocus=false;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
+const sidebar=desktopSidebar(app,t);
 
 function applyTheme() {
   document.documentElement.dataset.theme = state.theme;
@@ -32,6 +34,7 @@ function render(focusMain = false) {
   document.title = `${t('appName')} · ${t(state.route==='credit-card'?'creditCardTitle':state.route)} · Design Preview`;
   document.querySelector('#skip-link').textContent = t('skip');
   app.innerHTML = shell(state, t);
+  sidebar.rendered();
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
 }
 function announce(message) { document.querySelector('#announcer').textContent = message; }
@@ -42,6 +45,7 @@ function toast(message) {
   toastTimer = setTimeout(() => { element.hidden = true; }, 4000);
 }
 function showSheet(titleKey, content, back = false) {
+  sidebar.suspend();
   moreOverlay.close();
   if (!sheet.open) opener = document.activeElement;
   sheet.innerHTML = `<div class="sheet-handle" aria-hidden="true"></div><div class="sheet-header">${back ? `<button class="icon-button sheet-back" data-action="add" aria-label="${t('back')}">${icon('arrow')}</button>` : ''}<h2 id="sheet-title" tabindex="-1">${t(titleKey)}</h2><button class="icon-button close-button" data-action="close" aria-label="${t('close')}">${icon('close')}</button></div><div class="sheet-content">${content}</div>`;

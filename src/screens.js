@@ -2,22 +2,19 @@ import { icon, logo } from './icons.js';
 import { preview, transactions, accounts, bills, members } from './fixtures.js';
 import { money, number, escapeHTML as esc } from './i18n.js';
 import { blueHome, transferScreen, creditCardScreen } from './blue-screens.js';
-import { floatingNavigation, navigationContext } from './navigation.js';
+import { floatingNavigation, desktopContext, desktopAdd } from './navigation.js';
 import { walletScreen } from './wallet.js';
 
-export const destinations = ['home', 'wallet', 'activity', 'add', 'bills', 'party'];
+export const destinations = ['home', 'wallet', 'activity', 'bills', 'party'];
 export function navigation(state, t) {
-  const context=navigationContext(state.route,state.cardReturn);
-  const selectedRoute=context==='more'?(state.route==='party'?'party':'bills'):context;
-  return `<nav class="navigation" aria-label="${t('navLabel')}">${destinations.map(route => route === 'add'
-    ? `<button class="nav-item nav-add" data-action="add" aria-haspopup="dialog"><span class="add-disc">${icon('plus')}</span><span>${t('add')}</span></button>`
-    : `<a class="nav-item ${selectedRoute === route ? 'is-active' : ''}" href="#${route}" ${selectedRoute === route ? 'aria-current="page"' : ''}>${icon(route)}<span>${t(route)}</span><span class="nav-active-mark"></span></a>`).join('')}</nav>`;
+  const selectedRoute=desktopContext(state.route,state.cardReturn);
+  return `<nav id="desktop-navigation" class="navigation" aria-label="${t('navLabel')}">${destinations.map(route => `<a class="nav-item ${selectedRoute === route ? 'is-active' : ''}" href="#${route}" aria-label="${t(route)}" title="${t(route)}" ${selectedRoute === route ? 'aria-current="page"' : ''}>${icon(route)}<span class="sidebar-label">${t(route)}</span><span class="nav-active-mark" aria-hidden="true"></span></a>`).join('')}</nav>`;
 }
 export function shell(state, t) {
   const blueRoute = ['home','transfer','credit-card'].includes(state.route);
-  return `<aside class="sidebar"><a href="#home" class="brand" aria-label="${t('appName')}">${logo}<span>GisSino<span class="brand-dot">.</span></span></a>${navigation(state, t)}<div class="sidebar-footer"><div class="sidebar-note">${icon('shield')}<span>${t('sampleOnly')}</span></div><p>${t('welcomeNote')}</p><button class="profile-rail" data-action="settings"><span class="avatar">GS</span><span>${t('hello')}<small>${t('settings')}</small></span>${icon('chevron')}</button></div></aside>
+  return `<aside id="desktop-sidebar" class="sidebar" aria-label="${t('desktopNavigation')}" data-expanded="true" data-temporary="false"><div class="sidebar-header"><a href="#home" class="brand" aria-label="${t('appName')}">${logo}<span class="sidebar-label">GisSino<span class="brand-dot">.</span></span></a><button class="sidebar-toggle icon-button" data-action="sidebar-toggle" aria-label="${t('collapseSidebar')}" aria-controls="desktop-navigation" aria-expanded="true" aria-pressed="true">${icon('panel')}</button></div>${navigation(state, t)}<div class="sidebar-footer"><div class="sidebar-note sidebar-label">${icon('shield')}<span>${t('sampleOnly')}</span></div><p class="sidebar-label">${t('welcomeNote')}</p><button class="profile-rail ${state.route==='settings'?'is-active':''}" data-action="settings" aria-label="${t('profile')}" title="${t('profile')}" ${state.route==='settings'?'aria-current="page"':''}><span class="avatar">GS</span><span class="sidebar-label">${t('hello')}<small>${t('settings')}</small></span>${icon('chevron')}</button></div></aside>
   <div class="workspace ${blueRoute?'blue-workspace':''}"><div class="preview-banner">${icon('info')}<span>${t('previewLabel')}</span><span class="banner-detail">${t('previewNote')}</span></div>
-    ${blueRoute?'':`<header class="app-header"><a class="brand mobile-brand" href="#home">${logo}<span>GisSino<span class="brand-dot">.</span></span></a><div class="desktop-context">${icon(state.route === 'settings' ? 'home' : state.route)}<span>${t(state.route)}</span></div><div class="header-actions"><button class="icon-button" data-action="theme" aria-label="${t('toggleTheme')}" title="${t('toggleTheme')}">${icon(state.theme === 'dark' ? 'sun' : 'moon')}</button><button class="icon-button" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button><button class="avatar avatar-button" data-action="settings" aria-label="${t('profile')}">GS</button></div></header>`}
+    ${blueRoute?'':`<header class="app-header"><a class="brand mobile-brand" href="#home" aria-label="${t('appName')}">${logo}<span>GisSino<span class="brand-dot">.</span></span></a><div class="desktop-context">${icon(state.route === 'settings' ? 'home' : state.route)}<span>${t(state.route)}</span></div><div class="header-actions"><button class="icon-button" data-action="theme" aria-label="${t('toggleTheme')}" title="${t('toggleTheme')}">${icon(state.theme === 'dark' ? 'sun' : 'moon')}</button><button class="icon-button" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button><button class="avatar avatar-button" data-action="settings" aria-label="${t('profile')}">GS</button>${desktopAdd(t)}</div></header>`}
     <main id="main" class="${blueRoute?'blue-main':''}" tabindex="-1">${screen(state, t)}</main><footer class="page-footer">${icon('shield')}<span>${t('previewNote')}</span></footer>
   </div>${floatingNavigation(state,t)}`;
 }

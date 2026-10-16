@@ -24,6 +24,8 @@ npm test
 
 ## Explore
 
+Desktop navigation at 1100px and wider now uses a compact icon rail, temporary hover/keyboard disclosure, and session-only pinned expansion. Add is a separate upper-right header action opening the existing sheet. See [desktop sidebar review](docs/design/DESKTOP_SIDEBAR_REVIEW.md) for interaction checks and limits. Older design reports describe their historical delivery state.
+
 Mobile navigation now uses Home / Wallet / Activity / More plus a separate Add circle. More opens Bills and Party in a floating panel. Wallet (`#wallet`) reuses sample accounts and separates card liabilities. See [navigation task report](docs/design/FLOATING_NAVIGATION_REVIEW.md) for implementation, tests, screenshots, and the missing video/Git limitations.
 
 - Home: balance visibility, accounts, quick actions, recent activity, commitments, habits.

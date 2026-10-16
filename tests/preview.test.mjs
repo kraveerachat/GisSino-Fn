@@ -33,6 +33,10 @@ test('The preview serves public files, blocks writes, and rejects encoded path t
     const page=await fetch(base);assert.equal(page.status,200);assert.match(await page.text(),/<html lang="th"/);
     assert.match(page.headers.get('content-security-policy'),/connect-src 'self'/);
     assert.equal((await fetch(base+'/src/fixtures.js')).status,200);
+    const logo=await fetch(base+'/assets/brand/gissino-s-shield.png');
+    assert.equal(logo.status,200);
+    assert.equal(logo.headers.get('content-type'),'image/png');
+    assert.deepEqual([...new Uint8Array(await logo.arrayBuffer()).subarray(0,8)],[137,80,78,71,13,10,26,10]);
     assert.equal((await fetch(base,{method:'POST',body:'not a transaction'})).status,405);
     for(const route of ['/PRODUCT.md','/package.json','/src/..%2fPRODUCT.md','/assets/..%5cPRODUCT.md','/src/..%2f.git%2fconfig','/src/%2e%2e%5cpackage.json']) {
       assert.equal((await fetch(base+route)).status,404,`must not expose ${route}`);

@@ -40,3 +40,7 @@ The owner supplied the blue-enamel three-phone Image A and a redesign specificat
 ## Accessibility & Inclusion
 
 Thai and English catalogs, local Thai/Latin font, minimum 44px controls, visible focus, semantic navigation, keyboard-operable modal sheets, responsive text, and reduced-motion alternatives.
+
+## Desktop navigation — GS-UI-002
+
+The latest desktop-specific decision supersedes the fixed rail described above: a collapsed icon rail supports temporary hover/keyboard label disclosure and session-only pinned expansion. Add moves from the sidebar to the existing content header. All five destinations remain direct links; mobile navigation, screen content, and synthetic financial boundaries are preserved. See docs/design/DESKTOP_SIDEBAR_REVIEW.md for the state contract and verification limits.
