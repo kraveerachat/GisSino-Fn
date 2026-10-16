@@ -117,7 +117,7 @@ Root `DESIGN.md` was preserved; `.impeccable/design.json` remains absent. Preexi
 
 S3 source boundary: new `src/account-deck.js`; modified `src/account-board.js`, `src/app.js`, `src/screens.js`, `src/i18n.js`, `src/styles/accounts.css` and `tests/account-board.test.mjs`. No asset changes; 13 provider logos, profile form, Wallet adapter and financial fixtures/contracts continue from S2. Physical-device, screen-reader, actual zoom and cross-browser certification remain unverified.
 
-- 2026-10-16 — [S3 session](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): current design contract and fresh documentation comparison; fresh reviewer **ship**, delivery synchronization pending.
+- 2026-10-16 — [S3 session](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): current design contract and fresh documentation comparison; fresh reviewer **ship**; S3 subsequently pushed and PR#4 verified OPEN/DRAFT at `4235f28f79ee0eb3ef022147048717ba7265a8fc`.
 
 ### S3 visual and motion inventory
 

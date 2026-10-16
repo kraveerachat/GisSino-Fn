@@ -2,7 +2,7 @@
 id: TASK-GS-UI-ACCOUNT-BOARD-001
 type: task
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-S3 full-folder deck is implemented locally on the same `task/gs-ui-account-board-001` branch and existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Local verification and documentation are in progress. Final source checkpoint is `763db1db7802f9ea011e83016bce57a1c8bd39b3`; independent finish reviewer returned **ship**, with no material fixes. Final checks passed; S3 push/PR-head reconciliation is PENDING; earlier remote SHAs below belong only to S1/S2. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
+S3 full-folder deck is implemented, verified and pushed on the same `task/gs-ui-account-board-001` branch and existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Implementation delivery is CLOSED; owner acceptance and merge remain pending. Final source checkpoint is `763db1db7802f9ea011e83016bce57a1c8bd39b3`; independent finish reviewer returned **ship**, with no material fixes. Final checks passed; S3 remote and OPEN/DRAFT PR head both matched documentation checkpoint `4235f28f79ee0eb3ef022147048717ba7265a8fc`; earlier remote SHAs below belong only to S1/S2. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
 
 ## Scope
 
@@ -74,4 +74,4 @@ Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider c
 
 Current local `artifacts/account-deck/functional.json` records 24 passed browser groups, zero page errors; `selection-extra.json` adds 5 passing groups with zero errors (29 total). Both modes at 320/360/390/430/820 portrait, 1024 landscape and 1280/1440/1920px with no horizontal page overflow. Parent confirms final `npm run check` PASS (375 keys per locale), `npm test` PASS (34 tests) and source `git diff --check` PASS. A later CSP inline-style absence assertion passed all 13 Account Board tests without a UI change, at test checkpoint `e98171295ae32ab7409a31bb51484d44467da867`. One mechanical detector run returned zero findings; independent fresh-console confirmation has no console/page/request errors. Fresh documenter directly compared source and five requested captures: ordinary extension, no scoped system fixes. See [S3](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) and [review](../../design/reviews/ACCOUNT_BOARD_REVIEW.md).
 
-Next: synchronize the existing PR and remote head, record the final docs checkpoint, rerun vault health after final receipt at closeout. Production, physical-device/screen-reader/cross-browser certification and merge remain outside this local gate.
+Delivery: existing PR#4 title/body updated; branch/remote/PR matched `4235f28f79ee0eb3ef022147048717ba7265a8fc`, OPEN/DRAFT, base main. [Immutable S3 final receipt](../90-Receipts/20261016-214719-TASK-GS-UI-ACCOUNT-BOARD-001-S3-FINAL.md) records that checkpoint. Receipt-inclusive vault check:50notes/50unique IDs, zero metadata/link/parent/reachability errors, all within3clicks. Next: owner reviews PR#4 and loopback preview on port4176; acceptance and merge remain pending. Physical-device/screen-reader/cross-browser certification remains open; no production change.

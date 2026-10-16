@@ -27,7 +27,7 @@ updated: 2026-10-16
 
 ## Current focus
 
-[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) is IN PROGRESS on [S3](worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): complete overlapping folders, vertical default and horizontal only in Settings. Existing provider assets, session profiles and Wallet context remain intact. Local verification is recorded; source checkpoint `763db1d` and fresh reviewer **ship** are confirmed, with S3 push to existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) pending. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
+[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) is delivered through [S3](worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): complete overlapping folders, vertical default and horizontal only in Settings. Existing provider assets, session profiles and Wallet context remain intact. Local verification is recorded; source checkpoint `763db1d` and fresh reviewer **ship** are confirmed, with S3 pushed to existing OPEN/DRAFT [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Implementation delivery is CLOSED; owner review/merge remain pending. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
 
 ## Agent reading order
 
