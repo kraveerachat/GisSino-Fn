@@ -1,3 +1,14 @@
+---
+id: REVIEW-DESKTOP-SIDEBAR
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: ../Design-Hub.md
+related:
+  - ../../worklog/10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md
+  - ../UI_DESIGN_SPEC.md
+---
 # GS-UI-002 — Desktop Collapsible Sidebar
 
 Current owner follow-ups: desktop starts pinned; the expanded header is one horizontal54px row with the supplied metallic S-Shield, wordmark and toggle. The original implementation/critique below is historical evidence; correction records at the end supersede default-collapse, fixed-toggle placement, old emblem and44px expanded header decisions.
@@ -139,3 +150,7 @@ Actual checks:
 Files changed in this brand slice: assets/brand/gissino-s-shield.png and README.md added; assets/favicon.svg removed; index.html, server.mjs, src/icons.js, src/screens.js, src/styles/app.css, src/styles/tokens.css, tests/preview.test.mjs, DESIGN.md, UI_DESIGN_SPEC.md, this review and the existing task note updated. No financial screen content, fixtures or sidebar state machine changes.
 
 Limits: original1254px asset retained for resolution headroom; physical high-density displays, actual browser zoom, screen readers and touch hardware were not tested. Existing CSS preserves proportions and named link/focus behavior; no device certification is claimed.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this review from the [Design Hub](../Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).

@@ -1,3 +1,14 @@
+---
+id: DESIGN-UI-DATA-CONTRACTS
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: Design-Hub.md
+related:
+  - UI_DESIGN_SPEC.md
+  - ../architecture/SYSTEM_ARCHITECTURE.md
+---
 # UI data contracts and future boundaries
 
 Wallet now reads explicit synthetic `accountType` metadata; `kind` selects an icon and must not determine financial classification. Existing daily/savings samples are bank assets. Empty E-wallet/Cash categories do not imply zero balances in real accounts. The existing total excludes the separate card liability. `cardReturn` is transient navigation context, never a financial record.
@@ -25,3 +36,7 @@ Future data adapters must distinguish loading, ready, empty, error, unavailable,
 Replace synthetic fixtures with authorized view models through a future feature/data adapter, never direct database access inside render functions. Financial calculations and posting belong outside these UI modules. Future saves require actual persistence and confirmation before success copy is shown. AI drafts require review; own-account transfers remain distinct from expenses. Party's adapter must enforce the nonfinancial field allowlist before delivery, not merely hide private values in CSS.
 
 The current server rejects production startup and serves no mutation endpoint. No production application or build exists in this slice; fixtures cannot be considered excluded from a future build until that build's integration is tested.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).

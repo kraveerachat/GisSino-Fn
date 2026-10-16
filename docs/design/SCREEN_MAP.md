@@ -1,3 +1,14 @@
+---
+id: DESIGN-SCREEN-MAP
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: Design-Hub.md
+related:
+  - COMPONENT_INVENTORY.md
+  - ../pages/Pages-Hub.md
+---
 # Screen map
 
 | Destination | Important subviews and preview states |
@@ -19,3 +30,7 @@
 The monthly sample is explicitly October 2026. Other months are not offered until coherent fixtures exist. Empty/loading/error/unavailable states are manually selected design states; they do not imitate an operational network request.
 
 Authoritative project documents are absent, so this map covers the supplied UI brief only. Additional future-system subviews must be reconciled against those documents when provided.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata, linked the page hub, and retained the historical scope statement for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
