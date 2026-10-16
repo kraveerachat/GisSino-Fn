@@ -94,6 +94,7 @@ test('Each mode reuses complete full folders instead of header strips',()=>{
     const html=accountBoard({...state,accountView:mode},t);
     for(const field of ['class="account-folder ','class="folder-provider"','class="folder-balance"','class="folder-details"'])assert.equal(html.split(field).length-1,accounts.length);
     assert.ok(!html.includes('folder-tab'));
+    assert.ok(!html.includes('style='),'initial markup must comply with the preview CSP');
     assert.ok(html.includes(`data-mode="${mode}"`));
   }
   assert.equal(deckMode('grid'),'vertical');
