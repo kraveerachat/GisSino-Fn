@@ -37,6 +37,14 @@ Replace synthetic fixtures with authorized view models through a future feature/
 
 The current server rejects production startup and serves no mutation endpoint. No production application or build exists in this slice; fixtures cannot be considered excluded from a future build until that build's integration is tested.
 
+## Account Board display adapter
+
+Supersedes the earlier two-bank-only fixture statement: six synthetic assets now include bank, ewallet and cash, totaling unchanged THB116,850. `id`, `accountType`, `providerId`, localized name/optional nickname, integer `balanceMinor`, THB/USD currency, optional safe suffix/context, archived flag and sort order are presentation data. Legacy `amount` stays consistent for existing form/transfer previews; this is not a production schema. No missing amount becomes zero.
+
+[providers.js](../../src/providers.js) contains identity/accent/provenance only, never financial values. [account-display.js](../../src/account-display.js) resolves safe fallback/theme, formats balance by account currency, escapes names and suppresses hidden balances consistently. [Provider Catalog](PROVIDER_CATALOG.md) records 18 candidates and unverified logo rights. A future production adapter must enforce ownership/visibility before data reaches the client; this UI toggle is not authorization.
+
 ## Change log
 
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+- 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).

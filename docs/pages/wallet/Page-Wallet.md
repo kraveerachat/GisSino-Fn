@@ -15,7 +15,7 @@ tasks: [TASK-FLOATING-ISLAND-NAVIGATION]
 
 ## Current state
 
-A synthetic asset overview in [screens.js](../../../src/screens.js), with Bank, E-wallet, and Cash categories, separate card liabilities, account details, and entry into own-account transfer.
+A synthetic asset overview in [wallet.js](../../../src/wallet.js), with Bank, E-wallet, and Cash categories, separate card liabilities, account details, and entry into own-account transfer.
 
 ## Purpose and rules
 
@@ -39,6 +39,12 @@ Empty account categories are design states and do not claim real zero balances.
 
 Mobile access is part of [D23](../../project/DECISIONS.md#d23--responsive-primary-navigation).
 
+## Shared account identity
+
+[wallet.js](../../../src/wallet.js) uses the same [account display adapter](../../../src/account-display.js) as Home. Assets are explicitly bank/ewallet/cash; card liabilities remain separate. Canonical `#wallet/account/<id>` opens read-only detail with matching provider/name/currency/suffix/balance; Escape returns focus to its Wallet row. Add Account is unavailable with explanatory copy. See [Provider Catalog](../../design/PROVIDER_CATALOG.md) and [review evidence](../../design/reviews/ACCOUNT_BOARD_REVIEW.md).
+
 ## Change log
 
 - 2026-10-16 — Added from the current Wallet prototype.
+
+- 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).

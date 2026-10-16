@@ -46,6 +46,14 @@ Primary reference: 390 CSS px. Supported layout target starts at 320px, with 600
 
 The preview server is loopback-only and refuses production startup. Production auth, finance, persistence, bank services, AI, subscription posting, PWA caching, and deployment remain outside this slice.
 
+## Account Board extension
+
+Replace the earlier Home account rows with navy layered account folders while retaining the enamel hero/cover and navigation. Compact Stack is default; wide containers pair featured folder with direct list, and Grid adapts to one/two/three readable columns. Provider accents are proposed UI colors with original generic fallback badges; verified artwork is not bundled. Selection shuffles over220ms unless reduced motion is enabled. [Provider Catalog](PROVIDER_CATALOG.md), [Home](../pages/home/Page-Home.md), [Wallet](../pages/wallet/Page-Wallet.md) and [review](reviews/ACCOUNT_BOARD_REVIEW.md) define the current extension.
+
+Authority correction: project guide, architecture and governance notes are now available and were read for this task. Their earlier absence above is historical context only. Production stack and financial integration remain unimplemented.
+
 ## Change log
 
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+- 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).

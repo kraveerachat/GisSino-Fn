@@ -54,3 +54,11 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-
 ## Change log
 
 - 2026-10-16 — Split the source decision snapshot into a canonical log and recorded D23.
+
+### D24 — Account Board preview and shared provider identity
+
+- Date: 2026-10-16; status: DECIDED for the mock UI; decided by owner through task and compact-folder clarification.
+- Statement: Home defaults to compact layered asset folders with Stack/Grid choice. Bank/E-Wallet/Cash identities share one registry and display adapter with Wallet; liabilities remain separate. Selection is distinct from opening detail.
+- Provider artwork without confirmed rights uses original fallback icons; accent HEX values remain proposed UI tokens, not official brand certification.
+- Supersedes the prior simple Home account-list presentation only. No Accounts/Ledger, persistence or bank integration milestone is implied.
+- Source: [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md); affects [Home](../pages/home/Page-Home.md), [Wallet](../pages/wallet/Page-Wallet.md), [Provider Catalog](../design/PROVIDER_CATALOG.md).

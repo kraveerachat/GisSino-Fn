@@ -24,3 +24,6 @@ Living UI specifications and historical verification/review evidence.
 | [Floating Navigation Review](reviews/FLOATING_NAVIGATION_REVIEW.md) | 2 | CURRENT | Mobile navigation evidence |
 | [Desktop Sidebar Review](reviews/DESKTOP_SIDEBAR_REVIEW.md) | 2 | CURRENT | Desktop sidebar and brand evidence |
 | [Verification](reviews/VERIFICATION.md) | 2 | CURRENT | Earlier three-screen verification record |
+
+| [Provider Catalog](PROVIDER_CATALOG.md) | 2 | CURRENT | Identity evidence, proposed accents and logo fallbacks |
+| [Account Board Review](reviews/ACCOUNT_BOARD_REVIEW.md) | 2 | CURRENT | Responsive and interaction evidence |

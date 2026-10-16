@@ -43,3 +43,9 @@ Motion: press 120ms, state 180ms, sheet 300ms; easing `cubic-bezier(.16,1,.3,1)`
 ## Change log
 
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+## Account folder extension
+
+`src/styles/accounts.css` adds named navy folder top/bottom/tab/ink/muted/edge/shadow/radius tokens and a220ms selection duration. Provider-specific accent classes match the proposed values in [Provider Catalog](PROVIDER_CATALOG.md); they are not certified corporate HEX values. Narrow Stack has one exposed rear tab; wider Stack has two. The existing shell theme tokens are preserved.
+
+- 2026-10-16 — Added Account Board token reference for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
