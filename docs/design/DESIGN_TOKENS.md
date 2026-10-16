@@ -1,3 +1,14 @@
+---
+id: DESIGN-TOKENS
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: Design-Hub.md
+related:
+  - UI_DESIGN_SPEC.md
+  - COMPONENT_INVENTORY.md
+---
 # Design tokens
 
 Desktop shell adds shared roles in tokens.css: sidebar-collapsed72px, sidebar-expanded240px, sidebar-open240ms, sidebar-close190ms, sidebar-label-reveal140ms, z-sidebar20. It reuses surface/text/accent/key-shadow/inset-shadow roles. Native modal top-layer remains above the sidebar.
@@ -28,3 +39,7 @@ Elevation has separate contact, enamel, key, inset, and sheet roles. The enamel 
 Typeface: local Noto Sans Thai variable TTF, weight 100–900, SIL OFL 1.1. Financial values use tabular numerals. Page headings begin at 22px on phones; ordinary supporting copy has been increased to 12px, with larger transaction names. Browser text scaling is not locked.
 
 Motion: press 120ms, state 180ms, sheet 300ms; easing `cubic-bezier(.16,1,.3,1)`. Reduced motion preserves the state change without the entrance or seal animation.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).

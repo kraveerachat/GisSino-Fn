@@ -1,3 +1,15 @@
+---
+id: DESIGN-UI-SPEC
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: Design-Hub.md
+related:
+  - DESIGN_TOKENS.md
+  - COMPONENT_INVENTORY.md
+  - SCREEN_MAP.md
+---
 # UI design specification
 
 ## Authority and scope
@@ -33,3 +45,7 @@ Fixtures are immutable examples in `src/fixtures.js`, not accounts or a schema. 
 Primary reference: 390 CSS px. Supported layout target starts at 320px, with 600/900/1100px adaptations. Horizontal gutters start at 16px. Controls have at least 44px hit dimensions; the very narrow calendar changes to an agenda instead of squeezing dates. Cards and rows grow around translated text. Typography, focus, contrast, zoom, actual touch keyboards, and screen-reader behavior require verification rather than a blanket certification.
 
 The preview server is loopback-only and refuses production startup. Production auth, finance, persistence, bank services, AI, subscription posting, PWA caching, and deployment remain outside this slice.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).

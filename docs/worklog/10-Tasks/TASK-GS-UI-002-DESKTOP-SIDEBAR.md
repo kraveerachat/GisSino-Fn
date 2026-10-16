@@ -1,11 +1,24 @@
+---
+id: TASK-GS-UI-002-DESKTOP-SIDEBAR
+type: task
+level: log
+status: EXTERNALLY ACCEPTED
+updated: 2026-10-16
+up: ../00-Index/Task-Dashboard.md
+related:
+  - ../../design/reviews/DESKTOP_SIDEBAR_REVIEW.md
+  - ../../pages/home/Page-Home.md
+  - ../../project/DECISIONS.md
+---
+
 # GS-UI-002 — Desktop Collapsible Sidebar Navigation
 
-- Status: verified, pushed, Draft PR open for owner review
+- Status: merged and externally accepted
 - Objective: approved desktop shell enhancement, preserving mobile and financial screens
 - Base: main at7047039b8a0c8bad9d63bfeaf5a0fcc0c8df72f4; initial import PR #1 verified merged
 - Branch: task/gs-ui-002-desktop-sidebar
-- Original preview: C:\Users\User\GisSino_FN (untouched)
-- Git checkout: separate GisSino_FN_PR_STAGE checkout used for the initial import
+- Original preview: local preservation copy outside the Git checkout
+- Git checkout: separate local task worktree
 
 ## Decisions
 
@@ -25,9 +38,9 @@ Independent design critique29/40 and technical audit15/20 describe the pre-corre
 
 - Implementation commit: f90a7598a065bfbd2232f1f8c59b655a8af03ce8
 - Push: successful to origin/task/gs-ui-002-desktop-sidebar
-- Draft PR URL: https://github.com/kraveerachat/GisSino-Fn/pull/2
+- PR URL: https://github.com/kraveerachat/GisSino-Fn/pull/2
 - Documentation sync: this URL record is one controlled follow-up commit; the branch head is authoritative
-- Next action: owner reviews Draft PR #2 before changing status or merging
+- Merge verified 2026-10-16: `183cc99478f8a4e20637f6277e7f6a95c73c8166`
 - Production mutation: NONE
 
 ## Limits
@@ -47,7 +60,7 @@ Screenshots (local only): artifacts/desktop-sidebar/header-correction/desktop-in
 - Correction commit: f8d79dd0b48f39b33d99165ce317665339fa4119
 - Existing PR: https://github.com/kraveerachat/GisSino-Fn/pull/2
 - Delivery: correction and this SHA record are pushed to the same task branch; the branch head includes this controlled documentation checkpoint
-- Next action: owner reviews the updated Draft PR #2 before merging
+- Current state: included in merged PR #2
 - Production mutation: NONE
 
 ## Owner follow-up — Metallic Navy S-Shield
@@ -65,6 +78,6 @@ Screenshots: artifacts/desktop-sidebar/brand-shield/desktop-light-expanded.jpg, 
 - Brand integration commit: 40da7ee74c5bb8e7bcd544f948b755558fd95142
 - PR: https://github.com/kraveerachat/GisSino-Fn/pull/2 (same task branch)
 - Delivery: implementation and this SHA record share the existing task branch; the branch head includes this controlled documentation checkpoint
-- Next action: owner reviews the updated Draft PR #2 before merging
+- Current state: included in merged PR #2
 - Limits: actual zoom, physical high-density display, screen-reader and touch hardware remain unverified
 - Production mutation: NONE

@@ -1,3 +1,14 @@
+---
+id: DESIGN-COMPONENT-INVENTORY
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: Design-Hub.md
+related:
+  - SCREEN_MAP.md
+  - UI_DESIGN_SPEC.md
+---
 # Component inventory
 
 Latest mobile navigation replaces the earlier five-slot component: `floatingNavigation` renders Home/Wallet/Activity/More in one capsule plus a separate Add button; `navigationOverlay` coordinates the native More popover and existing Add dialog. Configurable `moreDestinations` owns Bills/Party. `walletScreen` reuses fixtures/detail actions and explicit asset/liability semantics. Desktop rail styling remains unchanged, adding Wallet access.
@@ -22,3 +33,7 @@ Blue enamel additions: shared cover header/lip, cobalt hero/wave, quick-action p
 | Toggle | Native checkbox/switch with catalog label, focus ring, visible preview consequence |
 
 Rendering lives in `src/screens.js`; session interaction in `src/app.js`; SVG geometry in `src/icons.js`; catalog and formatting utilities in `src/i18n.js`. No component library, global state dependency, or charting package was introduced.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).

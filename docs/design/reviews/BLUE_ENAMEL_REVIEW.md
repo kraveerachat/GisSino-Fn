@@ -1,3 +1,14 @@
+---
+id: REVIEW-BLUE-ENAMEL
+type: design
+level: 2
+status: CURRENT
+updated: 2026-10-16
+up: ../Design-Hub.md
+related:
+  - ../../worklog/10-Tasks/TASK-BLUE-ENAMEL-REDESIGN.md
+  - VERIFICATION.md
+---
 # Blue enamel redesign — 16 October 2026
 
 Method: dual-agent (A: `/root/design_review` · B: `/root/technical_review`). A completed before B's findings entered synthesis.
@@ -53,3 +64,7 @@ Questions skipped: 0 remaining Priority Issues; the user already requested imple
 See `VERIFICATION.md` and `artifacts/blue-enamel/` for current checks and screenshots. A used source/reference/screenshots; B used source/detector/screenshots. No detector overlay was injected: browser evaluation is read-only. Native browser captures are the visual fallback. No overlay live server was started. The app preview server remains running as the requested inspectable output, not as critique-only infrastructure. No temporary reference assets were published.
 
 The directory has no Git metadata. No branch, commit SHA, push, Draft PR, merge, or deployment was created. The local task note records this limitation. References B/C remain the only visual-reference gaps; exact fidelity to them cannot be assessed.
+
+## Change log
+
+- 2026-10-16 — Added vault metadata and linked this historical review from the [Design Hub](../Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
