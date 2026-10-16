@@ -9,17 +9,18 @@ const t=translator('en');
 const state={locale:'en',balanceVisible:true,accountView:'stack',accountSelected:'daily',accountState:'sample'};
 
 test('Provider identity is separate from accounts and contains no financial records',()=>{
-  assert.equal(Object.keys(providers).length,18);
+  assert.equal(Object.keys(providers).length,19);
   for(const p of Object.values(providers)) {
     assert.match(p.primaryColor,/^#[a-f0-9]{6}$/i);
-    assert.equal(p.logoPath,null);
-    assert.equal(p.logoStatus,'VERIFY');
+    assert.equal(p.logoStatus,p.logoPath?'OWNER_SUPPLIED':'VERIFY');
+    if(p.logoPath)assert.match(p.logoPath,/^\/assets\/providers\/[a-zA-Z]+\.png$/);
     assert.ok(p.verificationSource.startsWith('https://'));
     assert.equal(p.colorStatus,'PROPOSED_UI_ACCENT');
     assert.ok(!('amount' in p)&&!('balance' in p)&&!('balanceMinor' in p));
   }
   assert.ok(providerOptions('bank').some(p=>p.providerId==='other-bank'));
   assert.ok(providerOptions('ewallet').some(p=>p.providerId==='other-ewallet'));
+  for(const id of ['truemoney','shopeepay','paotang'])assert.ok(providerOptions('ewallet').some(p=>p.providerId===id&&p.logoPath));
 });
 test('Unknown and mismatched providers use deterministic neutral styling',()=>{
   for(const id of ['unknown','__proto__','<script>'])assert.equal(providerTheme(resolveProvider(id,'bank')),'provider-neutral');
@@ -62,7 +63,7 @@ test('Missing monetary data is unavailable, USD formats independently, user name
   assert.equal(accountDisplay({...accounts[0],balanceMinor:undefined},state,t).balance,t('notRecorded'));
   assert.match(accountDisplay({...accounts[0],currency:'USD',balanceMinor:12345},state,t).balance,/123\.45/);
   const html=accountPreview({...accounts[0],nickname:'<img src=x onerror=alert(1)>'},state,t);
-  assert.ok(!html.includes('<img'));
+  assert.ok(!html.includes('<img src=x'));
   assert.ok(html.includes('&lt;img'));
 });
 test('Grid, all simulated states, stable detail links and malformed routes are covered',()=>{
@@ -79,4 +80,12 @@ test('Grid, all simulated states, stable detail links and malformed routes are c
   assert.equal(parseAccountHash('#wallet/account/daily'),'daily');
   assert.equal(parseAccountHash('#wallet/account/%E0%A4'),null);
   assert.equal(parseAccountHash('#home'),null);
+});
+
+test('Compact selection retains every account without visible counters or instructions',()=>{
+  const html=accountBoard(state,t);
+  assert.equal((html.match(/class="board-indicator"/g)||[]).length,accounts.length);
+  assert.ok(!html.includes('board-pagination')&&!html.includes('board-keyboard-help')&&!html.includes('board-demo-controls'));
+  assert.ok(!html.includes(t('accountPosition',{n:1,total:accounts.length})));
+  assert.ok(html.includes('aria-live="polite"'));
 });

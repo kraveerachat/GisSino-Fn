@@ -7,6 +7,7 @@ import { navigationOverlay } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
 import { accountBoard, stepAccount, swipeDirection, parseAccountHash } from './account-board.js';
 import { assetAccounts, accountPreview } from './account-display.js';
+import { accountProfileForm, profileDraft, applyProfile } from './account-profile.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
@@ -16,6 +17,7 @@ const state = {
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'stack', accountState: 'sample',
+  accountProfiles: accounts.map(account=>({...account})),
   transferSource:'daily', transferDestination:'savings', transferAmount:'0', cardReminder:false,cardReturn:'bills'
 };
 const scrollPositions = new Map();
@@ -25,6 +27,7 @@ let searchTimer;
 let suppressSheetFocus=false;
 let accountSheetClosingForNavigation=false;
 let accountDetailId=null;
+let editingProfileId=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -110,9 +113,18 @@ function openVisibility() {
 }
 function openAccount(id) {
   accountDetailId=id;
-  const account=assetAccounts().find(a=>a.id===id);
+  const account=assetAccounts(state.accountProfiles).find(a=>a.id===id);
   showSheet('accountDetail',account?accountPreview(account,state,t):`<p class="settings-info">${t('boardUnavailableBody')}</p>`);
 }
+function openProfile(id=null) {
+  const account=state.accountProfiles.find(a=>a.id===id);
+  if(id&&!account)return;
+  editingProfileId=id;
+  showSheet(id?'editAccountProfile':'addAccount',accountProfileForm(profileDraft(account,state,t),state,t,Boolean(id)));
+}
+document.addEventListener('error',event=>{
+  if(event.target.matches?.('.provider-badge img'))event.target.closest('.provider-badge').classList.add('logo-failed');
+},true);
 function refreshAccountBoard(focusSelector,shuffle=false) {
   const board=document.querySelector('.account-board');
   if(!board)return;
@@ -128,7 +140,7 @@ function refreshAccountBoard(focusSelector,shuffle=false) {
   }
 }
 function selectBoardAccount(id,focusSelector='[data-swipe-region]') {
-  if(!assetAccounts().some(a=>a.id===id))return;
+  if(!assetAccounts(state.accountProfiles).some(a=>a.id===id))return;
   state.accountSelected=id;
   refreshAccountBoard(focusSelector,true);
 }
@@ -145,7 +157,7 @@ document.addEventListener('pointerup',event=>{
   const direction=swipeDirection(gesture.start,{x:event.clientX,y:event.clientY});
   if(!direction||!gesture.region.isConnected)return;
   suppressBoardClickUntil=performance.now()+400;
-  selectBoardAccount(stepAccount(assetAccounts(),state.accountSelected,direction));
+  selectBoardAccount(stepAccount(assetAccounts(state.accountProfiles),state.accountSelected,direction));
 });
 const cancelBoardGesture=()=>{boardGesture=null;};
 document.addEventListener('pointercancel',cancelBoardGesture);
@@ -158,7 +170,7 @@ document.addEventListener('click',event=>{
 },true);
 document.addEventListener('keydown',event=>{
   if(!event.target.closest('[data-swipe-region]'))return;
-  const records=assetAccounts();
+  const records=assetAccounts(state.accountProfiles);
   const id=event.key==='Home'?records[0]?.id:event.key==='End'?records.at(-1)?.id:
     event.key==='ArrowRight'?stepAccount(records,state.accountSelected,1):
     event.key==='ArrowLeft'?stepAccount(records,state.accountSelected,-1):null;
@@ -179,14 +191,18 @@ document.addEventListener('click',event=>{
     state.accountView=button.dataset.view==='grid'?'grid':'stack';
     refreshAccountBoard(`[data-action="account-view"][data-view="${state.accountView}"]`);
   } else if(action==='account-select') {
-    const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:'[data-swipe-region]';
+    const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:button.classList.contains('board-indicator')?`.board-indicator[data-id="${button.dataset.id}"]`:'[data-swipe-region]';
     selectBoardAccount(button.dataset.id,focus);
   } else if(action==='account-step') {
-    selectBoardAccount(stepAccount(assetAccounts(),state.accountSelected,Number(button.dataset.step)),`[data-action="account-step"][data-step="${button.dataset.step}"]`);
+    selectBoardAccount(stepAccount(assetAccounts(state.accountProfiles),state.accountSelected,Number(button.dataset.step)),`[data-action="account-step"][data-step="${button.dataset.step}"]`);
   } else if(action==='board-reset') {
     state.accountState='sample';refreshAccountBoard('[data-control="board-state"]');
   } else if(action==='add-account') {
-    showSheet('addAccount',`<div class="empty-state sheet-empty"><span class="empty-symbol">${icon('wallet')}</span><p>${t('addAccountUnavailable')}</p></div><p class="sheet-disclaimer">${t('sampleOnly')}</p>`);
+    openProfile();
+  } else if(action==='edit-account') {
+    openProfile(button.dataset.id);
+  } else if(action==='profile-cancel') {
+    if(editingProfileId)openAccount(editingProfileId);else closeSheet();
   }
   else if (action==='amount-key') {
     state.transferAmount=amountKey(/^\d{1,9}(?:\.\d{0,2})?$/.test(state.transferAmount)?state.transferAmount:'0',button.dataset.key);
@@ -218,7 +234,7 @@ document.addEventListener('click',event=>{
   } else if (action==='transaction') openTransaction(button.dataset.id);
   else if (action==='bill') openBill(button.dataset.id);
   else if (action==='account') {
-    if(assetAccounts().some(a=>a.id===button.dataset.id)) location.hash=`wallet/account/${encodeURIComponent(button.dataset.id)}`;
+    if(assetAccounts(state.accountProfiles).some(a=>a.id===button.dataset.id)) location.hash=`wallet/account/${encodeURIComponent(button.dataset.id)}`;
   } else if (action==='filter') {
     state.filter=button.dataset.filter;
     render(); document.querySelector(`[data-action="filter"][data-filter="${state.filter}"]`)?.focus({preventScroll:true});
@@ -243,6 +259,10 @@ document.addEventListener('click',event=>{
   }
 });
 document.addEventListener('input',event=>{
+  if(event.target.id==='profile-nickname') {
+    event.target.removeAttribute('aria-invalid');
+    document.querySelector('#profile-name-error').hidden=true;
+  }
   if(event.target.id==='transfer-amount') {state.transferAmount=event.target.value;updateTransferAmount(false);}
   if (event.target.id==='activity-search') {
     state.search=event.target.value;
@@ -252,6 +272,18 @@ document.addEventListener('input',event=>{
   }
 });
 document.addEventListener('change',event=>{
+  if(event.target.matches('[data-profile-control]')) {
+    const form=event.target.closest('form');
+    const draft=Object.fromEntries(new FormData(form));
+    draft.optionsOpen=form.querySelector('.profile-options').open;
+    if(event.target.name==='accountType') {
+      draft.providerId=({bank:'kbank',ewallet:'truemoney',cash:'cash'})[draft.accountType];
+      draft.profileLabel=({bank:'profileSavings',ewallet:'profileWallet',cash:'profileCash'})[draft.accountType];
+    }
+    sheet.querySelector('.sheet-content').innerHTML=accountProfileForm(draft,state,t,Boolean(editingProfileId));
+    sheet.querySelector(`[name="${event.target.name}"]`)?.focus({preventScroll:true});
+    return;
+  }
   const control=event.target.dataset.control;
   if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
@@ -271,6 +303,22 @@ function updateTransferAmount(updateInput=true) {
   document.querySelector('#transfer-amount').removeAttribute('aria-invalid');
 }
 document.addEventListener('submit',event=>{
+  if(event.target.id==='account-profile-form') {
+    event.preventDefault();
+    const form=event.target;
+    try {
+      const id=editingProfileId||`sample-${crypto.randomUUID()}`;
+      state.accountProfiles=applyProfile(state.accountProfiles,Object.fromEntries(new FormData(form)),editingProfileId,id);
+      state.accountSelected=id;state.accountState='sample';
+      render();
+      opener=state.route==='home'?document.querySelector(`[data-action="add-account"]`):document.querySelector(`[data-account-id="${id}"]`);
+      closeSheet();toast(t('profileApplied'));announce(t('profileApplied'));
+    } catch {
+      form.querySelector('#profile-name-error').hidden=false;
+      const input=form.elements.nickname;input.setAttribute('aria-invalid','true');input.focus();
+    }
+    return;
+  }
   if (event.target.id!=='entry-form') return;
   event.preventDefault();
   const form=event.target;const data=new FormData(form);
