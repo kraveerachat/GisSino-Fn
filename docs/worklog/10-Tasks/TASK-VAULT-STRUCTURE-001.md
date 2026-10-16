@@ -2,7 +2,7 @@
 id: TASK-VAULT-STRUCTURE-001
 type: task
 level: log
-status: LOCALLY VERIFIED
+status: CLOSED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -12,6 +12,7 @@ related:
   - ../../pages/Pages-Hub.md
   - ../../architecture/Architecture-Hub.md
   - ../../design/Design-Hub.md
+  - ../90-Receipts/20261016-171336-TASK-VAULT-STRUCTURE-001-FINAL.md
 ---
 # TASK-VAULT-STRUCTURE-001
 
@@ -64,8 +65,8 @@ Reorganize `docs/` as the canonical Obsidian vault, add the center and hubs, pre
 - Commit 2: `9e6e732` — vault center, hubs, page notes, governance sources, metadata, and status reconciliation
 - Draft PR: [#3 — docs(vault): establish GisSino documentation hub](https://github.com/kraveerachat/GisSino-Fn/pull/3)
 - GitHub state: PR #3 is open as Draft; PR #1 and PR #2 are merged
-- Receipt: pending
+- Receipt: [Final immutable receipt](../90-Receipts/20261016-171336-TASK-VAULT-STRUCTURE-001-FINAL.md)
 
 ## Remaining work
 
-Issue the final receipt, then leave Draft PR #3 for owner review and merge.
+Owner reviews and merges Draft PR #3. After merge, open `docs/` as a new Obsidian vault.
