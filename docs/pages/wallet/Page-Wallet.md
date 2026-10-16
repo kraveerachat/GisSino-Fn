@@ -48,3 +48,9 @@ Mobile access is part of [D23](../../project/DECISIONS.md#d23--responsive-primar
 - 2026-10-16 — Added from the current Wallet prototype.
 
 - 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 profile preview
+
+Supersedes the earlier unavailable Add Account description: Add now creates fictional session-only profiles; Edit is available in account detail. Provider/type/nickname/reference/label/appearance are editable while balance/ID/currency remain unchanged. New profiles show unavailable balance and reset on reload. The original transaction/transfer fixtures remain separate; this is no production ledger integration.
+
+-2026-10-16 — [Account Board S2](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).

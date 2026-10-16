@@ -49,3 +49,9 @@ Motion: press 120ms, state 180ms, sheet 300ms; easing `cubic-bezier(.16,1,.3,1)`
 `src/styles/accounts.css` adds named navy folder top/bottom/tab/ink/muted/edge/shadow/radius tokens and a220ms selection duration. Provider-specific accent classes match the proposed values in [Provider Catalog](PROVIDER_CATALOG.md); they are not certified corporate HEX values. Narrow Stack has one exposed rear tab; wider Stack has two. The existing shell theme tokens are preserved.
 
 - 2026-10-16 — Added Account Board token reference for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 folder material
+
+Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shoulder is20px geometry; all rear tabs align to the active left edge. Optional profile tones add cobalt#164f96/#0c326c or slate#334d69/#21354d; neutral accent#9db2cc. Brand PNGs render unmodified on neutral plates.44px indicators animate the selected6px dot to20px pill; reduced motion removes transitions.
+
+-2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).

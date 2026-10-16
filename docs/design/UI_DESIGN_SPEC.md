@@ -57,3 +57,9 @@ Authority correction: project guide, architecture and governance notes are now a
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 
 - 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 owner-directed refinement
+
+Supersedes the simple staggered folder and unavailable-profile presentation. Desktop tabs align on shared edges with a curved shoulder; mobile collapses mode controls into the title row and uses near-visual indicators with no instructional copy below. Assets are owner-supplied local PNGs, with explicit fallback. Profile setup/edit is session-only and no real finance/persistence is implied.
+
+-2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).

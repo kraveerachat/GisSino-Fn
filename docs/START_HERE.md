@@ -27,7 +27,7 @@ updated: 2026-10-16
 
 ## Current focus
 
-[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) has delivered a responsive mock-data Account Board and shared provider display registry in [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) for owner review. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
+[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) is refining aligned account folders, supplied provider assets and session-only account profiles in [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) for owner review. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
 
 ## Agent reading order
 

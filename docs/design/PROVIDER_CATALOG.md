@@ -14,7 +14,7 @@ related:
 
 ## Current state
 
-18 provider identities are listed in [providers.js](../../src/providers.js): 15 bank candidates and 3 consumer E-Wallet candidates. Reviewed 2026-10-16. This is a display registry, not a comprehensive national list, license certification, endorsement, bank integration, or statement of account ownership. Home and Wallet use the same provider resolution and account adapter. Unknown or mismatched providers receive an explicit Other bank / Other E-Wallet fallback; cash is not an institution.
+19 provider identities are listed in [providers.js](../../src/providers.js): 15 bank candidates and 4 E-Wallet/app display candidates. Reviewed 2026-10-16. This is a display registry, not a comprehensive national list, license certification, endorsement, bank integration, or statement of account ownership. Home and Wallet use the same provider resolution and account adapter. Unknown or mismatched providers receive an explicit Other bank / Other E-Wallet fallback; cash is not an institution.
 
 ## Evidence and limits
 
@@ -47,12 +47,24 @@ All colors below are **PROPOSED_UI_ACCENT**, selected for GisSino readability ra
 | shopeepay | ewallet | ช้อปปี้เพย์ | ShopeePay | #d98566 | [Provider site](https://shopeepay.co.th/contact-us) |
 | deeppocket | ewallet | ดีพพ็อกเก็ต | DeepPocket | #8f88c9 | [Provider site](https://www.t2pco.com/en/t2p-deeppocket) |
 
-## Logos, provenance, and color
+| paotang | ewallet/app | เป๋าตัง | Paotang | #43a8c6 | [Krungthai guide](https://paotang-auth.krungthai.com/) |
 
-Official logos included: **NONE**. Every provider has `logoPath: null` and `logoStatus: VERIFY` because reusable artwork and redistribution rights were not established. No logo was traced, recolored, downloaded, or invented. The bank and wallet line icons are the prototype's original generic symbols, explicitly fallback badges. Future authorized assets require provenance and usage review before replacing them. Other-provider accent is `#8faacb`; cash uses `#c7b28a`.
+## Baseline logo decision — superseded by S2
+
+S1 historical decision: official logos included **NONE**. This paragraph is superseded by the owner-supplied asset integration below. Every provider has `logoPath: null` and `logoStatus: VERIFY` because reusable artwork and redistribution rights were not established. No logo was traced, recolored, downloaded, or invented. The bank and wallet line icons are the prototype's original generic symbols, explicitly fallback badges. Future authorized assets require provenance and usage review before replacing them. Other-provider accent is `#8faacb`; cash uses `#c7b28a`.
 
 Identity never depends on color alone: account name, provider text, type, currency and available masked suffix remain visible. Two KBank accounts use separate IDs/names/suffixes; KBank and BAAC greens also have distinct text. Registry fields carry review date, evidence URL, legal entity, status, and separate accent/logo verification. Real account IDs and balances never belong in this catalog.
 
 ## Change log
 
 - 2026-10-16 — Added researched display registry and explicit fallback/rights boundaries for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 current provider assets and Paotang
+
+Owner explicitly supplied local artwork for the follow-up.13PNGs are now bundled under assets/providers with preserved original bytes/names; see [provenance and SHA256 manifest](../../assets/providers/README.md). Registry logoStatus is OWNER_SUPPLIED, not third-party licensing or current-brand certification. All13load in browser evidence. Filenames map explicitly: shopeepay -> shoppeepay.png; paotang -> Paotang.png. No hotlinks, recoloring, cropping or tracing. Load failures retain provider text and a generic original badge.
+
+Paotang is now a selectable E-Wallet/app display profile, tied to Krungthai identity through its [official authentication guide](https://paotang-auth.krungthai.com/). This prototype category does not imply every Paotang service is an e-money product or a licensed integration. Proposed UI accent is#43a8c6. Existing TrueMoney/ShopeePay and new Paotang all have owner-supplied images. DeepPocket remains supported with fallback.
+
+Supplied assets: baac,bbl,cimb,gsb,kbank,krungsri,ktb,scb,ttb,uob,truemoney,shoppeepay,Paotang. Missing provider artwork:ghb,kkp,tisco,lhb,thai-credit,deeppocket. Cash is non-institution and does not require a bank image. The supplied BAAC image is preserved as provided, not recertified as a current official logo.
+
+-2026-10-16 — Local asset/profile follow-up in [Session S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md); supersedes earlier blanket withholding for these13owner-supplied files.

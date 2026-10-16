@@ -48,3 +48,9 @@ Supersedes the earlier two-bank-only fixture statement: six synthetic assets now
 - 2026-10-16 — Added vault metadata and linked this note from the [Design Hub](Design-Hub.md) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 
 - 2026-10-16 — Account Board prototype update for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+
+## S2 session account profiles
+
+state.accountProfiles starts as a copy of fixtures. Add/edit updates this array through account-profile.js with allowlisted bank/ewallet/cash type, matching provider, nickname<=60, suffix<=12, type-appropriate label, navy/cobalt/slate folderTone and provider/neutral accentTone. Existing records retain ID/currency/minor balance. New records have a generated sample ID,THB currency and undefined balanceMinor (never fabricated zero). Home/Wallet/detail use the same array; transfer/transaction demonstrations still use their original fixtures. No storage or network save.
+
+-2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).

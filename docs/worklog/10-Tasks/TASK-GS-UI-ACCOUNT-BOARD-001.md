@@ -2,7 +2,7 @@
 id: TASK-GS-UI-ACCOUNT-BOARD-001
 type: task
 level: log
-status: CLOSED
+status: IN PROGRESS
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-Responsive mock-data Account Board implementation, local verification, documentation and Draft PR handoff are complete. Owner acceptance and merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
+S2 owner-directed refinement is implemented and being finalized on the same OPEN/DRAFT PR#4. Bank assets, compact aligned folders and session-only profile add/edit supersede the S1 UI below. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
 
 ## Scope
 
@@ -52,7 +52,7 @@ Read [provider research](../../design/PROVIDER_CATALOG.md) and [review/test evid
 - Detector: one scan of six changed markup JS targets, exit 0, zero findings; CSS-only scan was not substituted.
 - Assistive-technology and physical-device validation remain open; no blanket accessibility certification.
 
-## Delivery
+## S1 baseline delivery — superseded by S2
 
 Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider checkpoint: `3f79d82`. Finish review disposition: ship for the scored mobile fixes. Fresh documenter comparison completed; incumbent system files preserved. [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is OPEN and DRAFT, targeting main. Remote checkpoint `eb1071e4ceda270fa07acb823f13ec5cf887db1a` verified by ls-remote and PR head before final receipt. Owner acceptance and merge remain pending.
 
@@ -60,3 +60,7 @@ Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider c
 - Receipt-inclusive vault health: PASS,46 notes/46 unique IDs, all reachable within3 clicks; zero broken-link, metadata, parent-listing or reachability findings.
 - `git diff --check origin/main`: PASS after removing two documentation EOF blank lines.
 - Preview: `http://127.0.0.1:4176/#home`, loopback only. Stop the task preview with Ctrl+C in its running dev-server session. No production changes.
+
+## S2 current refinement
+
+[Session S2](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md) records the latest request, code, copied assets and checks. See [provider artwork provenance](../../../assets/providers/README.md), [updated catalog](../../design/PROVIDER_CATALOG.md) and [review](../../design/reviews/ACCOUNT_BOARD_REVIEW.md). The S1 unavailable Add Account/all-logos-withheld descriptions are historical and superseded by this explicitly authorized follow-up. Current checks:367locale keys,30tests,12browsergroups,20responsivecases and13loaded logo assets. Final review and push synchronization pending; no production changes.

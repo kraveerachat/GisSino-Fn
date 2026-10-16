@@ -62,3 +62,9 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-
 - Provider artwork without confirmed rights uses original fallback icons; accent HEX values remain proposed UI tokens, not official brand certification.
 - Supersedes the prior simple Home account-list presentation only. No Accounts/Ledger, persistence or bank integration milestone is implied.
 - Source: [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md); affects [Home](../pages/home/Page-Home.md), [Wallet](../pages/wallet/Page-Wallet.md), [Provider Catalog](../design/PROVIDER_CATALOG.md).
+
+## D24 follow-up — aligned folders and profile previews
+
+Owner-directed2026-10-16 refinement: straight curved folders, compact mobile visual indicators/no counter/helper, bundled owner-supplied bank/E-Wallet PNGs, Paotang profile and add/edit display metadata with appearance choices. This supersedes D24 baseline blanket logo withholding for the supplied13assets and unavailable Add behavior only. Everything remains mock/session-only.
+
+-2026-10-16 — [Account Board S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md).
