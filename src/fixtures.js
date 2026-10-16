@@ -2,8 +2,12 @@
 // These are not account records, calculations, or a future database schema.
 export const preview = Object.freeze({ balance: 116850, safe: 14500, obligations: 12750, income: 42000, expense: 15240, month: 9, year: 2026 });
 export const accounts = [
-  { id: 'daily', name: 'accountDaily', kind: 'bank', accountType:'bank', amount: 68450, suffix: '0428', share: 59 },
-  { id: 'savings', name: 'accountSavings', kind: 'wallet', accountType:'bank', amount: 48400, suffix: '0916', share: 41 }
+  { id: 'daily', name: 'accountDaily', kind: 'bank', accountType: 'bank', providerId: 'kbank', currency: 'THB', balanceMinor: 6845000, amount: 68450, suffix: '0428', context: 'mainAccount', archived: false, sortOrder: 0 },
+  { id: 'savings', name: 'accountSavings', kind: 'wallet', accountType: 'bank', providerId: 'scb', currency: 'THB', balanceMinor: 3740000, amount: 37400, suffix: '0916', context: 'savingsAccount', archived: false, sortOrder: 1 },
+  { id: 'reserve', name: 'accountReserve', kind: 'bank', accountType: 'bank', providerId: 'kbank', currency: 'THB', balanceMinor: 500000, amount: 5000, suffix: '0631', context: 'savingsAccount', archived: false, sortOrder: 2 },
+  { id: 'everyday-wallet', name: 'accountEWallet', kind: 'wallet', accountType: 'ewallet', providerId: 'truemoney', currency: 'THB', balanceMinor: 250000, amount: 2500, context: 'everydayWallet', archived: false, sortOrder: 3 },
+  { id: 'pocket-cash', name: 'accountCash', kind: 'wallet', accountType: 'cash', providerId: 'cash', currency: 'THB', balanceMinor: 150000, amount: 1500, context: 'cashOnHand', archived: false, sortOrder: 4 },
+  { id: 'family-savings', name: 'accountFamilySavings', kind: 'bank', accountType: 'bank', providerId: 'baac', currency: 'THB', balanceMinor: 200000, amount: 2000, suffix: '0784', context: 'savingsAccount', archived: false, sortOrder: 5 }
 ];
 export const transactions = [
   { id: 'coffee', name: 'txCoffee', category: 'food', type: 'expense', amount: 85, icon: 'coffee', time: '09:42', day: 'today', account: 'accountDaily' },

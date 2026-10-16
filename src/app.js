@@ -5,14 +5,17 @@ import { transactions, bills, accounts, creditCard } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
 import { navigationOverlay } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
+import { accountBoard, stepAccount, swipeDirection, parseAccountHash } from './account-board.js';
+import { assetAccounts, accountPreview } from './account-display.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
 const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card'];
 const state = {
-  locale: 'th', theme: 'light', route: validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home',
+  locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home',
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
+  accountSelected: 'daily', accountView: 'stack', accountState: 'sample',
   transferSource:'daily', transferDestination:'savings', transferAmount:'0', cardReminder:false,cardReturn:'bills'
 };
 const scrollPositions = new Map();
@@ -20,6 +23,8 @@ let opener = null;
 let toastTimer;
 let searchTimer;
 let suppressSheetFocus=false;
+let accountSheetClosingForNavigation=false;
+let accountDetailId=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -56,12 +61,19 @@ function showSheet(titleKey, content, back = false) {
 }
 function closeSheet(restoreFocus=true) { if (sheet.open) {suppressSheetFocus=!restoreFocus;sheet.close();} }
 sheet.addEventListener('close', () => {
+  // A queued close event can arrive after hash navigation has opened the next dialog.
+  if(sheet.open){accountSheetClosingForNavigation=false;suppressSheetFocus=false;return;}
   document.body.classList.remove('has-sheet');
   state.mode = null;
-  if(suppressSheetFocus){suppressSheetFocus=false;opener=null;return;}
-  if (opener?.isConnected) opener.focus({ preventScroll: true });
+  if(!accountSheetClosingForNavigation&&parseAccountHash(location.hash)) history.replaceState(null,'','#wallet');
+  accountSheetClosingForNavigation=false;
+  if(suppressSheetFocus){suppressSheetFocus=false;opener=null;accountDetailId=null;return;}
+  const accountLink=accountDetailId?[...document.querySelectorAll('.provider-account-row')].find(row=>row.dataset.accountId===accountDetailId):null;
+  if(accountLink)accountLink.focus({preventScroll:true});
+  else if (opener?.isConnected) opener.focus({ preventScroll: true });
   else document.querySelector('[data-action="visibility"], [data-title="privacy"]')?.focus({ preventScroll: true });
   opener = null;
+  accountDetailId=null;
 });
 sheet.addEventListener('click', event => {
   if (event.target !== sheet) return;
@@ -96,6 +108,64 @@ function openBill(id) {
 function openVisibility() {
   showSheet('visibilityTitle',`<p class="sheet-subtitle">${t('privacyBody')}</p><div class="visibility-options">${[['shareStreak','share-streak'],['shareXP','share-xp']].map(([key,id])=>`<label class="switch-row"><span>${t(key)}</span><input type="checkbox" role="switch" id="${id}" data-control="${key}" ${state[key]?'checked':''}><span class="switch-track" aria-hidden="true"></span></label>`).join('')}</div><p class="sheet-disclaimer">${icon('shield')}${t('privacyPreview')}</p>`);
 }
+function openAccount(id) {
+  accountDetailId=id;
+  const account=assetAccounts().find(a=>a.id===id);
+  showSheet('accountDetail',account?accountPreview(account,state,t):`<p class="settings-info">${t('boardUnavailableBody')}</p>`);
+}
+function refreshAccountBoard(focusSelector,shuffle=false) {
+  const board=document.querySelector('.account-board');
+  if(!board)return;
+  const demoOpen=board.querySelector('.board-demo-controls')?.open;
+  board.outerHTML=accountBoard(state,t);
+  if(demoOpen)document.querySelector('.board-demo-controls').open=true;
+  if(focusSelector)document.querySelector(focusSelector)?.focus({preventScroll:true});
+  if(shuffle&&!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelector('.account-featured-folder')?.animate(
+      [{transform:'translateY(-8px)',opacity:.8},{transform:'translateY(0)',opacity:1}],
+      {duration:220,easing:'cubic-bezier(.16,1,.3,1)'}
+    );
+  }
+}
+function selectBoardAccount(id,focusSelector='[data-swipe-region]') {
+  if(!assetAccounts().some(a=>a.id===id))return;
+  state.accountSelected=id;
+  refreshAccountBoard(focusSelector,true);
+}
+let boardGesture=null;
+let suppressBoardClickUntil=0;
+document.addEventListener('pointerdown',event=>{
+  const region=event.target.closest('[data-swipe-region]');
+  if(!region||event.target.closest('button')||!event.isPrimary||event.button!==0)return;
+  boardGesture={pointerId:event.pointerId,region,start:{x:event.clientX,y:event.clientY}};
+});
+document.addEventListener('pointerup',event=>{
+  if(!boardGesture||event.pointerId!==boardGesture.pointerId)return;
+  const gesture=boardGesture; boardGesture=null;
+  const direction=swipeDirection(gesture.start,{x:event.clientX,y:event.clientY});
+  if(!direction||!gesture.region.isConnected)return;
+  suppressBoardClickUntil=performance.now()+400;
+  selectBoardAccount(stepAccount(assetAccounts(),state.accountSelected,direction));
+});
+const cancelBoardGesture=()=>{boardGesture=null;};
+document.addEventListener('pointercancel',cancelBoardGesture);
+document.addEventListener('lostpointercapture',cancelBoardGesture);
+window.addEventListener('blur',cancelBoardGesture);
+document.addEventListener('click',event=>{
+  if(performance.now()<suppressBoardClickUntil&&event.target.closest('.account-stack')) {
+    event.preventDefault(); event.stopImmediatePropagation();
+  }
+},true);
+document.addEventListener('keydown',event=>{
+  if(!event.target.closest('[data-swipe-region]'))return;
+  const records=assetAccounts();
+  const id=event.key==='Home'?records[0]?.id:event.key==='End'?records.at(-1)?.id:
+    event.key==='ArrowRight'?stepAccount(records,state.accountSelected,1):
+    event.key==='ArrowLeft'?stepAccount(records,state.accountSelected,-1):null;
+  if(!id)return;
+  event.preventDefault();selectBoardAccount(id);
+});
+
 document.addEventListener('click',event=>{
   const button = event.target.closest('[data-action]');
   if (!button) return;
@@ -104,7 +174,20 @@ document.addEventListener('click',event=>{
   else if (action==='add') { state.mode=null; showSheet('addTitle',addMenu(t)); }
   else if (action==='close') closeSheet();
   else if (action==='mode') openMode(button.dataset.mode);
-  else if (action==='all-accounts') showSheet('accounts',`${definitionList(accounts.map(a=>[t(a.name),state.balanceVisible?money(a.amount,state.locale):t('hiddenAmount')]))}<p class="info-callout">${icon('shield')}${t('accountNote')}</p>`);
+  else if (action==='all-accounts') location.hash='wallet';
+  else if(action==='account-view') {
+    state.accountView=button.dataset.view==='grid'?'grid':'stack';
+    refreshAccountBoard(`[data-action="account-view"][data-view="${state.accountView}"]`);
+  } else if(action==='account-select') {
+    const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:'[data-swipe-region]';
+    selectBoardAccount(button.dataset.id,focus);
+  } else if(action==='account-step') {
+    selectBoardAccount(stepAccount(assetAccounts(),state.accountSelected,Number(button.dataset.step)),`[data-action="account-step"][data-step="${button.dataset.step}"]`);
+  } else if(action==='board-reset') {
+    state.accountState='sample';refreshAccountBoard('[data-control="board-state"]');
+  } else if(action==='add-account') {
+    showSheet('addAccount',`<div class="empty-state sheet-empty"><span class="empty-symbol">${icon('wallet')}</span><p>${t('addAccountUnavailable')}</p></div><p class="sheet-disclaimer">${t('sampleOnly')}</p>`);
+  }
   else if (action==='amount-key') {
     state.transferAmount=amountKey(/^\d{1,9}(?:\.\d{0,2})?$/.test(state.transferAmount)?state.transferAmount:'0',button.dataset.key);
     updateTransferAmount();
@@ -135,8 +218,7 @@ document.addEventListener('click',event=>{
   } else if (action==='transaction') openTransaction(button.dataset.id);
   else if (action==='bill') openBill(button.dataset.id);
   else if (action==='account') {
-    const account=accounts.find(a=>a.id===button.dataset.id);
-    showSheet('accountDetail',`${definitionList([[t('account'),t(account.name)],[t('reference'),t('demoSuffix',{suffix:account.suffix})],[t('balance'),state.balanceVisible?money(account.amount,state.locale,true):t('hiddenAmount')]])}<p class="info-callout">${icon('shield')}${t('accountNote')}</p>`);
+    if(assetAccounts().some(a=>a.id===button.dataset.id)) location.hash=`wallet/account/${encodeURIComponent(button.dataset.id)}`;
   } else if (action==='filter') {
     state.filter=button.dataset.filter;
     render(); document.querySelector(`[data-action="filter"][data-filter="${state.filter}"]`)?.focus({preventScroll:true});
@@ -171,7 +253,8 @@ document.addEventListener('input',event=>{
 });
 document.addEventListener('change',event=>{
   const control=event.target.dataset.control;
-  if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
+  if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
+  else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }
   else if (control==='locale') { state.locale=event.target.value; render(); document.querySelector('#locale-select')?.focus({preventScroll:true}); announce(t('localeChanged')); }
   else if(control==='transfer-source') {
@@ -214,11 +297,16 @@ document.addEventListener('submit',event=>{
   showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${money(amount,state.locale,true)}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
 });
 window.addEventListener('hashchange',()=>{
-  const next=location.hash.slice(1);
+  const accountId=parseAccountHash(location.hash);
+  const next=accountId?'wallet':location.hash.slice(1);
   if (!validRoutes.includes(next)) { if(next!=='main') location.hash='home';return; }
   scrollPositions.set(state.route,window.scrollY);
   if(next==='credit-card')state.cardReturn=state.route==='wallet'?'wallet':'bills';
-  moreOverlay.close();closeSheet(false); state.route=next;state.previewState='sample';render(true);
+  moreOverlay.close();
+  if(sheet.open)accountSheetClosingForNavigation=true;
+  closeSheet(false); state.route=next;state.previewState='sample';render(true);
   window.scrollTo({top:scrollPositions.get(next)||0,behavior:'instant'});
+  if(accountId)openAccount(accountId);
 });
 render();
+if(parseAccountHash(location.hash))openAccount(parseAccountHash(location.hash));

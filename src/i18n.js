@@ -186,6 +186,42 @@ Object.assign(messages.en, {
   desktopNavigation:'Desktop navigation',
   pinSidebar:'Expand and pin navigation', collapseSidebar:'Unpin and collapse navigation',
 });
+Object.assign(messages.th, {
+  balanceNote:'จากบัญชีตัวอย่าง 6 บัญชี',
+  accountReserve:'เงินสำรองวันสบาย', accountEWallet:'กระเป๋าจ่ายคล่อง', accountCash:'เงินสดติดตัว', accountFamilySavings:'เก็บไว้เพื่อวันหน้า',
+  mainAccount:'บัญชีหลัก', savingsAccount:'เงินออม', everydayWallet:'ใช้จ่ายประจำวัน', cashOnHand:'เงินสดในมือ',
+  accountType:'ประเภทบัญชี', accountDetails:'ดูรายละเอียด', openAccount:'เปิดรายละเอียด {name}',
+  selectAccount:'เลือกบัญชี', selectAccountName:'เลือก {name}', selectedAccount:'บัญชีที่เลือก',
+  accountView:'รูปแบบบัญชี', stackView:'แบบซ้อน', gridView:'แบบตาราง',
+  boardAccountCount:'{n} บัญชีตัวอย่าง', boardAssetTypes:'ธนาคาร · อีวอลเล็ต · เงินสด',
+  accountSelection:'ชุดโฟลเดอร์บัญชี ใช้ปุ่มลูกศรเพื่อเลือก', chooseAccount:'เลือกบัญชีของคุณ',
+  accountPosition:'บัญชี {n} จาก {total}', previousAccount:'บัญชีก่อนหน้า', nextAccount:'บัญชีถัดไป',
+  boardNavigationHelp:'ปัดหรือใช้ลูกศรเพื่อเลือก · แตะโฟลเดอร์เพื่อดูรายละเอียด',
+  addAccount:'เพิ่มบัญชี', addAccountUnavailable:'การเพิ่มบัญชียังไม่พร้อมในรุ่นตัวอย่าง ไม่มีการเชื่อมต่อหรือบันทึกบัญชีจริง',
+  boardStateLabel:'ทดลองสถานะบัญชี',
+  boardEmptyTitle:'พื้นที่สำหรับบัญชีของคุณ', boardEmptyBody:'ยังไม่มีบัญชีในสถานะตัวอย่างนี้ ลองกลับไปดูโฟลเดอร์จำลอง',
+  boardLoadingTitle:'ตัวอย่างระหว่างโหลดบัญชี', boardLoadingBody:'แสดงดีไซน์ระหว่างรอข้อมูล ไม่มีการเชื่อมต่อธนาคาร',
+  boardErrorTitle:'แสดงบัญชีไม่ได้ในตัวอย่างนี้', boardErrorBody:'นี่คือสถานะผิดพลาดจำลอง ลองกลับไปดูบัญชีตัวอย่าง',
+  boardUnavailableTitle:'ข้อมูลบัญชียังไม่พร้อม', boardUnavailableBody:'ไม่แสดงยอดเป็นศูนย์เมื่อไม่มีข้อมูล ลองดูบัญชีตัวอย่างได้',
+});
+Object.assign(messages.en, {
+  balanceNote:'Across 6 sample accounts',
+  accountReserve:'Rainy-day reserve', accountEWallet:'Everyday wallet', accountCash:'Cash on hand', accountFamilySavings:'Tomorrow fund',
+  mainAccount:'Main account', savingsAccount:'Savings account', everydayWallet:'Daily spending', cashOnHand:'Cash on hand',
+  accountType:'Account type', accountDetails:'View details', openAccount:'Open details for {name}',
+  selectAccount:'Select an account', selectAccountName:'Select {name}', selectedAccount:'Selected account',
+  accountView:'Account view', stackView:'Stack', gridView:'Grid',
+  boardAccountCount:'{n} sample accounts', boardAssetTypes:'Bank · E-Wallet · Cash',
+  accountSelection:'Account folders. Use arrow keys to select', chooseAccount:'Choose your account',
+  accountPosition:'Account {n} of {total}', previousAccount:'Previous account', nextAccount:'Next account',
+  boardNavigationHelp:'Swipe or use arrows to choose · Open a folder for details',
+  addAccount:'Add account', addAccountUnavailable:'Adding accounts is not available in this preview. No real account is connected or saved.',
+  boardStateLabel:'Try account states',
+  boardEmptyTitle:'A place for your accounts', boardEmptyBody:'This sample state has no accounts. Return to the synthetic folders to explore.',
+  boardLoadingTitle:'Account loading preview', boardLoadingBody:'A design state while data is loading. No bank connection is made.',
+  boardErrorTitle:'Accounts cannot be shown in this preview', boardErrorBody:'This is a simulated error. Return to the sample accounts.',
+  boardUnavailableTitle:'Account data is unavailable', boardUnavailableBody:'Missing data is never displayed as a zero balance. Explore the sample accounts instead.',
+});
 export function translator(locale) {
   const catalog = messages[locale] || messages.th;
   return (key, values = {}) => {
