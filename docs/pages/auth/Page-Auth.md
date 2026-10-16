@@ -54,7 +54,7 @@ The onboarding flow follows the sequence detailed in [ONBOARDING_HOME_V2_ROADMAP
 
 - *Invalid / Expired Invite:* Informative feedback requesting a new code from the administrator.
 - *Rate Limiting:* Progressive lockout on failed login attempts.
-- *Minor Consent:* Parent/guardian acknowledgement path for users under age threshold (PDPA VERIFY).
+- *Minor Consent:* **[OPEN — OPEN_QUESTIONS.md Q3]** Parent/guardian acknowledgement path for users below a minimum age threshold. The specific threshold (e.g., < 13, < 15, < 20) has not been decided; it must be confirmed against Thailand PDPA requirements before any implementation.
 - *Session Expiry:* Graceful redirect to login with return URL preservation.
 
 ## Decisions and open questions
@@ -66,3 +66,4 @@ The onboarding flow follows the sequence detailed in [ONBOARDING_HOME_V2_ROADMAP
 ## Change log
 
 - 2026-10-17 — Created as part of [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md) to define the canonical Pre-Home and Onboarding specification.
+- 2026-10-17 — Corrections: minor consent threshold changed to **[OPEN]** pending PDPA confirmation. Auth parameters (invite code format, expiry, password policy) are **[PROPOSED]**, not decided.

@@ -109,16 +109,16 @@ First-time registered users must complete the progressive setup sequence (A04 �
 - **Purpose:** Restrict new account creation to invited members only [DECIDED invariant].
 - **Parent Navigation:** Child of `#welcome`. Back button returns to `#welcome`.
 - **Key UI Elements:**
-  - Invitation Input: 6-character/token field or pre-filled from URL query parameter (`?invite=<code>`).
+  - Invitation Input: **[PROPOSED]** 6-digit code field (`?invite=<code>` URL parameter supported). HOME_AND_LEADERBOARD_SPEC D-K cites "random 6-digit code"; exact length and format must be confirmed by the owner before M1 implementation.
   - Validation Button: *"ตรวจสอบรหัสเชิญ"* (Validate code).
   - Credential Registration Form (revealed upon valid invitation):
     - Email address.
-    - Password (strength indicator: minimum 10 characters, mixed case, numbers).
+    - Password (strength indicator: **[PROPOSED]** minimum 10 characters, mixed case, numbers — exact password policy requires owner decision before M1).
     - Optional prompt: *"สร้าง Passkey สำหรับอุปกรณ์นี้"* (Register Passkey immediately).
   - Secondary route: *"มีบัญชีอยู่แล้ว? เข้าสู่ระบบ"* (Already have an account? Log in).
 - **States & Edge Cases:**
   - *Invalid/Used code:* Clear feedback *"รหัสเชิญนี้ไม่ถูกต้องหรือถูกใช้งานไปแล้ว กรุณาติดต่อผู้ดูแลระบบ"*.
-  - *Expired code:* Invitation codes expire within 48–72 hours.
+  - *Expired code:* **[PROPOSED]** Invitation codes expire after a limited period (e.g., 48–72 hours); the exact expiration window requires owner confirmation before M1 implementation. [PROJECT_GUIDE.md](../project/PROJECT_GUIDE.md) §5.4 specifies codes are "single-use, expiring" but does not specify the duration.
 - **Security Boundary:** Passwords hashed with Argon2id server-side in M1.
 
 #### A04 — Profile Setup (`#setup/profile`)
@@ -134,11 +134,12 @@ First-time registered users must complete the progressive setup sequence (A04 �
 - **Purpose:** Collect coarse demographic parameters needed solely for age-categorized habit and spending boards [PROPOSED].
 - **Parent Navigation:** Step 2 of First-time Setup wizard. Progress indicator: `2 / 6`.
 - **Key UI Elements:**
-  - Birth Year Picker (*ปีเกิด พ.ศ. / ค.ศ.*): Dropdown of years. Automatically displays derived category badge below:
-    - *เด็ก (Child):* Age ≤ 12.
-    - *วัยรุ่น / นักเรียน-นักศึกษา (Youth/Student):* Age 13–22.
-    - *วัยทำงาน (Working Age):* Age 23–59.
-    - *วัยเกษียณ (Retired):* Age 60+.
+  - Birth Year Picker (*ปีเกิด พ.ศ. / ค.ศ.*): Dropdown of years. Automatically displays derived category badge below — **[PROPOSED]** age-band boundaries, subject to owner approval (see Conflict 2 and [OPEN_QUESTIONS.md](../project/OPEN_QUESTIONS.md) Q3):
+    - *เด็ก (Child):* **[PROPOSED]** Age ≤ 12.
+    - *วัยรุ่น / นักเรียน-นักศึกษา (Youth/Student):* **[PROPOSED]** Age 13–22.
+    - *วัยทำงาน (Working Age):* **[PROPOSED]** Age 23–59.
+    - *วัยเกษียณ (Retired):* **[PROPOSED]** Age 60+.
+  > **[OPEN]** Minimum signup age and exact age-band boundaries have not been decided. Do not hardcode these thresholds in any prototype or backend without explicit owner approval. See [OPEN_QUESTIONS.md](../project/OPEN_QUESTIONS.md) Q3.
   - Gender Selection (*เพศ*): Options: *"ชาย"* (Male), *"หญิง"* (Female), *"ไม่ระบุ"* (Unspecified / Prefer not to say).
   - Estimated Monthly Income Range (*ช่วงรายได้ต่อเดือนโดยประมาณ*):
     - **Crucial Rule:** Rendered ONLY if the owner approves a percentage-based spending leaderboard (Conflict 1). If an absolute spending metric is chosen, this field is completely omitted.
@@ -159,7 +160,7 @@ First-time registered users must complete the progressive setup sequence (A04 �
     4. *ภาพถ่ายสลิป:* จัดเก็บในเซิร์ฟเวอร์ส่วนตัว ไม่มีการสแกน OCR ไม่แชร์กับบุคคลภายนอก.
     5. *สิทธิและการลบข้อมูล:* คุณสามารถขอลบข้อมูลบัญชีและประวัติทั้งหมดได้ตลอดเวลาผ่านเมนูตั้งค่า.
   - Mandatory Interaction: Explicit checkbox *"ฉันได้อ่านและยินยอมให้ GisSino จัดเก็บและประมวลผลข้อมูลตามที่ระบุ"* (Tick to enable proceed button).
-  - Minor / Guardian confirmation: If birth year indicates age < 15, prompt: *"ผู้ปกครองของผู้ใช้นี้รับทราบและอนุญาตให้ใช้งานระบบ"*.
+  - Minor / Guardian confirmation: **[OPEN — see OPEN_QUESTIONS.md Q3]** If birth year indicates a minor (exact threshold not yet decided), prompt: *"ผู้ปกครองของผู้ใช้นี้รับทราบและอนุญาตให้ใช้งานระบบ"*. The specific age threshold (e.g., < 13, < 15, < 20) must be confirmed with reference to Thailand PDPA before implementation. This check must not be bypassed in M1.
 - **Compliance Disclaimer:** Tagged as `VERIFY` under Thailand's Personal Data Protection Act (PDPA). Does not claim formal legal certification.
 
 #### A07 — First Accounts Setup (`#setup/accounts`)
@@ -168,7 +169,7 @@ First-time registered users must complete the progressive setup sequence (A04 �
 - **Key UI Elements:**
   - Account Card Creator (pre-configured presets for quick addition):
     - *ธนาคาร (Bank):* Preset selector (SCB, KBank, BBL, KTB, TTB, etc.) from the approved [Provider Catalog](PROVIDER_CATALOG.md), optional account nickname, opening balance, currency (`THB` default, `USD` selectable).
-    - *อีวอลเล็ต (E-Wallet):* Preset selector (TrueMoney, Rabbit Line Pay, ShopeePay), opening balance.
+    - *อีวอลเล็ต (E-Wallet):* Preset selector from the [Provider Catalog](PROVIDER_CATALOG.md) — confirmed owner-supplied assets: **TrueMoney, ShopeePay, Paotang**. DeepPocket is registered with fallback display (no owner-supplied image). **"Rabbit Line Pay" is NOT confirmed in the Provider Catalog and must NOT be added without verification.** Opening balance in THB (or USD if selected).
     - *เงินสด (Cash):* "เงินสดติดกระเป๋า", opening balance.
   - Summary preview showing aggregated opening balance.
 - **Ledger Invariant:** Opening balance entries create foundational `ledger_entries` records (M2). Balances are never mutable loose numbers.
@@ -301,7 +302,7 @@ Home v2 refines the dashboard hierarchy to focus on daily actionable priorities,
 - **Tile 5A: Safe to Spend (*เงินที่ใช้ได้จริง*):**
   - *Formula:* $\text{Safe to Spend} = \sum(\text{Liquid Assets}) - \sum(\text{Unpaid Obligations Due in Current Month})$.
   - *Tap Destination:* Navigates to `#wallet` (assets overview) or `#bills`.
-  - *Edge States:* If negative, displays ฿0.00 with warning color (Crimson) and helper text *"เงินสำรองติดลบ กรุณาตรวจสอบภาระบิล"*. Never hides the negative reality.
+  - *Edge States:* **[DECIDED: Honest UI — PROJECT_GUIDE.md §4.5]** If Safe to Spend is negative, display the **actual negative amount** in Crimson (e.g., *−฿1,500*) together with helper text *"เงินสำรองติดลบ กรุณาตรวจสอบภาระบิล"*. **Never clamp to ฿0.00** — showing ฿0.00 when the true position is negative misrepresents the user's financial reality and violates the Honest UI principle.
   - *Backend Dependency:* Requires real-time aggregation across ledger accounts and obligations schedule.
 - **Tile 5B: Nearest Obligation (*ภาระใกล้ครบกำหนด*):**
   - *Design Update:* Replaces aggregate figure with the specific closest unpaid obligation.
@@ -516,3 +517,4 @@ In accordance with [VAULT_RULES.md](../governance/VAULT_RULES.md) and [AGENTS.md
 ## 9. Change Log
 
 - 2026-10-17 — Initial creation for task **GS-PLAN-005**. Established Pre-Home flow, Home v2 block specification, 10-screen feature map, critical conflict analysis, and dual-track implementation roadmap.
+- 2026-10-17 — Corrections applied: (1) auth parameters (code format, expiry, password policy) marked **[PROPOSED]**; (2) age-band boundaries and minor consent threshold marked **[OPEN/VERIFY]**; (3) E-Wallet preset list aligned to [Provider Catalog](PROVIDER_CATALOG.md) — Rabbit Line Pay removed (unverified); (4) negative Safe-to-Spend display corrected to show actual negative amount, never ฿0.00.
