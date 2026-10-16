@@ -2,7 +2,7 @@
 id: TASK-GS-UI-ACCOUNT-BOARD-001
 type: task
 level: log
-status: RUNTIME VERIFIED
+status: CLOSED
 updated: 2026-10-16
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-Responsive mock-data Account Board implemented and locally/runtime verified; owner review and final delivery synchronization remain. This is a UI preview, not an Accounts/Ledger milestone.
+Responsive mock-data Account Board implementation, local verification, documentation and Draft PR handoff are complete. Owner acceptance and merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
 
 ## Scope
 
@@ -54,5 +54,9 @@ Read [provider research](../../design/PROVIDER_CATALOG.md) and [review/test evid
 
 ## Delivery
 
-Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider checkpoint: `3f79d82`. Finish review disposition: ship for the scored mobile fixes. Fresh documenter comparison completed; incumbent system files preserved. Draft PR and remote verification follow in the final delivery record. Owner acceptance and merge remain pending.
+Source implementation commit: `9d93836`; tests checkpoint: `9eb3a0f`; provider checkpoint: `3f79d82`. Finish review disposition: ship for the scored mobile fixes. Fresh documenter comparison completed; incumbent system files preserved. [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is OPEN and DRAFT, targeting main. Remote checkpoint `eb1071e4ceda270fa07acb823f13ec5cf887db1a` verified by ls-remote and PR head before final receipt. Owner acceptance and merge remain pending.
 
+- [Final immutable receipt](../90-Receipts/20261016-185938-TASK-GS-UI-ACCOUNT-BOARD-001-FINAL.md)
+- Receipt-inclusive vault health: PASS,46 notes/46 unique IDs, all reachable within3 clicks; zero broken-link, metadata, parent-listing or reachability findings.
+- `git diff --check origin/main`: PASS after removing two documentation EOF blank lines.
+- Preview: `http://127.0.0.1:4176/#home`, loopback only. Stop the task preview with Ctrl+C in its running dev-server session. No production changes.

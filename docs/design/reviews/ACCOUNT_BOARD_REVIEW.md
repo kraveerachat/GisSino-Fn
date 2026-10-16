@@ -63,3 +63,9 @@ Semantic links/buttons, visible selection, native modal keyboard containment, Es
 ## Design documentation comparison
 
 Fresh documenter confirmed this is an extension of the incumbent visual world: navy folders preserve the existing sky/cobalt and graphite/amber shells. Final captures match the single inactive narrow tab plus selected provider shelf. DESIGN.md and its system files were preserved. Missing token frontmatter and absent `.impeccable/design.json` were identified as preexisting drift and were not repaired as a side effect. No new visual-world approval is implied.
+
+## File manifest
+
+- Created source: `src/providers.js`, `src/account-display.js`, `src/account-board.js`, `src/styles/accounts.css`; tests: `tests/account-board.test.mjs`.
+- Modified source: `index.html`, `src/app.js`, `src/blue-screens.js`, `src/fixtures.js`, `src/i18n.js`, `src/icons.js`, `src/wallet.js`.
+- Created vault records: Provider Catalog, this review, task, session and final receipt. Updated existing Home/Wallet, design tokens/specification/components/screen map/data contracts, Design Hub, decisions/history, start page/dashboard and prior vault-task current status.

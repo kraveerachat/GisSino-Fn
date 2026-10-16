@@ -31,3 +31,7 @@ Applied the note decision procedure: task/session/review are event evidence. Pro
 ## Verified checkpoints
 
 Provider registry `3f79d82`; responsive/shared-account source `9d93836`; tests `9eb3a0f`. Fresh finish reviewer scored both requested mobile fixes resolved; fresh documenter confirmed ordinary extension. Existing design sidecar/token-frontmatter drift remains unchanged. Browser regression also verifies that navigating away from account detail does not redirect later Add-dialog focus to a stale account row. Final vault health and GitHub receipt follow at closeout.
+
+## Delivery synchronization
+
+[Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is OPEN/DRAFT from the task branch to main. Remote pre-receipt checkpoint `eb1071e` matched GitHub. Source `9d93836`, tests `9eb3a0f`, research/docs `eb1071e`. [Final receipt](../90-Receipts/20261016-185938-TASK-GS-UI-ACCOUNT-BOARD-001-FINAL.md) records the handoff; owner review/merge pending. Vault-health scan excludes Markdown examples inside fenced code, preserving governance templates without treating them as live links. Production changes: NONE.

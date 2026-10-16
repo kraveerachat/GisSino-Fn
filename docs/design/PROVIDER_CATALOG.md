@@ -56,4 +56,3 @@ Identity never depends on color alone: account name, provider text, type, curren
 ## Change log
 
 - 2026-10-16 — Added researched display registry and explicit fallback/rights boundaries for [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
-
