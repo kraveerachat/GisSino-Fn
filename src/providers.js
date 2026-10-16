@@ -3,6 +3,8 @@
 const BANK_SOURCE = 'https://www.bot.or.th/th/fi-branch.html';
 const PAYMENT_SOURCE = 'https://www.bot.or.th/th/our-roles/payment-systems/payment-act-oversight/business-provider.html';
 const reviewedAt = '2026-10-16';
+// Owner-supplied local artwork. Names/bytes preserved; no official rights certification implied.
+const suppliedLogos = Object.freeze({baac:'baac.png',bbl:'bbl.png',cimb:'cimb.png',gsb:'gsb.png',kbank:'kbank.png',krungsri:'krungsri.png',ktb:'ktb.png',scb:'scb.png',ttb:'ttb.png',uob:'uob.png',truemoney:'truemoney.png',shopeepay:'shoppeepay.png',paotang:'Paotang.png'});
 const entries = [
   ['bbl','bank','ธนาคารกรุงเทพ','Bangkok Bank','#3677c8','https://www.bangkokbank.com/en'],
   ['kbank','bank','ธนาคารกสิกรไทย','Kasikornbank','#399b78','https://www.kasikornbank.com/en/personal'],
@@ -21,13 +23,15 @@ const entries = [
   ['thai-credit','bank','ธนาคารไทยเครดิต','Thai Credit Bank','#dc955a','https://www.thaicreditbank.com/'],
   ['truemoney','ewallet','ทรูมันนี่','TrueMoney','#dc9a54','https://www.truemoney.com/','บริษัท ทรู มันนี่ จำกัด'],
   ['shopeepay','ewallet','ช้อปปี้เพย์','ShopeePay','#d98566','https://shopeepay.co.th/contact-us','บริษัท ช้อปปี้เพย์ (ประเทศไทย) จำกัด'],
-  ['deeppocket','ewallet','ดีพพ็อกเก็ต','DeepPocket','#8f88c9','https://www.t2pco.com/en/t2p-deeppocket','บริษัท ทีทูพี จำกัด']
+  ['deeppocket','ewallet','ดีพพ็อกเก็ต','DeepPocket','#8f88c9','https://www.t2pco.com/en/t2p-deeppocket','บริษัท ทีทูพี จำกัด'],
+  ['paotang','ewallet','เป๋าตัง','Paotang','#43a8c6','https://paotang-auth.krungthai.com/','ธนาคารกรุงไทย']
 ];
 export const providers = Object.freeze(Object.fromEntries(entries.map(([providerId,providerType,nameTh,nameEn,primaryColor,officialWebsite,legalEntityTh]) => [providerId,Object.freeze({
   providerId,providerType,nameTh,nameEn,legalEntityTh:legalEntityTh||nameTh,
   primaryColor,safeForegroundColor:'#102136',secondaryAccent:'#dbe6f2',
-  colorStatus:'PROPOSED_UI_ACCENT',logoPath:null,logoStatus:'VERIFY',
-  officialWebsite,verificationSource:providerType==='bank'?BANK_SOURCE:PAYMENT_SOURCE,
+  colorStatus:'PROPOSED_UI_ACCENT',logoPath:suppliedLogos[providerId]?`/assets/providers/${suppliedLogos[providerId]}`:null,
+  logoStatus:suppliedLogos[providerId]?'OWNER_SUPPLIED':'VERIFY',assetSource:suppliedLogos[providerId]?'Owner-provided banks directory':null,
+  officialWebsite,verificationSource:providerId==='paotang'?officialWebsite:providerType==='bank'?BANK_SOURCE:PAYMENT_SOURCE,
   verifiedAt:reviewedAt,verificationStatus:'IDENTITY_LISTED',
   icon:providerType==='bank'?'bank':'wallet'
 })])));
