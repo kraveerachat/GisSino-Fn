@@ -3,7 +3,7 @@ id: PROJECT-OPEN-QUESTIONS
 type: guide
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -12,6 +12,10 @@ related:
   - ../design/ONBOARDING_HOME_V2_ROADMAP.md
 ---
 # Open Questions
+
+## Wallet summary decision — 2026-10-18
+
+[DECIDED for Wallet mock UI] [D32](DECISIONS.md#d32--wallet-composition-and-notched-account-cards) puts asset total at the center and obligations separately; ring percentages use the labelled assets + obligations composition basis, never net wealth. Debit money is represented only by linked bank balance; no debit fixture exists. THB/USD remain separate without FX. This closes the Wallet-specific summary choice for [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) only; the Home Q10 row below and separate unmerged Home PR #7 remain untouched.
 
 These questions come from the Project Guide, System Architecture, and the GS-PLAN-005 Onboarding/Home v2 planning roadmap. Agents must not silently choose answers.
 
@@ -50,3 +54,5 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 - 2026-10-17 — Appended Q1–Q10 planning questions covering spending leaderboards, demographics, PDPA minor consent, group models, and balance semantics for [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md).
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.
+
+- 2026-10-18 — Recorded the owner-confirmed Wallet-only summary/debit decision D32; no change to Home Q10 or production finance choices.

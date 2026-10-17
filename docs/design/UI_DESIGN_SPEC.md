@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -11,6 +11,12 @@ related:
   - SCREEN_MAP.md
 ---
 # UI design specification
+
+## Current state — Wallet v2 (2026-10-18)
+
+[Wallet](../pages/wallet/Page-Wallet.md) now adapts the owner's ring and notched cards within the existing enamel world. A ring-led overview shows assets at the center and obligations separately; category legend explicitly defines assets + obligations as its composition basis, never net wealth. Bank/E-wallet/Cash sections precede credit/debit/obligations. Cards retain provider badges, shared profile identity, amount hierarchy and native detail/bill actions. Debit references linked bank money only; no debit fixture exists. Matching income/expense mix excludes transfers and uses unavailable text when no data exists. Hidden mode removes values and proportional geometry/percentages. Shared theme/locale/sidebar/nav and profile/credit/bill/transfer/Add behavior remain. Mobile ring caps at 264px with two-column legend from 360px; shared movement-basis text excludes own transfers, liability cards omit movement captions and redundant header subtitle is removed. Layout begins stacked, then pairs ring/legend and account columns at 700px; narrow translated text must wrap without overflow. [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards), [data contract](UI_DATA_CONTRACTS.md) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) record semantics and verified runtime and source delivered; final documentation checkpoint pending. This supersedes only the former Wallet overview presentation; Home and pre-Home history below remain.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## Current state — pre-Home preview S4
 
@@ -94,3 +100,5 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.

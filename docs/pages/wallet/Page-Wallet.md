@@ -3,15 +3,25 @@ id: PAGE-wallet
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-16
+updated: 2026-10-18
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../design/SCREEN_MAP.md
   - ../../project/DECISIONS.md
-tasks: [TASK-FLOATING-ISLAND-NAVIGATION]
+tasks: [TASK-FLOATING-ISLAND-NAVIGATION, TASK-GS-UI-WALLET-V2-001]
 ---
 # Wallet
+
+## Current state — Wallet v2 (2026-10-18)
+
+Runtime-verified mock UI under [Wallet task](../../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), finish SHIP; final documentation delivery pending. [wallet.js](../../../src/wallet.js) renders the owner's ring and notched-card adaptation using [wallet-overview.js](../../../src/wallet-overview.js) and [scoped CSS](../../../src/styles/wallet.css). Assets lead in Bank → E-wallet → Cash order, followed by Credit/debit/obligations. Existing provider logos and session profile/detail/credit/bill/transfer/Add actions remain.
+
+Center assets THB 116,850 are separate from obligations THB 12,750. Composition percentages divide by assets + obligations THB 129,600 and are explicitly not net wealth. Credit is counted once; debit contributes only through linked bank money, with no debit fixture. Movement uses matching existing income/expense transactions excluding own transfers (daily 98%/2%); missing mix is unavailable. Missing/invalid balances stay unknown, safe integer cents avoid overflow, THB/USD remain separate without FX, and hidden values remove percentages and proportional ring/movement geometry. See [data contracts](../../design/UI_DATA_CONTRACTS.md) and [D32](../../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards). Home Q10 remains separate.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
+
+## Earlier presentation — retained history
 
 ## Current state
 
@@ -57,3 +67,5 @@ Supersedes the earlier unavailable Add Account description: Add now creates fict
 
 
 - 2026-10-16 — [Account Board S3](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) retains Wallet detail/profile context while replacing Home selection.
+
+- 2026-10-18 — Wallet v2 composition/notched cards supersede the earlier overview presentation; financial/profile/navigation boundaries retained. [S1](../../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md), final verification pending.

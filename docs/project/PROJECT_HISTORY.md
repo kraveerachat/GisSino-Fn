@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -59,3 +59,9 @@ This timeline is append-only.
 - 2026-10-17 — Welcome S4 finish assessment SHIP after 39 final captures, no material fixes. Source `269288fe96139950a1ba99901b3884a76a62a98d` pushed and verified at same OPEN/DRAFT PR #6, title/body updated to responsive pre-Home/signup preview. Documentation delivery checkpoint follows; owner review/merge remains pending. [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
 
 - 2026-10-17 — Welcome S4 implementation delivery CLOSED after documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local HEAD, remote task branch and existing Draft PR #6 head. Final status-only closeout follows; source `269288fe96139950a1ba99901b3884a76a62a98d`, checks472keys/52tests, browser154cases/39captures/15groups, finishSHIP and vault57notes/IDs pass. Owner review/merge pending; production invite-only unchanged, publicsignup/Google approval pending beforeM1. [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
+
+- 2026-10-18 — New [Wallet v2 task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) implements the owner-selected ring/notched-card adaptation with assets central, separately labelled obligations and linked-bank debit semantics ([D32](DECISIONS.md#d32--wallet-composition-and-notched-account-cards)). Local implementation/check milestone only; final review, new Draft PR, push/receipt reconciliation pending. Separate unmerged Home PR #7 remains untouched; no production milestone.
+
+- 2026-10-18 — [Wallet S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) runtime verification passed after narrow legend/amount corrections:490 keys, 61 tests, 28 layouts, 12 edge cases, 9 functional groups and 6 captures, errors[]/failures[]. A 29/40 Good/no P0/P1, exactly-once detector [] / 0, B found no financial bug. Final finish/new Draft PR/push/receipt remain pending; Home PR #7 unchanged at 1945a38; no production milestone.
+
+- 2026-10-18 — [Wallet S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) final finish SHIP (all 6 final captures/current code, no issue). Parent pushed source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` and created/attached [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT/main/task branch. Final documentation checkpoint/SHA reconciliation and receipt pending. Home PR #7 verified OPEN/DRAFT/unmerged at 1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9; no Home import or production milestone.

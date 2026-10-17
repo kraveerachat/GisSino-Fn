@@ -3,13 +3,21 @@ id: DESIGN-TOKENS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - COMPONENT_INVENTORY.md
 ---
 # Design tokens
+
+## Current state — Wallet v2 scoped roles (2026-10-18)
+
+[wallet.css](../../src/styles/wallet.css) scopes presentation to `.wallet-v2`: bank `#133865`, ewallet `#236fc8`, cash `#76a5d7`, liabilities `#677687`, cap `#15395f` and cap ink `#f4f8ff`. Dark roles use amber `#e5ad38`, blue `#8bb6e6`, pale slate `#becedb`, liabilities `#928475`, cap `#242323` and ink `#f3eee5`; surfaces/focus/borders/contact shadows reuse shared theme roles. These are UI categories, not official provider colors.
+
+Content caps at 1120px; ring width min(100%,264px) on phones and 340px from 700px, SVG 320×320/radius 130/stroke 26; center amount clamps 20–32px. Notched cards use 24px radius and 20px SVG shoulder,44px cap minimum,36px badges,14px names and 20px amounts (18px under 359px). From 360–699px the legend uses two columns with flexible amount/percentage rows; from 700px ring/legend and category grids gain two columns. Item press uses the shared duration/ease; reduced motion removes transition/translation. Provider artwork remains contained. [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) runtime verification passed; finish is SHIP; final docs checkpoint is pending; these roles extend the existing tokens and do not redesign Home/pre-Home.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## Current state — pre-Home preview S4
 
@@ -89,3 +97,5 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.

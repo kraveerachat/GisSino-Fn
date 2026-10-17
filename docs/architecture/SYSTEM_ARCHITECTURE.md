@@ -3,7 +3,7 @@ id: ARCH-SYSTEM
 type: architecture
 level: 2
 status: DRAFT
-updated: 2026-10-16
+updated: 2026-10-18
 up: Architecture-Hub.md
 related:
   - ../project/PROJECT_GUIDE.md
@@ -13,11 +13,17 @@ related:
 
 # GisSino_FN — 02 SYSTEM ARCHITECTURE (Agent Briefing)
 
+## Current prototype extension — Wallet v2 (2026-10-18)
+
+The buildless mock [Wallet](../pages/wallet/Page-Wallet.md) now separates presentation derivation in [wallet-overview.js](../../src/wallet-overview.js) from [wallet.js](../../src/wallet.js) and scoped CSS. It reads existing synthetic profile/accounts, card, bills and transactions without persistence, ledger posting, bank service or FX. Safe integer minor inputs/BigInt aggregation preserve cents and expose unknown on overflow/invalid/missing data; currencies stay separate. Assets are bank/ewallet/cash, obligations combine the card and deduplicated unpaid bills/installments/subscriptions. Ring denominator is assets + obligations, center shows assets with separate liabilities; debit contributes linked bank money only and has no record here. Movement ratios use matching income/expense excluding own transfers. Hidden mode omits proportional geometry as well as values. Shared profile/provider/navigation contracts remain. [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) applies to Wallet preview only; Home Q10 and all production architecture below remain separate. [Task/S1](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) records runtime verification and source delivered; final documentation checkpoint pending.
+
 > **File 2 of 2.** HOW the system is built: edge (Cloudflare), server (Docker), application, data, engines, navigation map, security, backup, testing, build order.
 > Prerequisite: read `GisSino_01_PROJECT_GUIDE.md` first (purpose, principles, scope, status tags **[DECIDED] / [PROPOSED] / [OPEN]**, and the agent working agreement in its §14 apply here too).
 > **Level of detail:** architecture and information architecture only. Screen layouts and visual design come later, in a separate step.
 
 ---
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## 1. Architecture at a glance
 
@@ -448,3 +454,5 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-17 — Added [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) pre-Home preview routing without changing production architecture or original flow history.
 
 - 2026-10-17 — Added scoped D28/S4 presentation notice; production invite-only security contract and historical invite design remain preserved pending separate public-signup/Google approval before M1.
+
+- 2026-10-18 — Added scoped Wallet v2 presentation-model architecture under [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards); no production domain or hosting change.

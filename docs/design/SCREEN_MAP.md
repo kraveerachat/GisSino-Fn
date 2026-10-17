@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,6 +11,12 @@ related:
   - ../pages/Pages-Hub.md
 ---
 # Screen map
+
+## Current state — Wallet v2 (2026-10-18)
+
+`#wallet` now leads with asset/liability composition and legend, then Bank → E-wallet → Cash → Credit/debit/obligations notched-card sections. Asset center is distinct from obligations and composition basis. Debit has no extra balance/card fixture. Account links remain `#wallet/account/<stable-id>` with session profile Edit; credit opens `#credit-card`; obligation buttons open existing bill detail; footer Add Account opens the session profile form and Transfer opens `#transfer`. Balance visibility, TH/EN, themes, Back/Forward and desktop/mobile navigation are retained. No route is added. [Wallet](../pages/wallet/Page-Wallet.md), [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) describe the local implementation and runtime verification and source delivered; final documentation checkpoint pending. This dated section supersedes the minimal Wallet overview row below; Home/pre-Home/planning history remains separate.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## Current state — pre-Home preview S4
 
@@ -37,7 +43,7 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 
 | Destination | Important subviews and preview states |
 |---|---|
-| `#wallet` | Minimal synthetic asset overview, explicit Bank/E-wallet/Cash categories, separate card liabilities, existing account detail, own-account transfer; unsupported account creation/reconcile clearly labelled |
+| `#wallet` | Ring-led asset/obligation composition and notched Bank/E-wallet/Cash then credit/debit/obligation cards; existing detail, session profiles and transfer/Add actions; debit uses linked bank money only |
 | More (native popover) | Bills and Party, contextual child highlight, close/toggle/outside/Escape/Tab-away dismissal; mutually exclusive with the Add dialog |
 | `#transfer` | Own-account child screen; zero initial amount, physical keyboard/custom touch keypad, source/destination exclusion, precision validation, unsaved review; no posting |
 | `#credit-card` | Bills child screen; original sample card, outstanding/full/minimum/date summary, six tracking sheets, in-memory reminder, sample activity; no issuer controls |
@@ -110,3 +116,5 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.

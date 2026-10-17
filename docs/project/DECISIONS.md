@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. D32 records the new Wallet preview; D29–D31 are reserved for the separate unmerged Home PR #7 and are not imported here. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -45,6 +45,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D26 | Use the owner's exact white/blue replacement at the canonical shield path | [DECIDED] for preview |
 | D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for S3 preview; control/copy details superseded by D28 |
 | D28 | Consumer copy, one Demo mode header, open-signup/Google presentation and no-data navigation | [DECIDED] for preview; production public signup/Google [OPEN] pending approval |
+| D32 | Wallet ring composition, notched cards, assets central/separate obligations and linked-bank debit semantics | [DECIDED] for Wallet mock UI |
 
 ### D23 — Responsive primary navigation
 
@@ -121,3 +122,16 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Guide](PROJECT_GUIDE.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md) and [Open Questions](OPEN_QUESTIONS.md). Planning PR #5 remains untouched at `03065adbb023aafaac15a26bca99a123f6c2fe0e`.
 
 - 2026-10-17 — Added D28 as a preview-scoped revision with explicit pending production-policy approval; prior decisions preserved.
+
+### D32 — Wallet composition and notched account cards
+
+- Date: 2026-10-18; status: DECIDED for Wallet mock UI; decided by owner through the Wallet reference request and asset/debit clarification.
+- Statement: adapt the reference ring/notched-card language to Wallet. Center shows total bank/ewallet/cash assets, with liabilities separately labelled. Ring segments use assets + obligations as an explicitly labelled composition denominator, never net wealth. Bank/E-wallet/Cash lead, then credit/debit/obligations. Debit money belongs only to its linked bank account; no debit fixture or duplicate cash is introduced.
+- Data: derive from current synthetic records, deduplicate the credit bill, separate THB/USD without FX, preserve unknown amounts/exact integer cents and overflow handling. Movement mix uses matching income/expense only, excluding own transfers; unavailable mix has no invented ratio. Hidden mode removes amounts, percentages and proportional ring/movement geometry.
+- Preserve: existing provider logos/profile detail, credit/bill/transfer/Add actions, locale/theme/sidebar/navigation. No financial persistence, bank integration, production accounting or debit entity is implemented.
+- Supersedes: prior Wallet overview presentation only. Does not adopt unmerged Home PR #7, consume reserved D29–D31 or settle Home Q10.
+- Source: [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md). Affects [Wallet](../pages/wallet/Page-Wallet.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
+
+- 2026-10-18 — Added D32 for the scoped Wallet prototype; final verification and new Draft Wallet PR pending.
+
+- 2026-10-18 — D32 Wallet implementation is runtime verified/finish SHIP; source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT. Final docs checkpoint/receipt and owner review remain separate.

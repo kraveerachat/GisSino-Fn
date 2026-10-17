@@ -3,13 +3,19 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
   - UI_DESIGN_SPEC.md
 ---
 # Component inventory
+
+## Current state — Wallet v2 (2026-10-18)
+
+[walletScreen](../../src/wallet.js) consumes the pure [walletOverview](../../src/wallet-overview.js) model and uses [Wallet CSS](../../src/styles/wallet.css), shared provider/display adapters, catalog, icons and existing actions. The ring is decorative SVG with an explicit text legend; it shows assets centrally and obligations separately. The legend defines the assets + obligations denominator and uses four category symbols/colors. Notched cards preserve provider identity/native account or credit links and bill buttons. One shared movement-basis note states that matching income/expense data excludes own transfers. Liability cards omit movement captions. Movement label/bar appears only with matching valid income/expense data; hidden mode omits percentages/arcs/bar widths. Bank/E-wallet/Cash precede credit/debit/obligations; debit refers only to linked bank money. Add Account and Transfer remain existing controls, with profile editing in canonical detail. No charting/component/state dependency is added. See [Wallet](../pages/wallet/Page-Wallet.md), [data contract](UI_DATA_CONTRACTS.md) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md); runtime verified; final finish SHIP; final documentation delivery pending.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## Current state — pre-Home preview S4
 
@@ -82,3 +88,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
