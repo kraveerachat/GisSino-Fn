@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WALLET-V2-001-S1
 type: session
 level: log
-status: RUNTIME VERIFIED
+status: CLOSED
 updated: 2026-10-18
 up: ../10-Tasks/TASK-GS-UI-WALLET-V2-001.md
 related:
@@ -14,7 +14,7 @@ related:
 
 ## Current state and authority
 
-RUNTIME VERIFIED / source delivered; documentation checkpoint pending. Owner requested the reference-ring/notched-card adaptation for Wallet and confirmed assets in the center, separate liabilities, and debit money represented only by its linked bank account. Parent verified branch `task/gs-ui-wallet-v2` starts from main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Parent committed/pushed source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` (the 6 runtime/test files below) and created/attached new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT and MERGEABLE, base main, head `task/gs-ui-wallet-v2`. Final documentation checkpoint/SHA reconciliation remains pending. No receipt exists yet. Parent owns source, verification, Git/PR actions and delivery; documenter writes docs only. Parent verified separate Home PR #7 remains OPEN/DRAFT/unmerged, unchanged at `1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9`; all other worktrees are untouched; D29–D31 are reserved for Home, so Wallet uses [D32](../../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards).
+CLOSED for implementation delivery; owner review/merge pending. Owner requested the reference-ring/notched-card adaptation for Wallet and confirmed assets in the center, separate liabilities, and debit money represented only by its linked bank account. Parent verified branch `task/gs-ui-wallet-v2` starts from main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Parent committed/pushed source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` (the 6 runtime/test files below) and created/attached new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT and MERGEABLE, base main, head `task/gs-ui-wallet-v2`. Documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 matched local HEAD, remote task branch and PR #8 head. The [final receipt](../90-Receipts/20261018-043759-TASK-GS-UI-WALLET-V2-001-FINAL.md) records that verified checkpoint; the closing status/receipt commit follows. Parent owns source, verification, Git/PR actions and delivery; documenter writes docs only. Parent verified separate Home PR #7 remains OPEN/DRAFT/unmerged, unchanged at `1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9`; all other worktrees are untouched; D29–D31 are reserved for Home, so Wallet uses [D32](../../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards).
 
 ## Plan and work performed
 
@@ -42,7 +42,7 @@ Documentation paths (15): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARCHIT
 | Whitespace | Documenter full `git diff --check`, including corrected index EOF | PASS |
 | Vault | Baseline65 notes/IDs → current67; max 3 clicks, no new issue;3 inherited issues unchanged | PASS within scope |
 | Source / Draft PR | Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` committed/pushed; new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) created/attached, OPEN/DRAFT/main/task branch | Source delivered |
-| Final docs / receipt | Final documentation checkpoint, exact local/remote/PR synchronization and receipt are parent-owned | PENDING |
+| Final docs / receipt | Documentation 15e4f3225b21540eec41c59a3078934bf14a5f09 verified at local/remote/PR head; one immutable receipt linked above | CLOSED for implementation delivery |
 
 Initial320px intrinsic legend overflow was fixed with a minmax(0,1fr) composition and flexible legend amount widths. Review changes cap the mobile ring at 264px, use a two-column legend from 360–699px, add one shared movement-basis/excluding-transfers note, omit unavailable movement captions on liabilities and raise account metadata to12px. A later material correction kept the phone legend amount112,850 intact by removing the amount-width cap within the two-column layout and using a flexible row; the redundant Wallet heading subtitle was removed. The same final suite was rerun after these changes and passed.
 
@@ -56,8 +56,14 @@ Documenter health check found no new frontmatter/link/ID/reachability errors (ST
 
 ## Safety, remaining work and handoff
 
-DOCS_WRITE only; documenter made no source/test/asset/Git/PR edits. No financial persistence/record mutation, FX request, credentials, external service, infrastructure/AEGIS or production action. Root product/design and other task/receipt history remain outside this change. Runtime/correction verification is complete. Final finish is SHIP after inspection of all 6 final captures/current code, no issues. Parent creates/pushes the final documentation checkpoint, verifies exact local/remote/PR SHAs for existing Draft PR #8, then creates one immutable receipt. No receipt is created at this checkpoint. Owner review/merge is separate.
+DOCS_WRITE only; documenter made no source/test/asset/Git/PR edits. No financial persistence/record mutation, FX request, credentials, external service, infrastructure/AEGIS or production action. Root product/design and other task/receipt history remain outside this change. Runtime/correction verification is complete. Final finish is SHIP after inspection of all 6 final captures/current code, no issues. Parent pushed documentation 15e4f3225b21540eec41c59a3078934bf14a5f09, verified local/remote/PR equality and wrote one immutable receipt. Final status/receipt commit follows; owner review/merge is separate.
 
 The critique helper persisted one ignored initial 29/40 snapshot at `.impeccable/critique/2026-10-17T21-34-25Z__src-wallet-js.md`; trend has one initial entry, no rescore. Temporary report was removed and no extra ignore entry was added. Overlay remained CSP-blocked. Final finish SHIP did not require additional QA; the verified final suite remains28 layouts/12 edge cases/9 groups/6 captures. No documenter Git/PR/receipt action.
 
-Parent also captured supplemental `artifacts/wallet-v2/final-phone-accounts.png` for account-card inspection; this does not change the six final matrix captures. PR #8 is verified OPEN/DRAFT and MERGEABLE at source SHA `eac4d7193fd6d2a261d8e7286c63c819806f2f60`; final documentation checkpoint and receipt remain pending.
+Parent also captured supplemental `artifacts/wallet-v2/final-phone-accounts.png` for account-card inspection; this does not change the six final matrix captures. PR #8 is verified OPEN/DRAFT and MERGEABLE at source SHA `eac4d7193fd6d2a261d8e7286c63c819806f2f60`; documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 is verified, and the linked receipt closes implementation delivery.
+
+## Final closeout
+
+Documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 was verified equal at local HEAD, remote task branch and PR #8 before the receipt was written. The task/S1 are CLOSED for implementation delivery, with one [immutable receipt](../90-Receipts/20261018-043759-TASK-GS-UI-WALLET-V2-001-FINAL.md). Final documentation manifest totals sixteen files including that receipt. A status/receipt commit follows, then final remote/PR synchronization is checked; owner acceptance/merge remains pending.
+
+Final parent vault check after adding the receipt: 68 notes/68 unique IDs, maximum three clicks, exactly the same three inherited issues and no new errors. Full whitespace check passed. No runtime source changed after the verified source checkpoint.

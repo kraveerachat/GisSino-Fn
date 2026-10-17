@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WALLET-V2-001
 type: task
 level: log
-status: RUNTIME VERIFIED
+status: CLOSED
 updated: 2026-10-18
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -21,7 +21,7 @@ pr: https://github.com/kraveerachat/GisSino-Fn/pull/8
 
 ## Current state
 
-RUNTIME VERIFIED / source delivered; documentation checkpoint pending. New Wallet task on `task/gs-ui-wallet-v2`, based on `main` at `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Source checkpoint `eac4d7193fd6d2a261d8e7286c63c819806f2f60` was committed/pushed by the parent into new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT and MERGEABLE, base main, head `task/gs-ui-wallet-v2`. Final finish is SHIP. Documentation checkpoint and final receipt remain pending. [S1](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) records actual evidence and remaining gates. Parent owns commits, push, existing Draft PR #8 and final reconciliation. Separate unmerged Home PR #7 remains unchanged at `1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9`.
+CLOSED for implementation delivery; owner review/merge pending. New Wallet task on `task/gs-ui-wallet-v2`, based on `main` at `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Source checkpoint `eac4d7193fd6d2a261d8e7286c63c819806f2f60` was committed/pushed by the parent into new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT and MERGEABLE, base main, head `task/gs-ui-wallet-v2`. Final finish is SHIP. Documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 matched local HEAD, remote task branch and PR #8 head. The [immutable receipt](../90-Receipts/20261018-043759-TASK-GS-UI-WALLET-V2-001-FINAL.md) records that verified state; a final status/receipt commit follows. [S1](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) records actual evidence and remaining gates. Parent owns commits, push, existing Draft PR #8 and final reconciliation. Separate unmerged Home PR #7 remains unchanged at `1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9`.
 
 ## Objective and authority
 
@@ -39,7 +39,7 @@ Out of scope: Home PR #7/importing its changes, old task/session notes or immuta
 - [x] 2. Implement the approved Wallet composition and card hierarchy with assets separate from obligations.
 - [x] 3. Verify integer amounts, credit-bill deduplication, unknown balances, THB/USD separation, no debit duplication, hidden geometry and preserved actions.
 - [x] 4. Browser verification, A/B corrections, exactly-once detector and final finish SHIP.
-- [ ] 5. Reconcile living docs and vault links, commit/push, create one new Draft Wallet PR, verify local/remote/PR head, then create one final immutable receipt.
+- [x] 5. Reconcile living docs and vault links, commit/push, create one new Draft Wallet PR, verify local/remote/PR head, then create one final immutable receipt.
 
 ## Financial and interaction contract
 
@@ -51,7 +51,7 @@ Amounts use safe integer minor units, BigInt aggregation/formatting and unknown 
 
 | Session | Goal | State | Source / docs checkpoint |
 |---|---|---|---|
-| [S1](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) | Wallet implementation, review and documentation | RUNTIME VERIFIED | Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60`; docs PENDING |
+| [S1](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) | Wallet implementation, review and documentation | CLOSED | Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60`; docs 15e4f3225b21540eec41c59a3078934bf14a5f09 |
 
 | Gate | State | Evidence / remaining work |
 |---|---|---|
@@ -59,9 +59,9 @@ Amounts use safe integer minor units, BigInt aggregation/formatting and unknown 
 | G2 source | REMOTE_PUSHED | Six runtime/test paths at `eac4d7193fd6d2a261d8e7286c63c819806f2f60` |
 | G3 checks | PASS / RUNTIME VERIFIED | 490 keys,61/61 tests; final 28 layouts, 12 edge cases, 9 groups, 6 captures; no errors/overflow/clipping |
 | G4 independent review | PASS / SHIP | A 29/40 Good, no P0/P1; B no financial bug/5 provider fallbacks; detector [] / 0 once; final finish inspected all 6 shots/current code, no issue |
-| G5 docs/GitHub | Source REMOTE_PUSHED / Draft PR created | [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) OPEN/DRAFT; final docs checkpoint/SHA synchronization pending |
+| G5 docs/GitHub | REMOTE_PUSHED / verified | [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) OPEN/DRAFT; documentation 15e4f3225b21540eec41c59a3078934bf14a5f09 verified at local/remote/PR head before closeout |
 | G6 production/external | N/A | Mock UI only; owner acceptance remains separate |
-| G7 receipt/closeout | PENDING | No receipt until verified delivery |
+| G7 receipt/closeout | CLOSED | [One immutable receipt](../90-Receipts/20261018-043759-TASK-GS-UI-WALLET-V2-001-FINAL.md); owner acceptance pending |
 
 ## Touches
 
@@ -69,7 +69,7 @@ Amounts use safe integer minor units, BigInt aggregation/formatting and unknown 
 
 ## Open decisions, limits and next action
 
-No Wallet balance-semantics decision remains open for this prototype. Home Q10 and production money/FX/ledger choices remain separate. Browser evidence is desktop Chromium emulation; physical devices, screen readers, actual zoom/cross-browser and production certification are unperformed unless later evidence says otherwise. The initial 320px intrinsic legend overflow and phone legend amount wrapping were corrected; final 28 layouts and 12 edge scenarios contain no overflow/clipped components. Apparent desktop clipping was a full-page capture artifact; live sidebar ends at 240px and Wallet begins at 280px. A scored 29/40 (Good), no P0/P1; exactly-once detector after A returned [] / exit 0. B found no financial bugs and five missing-logo fallbacks passed. Parent confirms490-key check/61 tests and final browser suite pass; final finish review is SHIP after all 6 captures/current code, no issues. Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Next: parent commits/pushes documentation, verifies local/remote/PR head, then records the final immutable receipt; owner review/merge remains pending.
+No Wallet balance-semantics decision remains open for this prototype. Home Q10 and production money/FX/ledger choices remain separate. Browser evidence is desktop Chromium emulation; physical devices, screen readers, actual zoom/cross-browser and production certification are unperformed unless later evidence says otherwise. The initial 320px intrinsic legend overflow and phone legend amount wrapping were corrected; final 28 layouts and 12 edge scenarios contain no overflow/clipped components. Apparent desktop clipping was a full-page capture artifact; live sidebar ends at 240px and Wallet begins at 280px. A scored 29/40 (Good), no P0/P1; exactly-once detector after A returned [] / exit 0. B found no financial bugs and five missing-logo fallbacks passed. Parent confirms490-key check/61 tests and final browser suite pass; final finish review is SHIP after all 6 captures/current code, no issues. Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 is pushed and verified. The linked immutable receipt closes implementation delivery; owner review/merge remains pending.
 
 ## Change log
 
@@ -78,3 +78,5 @@ No Wallet balance-semantics decision remains open for this prototype. Home Q10 a
 - 2026-10-18 — Final runtime verification passed:490 locale keys, 61 tests, 28 layouts, 12 edge cases, 9 functional groups and 6 captures with no errors/overflow/clipping. Finish and GitHub/receipt delivery remain pending; see S1.
 
 - 2026-10-18 — Finish SHIP and source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT/main/task branch. Final documentation checkpoint, SHA reconciliation and receipt pending; owner acceptance/merge separate.
+
+- 2026-10-18 — Implementation delivery CLOSED after documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 matched local/remote/PR head. One final immutable receipt added; owner review/merge remains pending. Final status/receipt commit follows the verified checkpoint.
