@@ -2,7 +2,9 @@
 export const setupSteps = Object.freeze(['profile','about','consent','accounts','notifications','install']);
 export const publicRoutes = Object.freeze(['welcome','entry','login','signup',...setupSteps.map(step=>'setup/'+step),'postcard']);
 export const isPublicRoute = route => publicRoutes.includes(route);
-export const routeTitles = Object.freeze({welcome:'welcomeTitle',entry:'entryTitle',login:'welcomeLogin',signup:'welcomeSignup','setup/profile':'profileStep','setup/about':'aboutStep','setup/consent':'consentStep','setup/accounts':'accountsStep','setup/notifications':'notificationsStep','setup/install':'installStep',postcard:'postcardTitle'});
+export const routeTitles = Object.freeze({welcome:'welcomeTitle',entry:'entryTitle',login:'welcomeLogin',signup:'createAccountTitle','setup/profile':'profileStep','setup/about':'aboutStep','setup/consent':'consentStep','setup/accounts':'accountsStep','setup/notifications':'notificationsStep','setup/install':'installStep',postcard:'postcardTitle'});
+// Demo navigation only: this is not a production authentication contract.
+export const credentialDemoTarget = kind => kind==='login'?'home':kind==='signup'?'setup/profile':null;
 export function createPreviewFlow() {
   return {displayName:'',nickname:'',avatar:'shield',birthYear:'',gender:'unspecified',consentDemo:false,accountType:'bank',providerId:'kbank',currency:'THB',inApp:false,push:false,emailNotice:false,installPlatform:'ios'};
 }
@@ -28,12 +30,6 @@ export function approximateAge(year,currentYear=new Date().getFullYear()) {
 }
 export function validatePreviewFields(kind,values,currentYear=new Date().getFullYear()) {
   const errors={};
-  if(kind==='login'||kind==='signup'){
-    if(kind==='signup'&&!String(values.invite||'').trim())errors.invite='inviteRequired';
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(values.email||'').trim()))errors.email='emailFormat';
-    if(!values.password)errors.password='passwordRequired';
-    if(kind==='signup'&&values.confirm!==values.password)errors.confirm='passwordMismatch';
-  }
   if(kind==='about'&&values.birthYear&&approximateAge(values.birthYear,currentYear)===null)errors.birthYear='yearFormat';
   return errors;
 }
@@ -46,13 +42,14 @@ export function mountPreviewFlow(root,flow,t,rerender) {
     input.setAttribute('aria-invalid',key?'true':'false');
     message.textContent=key?t(key):'';message.hidden=!key;
   };
-  const credentialValues=form=>Object.fromEntries(['invite','email','password','confirm'].map(name=>[name,form.elements.namedItem(name)?.value||'']));
+  const continueDemo=form=>{
+    const destination=credentialDemoTarget(form?.dataset.previewForm);
+    if(!destination)return false;
+    form.querySelectorAll('[data-credential]').forEach(input=>input.value='');
+    location.hash=destination;
+    return true;
+  };
   surface.addEventListener('input',event=>{
-    const credentialForm=event.target.closest('[data-preview-form]');
-    if(credentialForm&&event.target.matches('[data-credential]')&&event.target.getAttribute('aria-invalid')==='true'){
-      const errors=validatePreviewFields(credentialForm.dataset.previewForm,credentialValues(credentialForm));
-      if(!errors[event.target.name])fieldError(credentialForm,event.target.name,null);
-    }
     const key=event.target.dataset.previewField;
     if(!key)return;
     updatePreviewValue(flow,key,event.target.type==='checkbox'?event.target.checked:event.target.value);
@@ -75,24 +72,19 @@ export function mountPreviewFlow(root,flow,t,rerender) {
       if(!input)return;
       const visible=input.type==='password';input.type=visible?'text':'password';
       button.setAttribute('aria-pressed',String(visible));button.setAttribute('aria-label',t(visible?'pvHidePassword':'pvShowPassword'));
+    }else if(button.dataset.previewAction==='google'){
+      continueDemo(button.closest('[data-preview-form]'));
     }else if(button.dataset.previewAction==='platform'){
       updatePreviewValue(flow,'installPlatform',button.dataset.platform);rerender(button.id);
     }
-  });
-  surface.addEventListener('focusout',event=>{
-    const form=event.target.closest('[data-preview-form]');
-    if(!form||!event.target.matches('[data-credential]'))return;
-    const kind=form.dataset.previewForm;
-    const errors=validatePreviewFields(kind,credentialValues(form));
-    // Blur must not remove a row between pointerdown and pointerup on Submit.
-    if(event.target.value&&errors[event.target.name])fieldError(form,event.target.name,errors[event.target.name]);
   });
   surface.addEventListener('submit',event=>{
     const form=event.target.closest('[data-preview-form]');if(!form)return;
     event.preventDefault();
     const kind=form.dataset.previewForm;
-    const errors=validatePreviewFields(kind,kind==='login'||kind==='signup'?credentialValues(form):flow);
-    for(const name of ['invite','email','password','confirm','birthYear'])fieldError(form,name,errors[name]);
+    if(continueDemo(form))return;
+    const errors=validatePreviewFields(kind,flow);
+    fieldError(form,'birthYear',errors.birthYear);
     const summary=form.querySelector('[data-validation-summary]');
     if(Object.keys(errors).length){
       if(summary){summary.textContent=t('formErrors');summary.hidden=false;}
@@ -100,12 +92,6 @@ export function mountPreviewFlow(root,flow,t,rerender) {
       return;
     }
     if(summary){summary.textContent='';summary.hidden=true;}
-    if(kind==='login'){
-      form.reset();
-      const status=form.querySelector('[data-auth-status]');status.hidden=false;status.textContent=t('loginUnavailable');status.focus();
-    }else {
-      form.querySelectorAll('[data-credential]').forEach(input=>input.value='');
-      location.hash=kind==='signup'?'setup/profile':stepNavigation('setup/'+kind)?.next||'welcome';
-    }
+    location.hash=stepNavigation('setup/'+kind)?.next||'welcome';
   });
 }

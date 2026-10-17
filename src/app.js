@@ -43,6 +43,7 @@ function applyTheme() {
   document.querySelector('meta[name="theme-color"]').content = isPublicRoute(state.route)?'#f6faff':appearance === 'dark' ? '#242323' : '#94dffc';
 }
 function render(focusMain = false) {
+  app.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   accountDeck?.destroy();accountDeck=null;
   applyTheme();
   document.documentElement.lang = state.locale;

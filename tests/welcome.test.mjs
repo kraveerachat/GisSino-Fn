@@ -19,31 +19,28 @@ test('Welcome has one Get Started action to Entry and one canonical logo',()=>{
   assert.equal(html.split('src="/assets/brand/gissino-s-shield.png"').length-1,1);
   assert.match(html,/<h1[^>]*>GisSino<\/h1>/);
 });
-test('Account Entry alone exposes the separate Login and invitation signup choice',()=>{
+test('Account Entry alone exposes the separate Login and normal signup choice',()=>{
   const html=render('entry','en');assert.match(html,/href="#login"/);assert.match(html,/href="#signup"/);assert.match(html,/href="#welcome"/);
 });
-test('Every public route has one main, one logo and explicit disclosure without dashboard chrome',()=>{
+test('Every public route has one main, one logo and one compact header demo indicator without dashboard chrome',()=>{
   for(const route of publicRoutes){
     const html=render(route);
     assert.equal((html.match(/id="main"/g)||[]).length,1);
     assert.equal((html.match(/class="brand-mark"/g)||[]).length,1);
     for(const item of ['desktop-sidebar','floating-islands','data-action="add"','account-board','folder-balance'])assert.ok(!html.includes(item),route+': '+item);
-    assert.match(html,/welcome-disclosure/);
+    assert.equal((html.match(/class="demo-mode"/g)||[]).length,1);assert.match(html,/<header[^>]*>[\s\S]*class="demo-mode"/);assert.match(html,/id="demo-description"/);assert.ok(!html.includes('welcome-disclosure'));
   }
 });
-test('Login form does not authenticate and uses a separately labelled demo Home link',()=>{
-  const html=render('login','en');
-  assert.match(html,/name="email"/);assert.match(html,/name="password"/);assert.match(html,/data-preview-form="login"/);
-  assert.match(html,/Explore Home \(demo mode\)/);assert.match(html,/href="#home"/);
-  assert.match(html,/disabled aria-describedby="auth-boundary"/);
-  assert.ok(!html.includes('action="/'));assert.ok(!html.includes('authenticated'));
+test('Login presents normal fields, Google and one credential action without real authentication',()=>{
+ const html=render('login','en');for(const field of ['email','password'])assert.ok(html.includes('name="'+field+'"'));
+ assert.match(html,/data-preview-form="login"/);assert.match(html,/Continue with Google/);assert.match(html,/data-preview-action="google"/);
+ assert.match(html,/Forgot password\?/);assert.match(html,/disabled aria-describedby="demo-description"/);
+ assert.ok(!html.includes('href="#home"'));assert.ok(!html.includes('data-auth-status'));assert.ok(!html.includes('action="/'));
 });
-test('Signup offers UI validation and explicit preview continuation without claiming invite verification',()=>{
-  const html=render('signup','en');
-  for(const field of ['invite','email','password','confirm'])assert.ok(html.includes('name="'+field+'"'));
-  assert.match(html,/No real invitation or expiry is verified/);
-  assert.match(html,/Continue in preview mode/);assert.match(html,/href="#setup\/profile"/);
-  assert.ok(!html.includes('minlength='));assert.ok(!html.includes('pattern='));
+test('Signup has no invitation, normal signup presentation and Google without required credentials',()=>{
+ const html=render('signup','en');for(const field of ['email','password','confirm'])assert.ok(html.includes('name="'+field+'"'));
+ assert.match(html,/Create your GisSino account/);assert.match(html,/Sign up with Google/);
+ for(const forbidden of ['name="invite"','invitation','required','minlength=','pattern=','skipCredentialPreview'])assert.ok(!html.includes(forbidden),forbidden);
 });
 test('Profile and About You remain separate and model values are escaped in output',()=>{
   const flow=createPreviewFlow();flow.nickname='<img src=x onerror=alert(1)>';
@@ -52,11 +49,14 @@ test('Profile and About You remain separate and model values are escaped in outp
   assert.ok(!render('setup/about').includes('name="nickname"'));
   assert.ok(!render('postcard','en',flow).includes('<img src=x'));
 });
-test('Consent, notifications and postcard describe only local preview states',()=>{
-  assert.match(render('setup/consent','en'),/no legal effect/);
-  assert.match(render('setup/notifications','en'),/No browser permission/);
-  assert.match(render('postcard','en'),/No registration has been saved/);
-  assert.match(render('postcard','en'),/href="#home"/);
+test('Setup uses natural copy, one header Back and one primary action; Postcard has one Home action',()=>{
+ for(const locale of ['th','en'])for(const route of publicRoutes){
+ const html=render(route,locale);
+ for(const text of ['welcome-disclosure','ไม่มีผลทางกฎหมาย','ข้อมูลสมมติเท่านั้น','No registration has been saved','No browser permission','data-auth-status'])assert.ok(!html.includes(text),route+text);
+ if(route!=='welcome')assert.equal((html.match(/class="flow-back"/g)||[]).length,1);
+ if(route.startsWith('setup/')||route==='postcard')assert.equal((html.match(/class="welcome-cta /g)||[]).length,1);
+ }
+ assert.match(render('postcard','en'),/href="#home"/);
 });
 test('Shared locale and complete catalogs render every step in both languages',()=>{
   for(const locale of ['th','en'])for(const route of publicRoutes){

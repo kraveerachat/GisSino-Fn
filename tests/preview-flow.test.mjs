@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createPreviewFlow,updatePreviewValue,stepNavigation,setupSteps,validatePreviewFields,approximateAge } from '../src/preview-flow.js';
+import { createPreviewFlow,updatePreviewValue,stepNavigation,setupSteps,validatePreviewFields,approximateAge,credentialDemoTarget } from '../src/preview-flow.js';
 
 test('Preview memory rejects credentials, auth identities and legal/audit state',()=>{
   const flow=createPreviewFlow(),before={...flow};
@@ -13,11 +13,10 @@ test('New preview visits start fresh and never share mutable preferences',()=>{
   const first=createPreviewFlow();updatePreviewValue(first,'nickname','Guest');updatePreviewValue(first,'push',true);
   const next=createPreviewFlow();assert.equal(next.nickname,'');assert.equal(next.push,false);
 });
-test('UI-only credential validation checks syntax and matching without returning a session or invite verdict',()=>{
-  assert.deepEqual(validatePreviewFields('signup',{invite:'sample',email:'person@example.com',password:'x',confirm:'x'}),{});
-  assert.deepEqual(validatePreviewFields('login',{email:'person@example.com',password:'anything'}),{});
-  assert.equal(validatePreviewFields('signup',{invite:'',email:'bad',password:'x',confirm:'y'}).confirm,'passwordMismatch');
-  assert.equal(validatePreviewFields('signup',{invite:'',email:'bad',password:'x',confirm:'y'}).invite,'inviteRequired');
+test('Credential demo routes accept empty navigation without validating or retaining credentials',()=>{
+ for(const kind of ['login','signup'])assert.deepEqual(validatePreviewFields(kind,{}),{});
+ assert.equal(credentialDemoTarget('login'),'home');assert.equal(credentialDemoTarget('signup'),'setup/profile');
+ for(const kind of ['about','__proto__','constructor',''])assert.equal(credentialDemoTarget(kind),null);
 });
 test('Six setup steps expose predictable Previous and Next links ending at Postcard',()=>{
   assert.equal(setupSteps.length,6);

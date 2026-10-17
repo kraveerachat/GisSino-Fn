@@ -12,6 +12,8 @@
 .welcome-art { position:absolute; inset:0; z-index:-2; pointer-events:none; overflow:hidden; }
 .welcome-art img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
 .welcome-toolbar { display:flex; justify-content:space-between; align-items:center; min-height:44px; gap:16px; }
+.demo-mode { color:var(--welcome-blue-deep); background:var(--welcome-ground); padding:5px 8px; border-radius:8px; font-size:12px; line-height:1.5; white-space:nowrap; }
+.welcome-toolbar .welcome-language { margin-left:auto; }
 .welcome-language { display:flex; align-items:center; gap:8px; font-size:14px; color:var(--welcome-muted); }
 .welcome-language select { min-height:44px; min-width:76px; padding:8px; border:1px solid var(--line); border-radius:10px; color:var(--welcome-ink); background:var(--surface-raised); font:inherit; font-size:16px; cursor:pointer; }
 @media (max-width:599px) { .welcome-language>span { display:none; } }
@@ -30,9 +32,6 @@
 .welcome-screen :focus-visible { outline:3px solid var(--welcome-blue-deep); outline-offset:4px; }
 /* The static route-focus region is not a control; its descendants keep their rings. */
 .welcome-screen main:focus { outline:none; }
-.welcome-disclosure { margin-top:0; color:var(--welcome-muted); font-size:13px; line-height:1.65; text-align:center; }
-.welcome-disclosure p { margin:0; text-wrap:balance; }
-.welcome-hero .welcome-disclosure { background:var(--welcome-ground); border-radius:8px; padding:8px 12px; }
 .welcome-hero .welcome-primary { min-height:60px; font-size:18px; }
 .flow-screen::before { content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:rgb(246 250 255 / 90%); }
 .flow-back { display:inline-flex; align-items:center; gap:8px; min-height:44px; color:var(--welcome-blue-deep); text-decoration:none; font-size:14px; }
@@ -60,11 +59,14 @@
 .field-error { color:var(--danger); }
 .flow-actions { display:grid; gap:12px; margin-top:8px; }
 .flow-text-link { display:flex; align-items:center; justify-content:center; min-height:44px; padding:8px 4px; color:var(--welcome-blue-deep); text-align:center; font-size:14px; text-underline-offset:4px; }
-.flow-panel>.welcome-disclosure { margin-top:28px; padding-top:20px; border-top:1px solid var(--line); }
 .flow-message { margin:0; padding:16px; font-size:14px; line-height:1.7; color:var(--welcome-ink); background:var(--accent-well); border-radius:12px; }
 .flow-message.error { color:var(--danger); background:var(--danger-well); }
-.unavailable-actions { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-.unavailable-actions button { padding:4px 0; min-height:44px; border:0; background:none; font:inherit; font-size:14px; color:var(--welcome-muted); opacity:.65; cursor:not-allowed; text-align:start; }
+.forgot-password { display:flex; justify-content:flex-end; margin-top:-12px; }
+.forgot-password button { padding:4px 0; min-height:44px; border:0; background:none; font:inherit; font-size:14px; color:var(--welcome-muted); cursor:not-allowed; text-align:end; }
+.auth-separator { display:flex; align-items:center; gap:16px; color:var(--welcome-muted); font-size:13px; line-height:1.6; }
+.auth-separator::before,.auth-separator::after { content:""; height:1px; flex:1; background:var(--line); }
+.google-option { background:var(--surface-raised); color:var(--welcome-ink); border-color:var(--strong-line); box-shadow:none; }
+@media (max-width:359px) { .welcome-toolbar { gap:8px; } }
 .entry-question { font-size:20px; font-weight:550; line-height:1.6; margin:0 0 20px; }
 .flow-progress { margin-bottom:24px; }
 .flow-progress p { font-size:13px; line-height:1.6; color:var(--welcome-muted); margin:0 0 10px; }
