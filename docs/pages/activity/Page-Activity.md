@@ -3,13 +3,14 @@ id: PAGE-activity
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../design/SCREEN_MAP.md
   - ../../design/UI_DATA_CONTRACTS.md
-tasks: [TASK-GS-UI-BASELINE-001]
+  - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
+tasks: [TASK-GS-UI-BASELINE-001, TASK-GS-PLAN-005]
 ---
 # Activity
 
@@ -21,10 +22,11 @@ A mock October 2026 activity view in [screens.js](../../../src/screens.js), with
 
 - Show a day-grouped ledger and help the user find incomplete entries [DECIDED].
 - Own-account transfers are visible but excluded from income/expense totals [DECIDED].
+- Provide a deep-dive Summary tab for month analysis without cluttering Home [DESIGNED].
 
 ## Sections and details
 
-No Level-3 notes exist yet.
+- Planned Summary Tab (`#activity/summary`): Receives the full monthly income/expense summary, 7-day spending chart, and future category breakdown moved off Home under [ONBOARDING_HOME_V2_ROADMAP.md](../../design/ONBOARDING_HOME_V2_ROADMAP.md).
 
 ## Data and engines used
 
@@ -41,3 +43,4 @@ Production edit, void, attachment, and ownership behavior remains [OPEN].
 ## Change log
 
 - 2026-10-16 — Added from the current Activity prototype.
+- 2026-10-17 — Planned Activity Summary tab documented for [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md).

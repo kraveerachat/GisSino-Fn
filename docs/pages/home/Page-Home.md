@@ -3,13 +3,14 @@ id: PAGE-home
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../design/SCREEN_MAP.md
+  - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
   - ../../project/DECISIONS.md
-tasks: [TASK-GS-UI-BASELINE-001, TASK-BLUE-ENAMEL-REDESIGN, TASK-GS-UI-002-DESKTOP-SIDEBAR, TASK-GS-UI-ACCOUNT-BOARD-001]
+tasks: [TASK-GS-UI-BASELINE-001, TASK-BLUE-ENAMEL-REDESIGN, TASK-GS-UI-002-DESKTOP-SIDEBAR, TASK-GS-UI-ACCOUNT-BOARD-001, TASK-GS-PLAN-005]
 ---
 # Home
 
@@ -63,3 +64,17 @@ Six complete folders retain provider, name, currency, balance, reference and exp
 Vertical touch holds the dedicated 44px grip for 260ms; folder-body touch retains normal page scrolling. Horizontal touch and desktop mouse drag track continuously with requestAnimationFrame transforms on the same DOM cards, then snap with a 240ms ease-out (immediate under reduced motion). Below-threshold or cancelled drags restore the source. Arrow keys, Home/End and previous/next are bounded. Wheel input accumulates and throttles, releases at the boundary and leaves Ctrl+Wheel to the browser. Selecting an exposed card uses a whole-card overlay and never opens detail; explicit detail plus active-only double-tap/double-click open the selected ID.
 
 - 2026-10-16 — [Account Board S3](../../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) replaces tab strips and Grid.
+
+## Planned Home v2 roadmap
+
+The planned Home v2 evolution is detailed in [ONBOARDING_HOME_V2_ROADMAP.md §4](../../design/ONBOARDING_HOME_V2_ROADMAP.md#4-home-v2-specification):
+
+1. **Top-to-Bottom Structure:** (1) Header, (2) Total Balance Card, (3) Quick Actions, (4) Today Strip, (5) Safe to Spend + Nearest Obligation dual-tile, (6) Streak with Primary Party Rank, (7) My Accounts complete overlapping folders, (8) Recent Transactions, (9) One-Line Monthly Summary, (10) Compact Global Leaderboard Card.
+2. **Today Strip:** Conditional alert strip surfacing obligations due ≤ 3 days, streak at risk (> 20:00), transactions with status `needs_details`, or missing daily activity. Hidden entirely when no items qualify.
+3. **Nearest Obligation:** Upgrades aggregate commitment tile to name the specific earliest unpaid bill with days remaining.
+4. **Streak & Party Rank:** Embeds primary party rank line (e.g. `สตรีก 7 วัน · อันดับ 2 ในปาร์ตี้ครอบครัว`); omits rank gracefully if not in a party.
+5. **My Accounts Preservation:** Strictly preserves the merged **PR #4** complete overlapping folder deck and continuous touch/drag gesture architecture without modification.
+6. **One-Line Monthly Summary:** Moves full monthly summary and 7-day spending bars to the Activity Summary tab (`#activity/summary`), leaving a clean one-line navigation capsule on Home.
+7. **Compact Global Leaderboard:** DRAFT / PLANNED community motivation card with age category chips, period chips, top 3 + personal row, and educational opt-in state. Amounts hidden by default.
+
+- 2026-10-17 — Planned Home v2 layout, Today strip, nearest obligation, and compact leaderboard card documented for [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md). PR #4 Account Board folders preserved.

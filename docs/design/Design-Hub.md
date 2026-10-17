@@ -3,7 +3,7 @@ id: HUB-DESIGN
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../START_HERE.md
 related:
   - ../pages/Pages-Hub.md
@@ -18,6 +18,7 @@ Living UI specifications and historical verification/review evidence.
 | [UI Design Specification](UI_DESIGN_SPEC.md) | 2 | CURRENT | Responsive UI authority and accessibility boundaries |
 | [Design Tokens](DESIGN_TOKENS.md) | 2 | CURRENT | Color, spacing, typography, motion, and shell tokens |
 | [Screen Map](SCREEN_MAP.md) | 2 | CURRENT | Routes, actions, and preview states |
+| [Onboarding and Home v2 Roadmap](ONBOARDING_HOME_V2_ROADMAP.md) | 2 | DRAFT | Pre-Home flow, Home v2 block specification, and future feature roadmap |
 | [Component Inventory](COMPONENT_INVENTORY.md) | 2 | CURRENT | Shared rendered and interactive components |
 | [UI Data Contracts](UI_DATA_CONTRACTS.md) | 2 | CURRENT | Synthetic-data and future adapter boundaries |
 | [Blue Enamel Review](reviews/BLUE_ENAMEL_REVIEW.md) | 2 | CURRENT | Historical design and technical review |
