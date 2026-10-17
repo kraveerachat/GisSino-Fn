@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. Original D4 text below is preserved; D27 supersedes its direct Welcome choice for the preview only.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -43,7 +43,8 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D24 | Complete Account Board folders and shared provider identity | [DECIDED] for mock UI |
 | D25 | A01 art-directed light public Welcome and honest placeholders | [DECIDED] for preview |
 | D26 | Use the owner's exact white/blue replacement at the canonical shield path | [DECIDED] for preview |
-| D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for preview, 2026-10-17 |
+| D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for S3 preview; control/copy details superseded by D28 |
+| D28 | Consumer copy, one Demo mode header, open-signup/Google presentation and no-data navigation | [DECIDED] for preview; production public signup/Google [OPEN] pending approval |
 
 ### D23 — Responsive primary navigation
 
@@ -109,3 +110,14 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md), same existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Project Guide](PROJECT_GUIDE.md) and [System Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
 
 - 2026-10-17 — Recorded D27 as the dated owner revision; original D4 snapshot preserved.
+
+### D28 — Consumer copy and open signup presentation in Demo mode
+
+- Date: 2026-10-17; status: DECIDED for the non-authenticating design preview; decided by owner in “Production-Style Copy and Open Sign-up UI Revision” and compact-header Demo mode clarification.
+- Statement: all eleven pre-Home screens use concise TH/EN consumer copy and exactly one compact visible header Demo mode with an accessible explanation. Welcome keeps one Get Started; Entry offers normal Login/signup. Signup removes invitation field/copy and presents email/password/confirmation. Login/signup add Google actions with an “or” separator. Primary/Google navigate empty or typed Login → Home and signup → Profile; clear credential-node values before routing, create no authenticated identity/user/session/provider-success. Six separate setup steps and Postcard retain one primary action and one header Back. Four WebPs, exact logo, visual world and responsive compositions remain unchanged.
+- Supersedes: only D27's preview credential validation, separate Login demo action, signup skip/invitation presentation, repetitive technical copy and duplicate previous/Welcome exits. Preserve D4/D25/D26/D27, closed S1–S3, the immutable receipt and invite design/data history.
+- Production conflict: public signup and Google authentication are owner-requested proposals, PENDING separate owner confirmation and security architecture approval before M1. Canonical invite-only signup, production validation/password policy, invite model and existing M1 requirements remain in force. No public backend signup or actual OAuth is authorized or implemented by this preview decision.
+- Boundaries: credentials DOM-only and explicitly cleared; transient allowlisted setup state resets on refresh. No OAuth redirect/token, auth success/session/storage/cookie, legally recorded consent/timestamps, financial records/balances/fixture mutation, permissions or installation-success state. Existing dashboard synthetic disclosures remain.
+- Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Guide](PROJECT_GUIDE.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md) and [Open Questions](OPEN_QUESTIONS.md). Planning PR #5 remains untouched at `03065adbb023aafaac15a26bca99a123f6c2fe0e`.
+
+- 2026-10-17 — Added D28 as a preview-scoped revision with explicit pending production-policy approval; prior decisions preserved.

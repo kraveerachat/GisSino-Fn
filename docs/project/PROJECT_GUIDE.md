@@ -202,7 +202,7 @@ Later: stay-within-budget %, progress toward a personal savings goal as a **perc
 
 ## 10. Core user flow [DECIDED]
 
-> **Preview revision, 2026-10-17:** [D27](DECISIONS.md#d27--owner-requested-pre-home-preview-revision) changes the current design preview to Welcome → Get Started → Entry → Login/signup. Login has a separate explicit demo Home action; signup preview leads through Profile → About You → Privacy/Consent → First Accounts → Notifications → Install → Postcard → Home. These are transient UI demonstrations without auth, saved registration, consent records, accounts or installation. The original D4 flow and production setup text below are preserved historical product intent; D27 supersedes only the preview routing. See [Auth](../pages/auth/Page-Auth.md) and [S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md).
+> **Current preview revision, 2026-10-17:** [D28](DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) refines the D27 eleven-screen demonstration: Welcome → Get Started → Entry; Login/Google → Home; signup/Google → Profile → About You → Privacy → First Accounts → Notifications → Install → Postcard → Home, including empty-input navigation. Signup has no invitation field; one compact header Demo mode replaces repeated technical form footers. This changes preview presentation only: no authentication, user/session, OAuth, recorded consent or financial persistence. **Canonical production signup remains invite-only.** Public registration and Google production direction are PENDING separate owner confirmation and security architecture approval before M1. The original D4/production flow, invitation history and models below remain preserved. See [Auth](../pages/auth/Page-Auth.md), [Open Questions](OPEN_QUESTIONS.md) and [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
 
 ```
 Welcome ──► choose: Log in  |  Sign up (invite only)
@@ -319,3 +319,5 @@ First-time Setup: profile (name, nickname, avatar) → add first accounts with o
 - 2026-10-16 — Added vault metadata and marked the earlier navigation proposal as superseded by [D23](DECISIONS.md#d23--primary-navigation-model) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 
 - 2026-10-17 — Added the scoped [D27](DECISIONS.md#d27--owner-requested-pre-home-preview-revision) preview-flow revision while preserving original product intent.
+
+- 2026-10-17 — Added scoped D28/S4 presentation notice; production invite-only security contract and historical invite design remain preserved pending separate public-signup/Google approval before M1.

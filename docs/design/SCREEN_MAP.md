@@ -11,24 +11,24 @@ related:
 ---
 # Screen map
 
-## Current state — pre-Home preview S3
+## Current state — pre-Home preview S4
 
 | Destination | Public preview contract |
 |---|---|
-| No hash / `#welcome` | A01: one Get Started → Entry, one shield, four responsive art candidates, locale and disclosure |
-| `#entry` | A01b: separate Login/signup choice; Back to Welcome |
-| `#login` | A02: email/password UI, visibility toggle, validation; Passkey/reset disabled; submit stays here and clears valid inputs; separate demo action → Home |
-| `#signup` | A03: invitation/email/password/confirm UI validation; explicit preview continuation or no-data skip → Profile; no user or invite verification |
-| `#setup/profile` | A04: transient display name, nickname and preset avatar; Previous → Signup |
-| `#setup/about` | A05: optional AD birth year/approximate age and optional gender; no eligibility or age bands |
-| `#setup/consent` | A06: privacy/visibility/sample-data information and demo checkbox; no legal consent |
-| `#setup/accounts` | A07: shared Bank/E-Wallet/Cash provider identities/logos; THB/USD selection, no balances/save |
-| `#setup/notifications` | A08: local in-app/push/email choices; no permissions or subscriptions |
-| `#setup/install` | A09: iOS/Android/desktop guide; Continue → Postcard; no simulated installed state |
-| `#postcard` | A10: optional nickname; explicit Home preview action; no persistent completion |
-| Explicit `#home` | Existing synthetic dashboard and application shell; reachable only through labelled demo continuation or direct review URL |
+| No hash / `#welcome` | A01: one Get Started → Entry, one shield, unchanged four responsive art candidates |
+| `#entry` | A01b: conventional Login/signup choice, no invitation copy; Back → Welcome |
+| `#login` | A02: email/password, show/hide and unavailable password recovery; primary Login or Google → Home with empty or typed inputs |
+| `#signup` | A03: email/password/confirm, show/hide, no invitation field; primary signup or Google → Profile with empty or typed inputs |
+| `#setup/profile` | A04: transient display name, nickname and preset avatar; header Back → Signup |
+| `#setup/about` | A05: separate optional AD birth year/approximate age and gender; no age bands or eligibility |
+| `#setup/consent` | A06: plain privacy principles and transient checkbox; no recorded legal consent |
+| `#setup/accounts` | A07: shared Bank/E-Wallet/Cash providers/logos and THB/USD choice; no balance/save |
+| `#setup/notifications` | A08: transient notification choices; no permissions or subscriptions |
+| `#setup/install` | A09: platform installation guidance; Continue → Postcard; no simulated installed state |
+| `#postcard` | A10: optional escaped nickname and one Go to Home action; header Back → Install |
+| Explicit `#home` | Existing synthetic dashboard, unchanged sample-data disclosure and application shell |
 
-The eleven public routes render one main/one logo, light appearance, translated title/copy and no application navigation. Six setup steps provide Previous/Continue plus a direct Welcome exit; Postcard also exits to Welcome. Hash Back/Forward and safe invalid-route fallback are retained. Deep links require no fake identity. Public routing is presentation, not authorization; dashboard theme survives returning. See [Auth](../pages/auth/Page-Auth.md), [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision), [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md), [app.js](../../src/app.js) and [preview-flow.js](../../src/preview-flow.js).
+Each of the eleven public routes has exactly one compact visible header Demo mode indicator (`โหมดสาธิต`) with a screen-reader description. Forms and footers use concise consumer copy without repetitive technical warnings. Every non-Welcome route has one header Back; each wizard step and Postcard has one primary action. Native hash Back/Forward, main focus/title, locale and invalid-route fallback remain. Primary/Google actions clear existing credential-node values before navigation; they create no authentication, registration or provider-success state. Deep links need no identity. Routing is presentation, not authorization. [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 credential validation/separate demo/skip and duplicate back/exit controls only for this preview. Canonical production invite-only signup remains in force pending a separate owner/security decision before M1. See [Auth](../pages/auth/Page-Auth.md), [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), [welcome.js](../../src/welcome.js) and [preview-flow.js](../../src/preview-flow.js).
 
 ## Dashboard current state — S3
 
@@ -79,3 +79,5 @@ Home and Wallet Add now open session-only account setup; detail Edit opens its p
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
 
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.

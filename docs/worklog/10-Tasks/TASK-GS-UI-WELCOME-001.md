@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001
 type: task
 level: log
-status: CLOSED
+status: IN PROGRESS
 updated: 2026-10-17
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -10,66 +10,69 @@ related:
   - ../../design/UI_DESIGN_SPEC.md
   - ../../design/SCREEN_MAP.md
   - ../../project/DECISIONS.md
-  - ../20-Sessions/TASK-GS-UI-WELCOME-001-S3.md
+  - ../../project/OPEN_QUESTIONS.md
+  - ../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md
 ---
 # TASK-GS-UI-WELCOME-001
 
 ## Current state
 
-Reopened for owner-requested [S3](../20-Sessions/TASK-GS-UI-WELCOME-001-S3.md): responsive full-viewport Welcome with one Get Started → Entry and the complete eleven-route pre-Home design preview. Login UI never authenticates and uses a separate demo Home action. Signup preview → six setup steps → Postcard → Home is navigable with transient data only. [D27](../../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) records the dated routing/visual revision while preserving original D4/D25 history. S3 implementation delivery is CLOSED after source/docs push and verified Git/PR synchronization. Owner acceptance and merge remain pending; historical S1/S2 evidence is unchanged.
+Reopened for owner-requested [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md): consumer copy, one compact header Demo mode across eleven public screens, conventional signup without invitation UI, Google action presentation and no-data-required navigation. Login/Google → Home; signup/Google → Profile, then the existing six-step setup → Postcard → Home. One header Back and one primary action simplify each setup step/Postcard. [D28](../../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 controls/copy only for the design demonstration. Canonical invite-only production signup remains in force pending separate owner/security approval before M1. Current task/session are IN PROGRESS; final review and source/docs/push/SHA reconciliation are pending.
 
-- Existing branch: `task/gs-ui-welcome-001`; same existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6), parent-confirmed OPEN/DRAFT; parent confirms title/body updated to `feat(ui): add responsive pre-Home journey preview`; docs checkpoint d294c2f14249a0e4a31d4b1d6a102281a90d98a2 matched local HEAD, remote branch and PR head before the final status-only closeout commit.
-- Main base retained: `a028036bcea997245fd4d2536c121813d2c2dd33` (merged PR #4).
-- S3 initial source/check/test checkpoint: `a48378463c9945a85f925496db4babfb2f70f67d`; final signup recovery correction checkpoint `a5aa80ece3c1a01619795c7ca3d1276d0d7a9672` changes only preview-flow.js (+7/-1). Parent confirms source push on the existing branch; documentation checkpoint d294c2f14249a0e4a31d4b1d6a102281a90d98a2 was pushed and verified against the PR head.
-- Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) remains untouched/unmerged at `03065adbb023aafaac15a26bca99a123f6c2fe0e`; roadmap is a read-only planning reference.
-- No new PR, receipt, merge, main push, force-push, infrastructure or production action.
+- Same branch `task/gs-ui-welcome-001`; existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6), parent-reported OPEN/DRAFT. No new PR, receipt, merge, force-push, main/infrastructure or production mutation.
+- Start HEAD `0c147f2fd3d2fd72b4c1df30f570529497184b6a` is the prior S3 closeout. S4 source checkpoint `269288fe96139950a1ba99901b3884a76a62a98d` now contains seven runtime/test files; source is pushed and verified at PR #6 head 269288fe96139950a1ba99901b3884a76a62a98d.
+- Main base retained `a028036bcea997245fd4d2536c121813d2c2dd33`; planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) stays untouched at `03065adbb023aafaac15a26bca99a123f6c2fe0e`.
 
 ## Objective and authority
 
-The owner requested a complete responsive redesign and expanded navigable pre-Home preview within the existing branch/PR. Confirmed direction: full-viewport architectural art, bolder Welcome branding and calmer porcelain forms. Reuse exact four committed WebPs and S2 white/blue shield, current hash router, catalog/local font/material tokens and provider registry. Preserve Home/Account Board/Wallet behavior and production security/data boundaries. User authorizes implementation, tests, living docs and existing-branch commit/push/PR update; merge remains owner-only.
+The owner requested “Production-Style Copy and Open Sign-up UI Revision” in the same task branch/Draft PR, selecting one unobtrusive header Demo mode indication. Preserve the approved four WebPs, exact canonical shield, porcelain/cobalt visual world, responsive compositions, Thai typography, six-step wizard and existing dashboard/Wallet/Account Board. Authorized scope is preview implementation/tests/living docs and existing-branch delivery; merge remains owner-only. Production public signup/Google OAuth are proposals pending separate approval, not authorized implementation.
 
 ## Acceptance and remaining gates
 
-- [x] Read canonical governance/guide/architecture/vault/decisions/task plus unmerged planning reference without adopting unresolved proposals.
-- [x] Responsive Welcome: one canonical shield, one Get Started → Entry, correct tablet/desktop source precedence, no contain bands/stretching.
-- [x] Entry/Login/signup and six separate setup steps/Postcard/Home preview; explicit demo boundaries and direct wizard exit.
-- [x] UI validation, optional AD year/approximate age without groups/eligibility, shared providers/THB/USD without balances, guide-only installation.
-- [x] Parent checks and browser matrix executed; 52 tests and 479 locale keys pass, including rerun after signup recovery correction.
-- [x] Canonical living docs/D27 and new S3 session written; S1/S2/receipt preserved.
-- [x] Reconcile B targeted signup recovery and final finish SHIP against correction a5aa80e; no open verified issues/material fixes.
-- [x] Documenter vault health PASS: 56 notes/56 IDs, max 3 clicks, no errors; git diff --check PASS. Parent reruns after final delivery fields.
-- [x] Commit/push only the existing branch; local/remote/PR synchronized at docs checkpoint `d294c2f14249a0e4a31d4b1d6a102281a90d98a2`; title/body and OPEN/DRAFT/base/head state verified.
-- [x] Close S3 implementation delivery after verified gates and handoff; no new receipt for the same task.
+- [x] Read canonical rules/guide/architecture/decisions/Auth and latest brief; inspect existing source/catalog before refinement.
+- [x] Welcome has one Get Started; Entry normal Login/signup; signup no invitation UI; accessible Google options and separator.
+- [x] Empty/typed primary and Google Login/signup routes navigate and explicitly clear credential values; no auth/OAuth/session/success state.
+- [x] Consumer TH/EN copy, one visible/accessible header Demo mode, no repetitive technical form footers; retained dashboard synthetic disclosures.
+- [x] Six separate setup steps/Postcard, single header Back/primary action, shared providers/THB/USD and unchanged security/data boundaries.
+- [x] Parent checks pass 472 locale keys/52 tests after review fixes. Initial sandbox localhost EACCES was environmental; elevated rerun passed.
+- [x] Final browser matrix 154 cases/39 captures/15 functional groups, no errors/issues; A/B review and scoped fix batch executed.
+- [x] Parent detector invoked exactly once after A; result []/exit 0. CSP preflight blocks inline overlay; no overlay claimed.
+- [x] Targeted B detached-credential erasure recheck passed (old/new nodes empty, TH/EN motif labels verified); final matrix 154 cases/39 captures/15 groups, no errors/issues.
+- [x] Final S4 finish assessment SHIP; all 39 captures valid, no material fixes.
+- [x] Documenter vault PASS 57 notes/57 IDs/max three clicks/errors[], parent-list omissions zero, whitespace PASS; exact source/docs manifest reconciled. Parent reruns after final edits.
+- [ ] Existing-branch source/docs checkpoints pushed; local/remote/PR SHA, title/body and OPEN/DRAFT/base/head verified.
+- [ ] Close S4 implementation delivery only after remaining gates; owner acceptance/merge remains separate.
 
 ## Current behavior and safety boundary
 
-[Auth](../../pages/auth/Page-Auth.md) and [Screen Map](../../design/SCREEN_MAP.md) own all eleven public hashes. Six setup steps are Profile/About/Consent/Accounts/Notifications/Install. Valid Login clears fields and stays unavailable; signup UI continuation/no-data skip opens Profile, never a verified user. DOM-only credentials clear on routing; allowlisted selections live only in memory and reset on reload. Previous/Next, hash Back/Forward, locale, title/main focus and invalid-route fallback work. Public light appearance does not replace dashboard theme. This is presentation, not authorization.
+[Auth](../../pages/auth/Page-Auth.md), [Screen Map](../../design/SCREEN_MAP.md) and [Data Contracts](../../design/UI_DATA_CONTRACTS.md) own current routes, controls and transient allowlist. Credential fields are DOM-only. Primary/Google continuation clears them before routing; app route/locale rerender now clears them before replacing innerHTML, addressing detached-node cleanup found in review. No credentials enter the model, logs, requests, cache, storage or cookies. Setup selections reset on reload. Optional AD year/approximate age and gender adopt no exact DOB, age groups or eligibility. Existing provider identities/logos and THB/USD selection create no accounts or opening balances. Notifications/installation remain UI choices/guidance only.
 
-No session, auth cookie, storage, user record, invite acceptance, legal consent/timestamp, financial account/balance/conversion/fixture mutation, push permission, service worker, email sending or installed-success state. No saved setup/welcome timestamp. Invitation parameters, password policy, demographic age/guardian rules and production models stay OPEN. Optional birth year/gender are transient only. First Accounts reuses existing identity/logo registry without duplicating providers. Install instructions use parent-verified Apple/Chrome guidance. Assets are unchanged.
+No actual OAuth, auth identity/session/token, user, invite acceptance, legal consent/timestamp, account/balance/fixture mutation, permission request, service worker, subscription or installed/completion-success record. Canonical production invite-only contract and invite history/model remain preserved. Public signup, Google authentication and actual M1 validation/password policy are tracked in [Open Questions](../../project/OPEN_QUESTIONS.md) pending separate owner/security approval before M1.
 
 ## Verification evidence and limits
 
-Parent-executed `npm run check`: PASS 479 keys per locale. `npm test`: PASS 52/52, rerun after signup timing correction. Directly inspected local `artifacts/welcome-s3/tests.txt` and `qa.json`: 154 measurements (11 routes × 14 viewport sizes), 40 final captures, 13 passing functional groups, errors[]/issues[]. Viewports: 320×568,360×800,390×844,430×932,844×390,768×1024,820×1180,1024×1366,1024×768,1180×820,1366×1024,1280×800,1440×900,1920×1080. Tests cover routing, credentials/UI validation, transient reset, six steps, consent/permissions boundaries, retained Home/Wallet/Account Board, TH/EN, focus/history, reduced motion, overflow and correct assets.
+Parent's latest `npm run check`: PASS 472 keys per locale; `npm test`: PASS 52/52 after scoped review fixes. Initial sandbox run was 51/52 due to localhost EACCES; elevated rerun passed all tests. Documenter inspected final `artifacts/welcome-s4/qa.json`: 154 measurements across eleven routes/fourteen sizes, 39 captures, 15 passing functional groups, errors[]/issues[]. Eight primary/Google × empty/typed Login/signup paths assert detached credential-node values clear. Parent reports local GET requests only and no cookies/storage; directly viewed mobile Login/signup, desktop signup and tablet-landscape Accounts.
 
-A reviewed the initial 38 captures and scored 28/40; three priorities were corrected in one batch: main outline, direct wizard exit and installation copy. Parent's 40-capture matrix includes those fixes; documenter directly inspected eight representative final captures. B ran the detector exactly once: JSON[] saved in `detector.json`. Full B assessment reports 63 passing checks and one P2 signup recovery defect: corrected confirm-field error disappeared on blur, moving Submit about 30.09px during pointer down/up. Parent patched input-clear/blur-add-only validation timing. Targeted B recheck resolved the P2: with confirm still focused, one pointer click kept Submit y=541.390625 through down/up/click, reached `#setup/profile` and cleared prior credential nodes (`signup-recovery-correction.json`). Historical 63-pass/one-failure evidence remains in assessment-b.json; current open verified issues are P0/P1/P2/P3=0. Final finish reviewer returned **SHIP**, all five sections, material fixes None, after 40 captures plus two canonical references and the resolved correction. Overlay probe intentionally produced five CSP console refusals/four blocked requests, distinct from app console/page/request errors 0/0/0. Artifacts are ignored local evidence, not public URLs.
+A scored 32/40 with no P0/P1. Review fix batch localized avatar names (Shield/Sun/Flame/Wallet), clarified optional install/read-later guidance while retaining manual platform chooser/default iOS, and removed redundant Postcard intro in favor of a Hello greeting. B passed 44 layout checks, 22 locale/shell cases and four empty-input flows; its P3 credential erasure finding led to pre-innerHTML cleanup in app.js. Targeted B `correction.json` independently passed all old/new credential-node erasure and TH/EN motif-label checks; no open B issue. Final post-fix matrix passed 154 measurements/39 captures/15 groups with errors[]/issues[]. Final finish assessment is SHIP with all 39 captures valid and no material fixes. A's remaining manual installation chooser/default iOS is nonblocking; automatic OS detection is not claimed. Critique snapshot/trend persisted as one ignored 32/40 entry; temporary critique files were cleaned. Detector ran exactly once after A with []/exit 0; CSP blocked inline overlay preflight, so no overlay is claimed.
 
-Physical devices/iPad, screen readers, real browser zoom, cross-browser and production certification are unperformed. Fresh affected checks/captures are required after relevant source changes. Documenter vault/whitespace results are recorded in S3 after execution; parent vault rerun passed:56 notes/56 IDs,max3clicks,zero errors.
+Ignored artifacts are local evidence, not public screenshot URLs. Physical devices/iPad, screen readers, actual zoom, cross-browser and production verification remain unperformed. [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) owns remaining delivery reconciliation.
 
 ## Sessions and immutable history
 
-- [S1](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — CLOSED historical initial Welcome, source `598bff84aa53fa76341c0dfc761e07bbb7466195`, 41 tests/383 keys; S1 finish ship predates S3.
-- [S2](../20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) — CLOSED historical exact-shield follow-up, asset checkpoint `c52800ce9abaa6ff292b93aca7fb365b2094268d`.
-- [S3](../20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) — CLOSED responsive journey implementation delivery; owner review pending.
-- [Existing final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) — immutable S1 snapshot, unchanged. Same task/PR; no new receipt.
+- [S1](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — CLOSED initial Welcome; source `598bff84aa53fa76341c0dfc761e07bbb7466195`, 41 tests/383 keys.
+- [S2](../20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) — CLOSED exact-shield follow-up, `c52800ce9abaa6ff292b93aca7fb365b2094268d`.
+- [S3](../20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) — CLOSED responsive eleven-route journey; 52 tests/479 keys, targeted recovery resolved/finish SHIP, source/docs synchronization verified. Its details describe S3 only.
+- [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) — IN PROGRESS current consumer-copy/open-signup/Google presentation revision.
+- [Existing final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) — immutable S1 snapshot. No new receipt for this follow-up.
 
-## Exact S3 manifest
+## Exact S4 manifest
 
-Runtime/check/test files (8): `src/welcome.js`, `src/preview-flow.js`, `src/styles/welcome.css`, `src/app.js`, `src/i18n.js`, `scripts/check.mjs`, `tests/welcome.test.mjs`, `tests/preview-flow.test.mjs`. No asset changes. Ignored local QA scripts/captures/JSON/logs are not PR files.
+Runtime/test files (7): `src/welcome.js`, `src/preview-flow.js`, `src/app.js`, `src/i18n.js`, `src/styles/welcome.css`, `tests/welcome.test.mjs`, `tests/preview-flow.test.mjs`. No assets, financial fixtures or production files changed. Ignored local QA evidence is not a PR file.
 
-Documentation files (15): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARCHITECTURE.md`; `docs/design/COMPONENT_INVENTORY.md`; `docs/design/DESIGN_TOKENS.md`; `docs/design/SCREEN_MAP.md`; `docs/design/UI_DATA_CONTRACTS.md`; `docs/design/UI_DESIGN_SPEC.md`; `docs/pages/Pages-Hub.md`; `docs/pages/auth/Page-Auth.md`; `docs/project/DECISIONS.md`; `docs/project/PROJECT_GUIDE.md`; `docs/project/PROJECT_HISTORY.md`; `docs/worklog/00-Index/Task-Dashboard.md`; `docs/worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md`; `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md`.
+Documentation files (16): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARCHITECTURE.md`; `docs/design/COMPONENT_INVENTORY.md`; `docs/design/DESIGN_TOKENS.md`; `docs/design/SCREEN_MAP.md`; `docs/design/UI_DATA_CONTRACTS.md`; `docs/design/UI_DESIGN_SPEC.md`; `docs/pages/Pages-Hub.md`; `docs/pages/auth/Page-Auth.md`; `docs/project/DECISIONS.md`; `docs/project/OPEN_QUESTIONS.md`; `docs/project/PROJECT_GUIDE.md`; `docs/project/PROJECT_HISTORY.md`; `docs/worklog/00-Index/Task-Dashboard.md`; `docs/worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md`; `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md`.
 
 ## Touches and next action
 
-[Auth](../../pages/auth/Page-Auth.md), [Pages Hub](../../pages/Pages-Hub.md), [UI spec](../../design/UI_DESIGN_SPEC.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [Data Contracts](../../design/UI_DATA_CONTRACTS.md), [Decisions](../../project/DECISIONS.md), [Guide](../../project/PROJECT_GUIDE.md), [Architecture](../../architecture/SYSTEM_ARCHITECTURE.md), [History](../../project/PROJECT_HISTORY.md), [Start Here](../../START_HERE.md) and [Dashboard](../00-Index/Task-Dashboard.md).
+[Auth](../../pages/auth/Page-Auth.md), [Pages Hub](../../pages/Pages-Hub.md), [UI spec](../../design/UI_DESIGN_SPEC.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [Data Contracts](../../design/UI_DATA_CONTRACTS.md), [Decisions](../../project/DECISIONS.md), [Open Questions](../../project/OPEN_QUESTIONS.md), [Guide](../../project/PROJECT_GUIDE.md), [Architecture](../../architecture/SYSTEM_ARCHITECTURE.md), [History](../../project/PROJECT_HISTORY.md), [Start Here](../../START_HERE.md), [Dashboard](../00-Index/Task-Dashboard.md) and [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
 
-Source correction, independent reviews, docs checkpoint push and PR reconciliation are complete. The final status-only commit follows verified checkpoint d294c2f14249a0e4a31d4b1d6a102281a90d98a2 and is discoverable in branch history. Owner reviews the existing Draft PR and http://127.0.0.1:4178/#welcome, then decides merge separately. The preview server remains running; Ctrl+C in its dev-server session stops it. Root DESIGN.md/PRODUCT.md are preserved; S3 records pre-existing drift without an unsolicited system rewrite.
+Parent completes final finish, records final checks and source/docs checkpoints, updates existing PR #6 and verifies local/remote/PR state before closing S4 delivery. Owner reviews/merges separately. Preserve root DESIGN.md/PRODUCT.md, closed S1–S3, existing receipt and append-only history.

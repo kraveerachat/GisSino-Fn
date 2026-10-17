@@ -3,7 +3,7 @@ id: PROJECT-OPEN-QUESTIONS
 type: guide
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -28,8 +28,13 @@ These questions come from the Project Guide and System Architecture. Agents must
 | Dates | [OPEN] | Offer Buddhist-era display? |
 | CSV import | [OPEN] | Which Thai banks should be supported later? |
 | Development shell | [OPEN] | Confirm the owner’s ongoing development OS/shell; current repository work uses Windows/PowerShell. |
+| Production registration policy | [OPEN — PENDING OWNER/SECURITY APPROVAL before M1] | Owner requested public signup presentation in [D28](DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode). Decide whether to change canonical invite-only production signup; retain invite model/history and security policy until separately approved. |
+| Google production authentication | [OPEN — PENDING OWNER/SECURITY APPROVAL before M1] | Approve provider/security architecture, actual OAuth, identity/session integration and validation separately. Current Google controls only navigate the design demonstration; no OAuth or provider-success claim. |
+| M1 credential validation/password policy | [OPEN] | Define actual production validation/password requirements. Empty-input preview navigation is not production acceptance. Existing invite parameters/expiry decisions remain unresolved. |
 | Primary navigation | [DECIDED 2026-10-16] | Closed by [D23](DECISIONS.md#d23--responsive-primary-navigation). |
 
 ## Change log
 
 - 2026-10-16 — Consolidated open decisions from both owner-supplied source documents.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.

@@ -16,7 +16,7 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 
 | Page | Level | Status | Summary |
 |---|---:|---|---|
-| [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (mock data) | Eleven pre-Home preview routes, responsive art, separate Login/demo and six-step setup |
+| [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (mock data) | Eleven pre-Home Demo mode screens, consumer copy, Login/Google and signup/Google navigation, six-step setup |
 | [Home](home/Page-Home.md) | 2 | PROTOTYPE (mock data) | Dashboard, balances, recent activity, obligations, and habit summary |
 | [Wallet](wallet/Page-Wallet.md) | 2 | PROTOTYPE (mock data) | Synthetic accounts, liabilities, details, and transfer entry |
 | [Activity](activity/Page-Activity.md) | 2 | PROTOTYPE (mock data) | Searchable and filterable sample transaction history |
@@ -32,3 +32,5 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 - 2026-10-17 — Added the canonical Auth/Welcome page for [TASK-GS-UI-WELCOME-001](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
 
 - 2026-10-17 — Updated public journey inventory for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md).
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) refreshes Auth preview copy/actions; production signup policy remains unchanged.

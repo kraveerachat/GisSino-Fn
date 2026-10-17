@@ -11,26 +11,24 @@ related:
 ---
 # Component inventory
 
-## Current state — pre-Home preview S3
+## Current state — pre-Home preview S4
 
-[welcome.js](../../src/welcome.js) renders eleven public destinations through the existing router; [preview-flow.js](../../src/preview-flow.js) owns allowlisted transient values, UI validation and six-step navigation. [Auth contract](../pages/auth/Page-Auth.md) and [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) own this extension.
+[welcome.js](../../src/welcome.js) renders eleven public screens; [preview-flow.js](../../src/preview-flow.js) owns transient state and six-step navigation. [Auth](../pages/auth/Page-Auth.md), [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) own this scoped revision.
 
 | Component | Contract |
 |---|---|
-| Artwork picture | Four unchanged local WebPs; orientation/short-side source precedence; one selected image, cover within intentional region, decorative and pointer-inert |
-| Hero / compact identity | One exact S2 canonical shield per screen; live wordmark; bolder Welcome group, compact 42px form shield |
-| Public toolbar | Native Back link and existing shared TH/EN select; main route focus, no dashboard chrome |
-| Entry actions / CTA | Welcome has one Get Started anchor; Entry has separate Login/signup; cobalt primary, porcelain secondary, explicit demo Home action only on Login and Postcard |
-| Form / validation | Labelled native fields, password visibility buttons, inline described errors, alert summary, first-invalid focus; no auth success |
-| Progress / wizard actions | Six labelled bars, current-step aria state, Previous/Continue and direct Welcome exit on every setup step |
-| Profile / About | Display name/nickname, four preset SVG avatar choices; separate optional AD year with approximate age and optional gender; no uploads or age groups |
-| Privacy / notification choices | Plain privacy principles and demonstration checkbox; local notification checkboxes with capability boundary |
-| First Accounts | Existing providerOptions/resolveProvider/providerBadge and bundled logos; Bank/E-Wallet/Cash with THB/USD selection only; no balance or account save |
-| Installation guide | Local iOS/Android/desktop selection and concise instructions; guide only, no installation success or capability detection claim |
-| Postcard | Optional escaped nickname, explicit Home preview action, one reduced-motion-aware arrival; no saved setup claim |
-| Disclosure | Catalog copy on each public route, 13px/1.65; hero uses solid porcelain, forms use divided footer |
+| Artwork / identity | Four unchanged local WebPs, established cover/source precedence, exact canonical S2 shield, live wordmark and approved compositions |
+| Public toolbar | Single Back on non-Welcome routes, one compact Demo mode indicator with accessible environment explanation, shared TH/EN select |
+| Welcome / Entry | One Get Started action; Entry offers Login and normal signup without invitation wording |
+| Credential form | Labelled native email/password and signup confirmation, show/hide; disabled Login recovery; no invitation or Passkey control in this preview |
+| Credential actions | Cobalt Login/signup submit, text separator, porcelain Google button and cross-form link; both actions navigate without required inputs and clear credential-node values |
+| Progress / wizard | Six labelled bars with current-step aria state; one primary Continue per step and single header Back |
+| Profile / About | Separate name/nickname/preset avatar and optional AD year/approximate age/gender; no uploads or age groups |
+| Privacy / notifications | Plain consumer language and local choices without consent records, permissions or subscriptions |
+| First Accounts | Existing provider registry/badges/logos, Bank/E-Wallet/Cash and THB/USD; no balance or account save |
+| Installation / Postcard | Platform guidance only; optional escaped nickname, one Home action, existing reduced-motion-aware arrival |
 
-The former destination-placeholder component and Welcome CTA pair are S1/S2 history, superseded by D27.
+S3's repeated technical footer, separate Login demo action, signup skip and duplicate step-back/Welcome exits are superseded by D28. No actual auth, Google OAuth, success state or persistence is introduced.
 
 ## Dashboard current state — S3
 
@@ -82,3 +80,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
 
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
