@@ -7,6 +7,7 @@ updated: 2026-10-17
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
+  - ONBOARDING_HOME_V2_ROADMAP.md
   - ../pages/Pages-Hub.md
 ---
 # Screen map
@@ -74,6 +75,34 @@ Home and Wallet Add now open session-only account setup; detail Edit opens its p
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+## Planned screen roadmap — Onboarding, Home v2, and Community
+
+The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDING_HOME_V2_ROADMAP.md). Primary responsive navigation remains invariant under [D23](../project/DECISIONS.md#d23--responsive-primary-navigation) (Mobile 4+1, Desktop sidebar 5).
+
+| Planned Route | Destination Purpose & Key Preview Subviews | Status |
+|---|---|---|
+| `#welcome` | Public landing: S-Shield logo, brand tagline, Login action, Invite Sign-up action | DESIGNED |
+| `#login` | Returning auth: Passkey primary action, email/password fallback, rate-limit/unavailable states | DESIGNED |
+| `#signup` | Registration: 6-token invite code validation, credential creation, Passkey prompt | DESIGNED |
+| `#setup/profile` | Onboarding Step 1: Real name, display nickname, preset avatar selection | DESIGNED |
+| `#setup/about` | Onboarding Step 2: Birth year (derived age category), gender ("ไม่ระบุ"), conditional income | DESIGNED |
+| `#setup/consent` | Onboarding Step 3: Affirmative plain-Thai privacy/data/slip disclosure, minor confirmation | DESIGNED |
+| `#setup/accounts` | Onboarding Step 4: First Bank, E-Wallet, Cash presets with opening balances | DESIGNED |
+| `#setup/notifications`| Onboarding Step 5: In-app inbox, Web Push trigger, email digest toggle, streak time | DESIGNED |
+| `#setup/install` | Onboarding Step 6: Platform-specific PWA installation guidance | DESIGNED |
+| `#postcard` | Modal overlay: One-time dismissible celebratory Welcome Postcard preceding Home | DESIGNED |
+| `#home` (v2) | Enhanced layout: Today strip, Nearest Obligation, Streak with Party rank, 1-line summary, compact Leaderboard card | DESIGNED |
+| `#activity/summary` | Activity Summary tab: Relocated monthly totals, 7-day bar chart, category breakdown | DESIGNED |
+| `#leaderboard` | Full Leaderboard page: Global & My Friends tabs, age category and period filter chips | PLANNED / DRAFT |
+| `#friends` | Friends list: Search by exact name / 6-digit code, pending requests, friend management | DESIGNED |
+| `#party/create` | Group creation overlay: Create custom friend party with icon and invite picker | DESIGNED |
+| `#family/create` | Household creation overlay: Create family group with household defaults | DESIGNED |
+
+- 2026-10-17 — Planned Onboarding, Home v2, Activity Summary tab, Leaderboard, and Friends routes added for [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md).
+
+
+> This table is the PR #5 planning snapshot for future production work. The current S4 navigable UI preview is documented above; its open-signup UI does not override the production invite-only decision.
 
 
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.

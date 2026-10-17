@@ -9,10 +9,11 @@ related:
   - PROJECT_GUIDE.md
   - DECISIONS.md
   - ../architecture/SYSTEM_ARCHITECTURE.md
+  - ../design/ONBOARDING_HOME_V2_ROADMAP.md
 ---
 # Open Questions
 
-These questions come from the Project Guide and System Architecture. Agents must not silently choose answers.
+These questions come from the Project Guide, System Architecture, and the GS-PLAN-005 Onboarding/Home v2 planning roadmap. Agents must not silently choose answers.
 
 | Topic | State | Source question |
 |---|---|---|
@@ -32,9 +33,20 @@ These questions come from the Project Guide and System Architecture. Agents must
 | Google production authentication | [OPEN — PENDING OWNER/SECURITY APPROVAL before M1] | Approve provider/security architecture, actual OAuth, identity/session integration and validation separately. Current Google controls only navigate the design demonstration; no OAuth or provider-success claim. |
 | M1 credential validation/password policy | [OPEN] | Define actual production validation/password requirements. Empty-input preview navigation is not production acceptance. Existing invite parameters/expiry decisions remain unresolved. |
 | Primary navigation | [DECIDED 2026-10-16] | Closed by [D23](DECISIONS.md#d23--responsive-primary-navigation). |
+| Spending board metric (Q1) | [OPEN] | Rank absolute spending within category, or percentage of income saved/spent? Which direction ranks first? (Conflict 1) |
+| Age bands & Child board (Q2) | [OPEN] | Confirm exact age bands (Child ≤12, Youth 13–22, Working 23–59, Retired 60+), and whether Child is standalone or merged. (Conflict 2) |
+| Minimum age & Minor consent (Q3) | [OPEN] | Minimum registration age and parental consent verification mechanism under Thailand PDPA. (Conflict 2) |
+| Gender data purpose (Q4) | [OPEN] | Confirm gender is stored only, optional ("ไม่ระบุ"), and prohibited from ranking or friend recommendations. (Conflict 3) |
+| Party vs Family model (Q5) | [OPEN] | Is Family a separate entity or a party record of kind `family`? Analyst recommends single entity. (Conflict 4) |
+| Spending board opt-in (Q6) | [OPEN] | Confirm spending boards are strictly opt-in, default OFF, displaying position only. (Conflict 5) |
+| Global board audience (Q7) | [OPEN] | Confirm whether all opted-in members appear on Global board with nickname, category, and rank only. |
+| Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. |
+| DOB & Marital status (Q9) | [OPEN] | Confirm verbal mentions of exact birth date and marital status are excluded from registration requirements. (Conflict 6) |
+| Gross balance vs Net worth (Q10) | [OPEN] | Should Home hero balance display Gross Assets or Net Worth (assets minus credit card liabilities)? |
 
 ## Change log
 
 - 2026-10-16 — Consolidated open decisions from both owner-supplied source documents.
+- 2026-10-17 — Appended Q1–Q10 planning questions covering spending leaderboards, demographics, PDPA minor consent, group models, and balance semantics for [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md).
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.

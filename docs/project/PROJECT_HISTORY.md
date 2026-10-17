@@ -24,20 +24,18 @@ This timeline is append-only.
 - 2026-10-15 — Mock-data UI baseline merged to `main` in [PR #1](https://github.com/kraveerachat/GisSino-Fn/pull/1). See [TASK-GS-UI-BASELINE-001](../worklog/10-Tasks/TASK-GS-UI-BASELINE-001.md).
 - 2026-10-16 — Desktop collapsible sidebar and metallic S-Shield integration merged to `main` in [PR #2](https://github.com/kraveerachat/GisSino-Fn/pull/2). See [TASK-GS-UI-002](../worklog/10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md).
 - 2026-10-16 — Canonical `docs/` vault structure, hubs, page notes, and governance sources prepared in [Draft PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3). See [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+- 2026-10-16 — Account Board complete overlapping folder deck merged to `main` in [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). See [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
+- 2026-10-17 — Planning roadmap for Onboarding, Home v2, and future screen roadmap prepared under [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md) on branch `task/gs-plan-005-onboarding-home-v2`. Documentation-only milestone; no production mutation.
 
 ## Change log
 
 - 2026-10-16 — Created from the Project Guide, repository history, and verified PR state.
-
 - 2026-10-16 — Vault migration PR #3 verified merged; its earlier Draft timeline entry is superseded at this checkpoint.
 - 2026-10-16 — Responsive Account Board mock UI, shared provider display registry and Wallet identity delivered in [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4); owner review pending. See [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md). No production or Accounts/Ledger milestone.
-
 - 2026-10-16 — Account Board S2 owner-directed refinement delivered through the same [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4): aligned curved folders, compact mobile indicators,13 supplied logos/Paotang and session-only profile add/edit. See [S2](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md). Owner review pending; no production change.
-
-
 - 2026-10-16 — Owner-directed [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) implemented locally on the existing task branch: complete overlapping folders, vertical default, Settings-only horizontal mode and continuous native gestures replace S1/S2 Stack/Grid. Local browser evidence records 29 groups across `functional.json` and `selection-extra.json`, plus 18 responsive mode captures. Source `763db1db7802f9ea011e83016bce57a1c8bd39b3` and fresh reviewer **ship** are confirmed; S3 push remains pending in existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4); no production milestone.
-
 - 2026-10-16 — S3 implementation delivery CLOSED after existing PR#4 title/body update and branch/remote/PR head synchronization at `4235f28f79ee0eb3ef022147048717ba7265a8fc`. [Session S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) and [final receipt](../worklog/90-Receipts/20261016-214719-TASK-GS-UI-ACCOUNT-BOARD-001-S3-FINAL.md) record 34 tests,375locale keys,29browser groups and fresh reviewer **ship**. Owner review/merge remain pending; no production changes.
+- 2026-10-17 — PR #4 verified merged to `main` at `a028036`. Planning task [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md) initiated.
 
 - 2026-10-17 — Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`; supersedes earlier pending-review entries without rewriting them.
 - 2026-10-17 — [A01 Welcome](../pages/auth/Page-Auth.md) implemented and locally verified under [TASK-GS-UI-WELCOME-001](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md). [D25](DECISIONS.md#d25--a01-welcome-art-directed-public-preview) records the owner-selected four-art light porcelain extension and dated A01-only supersession of the dark-card proposal. New Draft PR/commit delivery remain pending; planning PR #5 untouched; no production milestone.

@@ -6,6 +6,10 @@ status: PROTOTYPE (mock data)
 updated: 2026-10-17
 up: ../Pages-Hub.md
 related:
+  - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
+  - ../../project/PROJECT_GUIDE.md
+  - ../../architecture/SYSTEM_ARCHITECTURE.md
+  - ../../project/OPEN_QUESTIONS.md
   - ../../design/UI_DESIGN_SPEC.md
   - ../../design/SCREEN_MAP.md
   - ../../design/UI_DATA_CONTRACTS.md
@@ -60,6 +64,59 @@ Original D4 and S1/S2 remain historical records. [D25](../../project/DECISIONS.m
 Parent-executed `npm run check`: PASS 472 keys per locale after review fixes. `npm test`: PASS 52/52 in the elevated rerun; the initial sandbox run was 51/52 because the localhost server test hit EACCES, not an application assertion failure. Documenter inspected final `artifacts/welcome-s4/qa.json`: 154 route/viewport cases, 39 captures, 15 passing functional groups, errors[]/issues[]. The eight primary/Google × empty/typed Login/signup routes include clearing detached credential-node values. Parent reports requests only to local GET assets, with no cookies/storage; visually inspected mobile Login/signup, desktop signup and tablet-landscape Accounts. A scored 32/40, no P0/P1; localized avatar labels, optional-install guidance and Postcard copy were fixed. B passed 44 layout checks, 22 locale/shell cases and four empty flows; its P3 locale detached-credential erasure fix in app.js independently passed targeted recheck (old/new credential nodes empty; TH/EN avatar labels verified), with no open B issue. Parent ran detector exactly once after A: []/exit 0; CSP blocked inline overlay preflight. Final post-fix matrix passed 154 cases/39 captures/15 groups, errors[]/issues[]; final S4 finish review is SHIP, all 39 captures valid and material fixes None. Source checkpoint `269288fe96139950a1ba99901b3884a76a62a98d` contains seven runtime/test files; source/docs were pushed; documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local/remote/PR head, with final status-only closeout following.
 
 Artifacts are ignored local evidence, not public screenshot URLs. Physical devices/iPad, screen readers, actual browser zoom, cross-browser and production verification are unperformed. [S4](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) owns precise evidence and remaining gates.
+
+## Production planning baseline from merged PR #5 (not implemented)
+
+The material below preserves the production-facing Auth and Onboarding plan merged through [GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md) and [the planning roadmap](../../design/ONBOARDING_HOME_V2_ROADMAP.md). It describes future M1+ intentions, **not the current interactive S4 preview**. In particular, the original planned Welcome dual-action layout is historical; S4 uses Get Started → Entry. Production invite-only signup remains the canonical decision until the owner approves a security-policy change. Proposed age categories, invite parameters, and minors' consent remain unresolved.
+
+### Purpose and rules
+
+- Gate access through invite-only registration [DECIDED invariant].
+- Offer modern WebAuthn Passkey login alongside email and password [DECIDED direction].
+- Welcome returning authenticated users directly to Home (`#home`).
+- Guide new registered members through a structured first-time setup wizard before displaying Home.
+- Collect minimal demographic data (birth year for age category; gender optional with "ไม่ระบุ") [PROPOSED].
+- Present a clear, affirmative privacy and consent disclosure covering financial data, demographic categorizations, and slip image storage [DECIDED].
+- Present an celebratory, dismissible Welcome Postcard exactly once upon completing onboarding [DECIDED].
+
+### Planned screens and states
+
+The onboarding flow follows the sequence detailed in [ONBOARDING_HOME_V2_ROADMAP.md §2](../../design/ONBOARDING_HOME_V2_ROADMAP.md#2-pre-home-flow-specification):
+
+1. **A01 Welcome (`#welcome`):** GisSino brand mark, S-Shield glyph, product intro, "เข้าสู่ระบบ", "สมัครสมาชิกด้วยรหัสเชิญ".
+2. **A02 Login (`#login`):** Passkey quick action, email, password, forgot password link, rate-limiting and unavailable states.
+3. **A03 Invite Sign-up (`#signup`):** Invite code verification, expiration handling, password and Passkey registration.
+4. **A04 Profile Setup (`#setup/profile`):** Real name, display nickname, preset avatar selection.
+5. **A05 About You (`#setup/about`):** Birth year (derives Child, Youth, Working Age, or Retired category); gender with "ไม่ระบุ"; income range strictly conditional on spending board rules.
+6. **A06 Privacy and Consent (`#setup/consent`):** Plain-language disclosure of collection purpose, visibility rules, slip image storage, account deletion, and affirmative consent checkbox.
+7. **A07 First Accounts (`#setup/accounts`):** Bank, E-Wallet, Cash presets with opening balances and THB/USD currency.
+8. **A08 Notification Setup (`#setup/notifications`):** In-app inbox, Web Push permission trigger, email digest toggle.
+9. **A09 Installation Guide (`#setup/install`):** Platform-specific guidance for Android, iOS Safari, and Desktop PWA installation.
+10. **A10 Welcome Postcard (`#postcard`):** Single-view dismissible celebration card proceeding to Home.
+
+### Data and engines used
+
+- Identity & Credentials: `users`, `credentials`, `passkeys`, `sessions`, `invites` (Milestone M1).
+- Demographic metadata: `birth_year`, `gender`, `consented_at`, `consent_version`, `welcome_seen_at`.
+- Ledger initial state: `accounts`, `ledger_entries` (Milestone M2).
+
+### States and edge cases
+
+- *Invalid / Expired Invite:* Informative feedback requesting a new code from the administrator.
+- *Rate Limiting:* Progressive lockout on failed login attempts.
+- *Minor Consent:* **[OPEN — OPEN_QUESTIONS.md Q3]** Parent/guardian acknowledgement path for users below a minimum age threshold. The specific threshold (e.g., < 13, < 15, < 20) has not been decided; it must be confirmed against Thailand PDPA requirements before any implementation.
+- *Session Expiry:* Graceful redirect to login with return URL preservation.
+
+### Decisions and open questions
+
+- Minimum signup age and minor consent under Thailand PDPA remain [OPEN].
+- Spending ranking metric and conditional income range collection remain [OPEN] (Conflict 1).
+- Verbal mentions of exact birth date and marital status are marked `PENDING CLARIFICATION / NOT APPROVED`.
+
+### Planning provenance
+
+- 2026-10-17 — Created as part of [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md) to define the canonical Pre-Home and Onboarding specification.
+- 2026-10-17 — Corrections: minor consent threshold changed to **[OPEN]** pending PDPA confirmation. Auth parameters (invite code format, expiry, password policy) are **[PROPOSED]**, not decided.
 
 ## Change log
 
