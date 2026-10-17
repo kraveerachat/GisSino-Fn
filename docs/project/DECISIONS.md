@@ -42,6 +42,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D23 | Responsive primary navigation described below | [DECIDED] |
 | D24 | Complete Account Board folders and shared provider identity | [DECIDED] for mock UI |
 | D25 | A01 art-directed light public Welcome and honest placeholders | [DECIDED] for preview |
+| D26 | Use the owner's exact white/blue replacement at the canonical shield path | [DECIDED] for preview |
 
 ### D23 — Responsive primary navigation
 
@@ -88,3 +89,10 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Responsive rule: desktop artwork at >=1280px; otherwise tablet requires both axes >=600px and follows orientation; mobile fallback includes short landscape. Contain/left-bottom preserves all art geometry. Public light appearance does not change dashboard theme preference.
 - Supersedes: only the **PROPOSED dark centered tablet/desktop A01 card treatment** in the [planning roadmap at verified tip](https://github.com/kraveerachat/GisSino-Fn/blob/03065adbb023aafaac15a26bca99a123f6c2fe0e/docs/design/ONBOARDING_HOME_V2_ROADMAP.md), dated supersession 2026-10-17. Preserve that history; no other auth/setup/privacy/demographic proposal is adopted. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) is untouched.
 - Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md). Affects: [Auth/Welcome](../pages/auth/Page-Auth.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md).
+
+### D26 — Owner-selected canonical shield replacement
+
+- Date: 2026-10-17; status: DECIDED; decided by owner via explicit attached-logo instruction after S1 delivery.
+- Statement: copy the owner's exact replacement PNG into `assets/brand/gissino-s-shield.png` on the Welcome task branch. Reuse the existing shared helper and favicon path; no image transformation or sizing/layout change. The primary source is left untouched.
+- Supersedes: the earlier S1 decision to retain the committed-main metallic shield and leave the primary alternate unadopted. S1 receipt remains an immutable historical snapshot. Shared dashboard branding intentionally receives the same replacement.
+- Source and evidence: [S2](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md), [brand provenance](../../assets/brand/README.md). Affects [Auth/Welcome](../pages/auth/Page-Auth.md) and [UI specification](../design/UI_DESIGN_SPEC.md). Same Draft PR #6; no change to planning PR #5.

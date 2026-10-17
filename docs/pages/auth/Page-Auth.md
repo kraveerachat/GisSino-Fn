@@ -20,7 +20,7 @@ A01 Welcome exists as the default no-hash entry and explicit `#welcome` route. `
 
 ## Purpose and rules
 
-The task retains the canonical shield committed on verified main, unchanged through the shared helper; an alternate uncommitted shield in the primary checkout remains untouched and is not adopted here.
+S1 retained the canonical shield from verified main. Superseded 2026-10-17 in [S2](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md): the owner explicitly selected the white/blue PNG already at the primary checkout's canonical path. Its exact bytes now occupy that same shared asset path. The owner source remains untouched; no logo rendering, sizing or route code changed. [Brand provenance](../../../assets/brand/README.md) records the current checksum and historical asset.
 
 The owner-approved one-screen task introduces GisSino through Light Porcelain × Premium Blue Architectural Enamel. One unmodified canonical [S-Shield](../../../assets/brand/gissino-s-shield.png), live GisSino wordmark, exact Thai catalog tagline and supporting description, two native route CTAs, shared TH/EN locale select and prototype disclosure are rendered as HTML over artwork. Login/signup actions never silently enter Home. Placeholders explain authentication is unavailable and provide Back to Welcome.
 
@@ -54,3 +54,4 @@ The parent ran `npm run check` (383 keys per locale) and `npm test` (41 passing 
 ## Change log
 
 - 2026-10-17 — Created for [TASK-GS-UI-WELCOME-001](../../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); [Session S1](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) records source/capture comparison and delivery status.
+- 2026-10-17 — Owner-selected exact replacement shield adopted at the shared path; [S2](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) records fresh logo checks and captures. Earlier S1 visual review remains a historical checkpoint.

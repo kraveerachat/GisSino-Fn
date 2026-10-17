@@ -16,11 +16,12 @@ related:
 
 ## Current state
 
-A01 responsive Welcome and honest Login/Sign-up placeholders are implemented and verified. Implementation delivery is CLOSED through [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6); owner acceptance and merge remain pending. Fresh documenter comparison finds an ordinary scoped enamel extension; root DESIGN.md and absent sidecar are preserved. Independent finish reviewer returned **ship**, with no material fixes; independent browser confirmation is clean. The [immutable final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) records the verified pre-receipt Git checkpoint; its containing closeout documentation commit follows that checkpoint. No merge or production action.
+A01 responsive Welcome and honest Login/Sign-up placeholders are implemented and verified. Implementation delivery is CLOSED through [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6); owner acceptance and merge remain pending. Latest follow-up [S2](../20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) adopts the exact owner-selected white/blue replacement shield; checks and 41 tests passed, with fresh mobile/desktop captures and shared Home logo checks. Prior S1 finish reviewer returned **ship** for the original composition; that independent review predates the asset-only S2 follow-up. The [immutable S1 final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) remains unchanged as a historical checkpoint. No merge or production action.
 
 - Branch: `task/gs-ui-welcome-001`.
 - Verified main base: `a028036bcea997245fd4d2536c121813d2c2dd33`, including merged [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4).
 - Source/assets/tests checkpoint: `598bff84aa53fa76341c0dfc761e07bbb7466195` (18 files).
+- Owner-selected logo follow-up checkpoint: `c52800ce9abaa6ff292b93aca7fb365b2094268d`; subsequent documentation commit is recorded in branch history.
 - Pushed pre-receipt documentation checkpoint: `20b5c609e622b567b6861358f936a950e33a3ed7`, verified equal to remote and PR head before receipt creation. The receipt/closeout commit follows; its identity is available from Git history.
 - New [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): verified OPEN, draft true, base main, head `task/gs-ui-welcome-001`; title `feat(ui): add responsive GisSino welcome screen`.
 - Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5): verified OPEN/DRAFT at `03065adbb023aafaac15a26bca99a123f6c2fe0e`; must remain untouched and unmerged.
@@ -53,7 +54,7 @@ No real Login, signup, Passkey, session, onboarding, credentials, storage, backe
 
 [Auth/Welcome](../../pages/auth/Page-Auth.md) owns the page contract. No hash and unsupported entry resolve to Welcome. Public light rendering preserves the earlier dashboard theme. Login/signup show only destination name, authentication-unavailable copy, Back to Welcome and prototype disclosure. No dashboard chrome or financial fixtures render publicly.
 
-[Asset README](../../../assets/welcome/README.md) records actual originals 2160×3840 / 2304×3072 / 3072×2304 / 3840×2160 and checksums; these differ from the smaller reviewed copies described in the task. WebP output: mobile 1080×1920/54846 bytes; tablet portrait 1536×2048/72940; tablet landscape 2048×1536/77260; desktop 2560×1440/92054. FFmpeg quality90 downsampling preserves aspect ratio. JSON origin sidecars provide fallback metadata rather than embedded WebP metadata. Four exact owner originals remain unchanged; no logo/art regeneration. The logo in this task remains byte-identical to committed main and uses the shared helper. A separate uncommitted alternate shield in the primary checkout was left untouched; this task does not copy or adopt that variant.
+[Asset README](../../../assets/welcome/README.md) records actual originals 2160×3840 / 2304×3072 / 3072×2304 / 3840×2160 and checksums; these differ from the smaller reviewed copies described in the task. WebP output: mobile 1080×1920/54846 bytes; tablet portrait 1536×2048/72940; tablet landscape 2048×1536/77260; desktop 2560×1440/92054. FFmpeg quality90 downsampling preserves aspect ratio. JSON origin sidecars provide fallback metadata rather than embedded WebP metadata. Four exact owner originals remain unchanged; no logo/art regeneration. Historical S1 kept the committed-main shield and left the primary alternate unadopted. Superseded by the owner's explicit S2 instruction: the primary PNG is now copied byte-for-byte to the same shared path, with no source-file modification. [Current logo provenance](../../../assets/brand/README.md) records 1254×1254,812015 bytes and SHA256; the rendering helper is unchanged.
 
 One picture selects desktop at width >=1280px, otherwise tablet at >=600px in both axes by orientation, else mobile (including 844×390). Contain/left-bottom preserves geometry; neutral bands are intentional. Content centers at portrait, uses the right region at landscape >=900px with height >=600px, and compacts to two columns on shorter landscape with document scrolling. CTAs are 56px, compact portrait 52px; all controls meet 44px. Motion 320ms/240ms and 6px entrance, 120ms button feedback; reduced motion disables it.
 
@@ -70,12 +71,13 @@ Parent receipt-inclusive vault check: PASS,54 notes/54 unique IDs,maximum3clicks
 ## Session register
 
 - [S1 — Implementation, verification and design comparison](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — CLOSED for implementation delivery.
+- [S2 — Exact owner-selected shield](../20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) — CLOSED, verified asset-only follow-up on the same branch/PR.
 
 ## Final receipt
 
 - [Final immutable delivery receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) — verified pre-receipt checkpoint, actual evidence and owner-review boundary.
 
-## Exact changed-file manifest
+## S1 exact changed-file manifest
 
 Runtime/check/test files (9): `src/welcome.js`, `src/styles/welcome.css`, `src/app.js`, `src/i18n.js`, `index.html`, `server.mjs`, `scripts/check.mjs`, `tests/welcome.test.mjs`, `tests/preview.test.mjs`.
 
@@ -84,6 +86,8 @@ Asset files (9): `assets/welcome/mobile.webp`, `assets/welcome/mobile.webp.json`
 Documentation files (15): `docs/START_HERE.md`; `docs/design/COMPONENT_INVENTORY.md`, `DESIGN_TOKENS.md`, `SCREEN_MAP.md`, `UI_DATA_CONTRACTS.md`, `UI_DESIGN_SPEC.md`; `docs/pages/Pages-Hub.md`, `docs/pages/auth/Page-Auth.md`; `docs/project/DECISIONS.md`, `PROJECT_HISTORY.md`; `docs/worklog/00-Index/Task-Dashboard.md`; `docs/worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md`, `TASK-GS-UI-WELCOME-001.md`; `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md`; `docs/worklog/90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md`. Filenames grouped after a directory share that directory. Ignored local captures/scripts are evidence only and are not part of the PR.
 
 ## Touches
+
+S2 additionally changes `assets/brand/gissino-s-shield.png`, `assets/brand/README.md` and creates `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md`; the other S2 documentation updates are already listed in the S1 manifest. No runtime JS/CSS/HTML or test files changed in S2.
 
 - [Auth/Welcome](../../pages/auth/Page-Auth.md), [Pages Hub](../../pages/Pages-Hub.md).
 - [UI specification](../../design/UI_DESIGN_SPEC.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [UI Data Contracts](../../design/UI_DATA_CONTRACTS.md).
