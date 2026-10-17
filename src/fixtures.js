@@ -28,7 +28,12 @@ export const homePreview = Object.freeze({
   nowLocal:'2026-10-18T10:00', reminderAt:'20:00', streak:7, freezes:2,
   activityDays:Object.freeze(['2026-10-18']), monthlyExpense:Object.freeze({amountMinor:1524000,currency:'THB',month:'2026-10',illustrative:true}),
   scenarios:Object.freeze(['sample','actionable','clear','shortfall','party']),
-  sampleParty:Object.freeze({synthetic:true,rank:2,nameTh:'ครอบครัวตัวอย่าง',nameEn:'Sample family'})
+  sampleParty:Object.freeze({synthetic:true,rank:2,nameTh:'ครอบครัวตัวอย่าง',nameEn:'Sample family'}),
+  habit:Object.freeze({
+    weekStart:'2026-10-12', streak:3, weeklyXP:80, rewardXP:10,
+    activeDays:Object.freeze(['2026-10-06','2026-10-08','2026-10-09','2026-10-12','2026-10-15','2026-10-16','2026-10-18']),
+    freezeDays:Object.freeze(['2026-10-17'])
+  })
 });
 export const members = [
   { id: 'you', name: 'memberYou', initials: 'GS', xp: 1240, streak: 7 },

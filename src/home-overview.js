@@ -35,19 +35,17 @@ export function deriveHomeOverview({nowLocal,assets=[],obligations=[],entries=[]
   const details=entries.filter(e=>e.needsDetails).length;
   const inactive=!activityDays.includes(clock.date)&&clock.time>=reminderAt;
   const today=[];
-  if(due.length)today.push({kind:'due',route:'bills',count:due.length,nearest:{...due[0],days:dayOrdinal(due[0].dueDate)-dayOrdinal(clock.date)}});
-  if(inactive&&streak>0)today.push({kind:'streak',action:'add',count:streak});
   if(details)today.push({kind:'details',route:'activity',count:details});
-  if(inactive)today.push({kind:'inactive',action:'add'});
-  return {clock,totals,nearest,today,streak,freezes,party:party?.synthetic===true&&Number.isSafeInteger(party.rank)&&party.rank>0?{...party}:null,monthlyExpense:monthlyExpense?.month===clock.month?monthlyExpense:null};
+  if(inactive)today.push(streak>0?{kind:'streak',action:'add',count:streak}:{kind:'inactive',action:'add'});
+  return {clock,totals,nearest,notices:due,today,streak,freezes,party:party?.synthetic===true&&Number.isSafeInteger(party.rank)&&party.rank>0?{...party}:null,monthlyExpense:monthlyExpense?.month===clock.month?monthlyExpense:null};
 }
 
 export function homeOverview(state) {
   const scenario=homePreview.scenarios.includes(state.homeScenario)?state.homeScenario:'sample';
   const obligations=bills.map(b=>({...b,paid:scenario==='clear'?true:b.paid,amountMinor:scenario==='shortfall'&&b.id==='card'?20000000:b.amountMinor}));
   return deriveHomeOverview({nowLocal:bangkokClock(state.homeNow||'')?state.homeNow:homePreview.nowLocal,assets:state.accountProfiles||accounts,obligations,
-    entries:scenario==='clear'?[]:transactions,activityDays:scenario==='clear'?[state.homeNow?.slice(0,10)||homePreview.nowLocal.slice(0,10)]:homePreview.activityDays,
-    streak:homePreview.streak,freezes:homePreview.freezes,reminderAt:homePreview.reminderAt,party:scenario==='party'?homePreview.sampleParty:null,monthlyExpense:homePreview.monthlyExpense});
+    entries:scenario==='clear'?[]:transactions,activityDays:[...homePreview.habit.activeDays,...(state.homeDemoDays||[]),...(scenario==='clear'?[state.homeNow?.slice(0,10)||homePreview.nowLocal.slice(0,10)]:[])],
+    streak:homePreview.habit.streak,freezes:homePreview.freezes,reminderAt:homePreview.reminderAt,party:scenario==='party'?homePreview.sampleParty:null,monthlyExpense:homePreview.monthlyExpense});
 }
 
 // Exact minor-unit formatting, including -1 minor unit; no floating-point money arithmetic.
@@ -65,15 +63,25 @@ export function todayStrip(model,t) {
   const row=item=>{
     const labels={due:'homeTodayDue',streak:'homeTodayStreak',details:'homeTodayDetails',inactive:'homeTodayInactive'};
     const glyphs={due:'calendar',streak:'flame',details:'activity',inactive:'plus'};
-    const detail=item.kind==='due'?`${t(item.nearest.name)} · ${dayStatus(item.nearest.days,t)}`:t('homeToday'+item.kind+'Hint');
-    return `<${item.route?'a':'button'} class="today-item" ${item.route?`href="#${item.route}"`:'type="button" data-action="add"'}>${icon(glyphs[item.kind])}<span><strong>${t(labels[item.kind],{n:item.count})}</strong><small>${detail}</small></span>${icon('chevron')}</${item.route?'a':'button'}>`;
+    return `<${item.route?'a':'button'} class="today-item" ${item.route?`href="#${item.route}"`:'type="button" data-action="add"'}>${icon(glyphs[item.kind])}<span><strong>${t(labels[item.kind],{n:item.count})}</strong></span>${icon('chevron')}</${item.route?'a':'button'}>`;
   };
   return `<section id="today-strip" class="today-strip" aria-labelledby="today-title"><div class="today-heading"><h2 id="today-title">${t('homeTodayTitle')}</h2><span>${t('homePriorityCount',{n:model.today.length})}</span></div><div class="today-items">${model.today.slice(0,2).map(row).join('')}</div>${model.today.length>2?`<details class="today-more"><summary>${t('homeMorePriorities',{n:model.today.length-2})}${icon('down')}</summary><div class="today-items">${model.today.slice(2).map(row).join('')}</div></details>`:''}</section>`;
 }
 export function homeDecisions(model,state,t) {
   const totals=model.totals.length?model.totals:[{currency:'THB',available:false,safeMinor:null}];
-  const b=model.nearest;
-  return `<div class="home-decisions"><a class="home-safe home-decision" href="#wallet"><h2>${t('blueSafe')}</h2>${totals.map(total=>`<div class="safe-currency ${total.available&&total.safeMinor<0?'has-shortfall':''}"><strong>${total.available?showMoney(total.safeMinor,total.currency,state,t):t('notRecorded')}</strong><span>${total.available&&total.safeMinor<0?t('homeShortfall'):t('homeAfterBills',{currency:total.currency})}</span></div>`).join('')}<p>${t('homeSafeFormula')}</p>${icon('chevron')}</a><a class="home-obligation home-decision" href="#bills"><h2>${t('homeNearest')}</h2>${b?`<p class="nearest-name">${t(b.name)}</p><strong>${showMoney(b.amountMinor,b.currency,state,t)}</strong><p class="nearest-date"><time datetime="${b.dueDate}">${dateLabel(b.dueDate,state.locale)}</time><span class="${b.days<0?'has-shortfall':''}">${dayStatus(b.days,t)}</span></p>`:`<p class="nearest-empty">${icon('check')}${t('homeNoObligation')}</p>`}${icon('chevron')}</a></div>`;
+  return `<a class="home-safe" href="#wallet"><span><strong>${t('blueSafe')}</strong><small>${t('homeSafeCompact')}</small></span><span class="safe-values">${totals.map(total=>`<span class="safe-currency ${total.available&&total.safeMinor<0?'has-shortfall':''}"><strong>${total.available?showMoney(total.safeMinor,total.currency,state,t):t('notRecorded')}</strong><small>${total.available&&total.safeMinor<0?t('homeShortfall'):total.currency}</small></span>`).join('')}</span>${icon('chevron')}</a>`;
+}
+export function dueNotices(model) {
+  const seen=new Set();
+  return model.notices.filter(item=>{
+    const key=JSON.stringify([item.name,item.dueDate,item.currency,item.amountMinor]);
+    if(seen.has(key))return false;
+    seen.add(key);return true;
+  });
+}
+export function notificationPreview(model,state,t) {
+  const notices=dueNotices(model);
+  return `<p class="sheet-disclaimer">${t('homeNoticePreview')}</p>${notices.length?`<ul class="home-notices">${notices.map(b=>`<li><a href="#bills">${icon(b.icon||'calendar')}<span><strong>${t(b.name)}</strong><time datetime="${b.dueDate}">${dateLabel(b.dueDate,state.locale)}</time><small class="${b.dueDate<model.clock.date?'has-shortfall':''}">${dayStatus(dayOrdinal(b.dueDate)-dayOrdinal(model.clock.date),t)}</small></span>${icon('chevron')}</a></li>`).join('')}</ul>`:`<div class="empty-state sheet-empty">${icon('bell')}<h3>${t('homeNoObligation')}</h3><p>${t('homeNoticesEmpty')}</p></div>`}`;
 }
 export function homeStreak(model,state,t) {
   return `<a class="streak-strip home-streak enamel-list" href="#party"><span class="mini-plate">${icon('flame')}</span><span><strong>${t('homeStreakCount',{n:model.streak})}</strong><small>${model.party?esc(t('homePartyRank',{n:model.party.rank,name:state.locale==='th'?model.party.nameTh:model.party.nameEn})):t('homeStreakHint')}</small></span><span class="streak-freeze">${icon('snow')}${t('homeFreezes',{n:model.freezes})}</span>${icon('chevron')}</a>`;

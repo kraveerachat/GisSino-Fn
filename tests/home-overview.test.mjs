@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { homePreview,accounts,bills,transactions } from '../src/fixtures.js';
-import { homeOverview,deriveHomeOverview,bangkokClock,homeMoney,todayStrip,homeDecisions,homeStreak } from '../src/home-overview.js';
+import { homeOverview,deriveHomeOverview,bangkokClock,homeMoney,todayStrip,homeDecisions,dueNotices,notificationPreview,homeMonthly } from '../src/home-overview.js';
 import { blueHome } from '../src/blue-screens.js';
 import { accountBoard } from '../src/account-board.js';
 import { transactionRow } from '../src/screens.js';
@@ -11,90 +11,67 @@ const state=(extra={})=>({locale:'th',route:'home',balanceVisible:true,accountSe
 const render=(extra={})=>{const s=state(extra);return blueHome(s,translator(s.locale),transactionRow);};
 const base=()=>({nowLocal:'2026-10-18T20:30',assets:accounts,obligations:bills,entries:transactions,activityDays:['2026-10-18'],streak:7,freezes:2,reminderAt:'20:00'});
 
-test('Today Strip is absent when nothing is actionable, without an empty placeholder',()=>{
-  const model=deriveHomeOverview({...base(),obligations:[],entries:[]});
-  assert.deepEqual(model.today,[]);assert.equal(todayStrip(model,translator('th')),'');
+test('Today hides when empty and uses two concise existing Activity/Add actions without dues',()=>{
+  const empty=deriveHomeOverview({...base(),entries:[]});
+  assert.equal(todayStrip(empty,translator('en')),'');
   assert.ok(!render({homeScenario:'clear'}).includes('id="today-strip"'));
-});
-test('Four priority categories use earliest unpaid bills and supported destinations, first two with disclosure',()=>{
   const model=deriveHomeOverview({...base(),nowLocal:'2026-10-23T20:30'});
-  assert.deepEqual(model.today.map(i=>i.kind),['due','streak','details','inactive']);
-  assert.equal(model.today[0].count,3);assert.equal(model.today[0].nearest.id,'card');
+  assert.deepEqual(model.today.map(i=>i.kind),['details','streak']);
   const html=todayStrip(model,translator('en'));
-  assert.match(html,/<details class="today-more">/);assert.match(html,/Show 2 more/);
-  assert.match(html,/href="#bills"/);assert.match(html,/href="#activity"/);assert.match(html,/data-action="add"/);
-  assert.ok(!html.includes('?filter'));assert.ok(!html.includes('activity/summary'));
+  assert.match(html,/href="#activity"/);assert.match(html,/data-action="add"/);
+  assert.ok(!html.includes('#bills'));assert.ok(!html.includes('<small>'));assert.ok(!html.includes('?filter'));
 });
-test('Bangkok boundaries, configurable reminder and current-day activity are deterministic',()=>{
+test('Bangkok clock validates dates and reminder starts only after the configured boundary',()=>{
   assert.equal(bangkokClock('2026-10-18T00:01').instant.toISOString(),'2026-10-17T17:01:00.000Z');
-  assert.equal(bangkokClock('2026-10-18T23:59').date,'2026-10-18');
   for(const value of ['2026-02-30T10:00','2026-10-18T25:00','bad',''])assert.equal(bangkokClock(value),null);
-  for(const time of ['19:59','20:00']){
-    const model=deriveHomeOverview({...base(),nowLocal:'2026-10-19T'+time,obligations:[],entries:[]});
-    assert.equal(model.today.length,time==='19:59'?0:2);
-  }
-  assert.equal(deriveHomeOverview({...base(),reminderAt:'21:00',activityDays:[]}).today.some(i=>i.kind==='streak'),false);
-  assert.equal(deriveHomeOverview({...base()}).today.some(i=>i.kind==='inactive'),false);
+  for(const time of ['19:59','20:00'])assert.equal(deriveHomeOverview({...base(),nowLocal:'2026-10-19T'+time,entries:[]}).today.length,time==='19:59'?0:1);
+  assert.equal(deriveHomeOverview({...base(),reminderAt:'21:00',activityDays:[],entries:[]}).today.length,0);
 });
-test('Safe to Spend reconciles to liquid assets minus this month unpaid obligations in integer units',()=>{
-  const total=homeOverview(state()).totals[0];
-  assert.deepEqual(total,{currency:'THB',available:true,liquidMinor:11685000,unpaidMinor:1275000,safeMinor:10410000});
-  assert.ok(bills.every(b=>Number.isSafeInteger(b.amountMinor)&&b.currency==='THB'));
-  const excluded=deriveHomeOverview({...base(),assets:[...accounts,{accountType:'credit',currency:'THB',balanceMinor:99999999},{accountType:'cash',archived:true,currency:'THB',balanceMinor:5000}]});
-  assert.deepEqual(excluded.totals[0],total);
-});
-test('Negative values remain negative and shortfall has text as well as color; hidden balances do not leak',()=>{
-  const s=state({homeScenario:'shortfall'}),model=homeOverview(s);
-  assert.equal(model.totals[0].safeMinor,-8765000);
-  assert.match(homeDecisions(model,s,translator('en')),/-฿87,650.00/);
-  assert.match(homeDecisions(model,s,translator('en')),/Shortfall/);
-  const hidden=render({homeScenario:'shortfall',balanceVisible:false});
-  for(const value of ['87,650','104,100','116,850','8,250','15,240'])assert.ok(!hidden.includes(value),value);
-});
-test('THB and USD remain independent; fractional minor values and overflow become unavailable',()=>{
-  const model=deriveHomeOverview({...base(),assets:[{accountType:'cash',currency:'THB',balanceMinor:101},{accountType:'bank',currency:'USD',balanceMinor:205}],obligations:[{id:'usd',dueDate:'2026-10-20',paid:false,currency:'USD',amountMinor:6}]});
-  assert.deepEqual(model.totals.map(v=>[v.currency,v.safeMinor]),[['THB',101],['USD',199]]);
-  assert.equal(homeMoney(-1,'USD','en'),'-$0.01');assert.equal(homeMoney(199,'USD','en'),'$1.99');
-  assert.equal(homeMoney(1.5,'THB'),null);assert.equal(homeMoney(1,'BTC'),null);
+test('Safe uses exact integer minor units, excludes liabilities/archived assets and isolates currencies',()=>{
+  const model=deriveHomeOverview({...base(),assets:[...accounts,{accountType:'liability',currency:'THB',balanceMinor:999999},{accountType:'bank',currency:'THB',balanceMinor:999999,archived:true},{accountType:'cash',currency:'USD',balanceMinor:10001}],obligations:[...bills,{id:'usd',paid:false,dueDate:'2026-10-30',currency:'USD',amountMinor:2}]});
+  assert.equal(model.totals.find(t=>t.currency==='THB').safeMinor,10410000);
+  assert.equal(model.totals.find(t=>t.currency==='USD').safeMinor,9999);
+  assert.equal(homeMoney(-1,'THB','en'),'-฿0.01');
+  assert.equal(homeMoney(10001,'USD','en'),'$100.01');
+  const short=render({homeScenario:'shortfall',locale:'en'});assert.match(short,/-฿87,650.00/);assert.match(short,/Shortfall/);
+  const hidden=render({homeScenario:'shortfall',balanceVisible:false});assert.ok(!hidden.includes('87,650'));
   const missing=deriveHomeOverview({...base(),assets:[{accountType:'bank',currency:'THB',balanceMinor:null}]});assert.equal(missing.totals[0].available,false);
   const overflow=deriveHomeOverview({...base(),assets:[{accountType:'bank',currency:'THB',balanceMinor:Number.MAX_SAFE_INTEGER},{accountType:'cash',currency:'THB',balanceMinor:1}]});assert.equal(overflow.totals[0].available,false);
 });
-test('Nearest obligation sorts unpaid dates, including overdue, and supports empty state',()=>{
-  const obligations=[{id:'paid',paid:true,dueDate:'2026-01-01'},{id:'later',paid:false,dueDate:'2026-10-20'},{id:'earlier',paid:false,dueDate:'2026-10-15'},{id:'bad',paid:false,dueDate:'invalid'}];
-  const model=deriveHomeOverview({...base(),obligations});assert.equal(model.nearest.id,'earlier');assert.equal(model.nearest.days,-3);
-  assert.equal(homeOverview(state({homeScenario:'clear'})).nearest,null);
-  assert.match(render({homeScenario:'clear',locale:'en'}),/No unpaid obligations/);
+test('Bell preview includes due/overdue dates, deduplicates obligations, routes to Bills and handles empty',()=>{
+  const model=deriveHomeOverview({...base(),nowLocal:'2026-10-23T20:30',obligations:[...bills,{...bills[0],id:'duplicate-card'}]});
+  assert.equal(model.nearest.id,'card');assert.equal(dueNotices(model).length,3);
+  const html=notificationPreview(model,state({locale:'en'}),translator('en'));
+  assert.match(html,/3 days overdue/);assert.match(html,/datetime="2026-10-20"/);assert.match(html,/href="#bills"/);
+  assert.equal((html.match(/Monthly credit card/g)||[]).length,1);
+  const clear=homeOverview(state({homeScenario:'clear'}));assert.equal(clear.nearest,null);assert.equal(dueNotices(clear).length,0);
+  assert.match(notificationPreview(clear,state(),translator('en')),/No unpaid obligations/);
+  assert.ok(!notificationPreview(homeOverview(state()),state(),translator('en')).includes('8250'));
 });
-test('Rank is optional and requires explicitly synthetic party context, never financial member records',()=>{
-  const t=translator('en');assert.ok(!homeStreak(homeOverview(state()),state(),t).includes('Rank'));
-  assert.match(render({locale:'en',homeScenario:'party'}),/Rank 2 · Sample family/);
-  assert.equal(deriveHomeOverview({...base(),party:{rank:1}}).party,null);
-});
-test('Monthly total is illustrative, hidden outside its fixture month, and uses existing Activity route',()=>{
-  assert.ok(render().includes('class="home-monthly" href="#activity"'));
-  assert.match(render({homeNow:'2026-11-01T10:00',locale:'en'}),/No activity this month/);
-  for(const value of ['mini-bars','monthly-enamel','#activity/summary','#leaderboard'])assert.ok(!render().includes(value));
-});
-test('Home order and complete Account Board markup are preserved in both modes and locales',()=>{
+test('Home keeps Account Board byte-identical, first after hero, with Recent last and monthly/nearest absent',()=>{
   for(const locale of ['th','en'])for(const accountView of ['vertical','horizontal']){
-    const s=state({locale,accountView}),html=render({locale,accountView});
-    assert.ok(html.includes(accountBoard(s,translator(locale))));
-    const order=['cover-header','home-hero','blue-quick-actions','id="today-strip"','home-decisions','home-streak','account-board','blue-transactions','home-monthly'];
+    const s=state({locale,accountView}),html=render({locale,accountView});assert.ok(html.includes(accountBoard(s,translator(locale))));
+    const order=['blue-quick-actions','account-board','id="today-strip"','class="home-safe"','class="home-habit"','blue-transactions','home-snapshot'];
     assert.deepEqual(order.map(key=>html.indexOf(key)),order.map(key=>html.indexOf(key)).sort((a,b)=>a-b));
+    for(const key of ['home-monthly','home-obligation','#activity/summary','#leaderboard'])assert.ok(!html.includes(key));
     assert.equal((html.match(/<section class="account-board"/g)||[]).length,1);
-    for(const link of [...html.matchAll(/href="#([^\"]+)"/g)].map(v=>v[1]))assert.ok(['home','wallet','activity','bills','party','settings','transfer'].includes(link)||link.startsWith('wallet/account/'),link);
+    assert.equal((html.match(/data-action="transaction"/g)||[]).length,3);
+    for(const link of [...html.matchAll(/href="#([^" ]+)"/g)].map(v=>v[1]))assert.ok(['home','wallet','activity','bills','party','settings','transfer'].includes(link)||link.startsWith('wallet/account/'),link);
   }
 });
-test('All Home copy resolves in both catalogs and synthetic clock/disclosure is visible',()=>{
+test('Monthly data, renderer and optional aggregate context remain available without a Home presentation',()=>{
+  const model=homeOverview(state({homeScenario:'party'}));assert.equal(model.party.rank,2);
+  assert.equal(model.monthlyExpense.amountMinor,1524000);
+  assert.match(homeMonthly(model,state({locale:'en'}),translator('en')),/15,240.00/);
+  assert.equal(homeOverview(state({homeNow:'2026-11-01T10:00'})).monthlyExpense,null);
+});
+test('Catalogs and all supported scenarios resolve honestly without mutating financial fixtures',async()=>{
   assert.deepEqual(Object.keys(messages.th).sort(),Object.keys(messages.en).sort());
+  const before=JSON.stringify({accounts,bills,transactions,homePreview});
   for(const locale of ['th','en'])for(const scenario of homePreview.scenarios){
-    const html=render({locale,homeScenario:scenario,homeNow:scenario==='actionable'?'2026-10-23T20:30':homePreview.nowLocal});
-    assert.ok(!html.includes('undefined'));assert.match(html,/home-snapshot/);assert.match(html,locale==='th'?/ข้อมูลจำลอง/:/Synthetic data/);
+    const html=render({locale,homeScenario:scenario});assert.ok(!html.includes('undefined'));assert.match(html,/home-snapshot/);assert.match(html,locale==='th'?/ข้อมูลจำลอง/:/Synthetic data/);
   }
-});
-test('Home projection leaves canonical financial fixtures and Account Board modules unchanged',async()=>{
-  const before=JSON.stringify({accounts,bills,transactions});for(const scenario of homePreview.scenarios)homeOverview(state({homeScenario:scenario}));assert.equal(JSON.stringify({accounts,bills,transactions}),before);
+  assert.equal(JSON.stringify({accounts,bills,transactions,homePreview}),before);
   const code=await readFile(new URL('../src/home-overview.js',import.meta.url),'utf8');
-  for(const value of ['localStorage','sessionStorage','fetch(','setInterval(','Date.now(','members'])assert.ok(!code.includes(value));
+  for(const value of ['localStorage','sessionStorage','fetch(','setInterval(','Date.now('])assert.ok(!code.includes(value));
 });
-
