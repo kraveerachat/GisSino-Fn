@@ -56,3 +56,28 @@ test('Current fixture displays 4/7=57%, explicit sample counters and localized n
   const code=await readFile(new URL('../src/habit-preview.js',import.meta.url),'utf8');
   for(const value of ['localStorage','sessionStorage','fetch(','setInterval(','Date.now('])assert.ok(!code.includes(value));
 });
+
+
+test('Missing dates are current-week strictly past nonactive dates, including freezes but excluding pending/future',()=>{
+  const model=deriveHabitPreview({today:'2026-10-16',activeDays:['2026-10-12','2026-10-13','2026-10-17'],freezeDays:['2026-10-15']});
+  assert.deepEqual(model.missingDays,['2026-10-14','2026-10-15']);
+  assert.equal(model.days.find(d=>d.date==='2026-10-15').status,'frozen');
+  assert.equal(model.days.find(d=>d.date==='2026-10-16').status,'pending');
+  assert.equal(model.days.find(d=>d.date==='2026-10-17').status,'future');
+  assert.equal(model.count,2);assert.equal(model.percentage,29);
+  assert.deepEqual(deriveHabitPreview({today:'2026-10-19'}).missingDays,[]);
+  assert.deepEqual(deriveHabitPreview({today:'2026-10-14',activeDays:['2026-10-12','2026-10-13']}).missingDays,[]);
+});
+test('Summary replaces freeze allowance with missing dates and one existing-timeline action in TH/EN',()=>{
+  for(const locale of ['th','en']){
+    const state={locale,homeNow:homePreview.nowLocal},model=habitOverview(state),t=translator(locale),html=habitCard(model,state,t);
+    assert.deepEqual(model.missingDays,['2026-10-13','2026-10-14','2026-10-17']);
+    assert.ok(html.includes(t('habitMissing',{n:3})));assert.ok(html.includes('data-action="habit-missed"'));
+    assert.ok(!html.includes(t('homeFreezes',{n:homePreview.freezes})));assert.ok(!html.includes('habit-freezes'));
+    assert.ok(html.includes('role="status" aria-atomic="true"'));
+    const selected=deriveHabitPreview({today:'2026-10-18',activeDays:homePreview.habit.activeDays,freezeDays:homePreview.habit.freezeDays,selectedDay:'2026-10-17'});
+    const selectedHTML=habitCard(selected,state,t);assert.ok(selectedHTML.includes(t('habitStatusfrozen')));
+    const clear=habitCard(deriveHabitPreview({today:'2026-10-19'}),state,t);
+    assert.ok(clear.includes(t('habitNoMissing')));assert.ok(!clear.includes('data-action="habit-missed"'));
+  }
+});

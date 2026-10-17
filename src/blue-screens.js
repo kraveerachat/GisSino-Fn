@@ -3,7 +3,7 @@ import { preview, accounts, transactions, creditCard } from './fixtures.js';
 import { money, escapeHTML as esc } from './i18n.js';
 import { desktopAdd } from './navigation.js';
 import { accountBoard } from './account-board.js';
-import { homeOverview,todayStrip,homeDecisions,homeSnapshot } from './home-overview.js';
+import { homeOverview,upcomingDueList,homeSnapshot } from './home-overview.js';
 import { habitOverview,habitCard } from './habit-preview.js';
 
 const amount = (value, state, decimals = false) => state.balanceVisible ? money(value, state.locale, decimals) : '••••••';
@@ -19,7 +19,7 @@ export function coverHeader(state, t, title = '') {
 export function blueHome(state,t,transactionRow) {
   const overview=homeOverview(state);
   return `<div class="blue-screen home-blue"><h1 class="sr-only">${t('home')}</h1><section class="blue-cover">${coverHeader(state,t)}<div class="home-hero cobalt-enamel"><div class="hero-top"><div><span>${t('balance')}</span><button class="hero-eye" data-action="balance" aria-label="${t(state.balanceVisible?'hideBalance':'showBalance')}">${icon(state.balanceVisible?'eye':'eyeoff')}</button></div><span class="currency-capsule">THB</span></div><div class="blue-balance" aria-live="polite">${amount(preview.balance,state,true)}</div><div class="hero-context"><span>${icon('wallet')}${t('balanceNote')}</span><span>${t('thisMonth')}</span></div><span class="hero-wave" aria-hidden="true"></span></div><div class="blue-quick-actions" aria-label="${t('quickActions')}">${[['expense','expense','manualExpense'],['income','income','manualIncome'],['transfer','transfer','transferAction'],['bills','bills','bills']].map(([mode,i,k])=>`<${mode==='transfer'||mode==='bills'?'a':'button'} class="blue-quick" ${mode==='transfer'||mode==='bills'?`href="#${mode}"`:`data-action="mode" data-mode="${mode}"`}><span class="blue-icon-plate">${icon(i)}</span><span>${t(k)}</span></${mode==='transfer'||mode==='bills'?'a':'button'}>`).join('')}</div><span class="cover-lip" aria-hidden="true">${icon('down')}</span></section>
-  <div class="blue-lower home-lower home-v2">${accountBoard(state,t)}<div class="home-daily">${todayStrip(overview,t)}${homeDecisions(overview,state,t)}</div>${habitCard(habitOverview(state),state,t)}<section class="blue-transactions">${heading(t('recent'),viewLink('activity',t))}<div class="enamel-list">${transactions.slice(0,3).map(item=>transactionRow(item,state,t)).join('')}</div></section>${homeSnapshot(overview,state,t)}${note(t)}</div></div>`;
+  <div class="blue-lower home-lower home-v2">${accountBoard(state,t)}${upcomingDueList(overview,state,t)}${habitCard(habitOverview(state),state,t)}<section class="blue-transactions">${heading(t('recent'),viewLink('activity',t))}<div class="enamel-list">${transactions.slice(0,3).map(item=>transactionRow(item,state,t)).join('')}</div></section>${homeSnapshot(overview,state,t)}${note(t)}</div></div>`;
 }
 export function transferScreen(state,t) {
   const source=accounts.find(a=>a.id===state.transferSource);

@@ -37,7 +37,8 @@ export function deriveHomeOverview({nowLocal,assets=[],obligations=[],entries=[]
   const today=[];
   if(details)today.push({kind:'details',route:'activity',count:details});
   if(inactive)today.push(streak>0?{kind:'streak',action:'add',count:streak}:{kind:'inactive',action:'add'});
-  return {clock,totals,nearest,notices:due,today,streak,freezes,party:party?.synthetic===true&&Number.isSafeInteger(party.rank)&&party.rank>0?{...party}:null,monthlyExpense:monthlyExpense?.month===clock.month?monthlyExpense:null};
+  const upcoming=uniqueObligations(unpaid.filter(b=>dayOrdinal(b.dueDate)-dayOrdinal(clock.date)<=7));
+  return {clock,totals,nearest,notices:due,upcoming,today,streak,freezes,party:party?.synthetic===true&&Number.isSafeInteger(party.rank)&&party.rank>0?{...party}:null,monthlyExpense:monthlyExpense?.month===clock.month?monthlyExpense:null};
 }
 
 export function homeOverview(state) {
@@ -71,13 +72,25 @@ export function homeDecisions(model,state,t) {
   const totals=model.totals.length?model.totals:[{currency:'THB',available:false,safeMinor:null}];
   return `<a class="home-safe" href="#wallet"><span><strong>${t('blueSafe')}</strong><small>${t('homeSafeCompact')}</small></span><span class="safe-values">${totals.map(total=>`<span class="safe-currency ${total.available&&total.safeMinor<0?'has-shortfall':''}"><strong>${total.available?showMoney(total.safeMinor,total.currency,state,t):t('notRecorded')}</strong><small>${total.available&&total.safeMinor<0?t('homeShortfall'):total.currency}</small></span>`).join('')}</span>${icon('chevron')}</a>`;
 }
-export function dueNotices(model) {
-  const seen=new Set();
-  return model.notices.filter(item=>{
+function uniqueObligations(items) {
+  const seen=new Set(),ids=new Set();
+  return items.filter(item=>{
     const key=JSON.stringify([item.name,item.dueDate,item.currency,item.amountMinor]);
-    if(seen.has(key))return false;
-    seen.add(key);return true;
+    if(ids.has(item.id)||seen.has(key))return false;
+    ids.add(item.id);seen.add(key);return true;
   });
+}
+export function dueNotices(model) { return uniqueObligations(model.notices); }
+export function upcomingDueList(model,state,t) {
+  if(!model.upcoming.length)return '';
+  const row=b=>{
+    const days=dayOrdinal(b.dueDate)-dayOrdinal(model.clock.date);
+    const urgency=days<0?'overdue':days<=3?'soon':'upcoming';
+    const known=bills.some(item=>item.id===b.id);
+    const date=new Intl.DateTimeFormat(state.locale==='th'?'th-TH':'en-GB',{timeZone:'Asia/Bangkok',day:'numeric',month:'short'}).format(new Date(b.dueDate+'T00:00:00+07:00'));
+    return `<li><${known?'button':'a'} class="home-due-row is-${urgency}" ${known?`type="button" data-action="bill" data-id="${esc(b.id)}"`:'href="#bills"'}><span class="home-due-icon">${icon(b.icon||'calendar')}</span><span class="home-due-copy"><strong>${t(b.name)}</strong><small><span class="home-due-status">${dayStatus(days,t)}</span><time datetime="${b.dueDate}">${date}</time></small></span>${icon('chevron')}</${known?'button':'a'}></li>`;
+  };
+  return `<section class="home-due-list" aria-labelledby="home-due-title"><div class="home-due-heading"><h2 id="home-due-title">${t('homeDueSoon')}</h2><a href="#bills">${t('viewAll')}${icon('chevron')}</a></div><ul>${model.upcoming.slice(0,4).map(row).join('')}</ul></section>`;
 }
 export function notificationPreview(model,state,t) {
   const notices=dueNotices(model);

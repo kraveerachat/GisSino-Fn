@@ -648,6 +648,22 @@ Object.assign(messages.en, {
   "habitReward": "+{n} sample XP",
   "habitAlready": "Already confirmed today. No extra XP"
 });
+Object.assign(messages.th, {
+  "homeDueSoon": "ใกล้ครบกำหนด",
+  "habitMissing": "ขาดบันทึก {n} วัน",
+  "habitMissingOne": "ขาดบันทึก {n} วัน",
+  "habitViewMissed": "ดูวันที่ขาด",
+  "habitNoMissing": "ไม่มีวันที่ขาด",
+  "habitStatusfrozen": "ใช้สิทธิ์พักสตรีก · ไม่มีบันทึกกิจกรรม"
+});
+Object.assign(messages.en, {
+  "homeDueSoon": "Due soon",
+  "habitMissing": "{n} days without activity",
+  "habitMissingOne": "{n} day without activity",
+  "habitViewMissed": "View missed days",
+  "habitNoMissing": "No missed days",
+  "habitStatusfrozen": "Streak freeze used · No activity recorded"
+});
 export function translator(locale) {
   const catalog = messages[locale] || messages.th;
   return (key, values = {}) => {

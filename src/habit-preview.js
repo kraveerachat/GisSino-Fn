@@ -19,13 +19,14 @@ export function deriveHabitPreview({ today, activeDays = [], freezeDays = [], st
   const active = new Set(activeDays.filter(date => validDay(date) && date <= today));
   const frozen = new Set(freezeDays.filter(date => validDay(date) && date < today));
   const count = week.filter(date => active.has(date)).length;
+  const missingDays = week.filter(date => date < today && !active.has(date));
   const days = Array.from({ length: 21 }, (_, i) => {
     const date = dayKey(ordinal(week[0]) - 7 + i);
     const status = date > today ? 'future' : active.has(date) ? 'complete' : frozen.has(date) ? 'frozen' : date === today ? 'pending' : 'missed';
     return { date, status, current: date === today };
   });
   const selected = days.find(day => day.date === selectedDay) || days.find(day => day.current);
-  return { today, week, count, percentage: Math.round(count / 7 * 100), days, selected, streak, weeklyXP, complete: active.has(today) };
+  return { today, week, count, missingDays, percentage: Math.round(count / 7 * 100), days, selected, streak, weeklyXP, complete: active.has(today) };
 }
 export function createCheckinPreview() {
   const grants = new Map();
@@ -57,12 +58,12 @@ export function habitCard(model, state, t) {
   const selected = model.selected;
   return `<section class="home-habit" aria-labelledby="habit-title" data-habit-card>
     <div class="habit-heading"><h2 id="habit-title">${t('habitTitle')}</h2><a href="#party">${t('habitParty')}${icon('chevron')}</a></div>
-    <div class="habit-summary"><div class="habit-counters"><div class="habit-streak">${icon('flame')}<span><strong>${model.streak === null ? t('habitNoSnapshot') : t('habitStreak',{ n:model.streak })}</strong><small>${t('habitCurrentStreak')}</small></span></div><div class="habit-xp"><strong>${model.weeklyXP} <span>XP</span></strong><small>${t('habitWeeklyXP')}</small></div><span class="habit-freezes">${icon('snow')}${t('homeFreezes',{n:homePreview.freezes})}</span></div>
+    <div class="habit-summary"><div class="habit-counters"><div class="habit-streak">${icon('flame')}<span><strong>${model.streak === null ? t('habitNoSnapshot') : t('habitStreak',{ n:model.streak })}</strong><small>${t('habitCurrentStreak')}</small></span></div><div class="habit-xp"><strong>${model.weeklyXP} <span>XP</span></strong><small>${t('habitWeeklyXP')}</small></div><div class="habit-missing">${model.missingDays.length?`<span>${t(model.missingDays.length===1?'habitMissingOne':'habitMissing',{n:model.missingDays.length})}</span><button type="button" data-action="habit-missed">${t('habitViewMissed')}${icon('chevron')}</button>`:`<span class="habit-all-recorded">${icon('check')}${t('habitNoMissing')}</span>`}</div></div>
     <div class="habit-progress" role="img" aria-label="${t('habitProgressLabel',{n:model.count,p:model.percentage})}"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="habit-ring-track" cx="50" cy="50" r="42"/><circle class="habit-ring-value" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="${model.percentage} 100"/></svg><div><strong>${model.percentage}%</strong><span>${t('habitDays',{n:model.count})}</span></div></div></div>
     <div class="habit-week-label"><span>${dateLabel(model.week[0],state.locale,{day:'numeric',month:'short'})} – ${dateLabel(model.week[6],state.locale,{day:'numeric',month:'short'})}</span><span>${t('habitWeekDefinition')}</span></div>
     <div class="habit-timeline-tools"><p id="habit-timeline-label">${t('habitTimeline')}</p><div><button type="button" class="habit-arrow previous" data-action="habit-step" data-direction="-1" aria-label="${t('habitPrevious')}">${icon('chevron')}</button><button type="button" class="habit-arrow" data-action="habit-step" data-direction="1" aria-label="${t('habitNext')}">${icon('chevron')}</button></div></div>
     <div class="habit-timeline" role="group" aria-labelledby="habit-timeline-label" data-habit-timeline>${model.days.map(day=>`<button type="button" class="habit-day is-${day.status}" data-action="habit-day" data-date="${day.date}" data-status="${day.status}" tabindex="${day.date===selected.date?'0':'-1'}" aria-pressed="${day.date===selected.date}" ${day.current?'aria-current="date"':''} aria-label="${esc(dateLabel(day.date,state.locale,{dateStyle:'full'}))} · ${t('habitStatus'+day.status)}${day.current?' · '+t('today'):''}"><span>${dateLabel(day.date,state.locale,{weekday:'short'})}</span><strong>${new Date(day.date+'T00:00:00Z').getUTCDate()}</strong>${icon(statusIcon(day.status))}${day.current?`<small>${t('today')}</small>`:''}</button>`).join('')}</div>
-    <p class="habit-selected" role="status" data-habit-selected>${dateLabel(selected.date,state.locale,{day:'numeric',month:'short'})} · ${t('habitStatus'+selected.status)}</p>
+    <p class="habit-selected" role="status" aria-atomic="true" data-habit-selected>${dateLabel(selected.date,state.locale,{day:'numeric',month:'short'})} · ${t('habitStatus'+selected.status)}</p>
     <div class="habit-footer"><span>${t(model.complete?'habitTodayComplete':'habitTodayPending')}</span><button type="button" class="habit-checkin" data-action="habit-checkin">${t(model.complete?'habitReview':'habitCheckin')}${icon(model.complete?'check':'plus')}</button></div>
     <p class="habit-synthetic">${t('habitSynthetic')}</p>
   </section>`;
@@ -92,6 +93,7 @@ export function mountHabitTimeline(root, model, state, t) {
     if (day) select(day);
     const step = event.target.closest('[data-action="habit-step"]');
     if (step) select(buttons[buttons.findIndex(b=>b.tabIndex===0)+Number(step.dataset.direction)]);
+    if (event.target.closest('[data-action="habit-missed"]')) select(buttons.find(button=>button.dataset.date===model.missingDays[0]),true);
   });
   strip.addEventListener('keydown', event => {
     const index = buttons.indexOf(event.target);

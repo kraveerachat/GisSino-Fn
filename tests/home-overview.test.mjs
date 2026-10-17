@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { homePreview,accounts,bills,transactions } from '../src/fixtures.js';
-import { homeOverview,deriveHomeOverview,bangkokClock,homeMoney,todayStrip,homeDecisions,dueNotices,notificationPreview,homeMonthly } from '../src/home-overview.js';
+import { homeOverview,deriveHomeOverview,bangkokClock,homeMoney,upcomingDueList,homeDecisions,dueNotices,notificationPreview,homeMonthly } from '../src/home-overview.js';
 import { blueHome } from '../src/blue-screens.js';
 import { accountBoard } from '../src/account-board.js';
 import { transactionRow } from '../src/screens.js';
@@ -11,15 +11,40 @@ const state=(extra={})=>({locale:'th',route:'home',balanceVisible:true,accountSe
 const render=(extra={})=>{const s=state(extra);return blueHome(s,translator(s.locale),transactionRow);};
 const base=()=>({nowLocal:'2026-10-18T20:30',assets:accounts,obligations:bills,entries:transactions,activityDays:['2026-10-18'],streak:7,freezes:2,reminderAt:'20:00'});
 
-test('Today hides when empty and uses two concise existing Activity/Add actions without dues',()=>{
-  const empty=deriveHomeOverview({...base(),entries:[]});
-  assert.equal(todayStrip(empty,translator('en')),'');
-  assert.ok(!render({homeScenario:'clear'}).includes('id="today-strip"'));
-  const model=deriveHomeOverview({...base(),nowLocal:'2026-10-23T20:30'});
-  assert.deepEqual(model.today.map(i=>i.kind),['details','streak']);
-  const html=todayStrip(model,translator('en'));
-  assert.match(html,/href="#activity"/);assert.match(html,/data-action="add"/);
-  assert.ok(!html.includes('#bills'));assert.ok(!html.includes('<small>'));assert.ok(!html.includes('?filter'));
+test('Seven-day due projection includes overdue/today/day7, excludes paid/invalid/day8, and sorts without mutation',()=>{
+  const obligations=[
+    {id:'day8',name:'billPower',paid:false,dueDate:'2026-10-26',amountMinor:1},
+    {id:'day7',name:'billDevice',paid:false,dueDate:'2026-10-25',amountMinor:2},
+    {id:'today',name:'billPower',paid:false,dueDate:'2026-10-18',amountMinor:3},
+    {id:'old',name:'billCard',paid:false,dueDate:'2026-09-01',amountMinor:4},
+    {id:'tie-b',name:'billPower',paid:false,dueDate:'2026-10-20',amountMinor:5},
+    {id:'tie-a',name:'billMusic',paid:false,dueDate:'2026-10-20',amountMinor:6},
+    {id:'paid',name:'billPower',paid:true,dueDate:'2026-10-18'},
+    {id:'bad',name:'billPower',paid:false,dueDate:'2026-02-30'}
+  ];
+  const before=JSON.stringify(obligations),model=deriveHomeOverview({...base(),obligations});
+  assert.deepEqual(model.upcoming.map(b=>b.id),['old','today','tie-a','tie-b','day7']);
+  assert.equal(JSON.stringify(obligations),before);
+  assert.equal(deriveHomeOverview({...base(),nowLocal:'2026-10-18T00:00',obligations}).upcoming.length,5);
+  assert.equal(deriveHomeOverview({...base(),nowLocal:'2026-10-19T00:00',obligations}).upcoming.at(-1).id,'day8');
+});
+test('Due list deduplicates representations and IDs, hides empty, caps four rows and reuses real Bills details',()=>{
+  const source=[...bills,{...bills[0],id:'duplicate-card'}, {...bills[0]}, {id:'later',name:'billPower',icon:'bolt',paid:false,dueDate:'2026-10-30',currency:'THB',amountMinor:1}];
+  const model=deriveHomeOverview({...base(),nowLocal:'2026-10-23T20:30',obligations:source});
+  assert.equal(model.upcoming.length,5);
+  const html=upcomingDueList(model,state({locale:'en'}),translator('en'));
+  assert.equal((html.match(/<li>/g)||[]).length,4);
+  assert.deepEqual([...html.matchAll(/data-id="([^"]+)"/g)].map(v=>v[1]),['card','power','device','music']);
+  assert.equal((html.match(/data-action="bill"/g)||[]).length,4);
+  for(const value of ['href="#bills"','View all','3 days overdue','1 day overdue','Due in 2 days','Due in 5 days','28 Oct','is-overdue','is-soon','is-upcoming'])assert.ok(html.includes(value),value);
+  assert.equal(upcomingDueList(homeOverview(state({homeScenario:'clear'})),state(),translator('th')),'');
+  assert.ok(!render({homeScenario:'clear'}).includes('class="home-due-list"'));
+  const one=deriveHomeOverview({...base(),obligations:[{...bills[1],dueDate:'2026-10-18'}]});
+  assert.match(upcomingDueList(one,state({locale:'en'}),translator('en')),/Due today/);
+});
+test('Home seven-day visibility does not widen the bell three-day preview',()=>{
+  const m=homeOverview(state());assert.deepEqual(m.upcoming.map(b=>b.id),['card','power','device']);
+  assert.deepEqual(dueNotices(m).map(b=>b.id),['card']);
 });
 test('Bangkok clock validates dates and reminder starts only after the configured boundary',()=>{
   assert.equal(bangkokClock('2026-10-18T00:01').instant.toISOString(),'2026-10-17T17:01:00.000Z');
@@ -33,7 +58,7 @@ test('Safe uses exact integer minor units, excludes liabilities/archived assets 
   assert.equal(model.totals.find(t=>t.currency==='USD').safeMinor,9999);
   assert.equal(homeMoney(-1,'THB','en'),'-฿0.01');
   assert.equal(homeMoney(10001,'USD','en'),'$100.01');
-  const short=render({homeScenario:'shortfall',locale:'en'});assert.match(short,/-฿87,650.00/);assert.match(short,/Shortfall/);
+  const short=homeDecisions(homeOverview(state({homeScenario:'shortfall'})),state({locale:'en'}),translator('en'));assert.match(short,/-฿87,650.00/);assert.match(short,/Shortfall/);
   const hidden=render({homeScenario:'shortfall',balanceVisible:false});assert.ok(!hidden.includes('87,650'));
   const missing=deriveHomeOverview({...base(),assets:[{accountType:'bank',currency:'THB',balanceMinor:null}]});assert.equal(missing.totals[0].available,false);
   const overflow=deriveHomeOverview({...base(),assets:[{accountType:'bank',currency:'THB',balanceMinor:Number.MAX_SAFE_INTEGER},{accountType:'cash',currency:'THB',balanceMinor:1}]});assert.equal(overflow.totals[0].available,false);
@@ -51,9 +76,9 @@ test('Bell preview includes due/overdue dates, deduplicates obligations, routes 
 test('Home keeps Account Board byte-identical, first after hero, with Recent last and monthly/nearest absent',()=>{
   for(const locale of ['th','en'])for(const accountView of ['vertical','horizontal']){
     const s=state({locale,accountView}),html=render({locale,accountView});assert.ok(html.includes(accountBoard(s,translator(locale))));
-    const order=['blue-quick-actions','account-board','id="today-strip"','class="home-safe"','class="home-habit"','blue-transactions','home-snapshot'];
+    const order=['blue-quick-actions','account-board','class="home-due-list"','class="home-habit"','blue-transactions','home-snapshot'];
     assert.deepEqual(order.map(key=>html.indexOf(key)),order.map(key=>html.indexOf(key)).sort((a,b)=>a-b));
-    for(const key of ['home-monthly','home-obligation','#activity/summary','#leaderboard'])assert.ok(!html.includes(key));
+    for(const key of ['home-safe','today-strip','habit-freezes','home-monthly','home-obligation','#activity/summary','#leaderboard'])assert.ok(!html.includes(key));
     assert.equal((html.match(/<section class="account-board"/g)||[]).length,1);
     assert.equal((html.match(/data-action="transaction"/g)||[]).length,3);
     for(const link of [...html.matchAll(/href="#([^" ]+)"/g)].map(v=>v[1]))assert.ok(['home','wallet','activity','bills','party','settings','transfer'].includes(link)||link.startsWith('wallet/account/'),link);
