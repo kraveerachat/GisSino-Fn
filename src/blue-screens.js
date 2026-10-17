@@ -1,8 +1,9 @@
 import { icon } from './icons.js';
-import { preview, accounts, transactions, creditCard, dailySpending } from './fixtures.js';
+import { preview, accounts, transactions, creditCard } from './fixtures.js';
 import { money, escapeHTML as esc } from './i18n.js';
 import { desktopAdd } from './navigation.js';
 import { accountBoard } from './account-board.js';
+import { homeOverview,todayStrip,homeDecisions,homeStreak,homeMonthly,homeSnapshot } from './home-overview.js';
 
 const amount = (value, state, decimals = false) => state.balanceVisible ? money(value, state.locale, decimals) : '••••••';
 const heading = (text, action = '') => `<div class="blue-section-heading"><h2>${text}</h2>${action}</div>`;
@@ -14,15 +15,10 @@ export function coverHeader(state, t, title = '') {
     ? `<header class="cover-header subpage-header"><a href="#${state.route === 'credit-card' ? (state.cardReturn||'bills') : 'home'}" class="icon-plate" aria-label="${t('back')}">${icon('arrow','back-icon')}</a><h1>${title}</h1><div class="cover-tools"><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button>${desktopAdd(t)}</div></header>`
     : `<header class="cover-header"><button class="cover-profile" data-action="settings" aria-label="${t('profile')}"><span class="profile-disc">${icon('party')}</span><span><small>${t('welcomeBack')}</small><strong>${t('profileName')}</strong></span></button><div class="cover-tools"><a class="icon-plate" href="#party" aria-label="${t('myProgress')}">${icon('trophy')}</a><button class="icon-plate" data-action="notifications" aria-label="${t('notifications')}">${icon('bell')}</button>${desktopAdd(t)}</div></header>`;
 }
-function miniSummary(state,t) {
-  return `<div class="plan-strip"><a href="#activity"><span>${t('blueSafe')}</span><strong>${amount(preview.safe,state)}</strong></a><a href="#bills"><span>${t('blueDue')}</span><strong>${amount(preview.obligations,state)}</strong></a></div>`;
-}
-function monthly(state,t) {
-  return `<section class="monthly-enamel enamel-list"><div><h2>${t('monthlySummary')}</h2><span>${t('expense')}</span><strong>${amount(preview.expense,state)}</strong></div><figure class="mini-bars" aria-label="${t('sampleChartLabel')}">${dailySpending.map((item,i)=>`<span class="spending-bar bar-${i}" title="${t('dayMonth',{day:item.day})}: ${amount(item.amount,state)}"><span class="sr-only">${t('dayMonth',{day:item.day})} ${amount(item.amount,state)}</span></span>`).join('')}<figcaption>${t('sampleWeek')}</figcaption></figure></section>`;
-}
 export function blueHome(state,t,transactionRow) {
+  const overview=homeOverview(state);
   return `<div class="blue-screen home-blue"><h1 class="sr-only">${t('home')}</h1><section class="blue-cover">${coverHeader(state,t)}<div class="home-hero cobalt-enamel"><div class="hero-top"><div><span>${t('balance')}</span><button class="hero-eye" data-action="balance" aria-label="${t(state.balanceVisible?'hideBalance':'showBalance')}">${icon(state.balanceVisible?'eye':'eyeoff')}</button></div><span class="currency-capsule">THB</span></div><div class="blue-balance" aria-live="polite">${amount(preview.balance,state,true)}</div><div class="hero-context"><span>${icon('wallet')}${t('balanceNote')}</span><span>${t('thisMonth')}</span></div><span class="hero-wave" aria-hidden="true"></span></div><div class="blue-quick-actions" aria-label="${t('quickActions')}">${[['expense','expense','manualExpense'],['income','income','manualIncome'],['transfer','transfer','transferAction'],['bills','bills','bills']].map(([mode,i,k])=>`<${mode==='transfer'||mode==='bills'?'a':'button'} class="blue-quick" ${mode==='transfer'||mode==='bills'?`href="#${mode}"`:`data-action="mode" data-mode="${mode}"`}><span class="blue-icon-plate">${icon(i)}</span><span>${t(k)}</span></${mode==='transfer'||mode==='bills'?'a':'button'}>`).join('')}</div><span class="cover-lip" aria-hidden="true">${icon('down')}</span></section>
-  <div class="blue-lower home-lower"><div class="home-lists">${accountBoard(state,t)}<section class="blue-transactions">${heading(t('recent'),viewLink('activity',t))}<div class="enamel-list">${transactions.slice(0,3).map(item=>transactionRow(item,state,t)).join('')}</div></section></div><div class="home-support">${miniSummary(state,t)}${monthly(state,t)}<a class="streak-strip enamel-list" href="#party"><span class="mini-plate">${icon('flame')}</span><span><strong>${t('days',{n:7})}</strong><small>${t('dayStreak')}</small></span><span class="streak-freeze">${icon('snow')}${t('freezeCount')}</span>${icon('chevron')}</a>${note(t)}</div></div></div>`;
+  <div class="blue-lower home-lower home-v2">${homeSnapshot(overview,state,t)}${todayStrip(overview,t)}${homeDecisions(overview,state,t)}${homeStreak(overview,state,t)}${accountBoard(state,t)}<section class="blue-transactions">${heading(t('recent'),viewLink('activity',t))}<div class="enamel-list">${transactions.slice(0,3).map(item=>transactionRow(item,state,t)).join('')}</div></section>${homeMonthly(overview,state,t)}${note(t)}</div></div>`;
 }
 export function transferScreen(state,t) {
   const source=accounts.find(a=>a.id===state.transferSource);
