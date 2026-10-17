@@ -1,5 +1,13 @@
 export const messages = {
   th: {
+    welcomeTitle: "ยินดีต้อนรับ",
+    welcomeTagline: "ปกป้องความมั่งคั่งในยุคเอเชีย",
+    welcomeDescription: "เพื่อนคู่คิดทางการเงินสำหรับชีวิตประจำวันของคุณและครอบครัว",
+    welcomeLogin: "เข้าสู่ระบบ",
+    welcomeSignup: "สมัครสมาชิกด้วยรหัสเชิญ",
+    welcomePrototype: "ต้นแบบการออกแบบ ยังไม่มีระบบยืนยันตัวตนหรือการบันทึกบัญชีจริง",
+    authNotImplemented: "หน้าตัวอย่างการออกแบบ ยังไม่ได้พัฒนาระบบยืนยันตัวตน",
+    backToWelcome: "กลับสู่หน้าต้อนรับ",
     accountDisplayMode: "รูปแบบบัญชีบนหน้าหลัก",
     verticalFolderStack: "แฟ้มซ้อนแนวตั้ง",
     horizontalFolderCarousel: "แฟ้มเลื่อนแนวนอน",
@@ -94,6 +102,14 @@ export const messages = {
     toggleSetting: 'เปลี่ยนการมองเห็นในตัวอย่าง', welcomeNote: 'ดูแลเงินวันนี้ เพื่อวันพรุ่งนี้ที่เบาขึ้น', overviewLabel: 'ภาพรวมบัญชี', demoSuffix: 'ตัวอย่าง • {suffix}',
   },
   en: {
+    welcomeTitle: "Welcome",
+    welcomeTagline: "Protecting Wealth in the Asian Era",
+    welcomeDescription: "Your everyday financial companion, for you and your family.",
+    welcomeLogin: "Log in",
+    welcomeSignup: "Sign up with an invite code",
+    welcomePrototype: "Design prototype. Authentication and account persistence are not implemented.",
+    authNotImplemented: "Design preview — authentication not implemented.",
+    backToWelcome: "Back to Welcome",
     accountDisplayMode: "Home account display",
     verticalFolderStack: "Vertical folder stack",
     horizontalFolderCarousel: "Horizontal folder carousel",
