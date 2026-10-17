@@ -16,7 +16,7 @@ if(JSON.stringify(Object.keys(messages.th).sort())!==JSON.stringify(Object.keys(
 for(const file of ['index.html','assets/fonts/noto-sans-thai.ttf','assets/fonts/OFL.txt','src/fixtures.js']) await access(path.join(root,file));
 const html=await readFile(path.join(root,'index.html'),'utf8');
 for(const match of html.matchAll(/(?:src|href)="(\/(?!\/)[^"]+)"/g)) await access(path.join(root,match[1]));
-for(const file of ['src/app.js','src/screens.js','src/welcome.js']) {
+for(const file of ['src/app.js','src/screens.js','src/welcome.js','src/preview-flow.js']) {
   if(/[\u0E00-\u0E7F]/u.test(await readFile(path.join(root,file),'utf8'))) throw new Error(`Thai text must come from catalog: ${file}`);
 }
 console.log(`PASS: syntax, locale parity (${Object.keys(messages.th).length} keys per locale), local assets, and catalog-only Thai UI copy.`);
