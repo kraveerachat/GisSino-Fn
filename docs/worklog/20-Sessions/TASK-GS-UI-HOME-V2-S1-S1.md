@@ -2,7 +2,7 @@
 id: TASK-GS-UI-HOME-V2-S1-S1
 type: session
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-18
 up: ../10-Tasks/TASK-GS-UI-HOME-V2-S1.md
 related:
@@ -57,9 +57,9 @@ Vault utility was executed from the existing ignored Welcome script without comm
 
 ## Evidence and status
 
-- Source checkpoint: PENDING; base only is `bb27e2812789346fc322d4bad3fc6d847ed3823d`.
-- Documentation checkpoint: PENDING; local files written, not yet committed/pushed.
-- New Draft PR: PENDING.
+- Source checkpoint: `0e7e40f07cafd62103406e1eab06db3b384b6726`, committed/pushed.
+- Documentation checkpoint: `3f0eda384c288d974c340b16ffd3ade9dba46ed9`, committed/pushed and verified.
+- New Draft PR: [#7](https://github.com/kraveerachat/GisSino-Fn/pull/7), verified OPEN/DRAFT, base main, task/gs-ui-home-v2-s1.
 - Final receipt: NOT CREATED; create exactly one after verified delivery.
 - Production mutation: NO. Merge: human-only.
 
@@ -67,8 +67,14 @@ Vault utility was executed from the existing ignored Welcome script without comm
 
 S1 has fixed synthetic snapshots, Home-only scenario overrides, illustrative monthly expense and valid existing destinations. It does not implement Bills item highlight, needs-details filter, Activity Summary or primary-party selection. THB/USD remain separate with no FX. No live scheduler, ledger/obligation/habit engine, auth/storage/API or other-user financial data is added. Physical device/screen-reader/cross-browser/production checks remain unperformed unless separately evidenced.
 
-Next: parent supplies final B image confirmation/finish evidence; this draft records all presently verified evidence, vault/protected-history checks and exact docs manifest. Parent then handles verified source/docs push/new Draft PR and the single final receipt after delivery.
+Implementation delivery is CLOSED after source/docs push and verified checkpoint `3f0eda384c288d974c340b16ffd3ade9dba46ed9` matched local HEAD, remote task branch and PR #7 head. Receipt-inclusive status commit follows this checkpoint. PR #7 remains OPEN/DRAFT, base main, head task/gs-ui-home-v2-s1; owner acceptance/merge remains pending.
 
 ## Verified source and final review checkpoint
 
-Source `0e7e40f07cafd62103406e1eab06db3b384b6726` was committed/pushed and matched local HEAD, remote task branch and [PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7) head. PR is OPEN/DRAFT, base main, head task/gs-ui-home-v2-s1, correct requested title, attached to chat. Final independent finish SHIP: all 26 captures opened/valid, no material fixes. B final image check resolved EN390 money wrap, zero open material findings. Root context drift inherited/outside scope; critique snapshot/trend29/40 persisted locally and temporary body removed. Final docs checkpoint and immutable receipt follow this verified source checkpoint.
+Source `0e7e40f07cafd62103406e1eab06db3b384b6726` was committed/pushed and matched local HEAD, remote task branch and [PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7) head. PR is OPEN/DRAFT, base main, head task/gs-ui-home-v2-s1, correct requested title, attached to chat. Final independent finish SHIP: all 26 captures opened/valid, no material fixes. B final image check resolved EN390 money wrap, zero open material findings. Root context drift inherited/outside scope; critique snapshot/trend29/40 persisted locally and temporary body removed. Verified docs checkpoint and immutable receipt are recorded below.
+
+## Final closeout and immutable receipt
+
+Implementation delivery is CLOSED after source/docs push and verified checkpoint `3f0eda384c288d974c340b16ffd3ade9dba46ed9` matched local HEAD, remote task branch and PR #7 head. Receipt-inclusive status commit follows this checkpoint. PR #7 remains OPEN/DRAFT, base main, head task/gs-ui-home-v2-s1; owner acceptance/merge remains pending.
+
+Parent strict vault check: 68 notes/68 unique IDs/max 3 clicks after receipt, zero new errors. Three inherited findings remain unchanged: roadmap related-count 9, Auth related-count 9 (maximum 8), and closed planning S2 broken PROVIDER_CATALOG.md link. The earlier documenter utility reported only the broken link; the stricter parent utility also validates related-count. Protected planning/history are not rewritten. Whitespace and protected-path comparison pass. Source `0e7e40f07cafd62103406e1eab06db3b384b6726`; verified docs checkpoint `3f0eda384c288d974c340b16ffd3ade9dba46ed9`. [Final receipt](../90-Receipts/20261018-TASK-GS-UI-HOME-V2-S1-FINAL.md) records the checkpoint and complete evidence; no further receipt edits. Final local/remote/PR SHA equality and clean tree are checked after this status commit. Preview port 4180 stays available for owner review.
