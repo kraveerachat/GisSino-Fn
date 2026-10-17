@@ -19,7 +19,7 @@ related:
 
 ## Current state — S3 owner revision
 
-RUNTIME VERIFIED, awaiting owner review. Existing task/gs-ui-home-v2-s1 and [Draft PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7), no new PR/receipt. Parent verified clean startup/local/remote/PR HEAD bcc3073795e75e5c13d31c828d2d3bb6a5a00740, OPEN/DRAFT and unchanged main bb27e2812789346fc322d4bad3fc6d847ed3823d. Parent check PASS 550 keys/tests 70/70; final browser84 cases/19 captures/11 groups errors[]issues[]; A32/40 Good / no findings, B no material findings, detector[] once and parent finish PASS. Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 committed/pushed. Docs checkpoint/final local-remote-PR equality pending parent reconciliation. Historical S1/S2 does not verify S3.
+RUNTIME VERIFIED, awaiting owner review. Existing task/gs-ui-home-v2-s1 and [Draft PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7), no new PR/receipt. Parent verified clean startup/local/remote/PR HEAD bcc3073795e75e5c13d31c828d2d3bb6a5a00740, OPEN/DRAFT and unchanged main bb27e2812789346fc322d4bad3fc6d847ed3823d. Parent check PASS 550 keys/tests 70/70; final browser84 cases/19 captures/11 groups errors[]issues[]; A32/40 Good / no findings, B no material findings, detector[] once and parent finish PASS. Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 committed/pushed. Docs checkpoint 6f7f8d4ab75586f4f9b96da43bb4ad178c155f3c pushed and verified equal to local HEAD, remote task branch and PR7 head. PR7 title/body updated, OPEN/DRAFT; main unchanged. A final status-only reconciliation commit follows and is verified before handoff. Historical S1/S2 does not verify S3.
 
 ## S3 approved behavior
 
@@ -27,7 +27,7 @@ RUNTIME VERIFIED, awaiting owner review. Existing task/gs-ui-home-v2-s1 and [Dra
 - Remove Safe Home rendering only. Retain exact minor-unit/currency-isolated math/formatter/fixtures/scenarios/financial tests; future Wallet placement OPEN. No Today/nearest/monthly Home UI.
 - Due soon: valid unpaid overdue/today/+7 inclusive against selected Bangkok time; exclude paid/invalid/+8/duplicates. Stable date/ID; dedupe same ID or name/date/currency/amount. Max4 category/title/status/short-date rows, no inner scroll, hidden empty; existing Bill details and View all Bills, no filter claim.
 - Seven-day Home information differs from unchanged bell<=3 days and canonical T-3/due/overdue production reminders. No dispatch/preferences/delivery changes.
-- Missing means strictly past current-week nonactive/completed dates, including frozen, excluding pending today/future. First-missing focus reuses calendar; frozen remains blue/snowflake/no-activity and selected status atomic; zero missing positive.
+- Missing means strictly past current-week dates without qualifying/completed activity, including frozen, excluding pending today/future. First-missing focus reuses calendar; frozen remains blue/snowflake/no-activity and selected status atomic; zero missing positive.
 - Preserve Account Board source/assets/geometry/gestures/Settings, streak/XP/4/7 ring/timeline keyboard/touch, freeze model, shared check-in/idempotent illustrative reward/reduced motion. No app-open/login award, persistent habits/finance/reminders or Wallet redesign.
 
 ## Inventory, gates and open decisions
@@ -41,7 +41,7 @@ The canonical [18-system/eight-column inventory](../../pages/home/Page-Home.md#f
 | Check | Parent reports PASS 550 locale keys |
 | Tests / browser / independent review | Parent full70/70 tests; actual84 browser cases/19 captures/11 functional groups; A32/40 Good / no findings, B no material findings; detector once[]; parent final visual finish PASS |
 | Vault / protected bytes | Direct strict checker70 notes/70 IDs/max 3 clicks; exactly 3 inherited findings/zero new; inventory18 rows / 8 columns, protected normalized content unchanged, history append-only, whitespace pass |
-| Commit/push/PR equality | Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 pushed; docs checkpoint/final equality pending parent reconciliation |
+| Commit/push/PR equality | Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 pushed; docs 6f7f8d4ab75586f4f9b96da43bb4ad178c155f3c pushed and verified local/remote/PR equal; same OPEN/DRAFT PR7 |
 | Production / merge | NOT PERFORMED / HUMAN ONLY |
 
 [D31](../../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days) supersedes only corresponding D30 presentation. OPEN: future Safe Wallet placement, monthly Activity-vs-Wallet destination, conflicting login/app-open XP proposal and primary-partyQ8. Current rules still exclude app-open XP.

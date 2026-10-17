@@ -55,7 +55,7 @@ No new runtime module. Existing app Bill handler, fixture arrays, account/deck/p
 | npm test | Parent final full repository run PASS 70/70 |
 | Seven-size browser / themes / TH-EN | Parent final qa.json84 cases/19 captures/11 functional groups, errors[]/issues[]; documenter inspected JSON counts and capture list |
 | Design / technical / finish review | Independent A32/40 Good / no findings, B no material findings; one post-A detector[]; parent final visual finish PASS; actual reports local |
-| Source/docs commit/push/local-remote-PR equality | Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 committed/pushed; documentation checkpoint/final equality pending parent reconciliation |
+| Source/docs commit/push/local-remote-PR equality | Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 committed/pushed; docs 6f7f8d4ab75586f4f9b96da43bb4ad178c155f3c pushed and verified local/remote/PR equal; same OPEN/DRAFT PR7, title/body updated |
 | Vault health / protected bytes | Direct strict checker70 notes/70 IDs/max 3 clicks; exactly 3 inherited findings/zero new; protected normalized content unchanged, history append-only, inventory18 rows / 8 columns, whitespace pass |
 | Physical device / screen reader / cross-browser | NOT PERFORMED |
 
@@ -125,3 +125,8 @@ Evidence remains ignored local artifacts/home-v2-s3/qa.cjs, qa.json, design-a.md
 Strict utility wrote ignored artifacts/home-v2-s3/vault-health-documenter.json:70 notes/70unique IDs/max 3 clicks; exactly the 3 inherited findings listed above, zero new errors. Inventory validated18 data rows/eight columns. Normalized-content comparison against HEAD verified protected S1/S2/receipt/planning/root source specifications/app/fixtures/account/deck/navigation unchanged; Project History prior body is a prefix of the new body. Whitespace check passes. CRLF normalization is not a content change. No new receipt or policy/hub was created.
 
 Source 6f1a252 is a verified pushed checkpoint. Current delivery RUNTIME VERIFIED awaiting owner review; documentation commit/push and final local/remote/PR HEAD equality remain pending parent reconciliation. Existing PR7 title/body are to reflect the final three-change scope; no claim that this documenter updated GitHub.
+
+
+## Final handoff
+
+Owner review: http://127.0.0.1:4180/#home. Source6f1a252 and docs6f7f8d4 are pushed checkpoints; final status-commit SHA is reported after clean-tree/local/remote/PR verification. Same PR7 title is refactor(ui): refine Home due list and missing-day habit summary. No merge, new PR or receipt. No production mutation. S1/S2 and original receipt unchanged in Git; protected normalized content matches baseline (checkout CRLF is not a source change). Parent final strict health70notes/IDs/max3clicks, zero new errors and three inherited findings. Critique trend29→31→32/40; latest scoped backlog closed with no actionable S3 finding.
