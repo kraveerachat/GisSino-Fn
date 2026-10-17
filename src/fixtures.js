@@ -17,11 +17,19 @@ export const transactions = [
   { id: 'train', name: 'txTrain', category: 'travel', type: 'expense', amount: 120, icon: 'train', time: '07:50', day: 'yesterday', account: 'accountDaily', needsDetails: true }
 ];
 export const bills = [
-  { id: 'card', name: 'billCard', category: 'creditCards', icon: 'card', amount: 8250, due: 20, status: 'dueSoon' },
-  { id: 'power', name: 'billPower', category: 'monthlyBills', icon: 'bolt', amount: 1250, due: 22, status: 'upcoming' },
-  { id: 'device', name: 'billDevice', category: 'installments', icon: 'bag', amount: 2900, due: 25, status: 'upcoming', installment: '3 / 10' },
-  { id: 'music', name: 'billMusic', category: 'subscriptions', icon: 'music', amount: 350, due: 28, status: 'upcoming' }
+  { id: 'card', name: 'billCard', category: 'creditCards', icon: 'card', amount: 8250, amountMinor:825000, currency:'THB', dueDate:'2026-10-20', paid:false, due: 20, status: 'dueSoon' },
+  { id: 'power', name: 'billPower', category: 'monthlyBills', icon: 'bolt', amount: 1250, amountMinor:125000, currency:'THB', dueDate:'2026-10-22', paid:false, due: 22, status: 'upcoming' },
+  { id: 'device', name: 'billDevice', category: 'installments', icon: 'bag', amount: 2900, amountMinor:290000, currency:'THB', dueDate:'2026-10-25', paid:false, due: 25, status: 'upcoming', installment: '3 / 10' },
+  { id: 'music', name: 'billMusic', category: 'subscriptions', icon: 'music', amount: 350, amountMinor:35000, currency:'THB', dueDate:'2026-10-28', paid:false, due: 28, status: 'upcoming' }
 ];
+// Fixed, synthetic Home-only snapshots. Never advance these with the live clock.
+// Scenario overrides do not change Bills, Account Board or any source records.
+export const homePreview = Object.freeze({
+  nowLocal:'2026-10-18T10:00', reminderAt:'20:00', streak:7, freezes:2,
+  activityDays:Object.freeze(['2026-10-18']), monthlyExpense:Object.freeze({amountMinor:1524000,currency:'THB',month:'2026-10',illustrative:true}),
+  scenarios:Object.freeze(['sample','actionable','clear','shortfall','party']),
+  sampleParty:Object.freeze({synthetic:true,rank:2,nameTh:'ครอบครัวตัวอย่าง',nameEn:'Sample family'})
+});
 export const members = [
   { id: 'you', name: 'memberYou', initials: 'GS', xp: 1240, streak: 7 },
   { id: 'one', name: 'memberOne', initials: 'PL', xp: 1080, streak: 5 },

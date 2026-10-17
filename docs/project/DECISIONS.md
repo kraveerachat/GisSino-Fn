@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -121,3 +121,13 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Guide](PROJECT_GUIDE.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md) and [Open Questions](OPEN_QUESTIONS.md). Planning PR #5 remains untouched at `03065adbb023aafaac15a26bca99a123f6c2fe0e`.
 
 - 2026-10-17 — Added D28 as a preview-scoped revision with explicit pending production-policy approval; prior decisions preserved.
+
+### D29 — Home v2 S1 daily overview scope
+
+- Date: 2026-10-18; status: DECIDED for the synthetic S1 UI foundation; decided by owner in the GS-UI-HOME-V2-S1 brief and first-two-plus-expand clarification.
+- Statement: preserve greeting/hero/quick actions, add conditional Today priorities, revise Safe to Spend/nearest unpaid obligation, move streak before unchanged Account Board, and replace Home monthly chart with one-line existing Activity navigation. Today shows the first two categories with native expansion; empty means zero strip DOM. Use a fixed controllable Bangkok synthetic snapshot, explicit sample disclosures and Home-only scenario projections.
+- Financial boundary: integer minor units per THB/USD, no FX; liquid assets minus unpaid current-month obligations, true negative shortfall. Earliest unpaid obligation may be overdue/across months. No new ledger, obligation or habit engine. Synthetic streak/freezes/rank do not read other users' finances; primary-party selection remains OPEN.
+- Supersedes: only the prior Home composition/monthly chart presentation for this slice. Retain the source planning roadmap and prior decisions; Activity Summary, compact Global Leaderboard, spending boards, Friends and Party/Family creation remain later slices. Existing Account Board components/styles/providers/gestures/Settings mode are preserved.
+- Source: [Home S1 task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [session](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md). Affects [Home](../pages/home/Page-Home.md), [Settings](../pages/settings/Page-Settings.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md) and [Screen Map](../design/SCREEN_MAP.md).
+
+- 2026-10-18 — Added D29 as an S1-scoped implementation decision; historical planning and existing primary-party question remain unchanged.

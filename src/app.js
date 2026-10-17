@@ -1,7 +1,8 @@
+import { bangkokClock } from './home-overview.js';
 import { shell, addMenu, addForm, activityResults } from './screens.js';
 import { translator, money, escapeHTML as esc } from './i18n.js';
 import { icon } from './icons.js';
-import { transactions, bills, accounts, creditCard } from './fixtures.js';
+import { transactions, bills, accounts, creditCard, homePreview } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
 import { navigationOverlay } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
@@ -17,6 +18,7 @@ const sheet = document.querySelector('#sheet');
 const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card',...publicRoutes];
 const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
+  homeScenario:'sample', homeNow:homePreview.nowLocal,
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
@@ -254,7 +256,9 @@ document.addEventListener('change',event=>{
     return;
   }
   const control=event.target.dataset.control;
-  if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
+  if(control==='home-scenario') {state.homeScenario=homePreview.scenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
+  else if(control==='home-clock') {if(bangkokClock(event.target.value)){state.homeNow=event.target.value;announce(t('homeClockChanged'));}else{event.target.value=state.homeNow;announce(t('homeClockInvalid'));}}
+  else if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
   else if(control==='account-display-mode') {state.accountView=event.target.value==='horizontal'?'horizontal':'vertical';render();document.querySelector('#account-display-mode')?.focus({preventScroll:true});}
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }

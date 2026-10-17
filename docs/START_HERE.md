@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 ---
 # GisSino_FN — Start Here
 
@@ -27,11 +27,9 @@ updated: 2026-10-17
 
 ## Current focus
 
-[TASK-GS-PLAN-005](worklog/10-Tasks/TASK-GS-PLAN-005.md) establishes the comprehensive documentation-only planning roadmap: Pre-Home flow (A01–A10), Home v2 block specification (Today strip, Nearest Obligation, Streak with Party rank, one-line summary, compact Leaderboard card), 10-screen feature map, critical conflict analysis, and dual-track implementation milestones. PR #4 (Account Board full-folder deck) is verified MERGED to `main`. This planning task is documentation only; production mutation is NONE.
+[Home v2 S1](worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) implementation delivery is CLOSED on branch `task/gs-ui-home-v2-s1`, based on latest merged main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Source implements the conditional Today Strip, consistent Safe to Spend/nearest obligation, Streak before unchanged Account Board and one-line monthly Activity link. Home-only synthetic Bangkok scenario/time controls are in Settings. Parent checks pass 513 keys/64 tests; corrected browser matrix passes 84 cases/26 captures/10 groups. Final finish is SHIP and documentation delivery checkpoint `3f0eda384c288d974c340b16ffd3ade9dba46ed9` is verified in [S1](worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md); [Draft PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7) is OPEN/DRAFT with source pushed. Activity Summary, Leaderboard, Friends and financial engines are outside S1.
 
-[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) implementation delivery is CLOSED for owner-requested [S4](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) in the same [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): consumer copy, one compact Demo mode header, signup without invitation UI, Google action presentation and empty/typed Login → Home or signup → six-step setup → Postcard → Home. Latest parent checks pass 472 locale keys/52 tests; final 154 browser cases/39 captures/15 groups pass. A/B fix batch and detector [] are recorded; targeted B passed with no open issue; finish is SHIP; documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local/remote/PR head; owner review/merge remains pending. [Auth](pages/auth/Page-Auth.md), [D28](project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Open Questions](project/OPEN_QUESTIONS.md) describe boundaries: production invite-only remains canonical, public signup/Google production approval pending before M1. Closed S1–S3 and immutable receipt remain historical; no auth/OAuth/production change.
-
-Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`, superseding the earlier pending-review claim. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) remains OPEN/DRAFT and untouched.
+Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) is verified MERGED at `7fb1685c8b8e40faf07ef9354be920f4706be92c`; Welcome [PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6) is verified MERGED at `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) remains merged at `a028036bcea997245fd4d2536c121813d2c2dd33`. These are current integration facts supplied by the parent's GitHub verification; closed tasks/sessions/receipts retain their historical checkpoint claims unchanged. Production invite-only signup remains canonical; public signup/Google production approval remains pending before M1 in [Open Questions](project/OPEN_QUESTIONS.md).
 
 ## Agent reading order
 
@@ -53,3 +51,5 @@ Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is veri
 - 2026-10-17 — Reopened current focus for owner-requested [Welcome S3](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); same Draft PR #6, final documentation/Git delivery pending after finish SHIP.
 
 - 2026-10-17 — Reopened current focus for [Welcome S4](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), same Draft PR #6; final review and source/docs delivery pending.
+
+- 2026-10-18 — Current focus moved to Home v2 S1; reconciled verified PR #5/#6 merge SHAs in the current index while preserving closed historical notes.

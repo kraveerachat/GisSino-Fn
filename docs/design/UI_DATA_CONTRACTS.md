@@ -3,13 +3,21 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - ../architecture/SYSTEM_ARCHITECTURE.md
 ---
 # UI data contracts and future boundaries
+
+## Current Home v2 fixture projection — Slice S1
+
+[home-overview.js](../../src/home-overview.js) projects synthetic fixture data read-only; it is not a ledger, obligation or habit engine. Four bill fixtures add integer `amountMinor`, `currency`, ISO `dueDate` and explicit `paid` metadata while retaining legacy display fields. Safe to Spend includes nonarchived bank/ewallet/cash assets and subtracts unpaid obligations in the preview's current month, per currency. THB fixture arithmetic is `11,685,000 - 1,275,000 = 10,410,000` minor units (THB 104,100); the shortfall scenario yields `-8,765,000` (THB -87,650), never zero-clamped. THB/USD remain separate, with no conversion. Invalid/missing/unsafe amounts yield unavailable values, not fabricated zero; sums use integer/BigInt arithmetic and formatting preserves minor units.
+
+The fixed default is `2026-10-18T10:00` in Asia/Bangkok; `homeScenario` and valid `homeNow` live only in preview memory. Settings offers sample/actionable/clear/shortfall/party scenarios and a Bangkok datetime input; actionable selects `2026-10-23T20:30`. `reminderAt` is configurable projection/fixture input, default `20:00`, rather than a notification service or Settings reminder editor. Home visibly discloses synthetic snapshot/time. Day boundaries use Bangkok, never the device clock. Clear/shortfall overrides are local projections: they do not mutate Bills/Activity, Account Board records or financial fixtures. Settings explicitly discloses this limitation.
+
+Today categories are unpaid overdue/due within three days, streak at risk after threshold without qualifying activity, `needsDetails` entries, and missing qualifying activity after threshold. Nearest sorts all valid unpaid dates across months, including overdue; Safe to Spend reserves only the current month. Optional party rank requires `synthetic: true` and a positive integer rank; no member financial data or production primary-party policy is read. Streak/freezes are explicit samples (7/2). Monthly expense `1,524,000` minor THB is explicitly illustrative for October 2026, not derived from recent rows; outside that month it is unavailable. Existing hero total is a separate preserved preview. See [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md).
 
 ## Current state — pre-Home transient boundary S4
 
@@ -21,7 +29,7 @@ Email, password and signup confirmation remain DOM-only, outside the model; invi
 
 Consent is a demo boolean without timestamps or PDPA/compliance assertion. First Accounts reads only provider identity and THB/USD choice, with no balance, conversion, account ID, account creation or fixture mutation. Notification booleans call no permission API, subscribe to nothing and send no email. Install platform controls instructions only; no service worker, install request or success simulation. Postcard can display escaped nickname but writes neither `setup_completed_at` nor `welcome_seen_at`. No storage, cookies, network mutation, session or persistent profile/financial record is introduced. Existing dashboard account-profile demonstrations remain separate.
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 S3 adds presentation-only `accountView` (`vertical` by default or `horizontal`) and preserves `accountSelected` by stable account ID across Settings changes. All six account records render through one complete folder component; overlap and interaction use local geometry, not changed financial data. No card text is swapped during a gesture. Existing `accountProfiles`, ID/currency/minor balance preservation, unknown-provider fallback, hidden-value suppression and session-only profile boundaries continue unchanged. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records evidence.
 
@@ -78,3 +86,5 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
