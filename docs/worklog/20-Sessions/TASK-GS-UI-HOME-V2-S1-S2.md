@@ -48,7 +48,7 @@ OPEN: final monthly-summary destination (Activity vs Wallet), login/app-open aut
 | Design/technical/finish | Independent A prepatch31/40, noP0/P1; A/B confirmed timeline clipping, B additionally hidden Add focus. Parent fixed both and verified final behavior; scoped parent finish PASS. No independent postpatch score/review claimed |
 | Detector | Parent ran exactly once after A finished:[]/0 findings, ignored `artifacts/home-v2-s2/detector.json`; no rerun |
 | Vault health / links / protected bytes | Direct strict utility:69 notes/69 IDs/max3clicks, exactly3 inherited errors and zero new errors; inventory18 rows/eight columns; protected paths have zero Git diff and normalized content unchanged |
-| Source/docs SHA, push, PR equality | Source `292f346b814d41775d2a569d3ed31bef390040ce` pushed; same Draft PR7 title/body update and docs checkpoint PENDING parent reconciliation. No documenter Git/PR action |
+| Source/docs SHA, push, PR equality | Source `292f346b814d41775d2a569d3ed31bef390040ce` pushed; docs `10239a1598883a88eb749f53d5dc72a5a55634d5` pushed and verified equal to local/remote/PR head. Same OPEN/DRAFT PR7 title/body updated. No documenter Git/PR action |
 | Physical devices, screen reader, cross-browser | NOT PERFORMED |
 
 Historical S1's513 locale keys,64 tests and84-case/26-capture results remain in S1; none verifies S2. No screenshot count/path or successful checkpoint is fabricated.
@@ -63,7 +63,7 @@ Baseline inherited strict-health findings are roadmap related-count9, Auth relat
 
 ## Delivery status and next action
 
-RUNTIME VERIFIED, awaiting owner review. Source checkpoint `292f346b814d41775d2a569d3ed31bef390040ce` is committed/pushed. Source/browser/review gates are complete for the stated local scope; documentation checkpoint SHA and final local/remote/PR equality remain PENDING parent reconciliation. Existing Draft PR7 is retained; intended final title `refactor(ui): prioritize accounts and add gamified habit preview`. No merge, new PR or new receipt. Previous CLOSED S1 and immutable receipt remain untouched.
+RUNTIME VERIFIED, awaiting owner review. Source checkpoint `292f346b814d41775d2a569d3ed31bef390040ce` is committed/pushed. Source/browser/review gates are complete for the stated local scope; documentation checkpoint `10239a1598883a88eb749f53d5dc72a5a55634d5` is pushed and verified equal to local HEAD, remote branch and PR7 head. A final status-only reconciliation commit follows and is verified before handoff. Existing Draft PR7 is retained; verified title `refactor(ui): prioritize accounts and add gamified habit preview`. No merge, new PR or new receipt. Previous CLOSED S1 and immutable receipt remain untouched.
 
 ## Final source manifest and review corrections
 
@@ -108,3 +108,8 @@ The local ignored `artifacts/home-v2-s2/qa.cjs` and `artifacts/home-v2-s2/qa.jso
 - `artifacts/home-v2-s2/checkin-confirm.png`
 - `artifacts/home-v2-s2/checkin-reward.png`
 - `artifacts/home-v2-s2/bell-empty.png`
+
+
+## Final handoff
+
+Owner can review `http://127.0.0.1:4180/#home`. The preview server remains running at owner request; no production deployment or merge. Implementation and documentation are delivered, status RUNTIME VERIFIED awaiting owner acceptance. Source292f346 and docs10239a1 are preserved checkpoints; final status-commit SHA is reported in the handoff after push/equality/clean-tree verification. No new receipt was created for this existing open-PR follow-up. Parent preserved the Assessment A response in its local evidence file; critique trend29→31/40 is pre-fix assessment history, not a post-fix score. Latest scoped critique backlog was closed after both P2 fixes passed browser regressions.
