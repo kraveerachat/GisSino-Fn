@@ -20,4 +20,4 @@ related:
 | [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | EXTERNALLY ACCEPTED | [PR #3 merged](https://github.com/kraveerachat/GisSino-Fn/pull/3) | Documentation vault migration and hubs |
 
 | [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | CLOSED | [PR #4 merged](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S3 complete folders; merged into main at a028036; historical receipts retained |
-| [TASK-GS-UI-WELCOME-001](../10-Tasks/TASK-GS-UI-WELCOME-001.md) | IN PROGRESS | [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6) | S3 eleven-route responsive preview; 52 tests/479 keys; B recovery resolved/finish SHIP; final docs/Git delivery pending; S1/S2/receipt preserved |
+| [TASK-GS-UI-WELCOME-001](../10-Tasks/TASK-GS-UI-WELCOME-001.md) | CLOSED | [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6) | S3 eleven-route responsive preview; 52 tests/479 keys; B recovery resolved/finish SHIP; source/docs push and PR synchronization verified; owner review pending; S1/S2/receipt preserved |

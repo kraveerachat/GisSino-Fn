@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001-S3
 type: session
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../10-Tasks/TASK-GS-UI-WELCOME-001.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-Implementation and local matrix verification are recorded; B targeted recovery is resolved and final finish verdict is SHIP; final documentation/Git/PR reconciliation remains pending. Same [task](../10-Tasks/TASK-GS-UI-WELCOME-001.md), branch `task/gs-ui-welcome-001` and existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Initial source checkpoint `a48378463c9945a85f925496db4babfb2f70f67d`; final correction `a5aa80ece3c1a01619795c7ca3d1276d0d7a9672` changes only preview-flow.js (+7/-1), with post-patch 52 tests/479 keys passing and parent-confirmed source push. Parent confirms existing PR #6 title/body updated to `feat(ui): add responsive pre-Home journey preview`. Final docs commit/push and local/remote/PR SHA synchronization remain pending. Status remains IN PROGRESS until parent reconciliation. [S1](TASK-GS-UI-WELCOME-001-S1.md), [S2](TASK-GS-UI-WELCOME-001-S2.md) and the [immutable receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) are unchanged; no new receipt.
+Implementation delivery is CLOSED. B targeted recovery is resolved, final finish verdict is SHIP, and source/docs/PR delivery checkpoint is verified. Owner acceptance and merge remain pending. Same [task](../10-Tasks/TASK-GS-UI-WELCOME-001.md), branch `task/gs-ui-welcome-001` and existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Initial source checkpoint `a48378463c9945a85f925496db4babfb2f70f67d`; final correction `a5aa80ece3c1a01619795c7ca3d1276d0d7a9672` changes only preview-flow.js (+7/-1), with post-patch 52 tests/479 keys passing and parent-confirmed source push. Parent confirms existing PR #6 title/body updated to `feat(ui): add responsive pre-Home journey preview`. Docs checkpoint d294c2f14249a0e4a31d4b1d6a102281a90d98a2 was committed/pushed and matched local HEAD, remote branch and PR head. PR was verified OPEN/DRAFT,base main,head task/gs-ui-welcome-001; planning PR #5 stayed unchanged. The final status-only closeout commit follows this checkpoint and is discoverable in Git history. [S1](TASK-GS-UI-WELCOME-001-S1.md), [S2](TASK-GS-UI-WELCOME-001-S2.md) and the [immutable receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) are unchanged; no new receipt.
 
 ## Owner authority and delivered behavior
 
@@ -47,10 +47,10 @@ This is a substantial event under the existing task, so create only this S3 log 
 
 Exact docs manifest (15): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARCHITECTURE.md`; `docs/design/COMPONENT_INVENTORY.md`; `docs/design/DESIGN_TOKENS.md`; `docs/design/SCREEN_MAP.md`; `docs/design/UI_DATA_CONTRACTS.md`; `docs/design/UI_DESIGN_SPEC.md`; `docs/pages/Pages-Hub.md`; `docs/pages/auth/Page-Auth.md`; `docs/project/DECISIONS.md`; `docs/project/PROJECT_GUIDE.md`; `docs/project/PROJECT_HISTORY.md`; `docs/worklog/00-Index/Task-Dashboard.md`; `docs/worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md`; `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md`.
 
-Documenter executed `python artifacts/welcome-s3/check-vault-documenter.py`: PASS, 56 notes/56 unique IDs, maximum 3 clicks, errors[]. It checked required frontmatter, existing up/related targets, rendered relative Markdown links and reachability outside templates/fenced examples. `git diff --check` passed. Separate parent-list check found zero omissions. Original D4 table line is preserved exactly; S1/S2/receipt match HEAD byte-for-byte, and root DESIGN.md/PRODUCT.md match normalized HEAD content (checkout line endings differ). New S3 is linked from its task parent and START_HERE; current task/S3/dashboard remain IN PROGRESS pending final docs commit/push verification. No new topic duplication, secrets or personal absolute paths were introduced. Parent must rerun after final status/SHA reconciliation.
+Documenter executed `python artifacts/welcome-s3/check-vault-documenter.py`: PASS, 56 notes/56 unique IDs, maximum 3 clicks, errors[]. It checked required frontmatter, existing up/related targets, rendered relative Markdown links and reachability outside templates/fenced examples. `git diff --check` passed. Separate parent-list check found zero omissions. Original D4 table line is preserved exactly; S1/S2/receipt match HEAD byte-for-byte, and root DESIGN.md/PRODUCT.md match normalized HEAD content (checkout line endings differ). New S3 is linked from its task parent and START_HERE; current task/S3/dashboard now close implementation delivery after parent verification of docs checkpoint d294c2f14249a0e4a31d4b1d6a102281a90d98a2. No new topic duplication, secrets or personal absolute paths were introduced. Parent rerun passed56notes/56IDs/max3clicks/zero-errors; whitespace passed.
 
-## Remaining exact reconciliation fields
+## Final reconciliation
 
 1. Corrected source `a5aa80ece3c1a01619795c7ca3d1276d0d7a9672`, targeted B recovery and final finish SHIP are reconciled; preserve historical B failure and targeted resolution separately.
-2. Documentation commit/push SHA; local HEAD = remote branch = PR head; verify the already updated PR title/body, OPEN/DRAFT/base main/head task branch and PR #5 unchanged-tip.
-3. Final vault and whitespace results, task/S3/dashboard/START current status/next action. Close only after actual completion; same task/PR gets no new receipt.
+2. Docs d294c2f14249a0e4a31d4b1d6a102281a90d98a2 matched local HEAD, remote branch and PR head; updated title/body, OPEN/DRAFT/base main/head task branch and PR #5 unchanged-tip verified.
+3. Vault and whitespace passed; task/S3/dashboard/START close implementation delivery. Owner reviews PR #6 and port4178 preview; merge remains owner-only. No new receipt.
