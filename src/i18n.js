@@ -497,3 +497,45 @@ export function translator(locale) {
 export const money = (value, locale = 'th', decimals = false) => new Intl.NumberFormat(locale === 'th' ? 'th-TH' : 'en-GB', { style: 'currency', currency: 'THB', minimumFractionDigits: decimals ? 2 : 0, maximumFractionDigits: decimals ? 2 : 0 }).format(value);
 export const number = (value, locale = 'th') => new Intl.NumberFormat(locale === 'th' ? 'th-TH' : 'en-GB').format(value);
 export const escapeHTML = (value) => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+
+Object.assign(messages.th, {
+  walletOverviewSubtitle: 'เห็นภาพรวมเงินและภาระที่ต้องดูแล',
+  walletAssetTotal: 'เงินของฉัน',
+  walletObligations: 'ภาระที่ต้องชำระ',
+  walletCompositionTitle: 'สัดส่วนกระเป๋า',
+  walletCompositionBasis: 'สัดส่วนจากเงินและภาระที่ต้องชำระรวมกัน · THB',
+  walletCardsAndObligations: 'บัตรเครดิต · เดบิต · ภาระหนี้',
+  walletMovementMix: 'รับ {income}% · จ่าย {expense}%',
+  walletNoMovement: 'ยังไม่มีรายการรับ–จ่าย',
+  walletPaymentObligation: 'ภาระที่ต้องชำระ',
+  walletAmountDue: 'ยอดที่ต้องชำระ',
+  walletItemBalance: 'ยอดคงเหลือ',
+  walletItemCount: '{count} รายการ',
+  walletDebitNote: 'ยังไม่มีบัตรเดบิต · ยอดเงินนับในบัญชีที่ผูกไว้',
+  walletEmptyCategory: 'ยังไม่มี{category}',
+  walletChartUnavailable: 'แสดงสัดส่วนเมื่อมียอดครบถ้วนและไม่ติดลบ',
+  walletSeparateCurrencies: 'แสดงแต่ละสกุลแยกกัน โดยไม่แปลงค่าเงิน',
+  walletUnknownCurrency: 'บางรายการยังไม่ได้ระบุสกุลเงิน จึงไม่รวมในยอดสรุป'
+});
+Object.assign(messages.en, {
+  walletOverviewSubtitle: 'Your money and commitments at a glance',
+  walletAssetTotal: 'My money',
+  walletObligations: 'Payment obligations',
+  walletCompositionTitle: 'Wallet composition',
+  walletCompositionBasis: 'Share of money plus payment obligations · THB',
+  walletCardsAndObligations: 'Credit · debit · obligations',
+  walletMovementMix: 'In {income}% · Out {expense}%',
+  walletNoMovement: 'No movements yet',
+  walletPaymentObligation: 'Payment obligation',
+  walletAmountDue: 'Amount due',
+  walletItemBalance: 'Balance',
+  walletItemCount: '{count} items',
+  walletDebitNote: 'No debit cards yet · Money is counted in the linked account',
+  walletEmptyCategory: 'No {category} yet',
+  walletChartUnavailable: 'Composition appears when balances are complete and non-negative',
+  walletSeparateCurrencies: 'Currencies are shown separately, without conversion',
+  walletUnknownCurrency: 'Some items have no supported currency and are excluded from the summary'
+});
+
+Object.assign(messages.th, { walletMovementBasis: 'สัดส่วนรับ–จ่ายจากรายการที่บันทึก · ไม่รวมโอนระหว่างบัญชี' });
+Object.assign(messages.en, { walletMovementBasis: 'Income and expense mix from recorded entries · Excludes transfers between your accounts' });
