@@ -12,21 +12,24 @@ related:
 ---
 # Screen map
 
-## Current Home v2 — Slice S1
+## Current Home v2 — Compact owner revision S2
 
-Explicit `#home` now shows the [S1 daily overview](../pages/home/Page-Home.md): conditional Today Strip, Safe to Spend / earliest unpaid obligation, Streak before preserved My Accounts, recent rows and one-line Monthly Summary. Settings adds Home-only sample/actionable/clear/shortfall/party scenario and Bangkok datetime controls; no new route is introduced. Existing Account Board Settings mode control remains unchanged.
+`#home` preserves greeting/balance/actions/navigation, then My Accounts first → conditional compact Today → compact Safe to Spend → gamified Streak/XP → Recent Transactions last. No standalone nearest tile or Home monthly line/chart remains. Settings retains synthetic scenario/Bangkok clock and Account Board mode controls. No route is added. See [Home](../pages/home/Page-Home.md) and [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).
 
 | Home action | Actual destination / behavior |
 |---|---|
-| Due/overdue Today item; Nearest Obligation | `#bills`, no individual bill highlight |
-| Needs-details Today item; Monthly Summary | `#activity`, no automatic filter or Summary tab |
-| Streak/missing-activity Today item | Existing Add modal action, no saved check-in |
+| Bell | Existing sheet with deduplicated synthetic due/overdue notices or empty; notice link → `#bills`, no item highlight/delivery |
+| Needs-details Today item | Existing `#activity`, no automatic filter |
+| Pending/at-risk Today item | Existing Add sheet |
 | Safe to Spend | `#wallet` |
-| Streak card | `#party`; rank only in explicit synthetic party context |
-| Snapshot adjustment | `#settings`, Home-only controls |
-| Account selection / detail | Existing selection and `#wallet/account/<stable-id>` behavior preserved |
+| Habit card check-in/review | Existing shared No spending today confirmation/result sheet, transient only |
+| Calendar day / stepping | Internal selected date and bounded timeline focus/scroll; no route or historical write |
+| Party link | Existing `#party`, aggregate preview unchanged |
+| Snapshot adjustment | `#settings`, Home-only clock/scenarios |
+| Account selection / detail | Existing selection and `#wallet/account/<stable-id>` preserved |
+| Recent rows / View all | Existing transaction detail / `#activity` |
 
-`#activity/summary`, Leaderboard and Friends remain unimplemented future routes. The planned roadmap below is a historical/planned specification, not a claim those screens exist. S1 implements only its approved Home foundation; see [task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md).
+`#activity/summary`, Leaderboard and Friends remain unimplemented. The roadmap below is historical/planned, not a runtime claim. Monthly destination is OPEN (Activity vs Wallet); current Activity analysis responsibilities are preserved.
 
 ## Current state — pre-Home preview S4
 
@@ -57,7 +60,7 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 | More (native popover) | Bills and Party, contextual child highlight, close/toggle/outside/Escape/Tab-away dismissal; mutually exclusive with the Add dialog |
 | `#transfer` | Own-account child screen; zero initial amount, physical keyboard/custom touch keypad, source/destination exclusion, precision validation, unsaved review; no posting |
 | `#credit-card` | Bills child screen; original sample card, outstanding/full/minimum/date summary, six tracking sheets, in-memory reminder, sample activity; no issuer controls |
-| `#home` | Balance visibility, complete overlapping asset folders (vertical default; horizontal selected in Settings), canonical Wallet account detail sheet, expense/income/transfer/bills quick actions, conditional Today priorities, decision tiles, streak, recent transaction details, one-line monthly link |
+| `#home` | Balance visibility, complete overlapping asset folders (vertical default; horizontal selected in Settings), canonical Wallet account detail sheet, expense/income/transfer/bills quick actions, compact Today/Safe, gamified calendar/check-in, bell due preview and recent details last; no Home monthly UI |
 | `#activity` | October sample context, income/expense summaries, search, all/expense/income/own-transfer filters, day grouping, needs-details transaction, detail sheet; sample, empty, loading, error, unavailable, and no-search-results |
 | Add (modal action) | Mode chooser; manual expense/income, own-account transfer, synthetic receipt, no-spend check-in, inactive AI; field validation and explicitly unsaved result |
 | `#bills` | October commitments, calendar/list, credit cards, monthly bills, installments, subscriptions, due/status badges, detail sheet; empty/loading/error/unavailable. Compact agenda below 360px |
@@ -128,3 +131,5 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.

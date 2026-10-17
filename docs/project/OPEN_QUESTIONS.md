@@ -40,11 +40,16 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 | Party vs Family model (Q5) | [OPEN] | Is Family a separate entity or a party record of kind `family`? Analyst recommends single entity. (Conflict 4) |
 | Spending board opt-in (Q6) | [OPEN] | Confirm spending boards are strictly opt-in, default OFF, displaying position only. (Conflict 5) |
 | Global board audience (Q7) | [OPEN] | Confirm whether all opted-in members appear on Global board with nickname, category, and rank only. |
-| Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. Home S1 uses only explicitly synthetic optional rank; it does not decide this policy. |
+| Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. Historical S1 used explicitly synthetic optional rank. The compact S2 habit card links to Party without choosing a primary-party policy. |
 | DOB & Marital status (Q9) | [OPEN] | Confirm verbal mentions of exact birth date and marital status are excluded from registration requirements. (Conflict 6) |
 | Gross balance vs Net worth (Q10) | [OPEN] | Should Home hero balance display Gross Assets or Net Worth (assets minus credit card liabilities)? |
-| Home destination follow-ups | [OPEN / LATER SLICE] | Home S1 links to existing Bills/Activity/Add only. Bill highlighting, needs-details prefiltering and Activity Summary navigation require later route/screen support; no current filtered/highlighted destination is claimed. |
-| Home live reminders and totals | [OPEN / FUTURE ENGINE] | Fixed Bangkok snapshots, fixture reminder input and illustrative October monthly expense are prototype-only. Define live activity qualification, scheduling, ledger-backed monthly summary and authorized adapters in their scoped engine slices. |
+| Home destination follow-ups | [OPEN / LATER SLICE] | Compact Home uses existing Bills/Activity/Add/Wallet/Party and shared check-in sheet only. Bill highlighting, needs-details prefiltering and Activity Summary require later route/screen support; none is claimed. |
+| Home live reminders and totals | [OPEN / FUTURE ENGINE] | Fixed Bangkok snapshots and dated habit fixtures are prototype-only; monthly expense data remains while its Home UI is removed. Define authorized ledger/obligation/habit adapters and scheduling in M2/M3/M5/M6/M7. |
+
+| Monthly Summary final destination | [OPEN — OWNER CONFIRMATION REQUIRED] | D30 removes all Home monthly UI. Activity currently owns planned analysis; owner is reconsidering Wallet dashboard responsibility. Do not silently move the summary to Wallet or create Activity Summary in PR #7. |
+| Login/app-open automatic XP | [OPEN — CONFLICTING OWNER PROPOSAL] | Current Guide §6 and architecture §7.7 qualify entry (including needs-details), confirmed No spending today, paid obligation or reconciliation; login/app-open is not qualifying and grants no XP. Any change needs explicit rule approval and authoritative M7 design, never frontend-only grants. |
+| Home weekly activity ring | [PROPOSED PRESENTATION] | D30 demonstrates qualifying Bangkok Monday-Sunday active dates /7, rounded. Confirm eventual integration alongside existing canonical metrics rather than replacing them. |
+| Daily welcome/reward scheduling | [PROPOSED / FUTURE M7] | Define first relevant visit, per-user/day first-visit and popup shown-state, authoritative grants and preferences. Current sheet is user-triggered with a page-lifetime date guard only. |
 
 ## Change log
 
@@ -54,3 +59,5 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.
 
 - 2026-10-18 — Recorded Home S1 route/engine follow-ups and clarified Q8 remains OPEN; no production selection or financial engine policy was chosen.
+
+- 2026-10-18 — Added monthly destination/login-XP conflicts and daily-popup/weekly-metric follow-ups for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).

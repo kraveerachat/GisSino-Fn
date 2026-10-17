@@ -11,19 +11,23 @@ related:
 ---
 # Component inventory
 
-## Current Home v2 components — Slice S1
+## Current Home v2 components — Compact revision S2
 
-[home-overview.js](../../src/home-overview.js) centralizes the read-only projection (`bangkokClock`, `deriveHomeOverview`, `homeOverview`), exact minor-unit formatter (`homeMoney`), and renderers (`homeSnapshot`, `todayStrip`, `homeDecisions`, `homeStreak`, `homeMonthly`, `homePreviewControls`). It extends existing Home and Settings rather than adding screens. [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) owns verification and delivery.
+[home-overview.js](../../src/home-overview.js) retains Bangkok clock/read-only financial projection, exact minor-unit formatter, snapshot and preview controls; Today and Safe render compactly and due notices render in the existing bell sheet. Retained nearest/monthly data and reusable monthly renderer have no Home presentation. New focused [habit-preview.js](../../src/habit-preview.js) prevents mixing calendar/preview state into financial projection or duplicating production stats. [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) owns current verification.
 
 | Component | Current contract |
 |---|---|
-| Synthetic snapshot | Visible Bangkok date/time disclosure and existing Settings link |
-| Today Strip | Zero DOM when empty; first two categories plus native expansion; existing Bills/Activity/Add destinations |
-| Decision tiles | Per-currency Safe to Spend with true negative/text shortfall; earliest unpaid obligation title/amount/date/day state or empty state |
-| Streak | Before My Accounts; streak/freezes, Party link, optional declared synthetic party rank |
-| Account Board | Existing `accountBoard` renderer and complete folders reused unchanged; module/styles/gestures/provider/profile/settings mode contracts retained |
-| Monthly line | One compact navigation line to `#activity`; illustrative month total, no Home chart or Summary route |
-| Settings Home controls | Home-only scenario + Bangkok datetime; transient, explicitly scoped synthetic projections |
+| Account Board | First below hero; existing complete folders, modules/styles/gestures/providers/selection/details/Add/Settings modes unchanged |
+| Today priorities | Conditional concise needs-details/habit rows; first two and native expansion; no due bills; existing Activity/Add destinations |
+| Safe to Spend row | Per-currency integer-minor result, genuine shortfall/text warning and hidden-value behavior; Wallet link |
+| Bell notices | Existing sheet; deduped due ≤3 days/overdue fixtures, status/date/Bills link or empty; no notification delivery |
+| Habit summary | Explicit synthetic current streak, weekly XP/freeze count and n/7 percentage ring |
+| Habit timeline | 21 explicit dates; complete/missed/pending/future/frozen icon/text states; roving arrows/Home/End and internal pointer/touch scroll |
+| Shared check-in sheet | Home and Add share No spending today confirmation; page-lifetime per-date idempotent synthetic completion/XP result; no real stats/financial mutation |
+| Recent rows | Preserved three rows and Activity/detail behavior; last main section |
+| Settings Home controls | Home-only scenario/Bangkok datetime; transient projections; existing Account Board mode controls unchanged |
+
+No duplicate modal system, automatic daily popup, durable history, production XP formula, new Wallet dashboard or Activity Summary route is added.
 
 ## Current state — pre-Home preview S4
 
@@ -98,3 +102,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.

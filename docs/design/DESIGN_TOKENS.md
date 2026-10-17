@@ -11,11 +11,11 @@ related:
 ---
 # Design tokens
 
-## Current Home v2 extension — Slice S1
+## Current Home v2 extension — Compact revision S2
 
-[Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) reuses existing surface-raised/well/accent-well/text/muted/accent-ink/line/strong-line/warning/danger and contact/inset shadow roles in [blue.css](../../src/styles/blue.css). No global palette, Account Board style or token file is changed. Today/decision/streak corners are 16px; Today padding 16px; decision padding 18px × 16px; lower grid gap 20px, then 20px × 24px at 960px. Today rows are at least 60px and native disclosure/Settings links at least 44px; Settings fields at least 48px. Decision figures use tabular numerals and `clamp(18px,1.7vw,26px)`, supporting text 12–14px. Danger color is paired with visible shortfall/overdue text.
+[Compact Home](../pages/home/Page-Home.md) reuses porcelain raised/well surfaces, enamel accent/ink, text/muted/line, warning/danger and existing semantic success roles in [blue.css](../../src/styles/blue.css). No global palette, Account Board stylesheet or token module changes. Today and Safe become compact rows; the habit card uses restrained green/orange for status with icons/text, a blue progress ring and neutral future dates. Current and selected states remain distinguishable beyond color. Money keeps tabular numerals, true negative text and masking.
 
-Decision tiles stack below 360px. Today row columns apply at 600–959px; the lower Home grid pairs sections at 960px+ with no new sidebar breakpoint. Monthly navigation wraps naturally with a 56px minimum height. Existing theme, focus and reduced-motion primitives continue; Account Board geometry/motion below remains the preserved S3 contract. Browser verification is tracked separately in the active task.
+The new card's counters/ring and internal date scroller form two primary zones. Date chips and stepping/check-in controls preserve usable focus/targets; timeline width is local, not page overflow. Desktop/tablet composition keeps the same DOM reading order; Account Board's preserved S3 geometry and navigation breakpoints below are unchanged. Existing reduced-motion preference removes spatial celebration; no automatic popup or looping celebratory motion. Current scoped geometry: lower gap20px (20px x24px at960px+); Today padding8px0 and rows44px minimum; Safe radius12px/padding12px16px, money20px (18px below360px); habit radius16px/padding16px, ring104px (88px below360px), 48px-wide/88px-minimum-height day chips with8px gaps, 44px stepping/check-in targets. Celebration is280ms and disabled under reduced motion. Source values are observed; browser verification is tracked in [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md). No third-reference fidelity claim is made without the missing image.
 
 ## Current state — pre-Home preview S4
 
@@ -97,3 +97,5 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.

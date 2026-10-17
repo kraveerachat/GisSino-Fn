@@ -17,7 +17,7 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 | Page | Level | Status | Summary |
 |---|---:|---|---|
 | [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (mock data) | Eleven pre-Home Demo mode screens, consumer copy, Login/Google and signup/Google navigation, six-step setup |
-| [Home](home/Page-Home.md) | 2 | PROTOTYPE (mock data) | Home v2 S1 daily priorities, decision tiles, streak, preserved Account Board and compact monthly link |
+| [Home](home/Page-Home.md) | 2 | PROTOTYPE (mock data) | Compact Home: Accounts first, Today/Safe, gamified habit/calendar/check-in, bell due preview, Recent last; no monthly UI |
 | [Wallet](wallet/Page-Wallet.md) | 2 | PROTOTYPE (mock data) | Synthetic accounts, liabilities, details, and transfer entry |
 | [Activity](activity/Page-Activity.md) | 2 | PROTOTYPE (mock data) | Searchable and filterable sample transaction history; Summary tab planned |
 | [Add](add/Page-Add.md) | 2 | PROTOTYPE (mock data) | Unsaved preview actions in a modal |
@@ -36,3 +36,5 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) refreshes Auth preview copy/actions; production signup policy remains unchanged.
 
 - 2026-10-18 — Indexed Home S1 and Settings preview controls; reconciled current public journey wording without changing its closed history.
+
+- 2026-10-18 — Indexed owner Compact Home S2, shared transient check-in and OPEN monthly destination; current S2 verification stays in its session.
