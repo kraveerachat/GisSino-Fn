@@ -48,6 +48,11 @@ export function mountPreviewFlow(root,flow,t,rerender) {
   };
   const credentialValues=form=>Object.fromEntries(['invite','email','password','confirm'].map(name=>[name,form.elements.namedItem(name)?.value||'']));
   surface.addEventListener('input',event=>{
+    const credentialForm=event.target.closest('[data-preview-form]');
+    if(credentialForm&&event.target.matches('[data-credential]')&&event.target.getAttribute('aria-invalid')==='true'){
+      const errors=validatePreviewFields(credentialForm.dataset.previewForm,credentialValues(credentialForm));
+      if(!errors[event.target.name])fieldError(credentialForm,event.target.name,null);
+    }
     const key=event.target.dataset.previewField;
     if(!key)return;
     updatePreviewValue(flow,key,event.target.type==='checkbox'?event.target.checked:event.target.value);
@@ -79,7 +84,8 @@ export function mountPreviewFlow(root,flow,t,rerender) {
     if(!form||!event.target.matches('[data-credential]'))return;
     const kind=form.dataset.previewForm;
     const errors=validatePreviewFields(kind,credentialValues(form));
-    if(event.target.value||event.target.getAttribute('aria-invalid')==='true')fieldError(form,event.target.name,errors[event.target.name]);
+    // Blur must not remove a row between pointerdown and pointerup on Submit.
+    if(event.target.value&&errors[event.target.name])fieldError(form,event.target.name,errors[event.target.name]);
   });
   surface.addEventListener('submit',event=>{
     const form=event.target.closest('[data-preview-form]');if(!form)return;
