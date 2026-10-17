@@ -11,9 +11,15 @@ related:
 ---
 # UI data contracts and future boundaries
 
-## Current state — public routing boundary
+## Current state — pre-Home transient boundary S3
 
-[Welcome](../pages/auth/Page-Auth.md) uses existing in-memory `route`/`locale` and the translator callback; it reads no account/financial fixtures. `publicRoutes` contains welcome/login/signup. Public rendering chooses light appearance without mutating `state.theme`, so returning to the dashboard retains its earlier theme. No auth/session/storage, identity record, credential, token or account-persistence contract is introduced. Route accessibility is not authentication: explicit `#home` remains a synthetic dashboard review route, and neither public CTA bypasses to it. See [welcome.js](../../src/welcome.js), [app.js](../../src/app.js) and [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
+[preview-flow.js](../../src/preview-flow.js) exports eleven public routes and the ordered six-step setup list. Existing route/locale/translator state remains shared; public light rendering leaves dashboard theme preference intact. Route access does not authenticate. [Auth](../pages/auth/Page-Auth.md), [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) and [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) define scope.
+
+The in-memory model allowlist is `displayName`, `nickname`, `avatar`, `birthYear`, `gender`, `consentDemo`, `accountType`, `providerId`, `currency`, `inApp`, `push`, `emailNotice`, `installPlatform`. Unknown keys are rejected. Names cap at 60 characters, year at four; enumerated choices/booleans are checked. Provider selection reuses the existing registry and safe resolver. Changing type selects its existing default provider. All rendered user text is escaped. This is temporary UI state, not a user/schema contract; refresh resets it. Optional birth year is AD, valid four-digit years from 1000 through the current year show current-year-minus-year approximate age. This syntactic range is not an age category, legal threshold or minor eligibility rule; exact birth date and marital status are absent.
+
+Invitation, email, password and confirmation stay in DOM fields, outside this model. Submission reads them transiently for required/email-shape/match errors only; no invitation format/expiry or production password strength policy is approved. Valid Login clears its form, stays on Login and announces unavailable; separate demo Home navigation makes no authentication claim. Signup clears credential nodes before Profile; its explicit no-data skip needs no credential input. Route rendering destroys old credential nodes. No typed credentials are stored, transmitted or logged.
+
+Consent is a demo boolean without timestamps or PDPA/compliance assertion. First Accounts reads only provider identity and THB/USD choice, with no balance, conversion, account ID, account creation or fixture mutation. Notification booleans call no permission API, subscribe to nothing and send no email. Install platform controls instructions only; no service worker, install request or success simulation. Postcard can display escaped nickname but writes neither `setup_completed_at` nor `welcome_seen_at`. No storage, cookies, network mutation, session or persistent profile/financial record is introduced. Existing dashboard account-profile demonstrations remain separate.
 
 ## Dashboard current state — S3
 
@@ -68,3 +74,5 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 
 
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.

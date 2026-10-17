@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. Original D4 text below is preserved; D27 supersedes its direct Welcome choice for the preview only.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -43,6 +43,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D24 | Complete Account Board folders and shared provider identity | [DECIDED] for mock UI |
 | D25 | A01 art-directed light public Welcome and honest placeholders | [DECIDED] for preview |
 | D26 | Use the owner's exact white/blue replacement at the canonical shield path | [DECIDED] for preview |
+| D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for preview, 2026-10-17 |
 
 ### D23 — Responsive primary navigation
 
@@ -96,3 +97,15 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Statement: copy the owner's exact replacement PNG into `assets/brand/gissino-s-shield.png` on the Welcome task branch. Reuse the existing shared helper and favicon path; no image transformation or sizing/layout change. The primary source is left untouched.
 - Supersedes: the earlier S1 decision to retain the committed-main metallic shield and leave the primary alternate unadopted. S1 receipt remains an immutable historical snapshot. Shared dashboard branding intentionally receives the same replacement.
 - Source and evidence: [S2](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md), [brand provenance](../../assets/brand/README.md). Affects [Auth/Welcome](../pages/auth/Page-Auth.md) and [UI specification](../design/UI_DESIGN_SPEC.md). Same Draft PR #6; no change to planning PR #5.
+
+### D27 — Owner-requested pre-Home preview revision
+
+- Date: 2026-10-17; status: DECIDED for visual/interaction preview; decided by owner through the GS-UI-WELCOME-001 revision and full-viewport/bolder-branding clarification.
+- Statement: Welcome has exactly one Get Started → Entry. Entry offers Login or invitation signup. Login validates field presentation without authentication; only a separately labelled demo continuation opens Home. Signup preview validation or explicit no-data skip leads to six separate steps: Profile → About You → Privacy/Consent → First Accounts → Notifications → Install, then Postcard → Home preview.
+- Visual scope: full-viewport art-directed cover, bolder Welcome identity and calmer porcelain forms, unchanged four WebPs/exact canonical shield; portrait tablet source first, landscape tablet retained at 1366×1024 and desktop art at 1280×800; one reduced-motion-aware Postcard arrival.
+- Supersedes: D4's direct Welcome → Login/signup choice, and D25's Welcome CTA pair, placeholder destinations and contain/letterbox treatment, for this preview revision only. Original D4 table text, D25, S1/S2 and the existing immutable receipt remain preserved. Production M1 authentication and future setup rules are unchanged.
+- Boundaries: credentials stay DOM-only; allowlisted setup selections are transient and reset on refresh. No actual user/session, storage/cookie, invitation acceptance, legal consent/timestamp, account/balance/fixture mutation, push permission, email subscription, service worker, installation success or completion timestamp. Year/gender are optional; approximate AD-year age has no age bands, guardian consent or eligibility policy. Invite format/expiry, password policy and production data models stay unresolved.
+- Planning provenance: [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) and roadmap tip `03065adbb023aafaac15a26bca99a123f6c2fe0e` remain unmerged/untouched; no wholesale roadmap copy or adoption of other proposals.
+- Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md), same existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Project Guide](PROJECT_GUIDE.md) and [System Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
+
+- 2026-10-17 — Recorded D27 as the dated owner revision; original D4 snapshot preserved.

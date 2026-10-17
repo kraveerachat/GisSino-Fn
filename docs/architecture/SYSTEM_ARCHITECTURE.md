@@ -291,6 +291,8 @@ Conventions: UUID primary keys; `created_at`, `updated_at`; `voided_at` for fina
 Profile/Settings are reached from the **avatar** at the top of Home (not a tab). The AI ask-chat opens from a Home header icon and from inside the Add sheet.
 
 ### 8.0 Auth area (before Main)
+
+> **Current design-preview revision, 2026-10-17:** [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) records Welcome → Get Started → Entry → Login/signup. Login opens Home only through a separate labelled demo action. Signup preview → Profile → About You → Privacy/Consent → First Accounts → Notifications → Install → Postcard → Home uses transient allowlisted UI state, with credentials DOM-only. No real M1 authentication, user/consent/financial persistence, permissions or installation is added. The original production-intent route below remains historical reference. See [Auth](../pages/auth/Page-Auth.md) and [UI Data Contracts](../design/UI_DATA_CONTRACTS.md).
 Welcome → Log in | Sign up (invite code/link) → [Passkey prompt] → **First-time Setup** (profile → first accounts and opening balances → notifications → install guide) → Main. Also: Forgot password; Invite-expired / invalid state.
 
 ### 8.1 Home (dashboard)
@@ -442,3 +444,5 @@ Order rationale: the ledger and security first (everything depends on them); obl
 ## Change log
 
 - 2026-10-16 — Added vault metadata and a navigation supersession note that points to [D23](../project/DECISIONS.md#d23--primary-navigation-model) for [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+- 2026-10-17 — Added [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) pre-Home preview routing without changing production architecture or original flow history.

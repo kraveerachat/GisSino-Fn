@@ -11,13 +11,24 @@ related:
 ---
 # Design tokens
 
-## Current state — A01 Welcome extension
+## Current state — pre-Home preview S3
 
-[Welcome](../pages/auth/Page-Auth.md) adds scoped porcelain ground (`--welcome-ground:#f6faff`), cobalt action (`--welcome-blue:#075dcc`) and deep cobalt (`--welcome-blue-deep:#034799`) in [welcome.css](../../src/styles/welcome.css). Ink/muted, on-accent, raised surface, border, accent, enamel/inset shadows and local Noto Sans Thai reuse the incumbent light theme. Public appearance is light without replacing the stored in-memory dashboard theme choice. These scoped values do not redefine dashboard theme primitives.
+[Welcome](../pages/auth/Page-Auth.md) retains scoped ground `--welcome-ground:#f6faff`, cobalt `--welcome-blue:#075dcc` and deep cobalt `--welcome-blue-deep:#034799` in [welcome.css](../../src/styles/welcome.css). Local Noto Sans Thai, ink/muted, raised surface, borders, semantic danger and contact/inset shadows reuse the incumbent light theme. Public light rendering does not mutate the in-memory dashboard theme.
 
-Welcome content caps at 400px; ordinary CTA height is 56px, radius 16px and gap 12px. Compact portrait (height <=680px) uses 52px CTAs and 100px shield; ordinary shield scales 112–144px, short landscape uses 72px and placeholders 96px. Wordmark scales 44–56px (42px compact portrait, 36px short landscape); tagline 20px/18px compact; description 16px/14px compact. Disclosure is 14px with 1.7 line height on solid porcelain. Locale select is at least 44px high. Focus outline is 3px deep cobalt with 4px offset.
+| Scoped role | Observed source value and use |
+|---|---|
+| Shield | 144px phone, 88px compact portrait, 72px short landscape, 200px tablet portrait; wide landscape clamp(128px,12vw,192px); 42px form identity |
+| Wordmark | Phone clamp(56px,16vw,72px), 48px compact/short landscape, 96px tablet, wide clamp(64px,6.6vw,96px); weight 750, line-height 1.1, tracking -.035em |
+| Tagline / body | Tagline 22px phone / 18px compact / 28px tablet / clamp(22px,2vw,28px) wide; description 16px phone / 18px wider; disclosure 13px/1.65 |
+| Action | 16px radius, 56px base minimum; Welcome 60px ordinary / 56px compact portrait / 64px tablet and wide; 120ms feedback |
+| Input / field | 52px minimum, 16px text, 12px radius, 12px 14px padding; 44px password toggle |
+| Form / context | 480px base maximum, 560px wider outer panel with 40px 64px padding (432px inner); 16px radius; context clamp(28px,3.3vw,44px) |
+| Panel shadow | `0 8px 20px rgb(22 59 103 / 7%),0 24px 64px rgb(22 59 103 / 9%)` |
+| Focus / minimum | Controls 3px deep cobalt outline with 4px offset; locale and navigation >=44px; main route-focus outline suppressed |
+| Layout | 560px portrait hero maximum; wide hero min(65%,800px); action maximum 440px; safe-area gutters; existing 4px/8px rhythm |
+| Motion | Postcard only: 320ms, 12px rise and -1deg settle, existing ease-out; reduced motion removes animation/transitions |
 
-Motion is 320ms shield, 240ms actions, 6px arrival using the established cubic ease; CTA feedback is 120ms. Reduced motion disables both entrance and transitions. Art selection breakpoints are 1280px desktop, 600px in both axes tablet, mobile fallback; content switches independently at 900px landscape with height >=600px and below 600px for short landscape. Safe-area insets and document growth protect access. These are scoped implementation facts, not a new global scale. Root DESIGN.md and absent sidecar remain preserved; see [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
+Artwork uses cover at center, no contain bands. Source queries and layout breakpoints differ; see [UI specification](UI_DESIGN_SPEC.md). These are scoped facts, not a replacement global scale. Root DESIGN.md/PRODUCT.md and the absent sidecar remain preserved as an ordinary extension; [S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) records pre-existing root drift.
 
 ## Dashboard current state — S3
 
@@ -73,3 +84,5 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 
 
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.

@@ -12,11 +12,11 @@ related:
 ---
 # Pages Hub
 
-Current user-visible prototype surfaces. A01 Welcome is the public preview entry; Login/Sign-up are labelled placeholders, with no authentication implementation.
+Current user-visible prototype surfaces. Welcome → Entry → Login/signup and six setup steps → Postcard form eleven public design-preview screens. Login has only UI validation and a separate explicit Home demo action; no authentication is implemented.
 
 | Page | Level | Status | Summary |
 |---|---:|---|---|
-| [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (public design preview) | A01 art-directed entry, shared locale and honest Login/Sign-up placeholders |
+| [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (mock data) | Eleven pre-Home preview routes, responsive art, separate Login/demo and six-step setup |
 | [Home](home/Page-Home.md) | 2 | PROTOTYPE (mock data) | Dashboard, balances, recent activity, obligations, and habit summary |
 | [Wallet](wallet/Page-Wallet.md) | 2 | PROTOTYPE (mock data) | Synthetic accounts, liabilities, details, and transfer entry |
 | [Activity](activity/Page-Activity.md) | 2 | PROTOTYPE (mock data) | Searchable and filterable sample transaction history |
@@ -30,3 +30,5 @@ Current user-visible prototype surfaces. A01 Welcome is the public preview entry
 ## Change log
 
 - 2026-10-17 — Added the canonical Auth/Welcome page for [TASK-GS-UI-WELCOME-001](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
+
+- 2026-10-17 — Updated public journey inventory for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md).

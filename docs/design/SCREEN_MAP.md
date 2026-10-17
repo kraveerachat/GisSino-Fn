@@ -11,16 +11,24 @@ related:
 ---
 # Screen map
 
-## Current state — A01 public entry
+## Current state — pre-Home preview S3
 
 | Destination | Public preview contract |
 |---|---|
-| No hash / `#welcome` | A01 Welcome, four art-directed backgrounds, single canonical shield, live copy, shared locale, two CTAs and explicit prototype disclosure |
-| `#login` | Minimal design placeholder; authentication not implemented; Back to Welcome |
-| `#signup` | Minimal invitation-signup destination placeholder; no invitation validation or signup form; Back to Welcome |
-| Explicit `#home` | Retained dashboard review route with its existing shell; public CTAs never navigate here |
+| No hash / `#welcome` | A01: one Get Started → Entry, one shield, four responsive art candidates, locale and disclosure |
+| `#entry` | A01b: separate Login/signup choice; Back to Welcome |
+| `#login` | A02: email/password UI, visibility toggle, validation; Passkey/reset disabled; submit stays here and clears valid inputs; separate demo action → Home |
+| `#signup` | A03: invitation/email/password/confirm UI validation; explicit preview continuation or no-data skip → Profile; no user or invite verification |
+| `#setup/profile` | A04: transient display name, nickname and preset avatar; Previous → Signup |
+| `#setup/about` | A05: optional AD birth year/approximate age and optional gender; no eligibility or age bands |
+| `#setup/consent` | A06: privacy/visibility/sample-data information and demo checkbox; no legal consent |
+| `#setup/accounts` | A07: shared Bank/E-Wallet/Cash provider identities/logos; THB/USD selection, no balances/save |
+| `#setup/notifications` | A08: local in-app/push/email choices; no permissions or subscriptions |
+| `#setup/install` | A09: iOS/Android/desktop guide; Continue → Postcard; no simulated installed state |
+| `#postcard` | A10: optional nickname; explicit Home preview action; no persistent completion |
+| Explicit `#home` | Existing synthetic dashboard and application shell; reachable only through labelled demo continuation or direct review URL |
 
-[app.js](../../src/app.js) routes public destinations through [welcome.js](../../src/welcome.js) with main-content focus, document language/title updates and browser hash history. Empty/unsupported entry resolves to Welcome. Public routes show light appearance independently of dashboard theme; sidebar, floating navigation, Add, dashboard header and balances are absent. This is presentation routing, not authorization or route protection. See [Auth/Welcome](../pages/auth/Page-Auth.md), [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) and [D25](../project/DECISIONS.md#d25--a01-welcome-art-directed-public-preview).
+The eleven public routes render one main/one logo, light appearance, translated title/copy and no application navigation. Six setup steps provide Previous/Continue plus a direct Welcome exit; Postcard also exits to Welcome. Hash Back/Forward and safe invalid-route fallback are retained. Deep links require no fake identity. Public routing is presentation, not authorization; dashboard theme survives returning. See [Auth](../pages/auth/Page-Auth.md), [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision), [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md), [app.js](../../src/app.js) and [preview-flow.js](../../src/preview-flow.js).
 
 ## Dashboard current state — S3
 
@@ -69,3 +77,5 @@ Home and Wallet Add now open session-only account setup; detail Edit opens its p
 
 
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.

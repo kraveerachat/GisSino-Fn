@@ -11,18 +11,26 @@ related:
 ---
 # Component inventory
 
-## Current state — A01 Welcome extension
+## Current state — pre-Home preview S3
 
-[welcome.js](../../src/welcome.js) renders one shared public composition for `#welcome`, `#login` and `#signup`; [app.js](../../src/app.js) selects it independently of the dashboard shell. [Welcome page contract](../pages/auth/Page-Auth.md) and [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) own this extension.
+[welcome.js](../../src/welcome.js) renders eleven public destinations through the existing router; [preview-flow.js](../../src/preview-flow.js) owns allowlisted transient values, UI validation and six-step navigation. [Auth contract](../pages/auth/Page-Auth.md) and [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) own this extension.
 
 | Component | Contract |
 |---|---|
-| Art-directed decorative picture | Four local WebP candidates; one selected request; contained whole geometry; empty alt/aria-hidden; pointer-inert |
-| Welcome identity | Existing canonical logo helper once, live h1, translated tagline and supporting text; no surrounding card |
-| Welcome CTA pair | Native route anchors, cobalt primary/porcelain secondary, 56px ordinary/52px compact portrait, visible hover/focus/pressed/disabled styles |
-| Public locale selector | Existing locale callback/state and native select; no second locale store |
-| Public prototype disclosure | 14px readable solid porcelain surface directly below actions, states authentication/account persistence unavailable |
-| Destination placeholder | Route title, honest authentication-not-implemented description, Back to Welcome anchor; no credential fields |
+| Artwork picture | Four unchanged local WebPs; orientation/short-side source precedence; one selected image, cover within intentional region, decorative and pointer-inert |
+| Hero / compact identity | One exact S2 canonical shield per screen; live wordmark; bolder Welcome group, compact 42px form shield |
+| Public toolbar | Native Back link and existing shared TH/EN select; main route focus, no dashboard chrome |
+| Entry actions / CTA | Welcome has one Get Started anchor; Entry has separate Login/signup; cobalt primary, porcelain secondary, explicit demo Home action only on Login and Postcard |
+| Form / validation | Labelled native fields, password visibility buttons, inline described errors, alert summary, first-invalid focus; no auth success |
+| Progress / wizard actions | Six labelled bars, current-step aria state, Previous/Continue and direct Welcome exit on every setup step |
+| Profile / About | Display name/nickname, four preset SVG avatar choices; separate optional AD year with approximate age and optional gender; no uploads or age groups |
+| Privacy / notification choices | Plain privacy principles and demonstration checkbox; local notification checkboxes with capability boundary |
+| First Accounts | Existing providerOptions/resolveProvider/providerBadge and bundled logos; Bank/E-Wallet/Cash with THB/USD selection only; no balance or account save |
+| Installation guide | Local iOS/Android/desktop selection and concise instructions; guide only, no installation success or capability detection claim |
+| Postcard | Optional escaped nickname, explicit Home preview action, one reduced-motion-aware arrival; no saved setup claim |
+| Disclosure | Catalog copy on each public route, 13px/1.65; hero uses solid porcelain, forms use divided footer |
+
+The former destination-placeholder component and Welcome CTA pair are S1/S2 history, superseded by D27.
 
 ## Dashboard current state — S3
 
@@ -72,3 +80,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 
 
 - 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.

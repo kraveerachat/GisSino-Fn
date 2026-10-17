@@ -27,7 +27,7 @@ updated: 2026-10-17
 
 ## Current focus
 
-[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) implementation delivery is CLOSED in [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): verified A01 [Welcome](pages/auth/Page-Auth.md), four art-directed porcelain/blue backgrounds and honest Login/Sign-up placeholders. Latest [S2](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) adopts the exact owner-selected replacement shield at the shared path; S1 and its immutable receipt retain the original verification history. Owner review/merge remain pending. No real authentication or production change.
+[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) is IN PROGRESS for owner-requested [S3](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) in the same [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): full-viewport Welcome → Get Started → Entry, separate Login/demo Home and signup → six setup steps → Postcard → Home preview. Parent checks pass 52 tests/479 locale keys; B signup recovery is resolved and final finish verdict is SHIP; final documentation/Git/PR delivery reconciliation remains pending. [Auth](pages/auth/Page-Auth.md) and [D27](project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) describe current scope. S1/S2 and the existing immutable receipt remain historical; no real authentication or production change.
 
 Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`, superseding the earlier pending-review claim. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) remains OPEN/DRAFT and untouched.
 
@@ -46,3 +46,5 @@ Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is veri
 - 2026-10-16 — Created as the vault center for [TASK-VAULT-STRUCTURE-001](worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 
 - 2026-10-17 — Current focus moved to A01 Welcome; reconciled PR #4 merge.
+
+- 2026-10-17 — Reopened current focus for owner-requested [Welcome S3](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); same Draft PR #6, final documentation/Git delivery pending after finish SHIP.
