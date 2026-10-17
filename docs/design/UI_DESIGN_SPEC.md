@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -12,7 +12,17 @@ related:
 ---
 # UI design specification
 
-## Current state — S3
+## Current state — A01 Welcome extension
+
+The default entry is the public [A01 Welcome](../pages/auth/Page-Auth.md), implemented in [welcome.js](../../src/welcome.js) and [welcome.css](../../src/styles/welcome.css). The owner selected **Light Porcelain × Premium Blue Architectural Enamel** using four supplied backgrounds. Exactly one unchanged canonical S-Shield, live wordmark, catalog tagline/description, primary Log in and secondary invitation signup form the composition. A solid porcelain disclosure directly below the actions explains the prototype boundary. Public routes use light appearance; the existing dashboard theme preference survives. The dashboard S3 contract below remains current.
+
+Art is one decorative, pointer-inert picture with four sources, contained at left/bottom without distortion or cropping. Desktop art wins at width >=1280px; otherwise both axes >=600px choose tablet by orientation; remaining sizes use mobile. Content stays centered with a 400px measure, moves to the calm right region at landscape width >=900px and height >=600px, and uses two compact columns below 600px landscape height with normal document scrolling. Neutral bands where art and viewport aspect ratios differ are intentional.
+
+Welcome reuses local Noto Sans Thai, shared brand helper, theme primitives and locale state. CTAs have cobalt enamel/porcelain variants, visible focus and pressed/hover/disabled styles. The 320ms logo and 240ms action entrances translate 6px; reduced motion removes entrance and transitions. Login/signup are truthful destination placeholders with Back to Welcome, without fields or successful authentication. Public pages omit dashboard chrome and financial fixtures; the sample banner statement below applies to dashboard screens, while public pages show their own disclosure.
+
+[D25](../project/DECISIONS.md#d25--a01-welcome-art-directed-public-preview) supersedes the planning-only dark centered tablet/desktop A01 card proposal, dated 2026-10-17, for A01 only. Other authentication/setup proposals remain planning. [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) and its [S1](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) record evidence and limits.
+
+## Dashboard current state — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. The source and evidence are recorded in [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
 
@@ -77,3 +87,6 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.

@@ -3,7 +3,7 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
@@ -11,7 +11,11 @@ related:
 ---
 # UI data contracts and future boundaries
 
-## Current state — S3
+## Current state — public routing boundary
+
+[Welcome](../pages/auth/Page-Auth.md) uses existing in-memory `route`/`locale` and the translator callback; it reads no account/financial fixtures. `publicRoutes` contains welcome/login/signup. Public rendering chooses light appearance without mutating `state.theme`, so returning to the dashboard retains its earlier theme. No auth/session/storage, identity record, credential, token or account-persistence contract is introduced. Route accessibility is not authentication: explicit `#home` remains a synthetic dashboard review route, and neither public CTA bypasses to it. See [welcome.js](../../src/welcome.js), [app.js](../../src/app.js) and [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
+
+## Dashboard current state — S3
 
 S3 adds presentation-only `accountView` (`vertical` by default or `horizontal`) and preserves `accountSelected` by stable account ID across Settings changes. All six account records render through one complete folder component; overlap and interaction use local geometry, not changed financial data. No card text is swapped during a gesture. Existing `accountProfiles`, ID/currency/minor balance preservation, unknown-provider fallback, hidden-value suppression and session-only profile boundaries continue unchanged. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records evidence.
 
@@ -61,3 +65,6 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.

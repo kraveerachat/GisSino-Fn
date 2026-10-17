@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-approved navigation produced during design iteration.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -40,6 +40,8 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records the owner-
 | D21 | Off-host backup destination | [OPEN] |
 | D22 | Whether Full visibility ever includes itemized data; recommendation is never | [OPEN] |
 | D23 | Responsive primary navigation described below | [DECIDED] |
+| D24 | Complete Account Board folders and shared provider identity | [DECIDED] for mock UI |
+| D25 | A01 art-directed light public Welcome and honest placeholders | [DECIDED] for preview |
 
 ### D23 — Responsive primary navigation
 
@@ -77,3 +79,12 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Interaction: dedicated vertical touch grip holds 260ms before continuous drag; horizontal touch moves laterally; rAF transforms preserve card nodes; 240ms snap (immediate with reduced motion). Bounded arrows/buttons/Home/End/wheel, boundary/Ctrl release, normal folder-body scroll, explicit detail and active-only double-tap/double-click. Drag does not open detail.
 - Supersedes: S1/S2 Stack/Grid, strip-tab selection and wrapping index behavior only. Provider/profile/Wallet/financial contracts and the 13 supplied assets continue unchanged.
 - Source: [S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md); affects [Home](../pages/home/Page-Home.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md).
+
+
+### D25 — A01 Welcome art-directed public preview
+
+- Date: 2026-10-17; status: DECIDED for A01 design preview; decided by owner in task GS-UI-WELCOME-001.
+- Statement: Light Porcelain × Premium Blue Architectural Enamel uses four owner-supplied background variants, one separate canonical S-Shield, live translated copy and native Login/invitation-signup route actions. Welcome becomes the default no-hash public entry. Login/signup are honest placeholders with Back to Welcome. Explicit Home remains a mock-dashboard review route; no authentication is implemented.
+- Responsive rule: desktop artwork at >=1280px; otherwise tablet requires both axes >=600px and follows orientation; mobile fallback includes short landscape. Contain/left-bottom preserves all art geometry. Public light appearance does not change dashboard theme preference.
+- Supersedes: only the **PROPOSED dark centered tablet/desktop A01 card treatment** in the [planning roadmap at verified tip](https://github.com/kraveerachat/GisSino-Fn/blob/03065adbb023aafaac15a26bca99a123f6c2fe0e/docs/design/ONBOARDING_HOME_V2_ROADMAP.md), dated supersession 2026-10-17. Preserve that history; no other auth/setup/privacy/demographic proposal is adopted. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) is untouched.
+- Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md). Affects: [Auth/Welcome](../pages/auth/Page-Auth.md), [UI specification](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md).

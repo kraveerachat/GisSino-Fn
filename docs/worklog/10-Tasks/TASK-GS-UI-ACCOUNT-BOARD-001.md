@@ -3,7 +3,7 @@ id: TASK-GS-UI-ACCOUNT-BOARD-001
 type: task
 level: log
 status: CLOSED
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../00-Index/Task-Dashboard.md
 related:
   - ../../pages/home/Page-Home.md
@@ -14,6 +14,10 @@ related:
 # TASK-GS-UI-ACCOUNT-BOARD-001
 
 ## Current state
+
+2026-10-17 reconciliation: [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`. Implementation delivery remains CLOSED. This dated statement supersedes pending owner-review/merge and OPEN/DRAFT claims below, which describe the historical S1–S3 checkpoints and their immutable receipts. [Welcome task](TASK-GS-UI-WELCOME-001.md) uses that verified main base.
+
+## Historical S3 delivery state — superseded GitHub status
 
 S3 full-folder deck is implemented, verified and pushed on the same `task/gs-ui-account-board-001` branch and existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Implementation delivery is CLOSED; owner acceptance and merge remain pending. Final source checkpoint is `763db1db7802f9ea011e83016bce57a1c8bd39b3`; independent finish reviewer returned **ship**, with no material fixes. Final checks passed; S3 remote and OPEN/DRAFT PR head both matched documentation checkpoint `4235f28f79ee0eb3ef022147048717ba7265a8fc`; earlier remote SHAs below belong only to S1/S2. Owner review/merge remain pending. This is a UI preview, not an Accounts/Ledger milestone.
 
@@ -36,7 +40,7 @@ Read [provider research](../../design/PROVIDER_CATALOG.md) and [review/test evid
 
 - [Session S1](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S1.md) — historical
 - [Session S2](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S2.md) — historical
-- [Session S3](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) — IN PROGRESS
+- [Session S3](../20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) — CLOSED
 
 ## Touches
 

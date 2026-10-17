@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -38,3 +38,6 @@ This timeline is append-only.
 - 2026-10-16 — Owner-directed [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) implemented locally on the existing task branch: complete overlapping folders, vertical default, Settings-only horizontal mode and continuous native gestures replace S1/S2 Stack/Grid. Local browser evidence records 29 groups across `functional.json` and `selection-extra.json`, plus 18 responsive mode captures. Source `763db1db7802f9ea011e83016bce57a1c8bd39b3` and fresh reviewer **ship** are confirmed; S3 push remains pending in existing [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4); no production milestone.
 
 - 2026-10-16 — S3 implementation delivery CLOSED after existing PR#4 title/body update and branch/remote/PR head synchronization at `4235f28f79ee0eb3ef022147048717ba7265a8fc`. [Session S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) and [final receipt](../worklog/90-Receipts/20261016-214719-TASK-GS-UI-ACCOUNT-BOARD-001-S3-FINAL.md) record 34 tests,375locale keys,29browser groups and fresh reviewer **ship**. Owner review/merge remain pending; no production changes.
+
+- 2026-10-17 — Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`; supersedes earlier pending-review entries without rewriting them.
+- 2026-10-17 — [A01 Welcome](../pages/auth/Page-Auth.md) implemented and locally verified under [TASK-GS-UI-WELCOME-001](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md). [D25](DECISIONS.md#d25--a01-welcome-art-directed-public-preview) records the owner-selected four-art light porcelain extension and dated A01-only supersession of the dark-card proposal. New Draft PR/commit delivery remain pending; planning PR #5 untouched; no production milestone.

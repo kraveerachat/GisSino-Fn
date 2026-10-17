@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,7 +11,18 @@ related:
 ---
 # Screen map
 
-## Current state — S3
+## Current state — A01 public entry
+
+| Destination | Public preview contract |
+|---|---|
+| No hash / `#welcome` | A01 Welcome, four art-directed backgrounds, single canonical shield, live copy, shared locale, two CTAs and explicit prototype disclosure |
+| `#login` | Minimal design placeholder; authentication not implemented; Back to Welcome |
+| `#signup` | Minimal invitation-signup destination placeholder; no invitation validation or signup form; Back to Welcome |
+| Explicit `#home` | Retained dashboard review route with its existing shell; public CTAs never navigate here |
+
+[app.js](../../src/app.js) routes public destinations through [welcome.js](../../src/welcome.js) with main-content focus, document language/title updates and browser hash history. Empty/unsupported entry resolves to Welcome. Public routes show light appearance independently of dashboard theme; sidebar, floating navigation, Add, dashboard header and balances are absent. This is presentation routing, not authorization or route protection. See [Auth/Welcome](../pages/auth/Page-Auth.md), [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) and [D25](../project/DECISIONS.md#d25--a01-welcome-art-directed-public-preview).
+
+## Dashboard current state — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Home selection stays on `#home`; explicit detail or active-only double-tap/double-click opens `#wallet/account/<stable-id>`. Escape retains the existing Wallet return contract. Settings controls mode with no new route. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records the change.
 
@@ -55,3 +66,6 @@ Home and Wallet Add now open session-only account setup; detail Edit opens its p
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.

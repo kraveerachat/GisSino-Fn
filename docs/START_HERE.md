@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 # GisSino_FN — Start Here
 
@@ -27,7 +27,9 @@ updated: 2026-10-16
 
 ## Current focus
 
-[TASK-GS-UI-ACCOUNT-BOARD-001](worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) is delivered through [S3](worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md): complete overlapping folders, vertical default and horizontal only in Settings. Existing provider assets, session profiles and Wallet context remain intact. Local verification is recorded; source checkpoint `763db1d` and fresh reviewer **ship** are confirmed, with S3 pushed to existing OPEN/DRAFT [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). Implementation delivery is CLOSED; owner review/merge remain pending. The vault migration [PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3) is merged. Production changes remain outside scope.
+[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) is IN PROGRESS: locally verified A01 [Welcome](pages/auth/Page-Auth.md), four art-directed porcelain/blue backgrounds and honest Login/Sign-up placeholders. [Session S1](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) records verification and the fresh documentation comparison; commit/push/new Draft PR and final receipt remain pending. No real authentication or production change.
+
+Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`, superseding the earlier pending-review claim. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) remains OPEN/DRAFT and untouched.
 
 ## Agent reading order
 
@@ -42,3 +44,5 @@ updated: 2026-10-16
 ## Change log
 
 - 2026-10-16 — Created as the vault center for [TASK-VAULT-STRUCTURE-001](worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
+
+- 2026-10-17 — Current focus moved to A01 Welcome; reconciled PR #4 merge.

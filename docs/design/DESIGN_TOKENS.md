@@ -3,7 +3,7 @@ id: DESIGN-TOKENS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
@@ -11,7 +11,15 @@ related:
 ---
 # Design tokens
 
-## Current state — S3
+## Current state — A01 Welcome extension
+
+[Welcome](../pages/auth/Page-Auth.md) adds scoped porcelain ground (`--welcome-ground:#f6faff`), cobalt action (`--welcome-blue:#075dcc`) and deep cobalt (`--welcome-blue-deep:#034799`) in [welcome.css](../../src/styles/welcome.css). Ink/muted, on-accent, raised surface, border, accent, enamel/inset shadows and local Noto Sans Thai reuse the incumbent light theme. Public appearance is light without replacing the stored in-memory dashboard theme choice. These scoped values do not redefine dashboard theme primitives.
+
+Welcome content caps at 400px; ordinary CTA height is 56px, radius 16px and gap 12px. Compact portrait (height <=680px) uses 52px CTAs and 100px shield; ordinary shield scales 112–144px, short landscape uses 72px and placeholders 96px. Wordmark scales 44–56px (42px compact portrait, 36px short landscape); tagline 20px/18px compact; description 16px/14px compact. Disclosure is 14px with 1.7 line height on solid porcelain. Locale select is at least 44px high. Focus outline is 3px deep cobalt with 4px offset.
+
+Motion is 320ms shield, 240ms actions, 6px arrival using the established cubic ease; CTA feedback is 120ms. Reduced motion disables both entrance and transitions. Art selection breakpoints are 1280px desktop, 600px in both axes tablet, mobile fallback; content switches independently at 900px landscape with height >=600px and below 600px for short landscape. Safe-area insets and document growth protect access. These are scoped implementation facts, not a new global scale. Root DESIGN.md and absent sidecar remain preserved; see [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md).
+
+## Dashboard current state — S3
 
 The enamel/theme primitives remain unchanged. S3 geometry and motion live in `src/account-deck.js` and `src/styles/accounts.css`: full folder minimum height 160px (measured 160–164px), 20px curved corners/shoulders, 24/28px vertical exposure with two/three rear layers below/above 520px component width, 44px grip and step controls. Vertical card width caps at 420px; horizontal at 360px. The controller uses a 260ms touch hold, 240ms cubic ease-out snap and 360ms wheel throttle; reduced motion finishes immediately. The older 220ms CSS selection token remains in source but does not govern S3 deck transforms. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records comparison evidence.
 
@@ -62,3 +70,6 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.

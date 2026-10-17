@@ -3,7 +3,7 @@ id: HUB-WORKLOG
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: ../../START_HERE.md
 related:
   - ../../project/PROJECT_HISTORY.md
@@ -19,4 +19,5 @@ related:
 | [TASK-GS-UI-002-DESKTOP-SIDEBAR](../10-Tasks/TASK-GS-UI-002-DESKTOP-SIDEBAR.md) | EXTERNALLY ACCEPTED | [PR #2 merged](https://github.com/kraveerachat/GisSino-Fn/pull/2) | Desktop sidebar and S-Shield branding |
 | [TASK-VAULT-STRUCTURE-001](../10-Tasks/TASK-VAULT-STRUCTURE-001.md) | EXTERNALLY ACCEPTED | [PR #3 merged](https://github.com/kraveerachat/GisSino-Fn/pull/3) | Documentation vault migration and hubs |
 
-| [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | CLOSED | [Draft PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S3 complete overlapping folders; 34 tests/375 keys, 29 browser groups, reviewer ship; pushed, owner review pending |
+| [TASK-GS-UI-ACCOUNT-BOARD-001](../10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md) | CLOSED | [PR #4 merged](https://github.com/kraveerachat/GisSino-Fn/pull/4) | S3 complete folders; merged into main at a028036; historical receipts retained |
+| [TASK-GS-UI-WELCOME-001](../10-Tasks/TASK-GS-UI-WELCOME-001.md) | IN PROGRESS | PENDING new Draft PR | A01 art-directed Welcome locally verified; 41 tests/383 keys; fresh reviewer ship; Git delivery reconciliation in progress |
