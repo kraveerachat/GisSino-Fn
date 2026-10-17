@@ -36,6 +36,8 @@ test('The preview serves public files, blocks writes, and rejects encoded path t
     const logo=await fetch(base+'/assets/brand/gissino-s-shield.png');
     assert.equal(logo.status,200);
     assert.equal(logo.headers.get('content-type'),'image/png');
+    const background=await fetch(base+'/assets/welcome/mobile.webp');
+    assert.equal(background.status,200);assert.equal(background.headers.get('content-type'),'image/webp');
     assert.deepEqual([...new Uint8Array(await logo.arrayBuffer()).subarray(0,8)],[137,80,78,71,13,10,26,10]);
     assert.equal((await fetch(base,{method:'POST',body:'not a transaction'})).status,405);
     for(const route of ['/PRODUCT.md','/package.json','/src/..%2fPRODUCT.md','/assets/..%5cPRODUCT.md','/src/..%2f.git%2fconfig','/src/%2e%2e%5cpackage.json']) {

@@ -9,12 +9,14 @@ import { accountBoard, parseAccountHash } from './account-board.js';
 import { assetAccounts, accountPreview } from './account-display.js';
 import { mountAccountDeck } from './account-deck.js';
 import { accountProfileForm, profileDraft, applyProfile } from './account-profile.js';
+import { publicRoutes, isPublicRoute, welcomeScreen } from './welcome.js';
+import { createPreviewFlow,mountPreviewFlow,routeTitles } from './preview-flow.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
-const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card'];
+const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card',...publicRoutes];
 const state = {
-  locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home',
+  locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
@@ -22,6 +24,7 @@ const state = {
   transferSource:'daily', transferDestination:'savings', transferAmount:'0', cardReminder:false,cardReturn:'bills'
 };
 const scrollPositions = new Map();
+const previewFlow=createPreviewFlow();
 let opener = null;
 let toastTimer;
 let searchTimer;
@@ -35,16 +38,20 @@ const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
 
 function applyTheme() {
-  document.documentElement.dataset.theme = state.theme;
-  document.querySelector('meta[name="theme-color"]').content = state.theme === 'dark' ? '#242323' : '#94dffc';
+  const appearance=isPublicRoute(state.route)?'light':state.theme;
+  document.documentElement.dataset.theme = appearance;
+  document.querySelector('meta[name="theme-color"]').content = isPublicRoute(state.route)?'#f6faff':appearance === 'dark' ? '#242323' : '#94dffc';
 }
 function render(focusMain = false) {
+  app.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   accountDeck?.destroy();accountDeck=null;
   applyTheme();
   document.documentElement.lang = state.locale;
-  document.title = `${t('appName')} · ${t(state.route==='credit-card'?'creditCardTitle':state.route)} · Design Preview`;
+  const titleKey=isPublicRoute(state.route)?routeTitles[state.route]:state.route==='credit-card'?'creditCardTitle':state.route;
+  document.title = `${t('appName')} · ${t(titleKey)} · Design Preview`;
   document.querySelector('#skip-link').textContent = t('skip');
-  app.innerHTML = shell(state, t);
+  app.innerHTML = isPublicRoute(state.route)?welcomeScreen(state,t,previewFlow):shell(state, t);
+  if(isPublicRoute(state.route))mountPreviewFlow(app,previewFlow,t,id=>{render();document.getElementById(id)?.focus({preventScroll:true});});
   sidebar.rendered();
   mountDeck();
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
@@ -309,8 +316,9 @@ document.addEventListener('submit',event=>{
 });
 window.addEventListener('hashchange',()=>{
   const accountId=parseAccountHash(location.hash);
-  const next=accountId?'wallet':location.hash.slice(1);
-  if (!validRoutes.includes(next)) { if(next!=='main') location.hash='home';return; }
+  const next=accountId?'wallet':location.hash.slice(1)||'welcome';
+  if (!validRoutes.includes(next)) { if(next!=='main') location.hash='welcome';return; }
+  document.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   scrollPositions.set(state.route,window.scrollY);
   if(next==='credit-card')state.cardReturn=state.route==='wallet'?'wallet':'bills';
   moreOverlay.close();

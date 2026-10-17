@@ -12,7 +12,26 @@ related:
 ---
 # Screen map
 
-## Current state — S3
+## Current state — pre-Home preview S4
+
+| Destination | Public preview contract |
+|---|---|
+| No hash / `#welcome` | A01: one Get Started → Entry, one shield, unchanged four responsive art candidates |
+| `#entry` | A01b: conventional Login/signup choice, no invitation copy; Back → Welcome |
+| `#login` | A02: email/password, show/hide and unavailable password recovery; primary Login or Google → Home with empty or typed inputs |
+| `#signup` | A03: email/password/confirm, show/hide, no invitation field; primary signup or Google → Profile with empty or typed inputs |
+| `#setup/profile` | A04: transient display name, nickname and preset avatar; header Back → Signup |
+| `#setup/about` | A05: separate optional AD birth year/approximate age and gender; no age bands or eligibility |
+| `#setup/consent` | A06: plain privacy principles and transient checkbox; no recorded legal consent |
+| `#setup/accounts` | A07: shared Bank/E-Wallet/Cash providers/logos and THB/USD choice; no balance/save |
+| `#setup/notifications` | A08: transient notification choices; no permissions or subscriptions |
+| `#setup/install` | A09: platform installation guidance; Continue → Postcard; no simulated installed state |
+| `#postcard` | A10: optional escaped nickname and one Go to Home action; header Back → Install |
+| Explicit `#home` | Existing synthetic dashboard, unchanged sample-data disclosure and application shell |
+
+Each of the eleven public routes has exactly one compact visible header Demo mode indicator (`โหมดสาธิต`) with a screen-reader description. Forms and footers use concise consumer copy without repetitive technical warnings. Every non-Welcome route has one header Back; each wizard step and Postcard has one primary action. Native hash Back/Forward, main focus/title, locale and invalid-route fallback remain. Primary/Google actions clear existing credential-node values before navigation; they create no authentication, registration or provider-success state. Deep links need no identity. Routing is presentation, not authorization. [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 credential validation/separate demo/skip and duplicate back/exit controls only for this preview. Canonical production invite-only signup remains in force pending a separate owner/security decision before M1. See [Auth](../pages/auth/Page-Auth.md), [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), [welcome.js](../../src/welcome.js) and [preview-flow.js](../../src/preview-flow.js).
+
+## Dashboard current state — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Home selection stays on `#home`; explicit detail or active-only double-tap/double-click opens `#wallet/account/<stable-id>`. Escape retains the existing Wallet return contract. Settings controls mode with no new route. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records the change.
 
@@ -81,3 +100,13 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 | `#family/create` | Household creation overlay: Create family group with household defaults | DESIGNED |
 
 - 2026-10-17 — Planned Onboarding, Home v2, Activity Summary tab, Leaderboard, and Friends routes added for [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md).
+
+
+> This table is the PR #5 planning snapshot for future production work. The current S4 navigable UI preview is documented above; its open-signup UI does not override the production invite-only decision.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.

@@ -3,7 +3,7 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
@@ -11,7 +11,26 @@ related:
 ---
 # Component inventory
 
-## Current state — S3
+## Current state — pre-Home preview S4
+
+[welcome.js](../../src/welcome.js) renders eleven public screens; [preview-flow.js](../../src/preview-flow.js) owns transient state and six-step navigation. [Auth](../pages/auth/Page-Auth.md), [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) own this scoped revision.
+
+| Component | Contract |
+|---|---|
+| Artwork / identity | Four unchanged local WebPs, established cover/source precedence, exact canonical S2 shield, live wordmark and approved compositions |
+| Public toolbar | Single Back on non-Welcome routes, one compact Demo mode indicator with accessible environment explanation, shared TH/EN select |
+| Welcome / Entry | One Get Started action; Entry offers Login and normal signup without invitation wording |
+| Credential form | Labelled native email/password and signup confirmation, show/hide; disabled Login recovery; no invitation or Passkey control in this preview |
+| Credential actions | Cobalt Login/signup submit, text separator, porcelain Google button and cross-form link; both actions navigate without required inputs and clear credential-node values |
+| Progress / wizard | Six labelled bars with current-step aria state; one primary Continue per step and single header Back |
+| Profile / About | Separate name/nickname/preset avatar and optional AD year/approximate age/gender; no uploads or age groups |
+| Privacy / notifications | Plain consumer language and local choices without consent records, permissions or subscriptions |
+| First Accounts | Existing provider registry/badges/logos, Bank/E-Wallet/Cash and THB/USD; no balance or account save |
+| Installation / Postcard | Platform guidance only; optional escaped nickname, one Home action, existing reduced-motion-aware arrival |
+
+S3's repeated technical footer, separate Login demo action, signup skip and duplicate step-back/Welcome exits are superseded by D28. No actual auth, Google OAuth, success state or persistence is introduced.
+
+## Dashboard current state — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. `accountFolder` is the single complete folder renderer; `mountAccountDeck` owns component-local geometry, pointer/wheel/keyboard lifecycle, measurement and rAF settling without rendering during pointermove. Settings owns the native mode select. Exposed inactive cards have a CSS whole-card selection overlay; inactive inner content is inert/hidden from assistive technology, and the active grip exposes slider values with screen-reader help. See [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
 
@@ -56,3 +75,10 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.

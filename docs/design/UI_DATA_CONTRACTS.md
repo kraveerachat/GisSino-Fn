@@ -3,7 +3,7 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-16
+updated: 2026-10-17
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
@@ -11,7 +11,17 @@ related:
 ---
 # UI data contracts and future boundaries
 
-## Current state — S3
+## Current state — pre-Home transient boundary S4
+
+[preview-flow.js](../../src/preview-flow.js) exports eleven public routes and the ordered six-step setup list. Existing route/locale/translator state remains shared; public light rendering leaves dashboard theme preference intact. Route access does not authenticate. [Auth](../pages/auth/Page-Auth.md), [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) define scope.
+
+The in-memory model allowlist is `displayName`, `nickname`, `avatar`, `birthYear`, `gender`, `consentDemo`, `accountType`, `providerId`, `currency`, `inApp`, `push`, `emailNotice`, `installPlatform`. Unknown keys are rejected. Names cap at 60 characters, year at four; enumerated choices/booleans are checked. Provider selection reuses the existing registry and safe resolver. Changing type selects its existing default provider. All rendered user text is escaped. This is temporary UI state, not a user/schema contract; refresh resets it. Optional birth year is AD, valid four-digit years from 1000 through the current year show current-year-minus-year approximate age. This syntactic range is not an age category, legal threshold or minor eligibility rule; exact birth date and marital status are absent.
+
+Email, password and signup confirmation remain DOM-only, outside the model; invitation input is absent from this design preview. Primary and Google actions call the same demo continuation: Login → Home, signup → Profile, with either empty or typed inputs. Continuation explicitly empties existing credential-node values before route replacement, including detached-node references. App route/locale rerender additionally clears those values before innerHTML replacement; the independent targeted B recheck passed old/new credential-node erasure on locale rerender. It does not validate or accept credentials as an identity. There is no OAuth redirect, provider authorization/token, hardcoded identity, authentication/registration/Google success or session. No credential is sent, logged, cached or persisted. Production validation/password policy remains an M1 requirement; relaxing this preview does not authorize empty-field production registration. Optional birth-year syntax validation remains. Canonical invite-only production policy and invite model/history are preserved; public signup and Google production direction require separate owner confirmation and security architecture approval before M1.
+
+Consent is a demo boolean without timestamps or PDPA/compliance assertion. First Accounts reads only provider identity and THB/USD choice, with no balance, conversion, account ID, account creation or fixture mutation. Notification booleans call no permission API, subscribe to nothing and send no email. Install platform controls instructions only; no service worker, install request or success simulation. Postcard can display escaped nickname but writes neither `setup_completed_at` nor `welcome_seen_at`. No storage, cookies, network mutation, session or persistent profile/financial record is introduced. Existing dashboard account-profile demonstrations remain separate.
+
+## Dashboard current state — S3
 
 S3 adds presentation-only `accountView` (`vertical` by default or `horizontal`) and preserves `accountSelected` by stable account ID across Settings changes. All six account records render through one complete folder component; overlap and interaction use local geometry, not changed financial data. No card text is swapped during a gesture. Existing `accountProfiles`, ID/currency/minor balance preservation, unknown-provider fallback, hidden-value suppression and session-only profile boundaries continue unchanged. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records evidence.
 
@@ -61,3 +71,10 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 
 
 - 2026-10-16 — [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) supersedes the S1/S2 tab-strip and Stack/Grid presentation with complete overlapping folders.
+
+
+- 2026-10-17 — Documented A01 public preview extension for [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md); retained dashboard S3 history.
+
+- 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
+
+- 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
