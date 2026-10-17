@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -59,3 +59,8 @@ This timeline is append-only.
 - 2026-10-17 — Welcome S4 finish assessment SHIP after 39 final captures, no material fixes. Source `269288fe96139950a1ba99901b3884a76a62a98d` pushed and verified at same OPEN/DRAFT PR #6, title/body updated to responsive pre-Home/signup preview. Documentation delivery checkpoint follows; owner review/merge remains pending. [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
 
 - 2026-10-17 — Welcome S4 implementation delivery CLOSED after documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local HEAD, remote task branch and existing Draft PR #6 head. Final status-only closeout follows; source `269288fe96139950a1ba99901b3884a76a62a98d`, checks472keys/52tests, browser154cases/39captures/15groups, finishSHIP and vault57notes/IDs pass. Owner review/merge pending; production invite-only unchanged, publicsignup/Google approval pending beforeM1. [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
+
+- 2026-10-18 — Current integration audit verified planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) MERGED at `7fb1685c8b8e40faf07ef9354be920f4706be92c` and Welcome [PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6) MERGED at `bb27e2812789346fc322d4bad3fc6d847ed3823d`. This supersedes their earlier pending-review/Draft timeline statements without rewriting historical entries or closed task/session/receipt evidence.
+- 2026-10-18 — [Home v2 S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) started on `task/gs-ui-home-v2-s1` from main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. Synthetic daily-overview source is implemented; browser/review and delivery gates remain in progress. No Activity Summary, Leaderboard, backend or production milestone is implied.
+
+- 2026-10-18 — Home S1 source `0e7e40f07cafd62103406e1eab06db3b384b6726` pushed and verified at new OPEN/DRAFT [PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7); finish SHIP/no material fixes, B final English-money finding resolved. Final documentation checkpoint/receipt follow. [Task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md).

@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -11,6 +11,14 @@ related:
   - SCREEN_MAP.md
 ---
 # UI design specification
+
+## Current Home v2 — Slice S1
+
+[Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) implements this order: greeting/header → existing balance hero → existing quick actions → synthetic snapshot disclosure → conditional Today Strip → Safe to Spend / Nearest Obligation → Streak → unchanged complete Account Board → Recent Transactions → one-line Monthly Summary. The full monthly box/seven-day chart is absent from Home. Monthly links to existing `#activity`; Activity Summary and compact Global Leaderboard remain later slices.
+
+Today shows the first two of up to four priority categories, with native keyboard-accessible `details`/`summary` expansion for the rest, as confirmed by the owner. No actionable categories means no strip DOM. Bill rows open Bills, details rows open Activity, and habit/activity reminders invoke the existing Add sheet; no filtering/highlighting is implied. Safe to Spend shows a true negative plus a text shortfall indication, respects balance hiding, and separates THB/USD without FX. Nearest Obligation names the earliest unpaid item, including overdue items, or an empty state. Streak precedes My Accounts; party rank is secondary and appears only for declared synthetic context.
+
+Below 360px the decision tiles stack; 600–959px Today rows use two columns; at 960px+ Today/decisions and Account Board/recent activity use paired columns while snapshot, streak and monthly line span the width. DOM order stays consistent. Existing blue/porcelain tokens, shell/sidebar, light/dark behavior and Account Board component/styles/controller/providers are preserved. Corrected Chromium verification records 84 cases/26 captures/10 functional groups at all seven required viewports, TH/EN and light/dark, with no reported issues/errors. Independent final finish and delivery remain pending in the active task; physical devices are not claimed.
 
 ## Current state — pre-Home preview S4
 
@@ -22,7 +30,7 @@ The pinned Light Porcelain × Premium Blue Architectural Enamel world is unchang
 
 Credentials stay DOM-only and temporary setup choices reset on refresh. No OAuth, session, auth storage/cookie, user record, legal consent record, financial mutation, permission request, service worker or installed-success state is introduced. This is presentation routing. Production invite-only signup remains canonical; the owner's public signup/Google production direction is PENDING separate owner confirmation and security architecture approval before M1. [Open Questions](../project/OPEN_QUESTIONS.md) tracks that decision. [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records actual verification and pending independent/delivery gates. Source: [welcome.js](../../src/welcome.js), [preview-flow.js](../../src/preview-flow.js), [welcome.css](../../src/styles/welcome.css).
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. The source and evidence are recorded in [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
 
@@ -32,7 +40,7 @@ The 16 October 2026 written brief, supplied blue-enamel Image A, and owner-selec
 
 ## Screen composition
 
-Home leads with a substantial sky-blue cover, compact profile/header, cobalt balance hero, and four enamel quick actions. The curved cover transition opens onto a cohesive account list, recent transactions, safe-to-spend/commitment strip, monthly bars, and habit progress. At 390×844 the cover is approximately 374px high. Mobile stacks this information; tablet and desktop add supporting columns.
+Home retains the sky-blue cover, compact profile/header, cobalt balance hero and four enamel quick actions. The curved cover transition now opens onto the ordered S1 overview described above. This supersedes the former Home monthly bars and lower habit placement; the existing Account Board is preserved.
 
 Transfer reuses the cover with an account source panel. Its deep-blue body contains an oval amount editor, own-account destinations, tactile pill keypad, and an unsaved review. It starts at zero; physical keyboard editing remains possible and `inputmode="none"` avoids a second mobile keypad. The polite amount status confirms custom-keypad changes. Credit Card Liability Detail adapts Image A's original card visual and six-tile action grid to supported tracking previews. A single indicator represents the single sample card. No card network branding, real credentials, freeze/online/contactless controls, or payment execution is present.
 
@@ -94,3 +102,5 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.

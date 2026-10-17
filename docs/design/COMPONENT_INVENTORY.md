@@ -3,13 +3,27 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
   - UI_DESIGN_SPEC.md
 ---
 # Component inventory
+
+## Current Home v2 components — Slice S1
+
+[home-overview.js](../../src/home-overview.js) centralizes the read-only projection (`bangkokClock`, `deriveHomeOverview`, `homeOverview`), exact minor-unit formatter (`homeMoney`), and renderers (`homeSnapshot`, `todayStrip`, `homeDecisions`, `homeStreak`, `homeMonthly`, `homePreviewControls`). It extends existing Home and Settings rather than adding screens. [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md) owns verification and delivery.
+
+| Component | Current contract |
+|---|---|
+| Synthetic snapshot | Visible Bangkok date/time disclosure and existing Settings link |
+| Today Strip | Zero DOM when empty; first two categories plus native expansion; existing Bills/Activity/Add destinations |
+| Decision tiles | Per-currency Safe to Spend with true negative/text shortfall; earliest unpaid obligation title/amount/date/day state or empty state |
+| Streak | Before My Accounts; streak/freezes, Party link, optional declared synthetic party rank |
+| Account Board | Existing `accountBoard` renderer and complete folders reused unchanged; module/styles/gestures/provider/profile/settings mode contracts retained |
+| Monthly line | One compact navigation line to `#activity`; illustrative month total, no Home chart or Summary route |
+| Settings Home controls | Home-only scenario + Bangkok datetime; transient, explicitly scoped synthetic projections |
 
 ## Current state — pre-Home preview S4
 
@@ -30,7 +44,7 @@ related:
 
 S3's repeated technical footer, separate Login demo action, signup skip and duplicate step-back/Welcome exits are superseded by D28. No actual auth, Google OAuth, success state or persistence is introduced.
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. `accountFolder` is the single complete folder renderer; `mountAccountDeck` owns component-local geometry, pointer/wheel/keyboard lifecycle, measurement and rAF settling without rendering during pointermove. Settings owns the native mode select. Exposed inactive cards have a CSS whole-card selection overlay; inactive inner content is inert/hidden from assistive technology, and the active grip exposes slider values with screen-reader help. See [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md).
 
@@ -82,3 +96,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.

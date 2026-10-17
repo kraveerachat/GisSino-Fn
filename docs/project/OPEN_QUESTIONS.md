@@ -3,7 +3,7 @@ id: PROJECT-OPEN-QUESTIONS
 type: guide
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -40,9 +40,11 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 | Party vs Family model (Q5) | [OPEN] | Is Family a separate entity or a party record of kind `family`? Analyst recommends single entity. (Conflict 4) |
 | Spending board opt-in (Q6) | [OPEN] | Confirm spending boards are strictly opt-in, default OFF, displaying position only. (Conflict 5) |
 | Global board audience (Q7) | [OPEN] | Confirm whether all opted-in members appear on Global board with nickname, category, and rank only. |
-| Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. |
+| Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. Home S1 uses only explicitly synthetic optional rank; it does not decide this policy. |
 | DOB & Marital status (Q9) | [OPEN] | Confirm verbal mentions of exact birth date and marital status are excluded from registration requirements. (Conflict 6) |
 | Gross balance vs Net worth (Q10) | [OPEN] | Should Home hero balance display Gross Assets or Net Worth (assets minus credit card liabilities)? |
+| Home destination follow-ups | [OPEN / LATER SLICE] | Home S1 links to existing Bills/Activity/Add only. Bill highlighting, needs-details prefiltering and Activity Summary navigation require later route/screen support; no current filtered/highlighted destination is claimed. |
+| Home live reminders and totals | [OPEN / FUTURE ENGINE] | Fixed Bangkok snapshots, fixture reminder input and illustrative October monthly expense are prototype-only. Define live activity qualification, scheduling, ledger-backed monthly summary and authorized adapters in their scoped engine slices. |
 
 ## Change log
 
@@ -50,3 +52,5 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 - 2026-10-17 — Appended Q1–Q10 planning questions covering spending leaderboards, demographics, PDPA minor consent, group models, and balance semantics for [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md).
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.
+
+- 2026-10-18 — Recorded Home S1 route/engine follow-ups and clarified Q8 remains OPEN; no production selection or financial engine policy was chosen.
