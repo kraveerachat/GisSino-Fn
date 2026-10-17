@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001
 type: task
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -17,7 +17,7 @@ related:
 
 ## Current state
 
-Reopened for owner-requested [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md): consumer copy, one compact header Demo mode across eleven public screens, conventional signup without invitation UI, Google action presentation and no-data-required navigation. Login/Google → Home; signup/Google → Profile, then the existing six-step setup → Postcard → Home. One header Back and one primary action simplify each setup step/Postcard. [D28](../../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 controls/copy only for the design demonstration. Canonical invite-only production signup remains in force pending separate owner/security approval before M1. Current task/session are IN PROGRESS; final review and source/docs/push/SHA reconciliation are pending.
+Reopened for owner-requested [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md): consumer copy, one compact header Demo mode across eleven public screens, conventional signup without invitation UI, Google action presentation and no-data-required navigation. Login/Google → Home; signup/Google → Profile, then the existing six-step setup → Postcard → Home. One header Back and one primary action simplify each setup step/Postcard. [D28](../../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 controls/copy only for the design demonstration. Canonical invite-only production signup remains in force pending separate owner/security approval before M1. S4 implementation delivery is CLOSED after source/docs push and verification: documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local HEAD, remote task branch and PR #6 head. Final status-only closeout commit follows this checkpoint and is discoverable in Git history. PR #6 remains OPEN/DRAFT, base main, head task/gs-ui-welcome-001. Owner review/merge remains pending.
 
 - Same branch `task/gs-ui-welcome-001`; existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6), parent-reported OPEN/DRAFT. No new PR, receipt, merge, force-push, main/infrastructure or production mutation.
 - Start HEAD `0c147f2fd3d2fd72b4c1df30f570529497184b6a` is the prior S3 closeout. S4 source checkpoint `269288fe96139950a1ba99901b3884a76a62a98d` now contains seven runtime/test files; source is pushed and verified at PR #6 head 269288fe96139950a1ba99901b3884a76a62a98d.
@@ -40,8 +40,8 @@ The owner requested “Production-Style Copy and Open Sign-up UI Revision” in 
 - [x] Targeted B detached-credential erasure recheck passed (old/new nodes empty, TH/EN motif labels verified); final matrix 154 cases/39 captures/15 groups, no errors/issues.
 - [x] Final S4 finish assessment SHIP; all 39 captures valid, no material fixes.
 - [x] Documenter vault PASS 57 notes/57 IDs/max three clicks/errors[], parent-list omissions zero, whitespace PASS; exact source/docs manifest reconciled. Parent reruns after final edits.
-- [ ] Existing-branch source/docs checkpoints pushed; local/remote/PR SHA, title/body and OPEN/DRAFT/base/head verified.
-- [ ] Close S4 implementation delivery only after remaining gates; owner acceptance/merge remains separate.
+- [x] Existing-branch source/docs pushed; documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local/remote/PR head; title/body and OPEN/DRAFT/base/head verified.
+- [x] S4 implementation delivery CLOSED after verified gates; owner acceptance/merge remains separate.
 
 ## Current behavior and safety boundary
 
@@ -62,7 +62,7 @@ Ignored artifacts are local evidence, not public screenshot URLs. Physical devic
 - [S1](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — CLOSED initial Welcome; source `598bff84aa53fa76341c0dfc761e07bbb7466195`, 41 tests/383 keys.
 - [S2](../20-Sessions/TASK-GS-UI-WELCOME-001-S2.md) — CLOSED exact-shield follow-up, `c52800ce9abaa6ff292b93aca7fb365b2094268d`.
 - [S3](../20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) — CLOSED responsive eleven-route journey; 52 tests/479 keys, targeted recovery resolved/finish SHIP, source/docs synchronization verified. Its details describe S3 only.
-- [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) — IN PROGRESS current consumer-copy/open-signup/Google presentation revision.
+- [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) — CLOSED consumer-copy/open-signup/Google presentation delivery; owner review pending.
 - [Existing final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) — immutable S1 snapshot. No new receipt for this follow-up.
 
 ## Exact S4 manifest
@@ -75,4 +75,4 @@ Documentation files (16): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARCHIT
 
 [Auth](../../pages/auth/Page-Auth.md), [Pages Hub](../../pages/Pages-Hub.md), [UI spec](../../design/UI_DESIGN_SPEC.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [Data Contracts](../../design/UI_DATA_CONTRACTS.md), [Decisions](../../project/DECISIONS.md), [Open Questions](../../project/OPEN_QUESTIONS.md), [Guide](../../project/PROJECT_GUIDE.md), [Architecture](../../architecture/SYSTEM_ARCHITECTURE.md), [History](../../project/PROJECT_HISTORY.md), [Start Here](../../START_HERE.md), [Dashboard](../00-Index/Task-Dashboard.md) and [S4](../20-Sessions/TASK-GS-UI-WELCOME-001-S4.md).
 
-Parent completes final finish, records final checks and source/docs checkpoints, updates existing PR #6 and verifies local/remote/PR state before closing S4 delivery. Owner reviews/merges separately. Preserve root DESIGN.md/PRODUCT.md, closed S1–S3, existing receipt and append-only history.
+S4 implementation delivery is CLOSED after source/docs push and verification: documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local HEAD, remote task branch and PR #6 head. Final status-only closeout commit follows this checkpoint and is discoverable in Git history. PR #6 remains OPEN/DRAFT, base main, head task/gs-ui-welcome-001. Owner review/merge remains pending. Preserve root DESIGN.md/PRODUCT.md, closed S1–S3, existing receipt and append-only history.

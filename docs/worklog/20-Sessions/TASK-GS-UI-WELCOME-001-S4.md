@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001-S4
 type: session
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../10-Tasks/TASK-GS-UI-WELCOME-001.md
 related:
@@ -48,14 +48,18 @@ Documentation manifest (16): `docs/START_HERE.md`; `docs/architecture/SYSTEM_ARC
 
 Documenter executed `python artifacts/welcome-s3/check-vault-documenter.py`: PASS 57 notes/57 unique IDs, maximum three clicks, errors[]; separate parent-list check found zero omissions. `git diff --check`: PASS. Closed S1/S2/S3/receipt and root DESIGN.md/PRODUCT.md have no diff. Parent reruns after final evidence/status edits. No personal absolute paths or secrets are introduced in notes.
 
-## Remaining handoff gates
+## Completed handoff gates
 
-1. Targeted B credential-node erasure and final post-fix matrix/captures are reconciled as PASS; retain their evidence.
-2. Run final finish assessment, reconcile any material fixes and rerun affected checks.
-3. Record final vault/whitespace checks, exact runtime/docs manifest and source/docs checkpoint SHAs.
-4. Commit/push existing task branch, update same Draft PR #6 and verify local/remote/PR head, OPEN/DRAFT/base/head and PR #5 unchanged.
-5. Close current task/S4 delivery only after these gates. Owner review/merge stays separate. No new receipt.
+1. Targeted B correction and final browser matrix PASS.
+2. Final independent finish SHIP; no material fixes.
+3. Final vault health PASS:57 notes/IDs,max3clicks,errors[]; whitespace and protected-history checks PASS.
+4. Source and docs pushed; documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local/remote/PR head. Existing PR #6 title/body and OPEN/DRAFT/main/task branch verified. PR #5 unchanged.
+5. Implementation delivery CLOSED. Owner acceptance/merge and production-policy approvals remain separate. No new receipt.
 
 ## Review and source delivery checkpoint
 
-Final independent finish reviewer returned SHIP in `artifacts/welcome-s4/finish-review.md`: all 39 captures opened/decoded, no material fixes; exact source inspected, inherited root DESIGN.md logo drift disclosed as outside scope. Source `269288fe96139950a1ba99901b3884a76a62a98d` was pushed to the existing branch and verified equal to PR #6 head. PR is OPEN/DRAFT, base main, head task/gs-ui-welcome-001; title/body updated to “feat(ui): refine responsive pre-Home journey and signup preview”. Final documentation checkpoint/push synchronization follows; owner review remains pending.
+Final independent finish reviewer returned SHIP in `artifacts/welcome-s4/finish-review.md`: all 39 captures opened/decoded, no material fixes; exact source inspected, inherited root DESIGN.md logo drift disclosed as outside scope. Source `269288fe96139950a1ba99901b3884a76a62a98d` was pushed to the existing branch and verified equal to PR #6 head. PR is OPEN/DRAFT, base main, head task/gs-ui-welcome-001; title/body updated to “feat(ui): refine responsive pre-Home journey and signup preview”. Documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` subsequently matched local HEAD, remote branch and PR head; final status-only closeout follows. Owner review remains pending.
+
+## Final delivery state
+
+S4 implementation delivery is CLOSED after source/docs push and verification: documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c` matched local HEAD, remote task branch and PR #6 head. Final status-only closeout commit follows this checkpoint and is discoverable in Git history. PR #6 remains OPEN/DRAFT, base main, head task/gs-ui-welcome-001. Owner review/merge remains pending. Working-tree cleanliness and final local/remote/PR synchronization are checked once more after the final status commit. Preview server remains available on localhost port 4178 for owner review. No production action or new receipt.
