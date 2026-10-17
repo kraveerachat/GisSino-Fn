@@ -13,59 +13,56 @@ related:
   - ../../design/SCREEN_MAP.md
   - ../../project/DECISIONS.md
   - ../../project/OPEN_QUESTIONS.md
-  - ../20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md
+  - ../20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md
 ---
-# TASK-GS-UI-HOME-V2-S1 — Compact Home and gamified habit preview
+# TASK-GS-UI-HOME-V2-S1 — Seven-day due list and missing activity days
 
-## Current state — S2 owner revision
+## Current state — S3 owner revision
 
-RUNTIME VERIFIED, awaiting owner review. Continue the existing `task/gs-ui-home-v2-s1` and [Draft PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7); do not create another PR or receipt. Parent startup audit verified OPEN/DRAFT, correct head branch and HEAD `173b1d124371edd7108b60f3298eb6fcb4acf191`, with main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. S2 source checkpoint `292f346b814d41775d2a569d3ed31bef390040ce` is committed/pushed. Checks545keys/66tests and corrected browser70cases/26captures/16functional checks pass; errors[]/issues[]. Parent scoped finish PASS follows two independent-review findings corrected and parent-verified. Docs checkpoint `10239a1598883a88eb749f53d5dc72a5a55634d5` is pushed and was verified equal to local HEAD, remote task branch and PR7 head. PR7 is OPEN/DRAFT with updated title/body; main remains `bb27e2812789346fc322d4bad3fc6d847ed3823d`. A status-only reconciliation commit follows this checkpoint and is verified again before handoff. Historical S1 checks do not verify the owner revision.
+RUNTIME VERIFIED, awaiting owner review. Existing task/gs-ui-home-v2-s1 and [Draft PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7), no new PR/receipt. Parent verified clean startup/local/remote/PR HEAD bcc3073795e75e5c13d31c828d2d3bb6a5a00740, OPEN/DRAFT and unchanged main bb27e2812789346fc322d4bad3fc6d847ed3823d. Parent check PASS 550 keys/tests 70/70; final browser84 cases/19 captures/11 groups errors[]issues[]; A32/40 Good / no findings, B no material findings, detector[] once and parent finish PASS. Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 committed/pushed. Docs checkpoint/final local-remote-PR equality pending parent reconciliation. Historical S1/S2 does not verify S3.
 
-The owner's “Compact Home & Gamified Streak” brief authorizes source/docs/checkpoints on this task branch only. Production mutation, merge, deletion, AEGIS and unrelated screen implementation remain out of scope. Preserve CLOSED [S1](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md) and the [immutable receipt](../90-Receipts/20261018-TASK-GS-UI-HOME-V2-S1-FINAL.md) byte-for-byte. New dated [S2](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) records the follow-up; the original closed delivery is retained below as history.
+## S3 approved behavior
 
-## S2 approved behavior
+- Before S2: Accounts → Today → Safe → habits → Recent. After preserved top cover: **Accounts → conditional seven-day Due soon → existing habits/missing days → Recent last**.
+- Remove Safe Home rendering only. Retain exact minor-unit/currency-isolated math/formatter/fixtures/scenarios/financial tests; future Wallet placement OPEN. No Today/nearest/monthly Home UI.
+- Due soon: valid unpaid overdue/today/+7 inclusive against selected Bangkok time; exclude paid/invalid/+8/duplicates. Stable date/ID; dedupe same ID or name/date/currency/amount. Max4 category/title/status/short-date rows, no inner scroll, hidden empty; existing Bill details and View all Bills, no filter claim.
+- Seven-day Home information differs from unchanged bell<=3 days and canonical T-3/due/overdue production reminders. No dispatch/preferences/delivery changes.
+- Missing means strictly past current-week nonactive/completed dates, including frozen, excluding pending today/future. First-missing focus reuses calendar; frozen remains blue/snowflake/no-activity and selected status atomic; zero missing positive.
+- Preserve Account Board source/assets/geometry/gestures/Settings, streak/XP/4/7 ring/timeline keyboard/touch, freeze model, shared check-in/idempotent illustrative reward/reduced motion. No app-open/login award, persistent habits/finance/reminders or Wallet redesign.
 
-- Before (historical S1): Today → Safe/Nearest → Streak → Accounts → Recent → monthly line. After the preserved header/hero/actions: **Accounts first → compact conditional Today → compact Safe → gamified habit summary/calendar → Recent last**. No Home monthly UI or standalone nearest tile; underlying data/helpers remain.
-- Existing Account Board renderer/controller/styles/assets/overlap/gestures/selection/detail/Add/Settings modes are protected. Only its surrounding position changes.
-- Today excludes bills; needs-details and pending/at-risk habits use existing Activity/Add. Bell sheet shows deduplicated synthetic overdue/due ≤3 days notices and Bills/empty states; no real delivery/read tracking.
-- Safe uses existing integer-minor currency isolation, true negative and balance masking. No new financial engine or mutation.
-- Two-zone habit card: explicit synthetic streak/weekly XP/freezes and ring, then 21-day internally scrollable timeline with non-color day statuses and roving keyboard focus. Proposed weekly metric is unique qualifying Bangkok Monday-Sunday active dates /7 rounded; sample4/7=57%. Frozen/future dates never count as qualifying active dates.
-- Add and Home share existing No spending today sheet: explicit simulated confirmation, date-keyed page-lifetime idempotency and configurable synthetic10XP illustration. App-open/login grants nothing; no actual financial/Party/user-stats write, storage or automatic popup.
-- Future M7 owns daily authoritative state/XP/caps/dedupe/rollover/badges/weekly XP/first-visit/popup shown-state; M6 owns delivery/preferences/quiet hours; M8 reads aggregates only. Exact third-reference fidelity is unverified because that image was absent from supplied attachment files.
+## Inventory, gates and open decisions
 
-## Complete system inventory and dependencies
+The canonical [18-system/eight-column inventory](../../pages/home/Page-Home.md#feature-and-system-inventory) distinguishes current UI from deferred real engines. M2 ledger → M3 Activity → M5 obligations → M6 reminders → M7 habits → M8 Party boundaries and [M7 backlog](../../architecture/SYSTEM_ARCHITECTURE.md#77-habits-streaks-xp-badges-stats) remain unchanged.
 
-The canonical [18-system, eight-column inventory](../../pages/home/Page-Home.md#feature-and-system-inventory) is part of this task worklog and distinguishes current mock UI, real logic, milestone, decision status and PR/deferred scope. It covers Total Balance; Account Board; Today; Safe; bell notices; Recent; monthly destination; calendar; streak; freeze; weekly%; XP; check-in; first-day welcome; reward popup; idempotency; Party aggregates; reminders/quiet hours. Do not treat deferred rows as implemented.
-
-M2 ledger/accounts → M3 Activity → M5 obligations → M6 reminders → M7 habits → M8 Party remain the canonical dependencies. M7 backlog and authorization/midnight/duplicate test requirements are in [architecture §7.7](../../architecture/SYSTEM_ARCHITECTURE.md#77-habits-streaks-xp-badges-stats).
-
-## S2 gates and open decisions
-
-| Gate | Current evidence |
+| Gate | Actual S3 evidence |
 |---|---|
-| Authority/repository | Parent verified same unmerged Draft PR7/task branch at startup; scope below D30 |
-| Source and focused tests | Nine files at pushed `292f346b814d41775d2a569d3ed31bef390040ce`; exact manifest in S2 |
-| `npm run check` / `npm test` | Parent reports PASS545 locale keys and full66/66; initial assertion/access failures corrected before final green run |
-| Seven-size browser/light-dark/TH-EN | Final corrected70cases/26captures/16functional checks, errors[]/issues[]; all seven sizes, TH/EN and light/dark; exact local capture manifest in S2 |
-| Independent design/technical/finish review | A prepatch31/40/noP0P1; A/B timelineP2 and B Add-focusP2 fixed/parent-verified. Detector once afterA []0. Parent scoped finish PASS; independent postpatch review not claimed |
-| Vault checks/protected bytes | Direct strict utility69notes/69IDs/max3clicks, zero new errors; exactly3 inherited findings;18-row/eight-column inventory; protected Git diff/normalized content unchanged |
-| Source/docs commits and push/PR head equality | Source `292f346b814d41775d2a569d3ed31bef390040ce` pushed; docs `10239a1598883a88eb749f53d5dc72a5a55634d5` pushed and verified local/remote/PR equal; same OPEN/DRAFT PR7, title/body updated |
+| Authority/repository | Parent verified same OPEN/DRAFT PR7/task branch at clean bcc3073 |
+| Source | Seven exact source/test files at pushed 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324; manifest S3 |
+| Check | Parent reports PASS 550 locale keys |
+| Tests / browser / independent review | Parent full70/70 tests; actual84 browser cases/19 captures/11 functional groups; A32/40 Good / no findings, B no material findings; detector once[]; parent final visual finish PASS |
+| Vault / protected bytes | Direct strict checker70 notes/70 IDs/max 3 clicks; exactly 3 inherited findings/zero new; inventory18 rows / 8 columns, protected normalized content unchanged, history append-only, whitespace pass |
+| Commit/push/PR equality | Source 6f1a252d5bcc3c5c7fa95693c4d9bd650dc98324 pushed; docs checkpoint/final equality pending parent reconciliation |
 | Production / merge | NOT PERFORMED / HUMAN ONLY |
 
-[D30](../../project/DECISIONS.md#d30--compact-home-and-gamified-habit-preview) supersedes D29's Home presentation only. **OPEN:** monthly summary final destination (Activity vs Wallet), automatic login/app-open XP conflicting with current qualification, primary-party policy Q8. Proposed weekly Home ring does not replace canonical stats. No new Wallet/Summary/Party flow, authentication, ledger/habit database, notification service, bank sync or OCR.
+[D31](../../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days) supersedes only corresponding D30 presentation. OPEN: future Safe Wallet placement, monthly Activity-vs-Wallet destination, conflicting login/app-open XP proposal and primary-partyQ8. Current rules still exclude app-open XP.
 
-## Sessions and S2 touches
+## Sessions and S3 touches
 
 | Session | State | Purpose |
 |---|---|---|
-| [S1](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md) | CLOSED, unchanged | Historical initial foundation and immutable receipt |
-| [S2](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) | RUNTIME VERIFIED | Owner Compact Home/gamified revision on same Draft PR7 |
+| [S1](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md) | CLOSED unchanged | Historical foundation and immutable receipt |
+| [S2](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) | Historical RUNTIME VERIFIED unchanged | Compact Home/gamified delivery at startup bcc3073 |
+| [S3](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) | RUNTIME VERIFIED | Seven-day due list, Home Safe removal and missing-day presentation |
 
-Touches: [Home](../../pages/home/Page-Home.md), [Party](../../pages/party/Page-Party.md), [Activity](../../pages/activity/Page-Activity.md), [Settings](../../pages/settings/Page-Settings.md), [Pages Hub](../../pages/Pages-Hub.md), [architecture](../../architecture/SYSTEM_ARCHITECTURE.md), [UI spec](../../design/UI_DESIGN_SPEC.md), [Data Contracts](../../design/UI_DATA_CONTRACTS.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [Decisions](../../project/DECISIONS.md), [Open Questions](../../project/OPEN_QUESTIONS.md), [History](../../project/PROJECT_HISTORY.md), [Start](../../START_HERE.md), [Dashboard](../00-Index/Task-Dashboard.md).
+Touches: [Home](../../pages/home/Page-Home.md), [Pages Hub](../../pages/Pages-Hub.md), [architecture](../../architecture/SYSTEM_ARCHITECTURE.md), [UI spec](../../design/UI_DESIGN_SPEC.md), [Data Contracts](../../design/UI_DATA_CONTRACTS.md), [Tokens](../../design/DESIGN_TOKENS.md), [Components](../../design/COMPONENT_INVENTORY.md), [Screen Map](../../design/SCREEN_MAP.md), [Decisions](../../project/DECISIONS.md), [Open Questions](../../project/OPEN_QUESTIONS.md), [History](../../project/PROJECT_HISTORY.md), [Start](../../START_HERE.md), [Dashboard](../00-Index/Task-Dashboard.md), this task and new S3. Party/Activity/Settings and historical records remain unchanged.
+
+## Historical S2 delivery
+
+Source292f346b814d41775d2a569d3ed31bef390040ce, docs10239a1598883a88eb749f53d5dc72a5a55634d5 and handoffbcc3073795e75e5c13d31c828d2d3bb6a5a00740 remain historical. S2's545keys/66tests/70cases/26captures, review corrections and exact manifests remain in its untouched session; D30 remains in decision history. CLOSED S1 and immutable receipt remain untouched. No new receipt for this open-PR continuation.
 
 ## Historical S1 closed delivery — superseded presentation only
 
-Everything below records the original S1 checkpoint. Its layout, counts and pending-action language are historical and do not describe S2. The CLOSED session and receipt remain untouched.
+Everything below records the original S1 checkpoint. Its layout, counts and pending-action language are historical and do not describe S3. The CLOSED session and receipt remain untouched.
 
 ### Current state
 

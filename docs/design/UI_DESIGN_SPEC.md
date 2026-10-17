@@ -12,17 +12,15 @@ related:
 ---
 # UI design specification
 
-## Current Home v2 — Compact owner revision S2
+## Current Home v2 — Focused owner revision S3
 
-[D30](../project/DECISIONS.md#d30--compact-home-and-gamified-habit-preview) keeps header, blue balance hero, four actions and navigation; below the hero the reading/DOM order is unchanged Account Board first, compact conditional Today, compact Safe to Spend, two-zone gamified Streak/XP and Recent Transactions last. No Home monthly-summary presentation or separate nearest-obligation tile remains. Underlying fixture/calculation/monthly utilities stay intact. Final monthly destination (Activity vs Wallet) is OPEN; Activity analysis responsibility is not reassigned by this UI change.
+[D31](../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days) preserves existing header/hero/four actions/navigation and Account Board. Below them Accounts → conditional compact Due soon → existing gamified habits → Recent last. Home Today/Safe are removed; nearest/monthly remain absent. Financial calculations/scenarios/formatters/tests remain; future Safe Wallet placement is OPEN.
 
-Today uses concise needs-details and at-risk/missing habit rows, at most two visible with native expansion, hidden completely when empty. Due notices move to the existing bell sheet with deduplicated synthetic due/overdue rows, Bills destination and empty state. Existing Activity/Add routes imply no filtering, highlighting or saved action. Safe to Spend becomes a lightweight row with true negative/text shortfall, masking and separate THB/USD; it reuses integer-minor calculations.
+Due soon includes valid unpaid overdue/today/next7 inclusive against selected Bangkok preview time. Stable date/ID sort and same-ID or name/date/currency/amount dedupe feed max4 rows without inner scroll; empty hides. Category SVG, title, relative status plus short date (owner-confirmed), chevron and restrained red/orange/blue urgency remain readable without color alone. Real fixture IDs reuse existing Bill details; View all opens Bills without a filter claim. Home lookahead does not alter bell <=3 days or production T-3/due/overdue reminders.
 
-Habit zone A shows current streak, weekly XP, small freeze count and circular weekly progress with explicit n/7 and percentage. Zone B is an internally scrollable date timeline with weekday/number, current/selected distinction and icon/text status. Green means qualifying completed; orange means past missed; outlined current pending, neutral future and distinct confirmed freeze remain separate. The proposed weekly Home metric is qualifying dates in Bangkok Monday-Sunday /7 ×100 rounded, not wealth or task count. Freeze is not a qualifying day. Sample 4/7=57% is explicit; no app-open action turns dates green.
+Only visible freeze allowance becomes strictly past current-week missing activity count, including frozen dates but excluding pending today/future. View missed days focuses the first existing missing date; zero gets positive copy. Orange missed dates, distinct blue frozen snowflake/no-activity label and atomic selected-day status reuse the same calendar.
 
-The existing Add No spending today concept and global sheet now serve both entry points. Confirmation illustrates a transient completion and configurable synthetic XP once per date in page-lifetime memory; no financial/Party-stat write or persistent daily guard is claimed. Popup is user-triggered only. Automatic once-daily welcome/shown state and real rewards are future M7; login/app-open XP remains an OPEN conflicting proposal. Reduced motion suppresses celebration spatial animation. Timeline roving focus supports arrows/Home/End; touch, pointer and visible stepping controls stay usable.
-
-Responsive composition preserves DOM order without changing Account Board geometry, controllers, provider identity or Settings modes. Compact daily blocks share available width only when their semantic order remains clear; the habit card can span desktop width. Exact scoped geometry is recorded in [Tokens](DESIGN_TOKENS.md). S2 verification evidence belongs to [session S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md), not historical S1 counts. The third gamified reference image was unavailable; visual fidelity to that missing image is unverified.
+Streak, weekly XP, proposed Bangkok Monday-Sunday qualifying active dates/7 ring (4/7=57%), timeline geometry/gestures/keyboard, shared Add/Home check-in/idempotent illustrative reward and reduced motion remain unchanged. No app-open/login award or production persistence. No new calendar/modal, assets, Account Board geometry/controller/providers/selection/detail or Settings-mode changes. Current verification is in [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md); S1/S2 evidence is historical.
 
 ## Current state — pre-Home preview S4
 
@@ -110,3 +108,5 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
 
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.

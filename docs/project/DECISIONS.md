@@ -143,3 +143,14 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Home task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md), same [Draft PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7). Affects [Home](../pages/home/Page-Home.md), [architecture](../architecture/SYSTEM_ARCHITECTURE.md), [UI spec](../design/UI_DESIGN_SPEC.md), [data contracts](../design/UI_DATA_CONTRACTS.md), [Activity](../pages/activity/Page-Activity.md), [Party](../pages/party/Page-Party.md) and [open questions](OPEN_QUESTIONS.md).
 
 - 2026-10-18 — D30 records the owner revision; D29 remains the historical S1 delivery decision.
+
+### D31 — Seven-day Home due list and missing activity days
+
+- Date:2026-10-18; DECIDED for owner-requested focused preview refinement. Owner confirmed relative status plus short date.
+- Preserve header/hero/actions/nav/complete Account Board. Below hero Accounts → conditional Due soon → existing gamified Streak/XP → Recent last. Remove Safe Home rendering only, retain arithmetic/formatter/fixtures/scenarios/tests; future Wallet placement OPEN, no loss of product scope.
+- Due soon: selected Bangkok date, valid unpaid overdue/today/+7 inclusive; exclude paid/invalid/+8/duplicates. Date then stable ID, same-ID or name/date/currency/amount dedupe; max4 compact category/status/date rows, no inner scroll, hidden empty. Red/orange/blue urgency plus text/icons; known Bill IDs reuse existing details, View all existing Bills unfiltered.
+- Seven-day Home visibility does not change bell <=3-day preview or production T-3/due/overdue schedules/preferences/dispatch.
+- Replace visible freeze allowance only with strictly past current-week missing activity, including frozen but excluding pending today/future. Existing timeline/first-missing focus/atomic selected status; frozen retains blue snowflake/no-activity meaning. Zero missing gets positive copy.
+- Preserve freeze data/model, streak, weekly XP, 4/7 metric/ring, gestures/keyboard, shared check-in/idempotent illustrative rewards and reduced motion. No app-open/login XP, new calendar/modal or production persistence.
+- Supersedes only D30 Today/Safe Home presentation and visible freeze allowance. D29/D30, S1/S2 sessions and immutable receipt remain unchanged. Existing monthly/nearest removal and production boundaries remain.
+- Source: [Home task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md), same [Draft PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7). Affects [Home](../pages/home/Page-Home.md), [architecture](../architecture/SYSTEM_ARCHITECTURE.md#81-home-dashboard), [UI spec](../design/UI_DESIGN_SPEC.md), [data contracts](../design/UI_DATA_CONTRACTS.md), [Screen Map](../design/SCREEN_MAP.md).

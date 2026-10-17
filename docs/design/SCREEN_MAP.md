@@ -12,16 +12,16 @@ related:
 ---
 # Screen map
 
-## Current Home v2 — Compact owner revision S2
+## Current Home v2 — Focused owner revision S3
 
-`#home` preserves greeting/balance/actions/navigation, then My Accounts first → conditional compact Today → compact Safe to Spend → gamified Streak/XP → Recent Transactions last. No standalone nearest tile or Home monthly line/chart remains. Settings retains synthetic scenario/Bangkok clock and Account Board mode controls. No route is added. See [Home](../pages/home/Page-Home.md) and [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).
+`#home` preserves greeting/balance/actions/navigation, then My Accounts first → conditional max4 seven-day Due soon → existing gamified Streak/XP with missing days → Recent Transactions last. No Today/Safe Home card, standalone nearest or monthly Home UI; underlying Safe math remains for future Wallet design. Settings retains synthetic scenario/Bangkok clock and Account Board mode controls. No route is added. See [Home](../pages/home/Page-Home.md) and [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md).
 
 | Home action | Actual destination / behavior |
 |---|---|
 | Bell | Existing sheet with deduplicated synthetic due/overdue notices or empty; notice link → `#bills`, no item highlight/delivery |
-| Needs-details Today item | Existing `#activity`, no automatic filter |
-| Pending/at-risk Today item | Existing Add sheet |
-| Safe to Spend | `#wallet` |
+| Due soon row | Existing Bill handler with real fixture ID: card uses established credit-card tracking route, other bills existing detail dialog |
+| Due soon View all | Existing Bills screen, no applied filter claim |
+| View missed days | Focus/scroll first existing current-week missing date, including distinct frozen/no-activity status |
 | Habit card check-in/review | Existing shared No spending today confirmation/result sheet, transient only |
 | Calendar day / stepping | Internal selected date and bounded timeline focus/scroll; no route or historical write |
 | Party link | Existing `#party`, aggregate preview unchanged |
@@ -133,3 +133,5 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
 
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.

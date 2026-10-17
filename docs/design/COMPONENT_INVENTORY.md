@@ -11,18 +11,18 @@ related:
 ---
 # Component inventory
 
-## Current Home v2 components — Compact revision S2
+## Current Home v2 components — Focused revision S3
 
-[home-overview.js](../../src/home-overview.js) retains Bangkok clock/read-only financial projection, exact minor-unit formatter, snapshot and preview controls; Today and Safe render compactly and due notices render in the existing bell sheet. Retained nearest/monthly data and reusable monthly renderer have no Home presentation. New focused [habit-preview.js](../../src/habit-preview.js) prevents mixing calendar/preview state into financial projection or duplicating production stats. [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) owns current verification.
+[home-overview.js](../../src/home-overview.js) retains Bangkok clock/read-only financial projection, exact minor-unit formatter, snapshot and preview controls; Home calls upcomingDueList instead of Today/Safe rendering; financial calculation helpers remain. Bell notices remain unchanged. Retained nearest/monthly data and reusable monthly renderer have no Home presentation. New focused [habit-preview.js](../../src/habit-preview.js) prevents mixing calendar/preview state into financial projection or duplicating production stats. [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) owns current verification.
 
 | Component | Current contract |
 |---|---|
 | Account Board | First below hero; existing complete folders, modules/styles/gestures/providers/selection/details/Add/Settings modes unchanged |
-| Today priorities | Conditional concise needs-details/habit rows; first two and native expansion; no due bills; existing Activity/Add destinations |
-| Safe to Spend row | Per-currency integer-minor result, genuine shortfall/text warning and hidden-value behavior; Wallet link |
+| Seven-day Due soon | Valid unpaid overdue/today/+7 inclusive; stable date/ID/dedupe; max4 category/status/short-date rows; existing Bill details/View all; no inner scroll; hidden empty |
+| Safe to Spend projection | Currency-isolated integer-minor/negative/scenario/formatter tests retained; Home renderer absent; future Wallet placement deferred |
 | Bell notices | Existing sheet; deduped due ≤3 days/overdue fixtures, status/date/Bills link or empty; no notification delivery |
-| Habit summary | Explicit synthetic current streak, weekly XP/freeze count and n/7 percentage ring |
-| Habit timeline | 21 explicit dates; complete/missed/pending/future/frozen icon/text states; roving arrows/Home/End and internal pointer/touch scroll |
+| Habit summary | Explicit synthetic current streak, weekly XP and unchanged n/7 ring; missing past-week count replaces visible freeze allowance |
+| Habit timeline | 21 explicit dates; complete/missed/pending/future/frozen icon/text states; roving arrows/Home/End and internal pointer/touch scroll; first-missing focus, frozen/no-activity distinction and atomic selected status |
 | Shared check-in sheet | Home and Add share No spending today confirmation; page-lifetime per-date idempotent synthetic completion/XP result; no real stats/financial mutation |
 | Recent rows | Preserved three rows and Activity/detail behavior; last main section |
 | Settings Home controls | Home-only scenario/Bangkok datetime; transient projections; existing Account Board mode controls unchanged |
@@ -104,3 +104,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
 
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.

@@ -310,12 +310,11 @@ Welcome → Log in | Sign up (invite code/link) → [Passkey prompt] → **First
 
 ### 8.1 Home (dashboard)
 
-- Current mock composition per [D30](../project/DECISIONS.md#d30--compact-home-and-gamified-habit-preview): greeting/total-balance hero/quick actions, unchanged Account Board first, compact conditional Today, compact Safe to Spend, gamified habit card, Recent Transactions last.
-- Account detail/Add Account and responsive navigation remain existing previews. Safe to Spend retains per-currency integer-minor liquid assets minus unpaid obligations this month; no real money engine is introduced.
-- Due/overdue preview lives in the bell sheet, deduplicated, with Bills destination. Actual notifications remain M6. Today contains needs-details/habit actions, not due bills.
-- Habit summary/ring/timeline and shared Add No spending today sheet are transient. Opening/login grants nothing. No automatic first-day popup, persistent XP/history or real statistics mutation.
-- Home monthly UI and standalone nearest tile are removed; underlying data/helpers remain. Final monthly destination is OPEN while Activity's planned analysis responsibility below remains canonical. No Wallet redesign or Activity Summary route is implemented by this preview.
-- Synthetic snapshot/disclosure and Home-only Settings controls remain. Full current/future inventory is in [Home](../pages/home/Page-Home.md#feature-and-system-inventory).
+- Current mock composition per [D31](../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days): greeting/total-balance hero/actions, unchanged Accounts first, conditional max4 seven-day Due soon, existing gamified habit card with missing days, Recent last.
+- Safe Home UI is removed; integer-minor liquid assets minus unpaid current-month obligations, currency isolation, negative scenarios/formatter/tests remain. Future Wallet placement is OPEN; no Wallet redesign.
+- Home Due soon: selected Bangkok date, valid unpaid overdue/today/+7 inclusive, stable date/ID, same-ID or name/date/currency/amount dedupe, no inner scroll, empty hides, existing Bill details/View all Bills. Bell remains <=3 days/overdue; canonical production stages T-3/due/overdue remain M6 without schedule changes.
+- Missing activity counts strictly past current-week nonactive dates, including frozen but excluding pending today/future. Existing timeline identifies dates/first-missing focus; frozen remains distinct/no activity. Freeze model, streak, XP, ring, gestures and shared transient check-in are unchanged. No app-open/login XP or persistence.
+- Monthly/nearest Home UI remains absent, data/helpers retained; monthly destination OPEN while Activity planned analysis stays canonical. Synthetic disclosure, Home-only Settings and complete [Home inventory](../pages/home/Page-Home.md#feature-and-system-inventory) remain.
 
 ### 8.2 Activity
 - Day-grouped list; search; filters (account, category, tag, date, kind); **"Needs details" inbox**.
@@ -466,3 +465,5 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-17 — Added scoped D28/S4 presentation notice; production invite-only security contract and historical invite design remain preserved pending separate public-signup/Google approval before M1.
 
 - 2026-10-18 — D30/owner Compact Home revision updates §8.1 presentation and adds explicit §7.7 M7 backlog; current production qualifying-action/Party boundaries remain unchanged. [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
