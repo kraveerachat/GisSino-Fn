@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001
 type: task
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -16,13 +16,13 @@ related:
 
 ## Current state
 
-A01 responsive Welcome and honest Login/Sign-up placeholders are implemented and locally verified. Fresh documenter comparison finds an ordinary scoped extension of the incumbent enamel system; root DESIGN.md and absent sidecar are preserved. Independent finish reviewer returned **ship**, with no material fixes; independent browser confirmation is clean. Final checkpoint reconciliation, commit/push/new Draft PR and final receipt are pending at this documentation checkpoint. Status remains IN PROGRESS; no merge or production action.
+A01 responsive Welcome and honest Login/Sign-up placeholders are implemented and verified. Implementation delivery is CLOSED through [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6); owner acceptance and merge remain pending. Fresh documenter comparison finds an ordinary scoped enamel extension; root DESIGN.md and absent sidecar are preserved. Independent finish reviewer returned **ship**, with no material fixes; independent browser confirmation is clean. The [immutable final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) records the verified pre-receipt Git checkpoint; its containing closeout documentation commit follows that checkpoint. No merge or production action.
 
 - Branch: `task/gs-ui-welcome-001`.
 - Verified main base: `a028036bcea997245fd4d2536c121813d2c2dd33`, including merged [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4).
 - Source/assets/tests checkpoint: `598bff84aa53fa76341c0dfc761e07bbb7466195` (18 files).
-- Final documentation/delivery SHA: PENDING.
-- New Draft PR URL: PENDING creation; intended title `feat(ui): add responsive GisSino welcome screen`.
+- Pushed pre-receipt documentation checkpoint: `20b5c609e622b567b6861358f936a950e33a3ed7`, verified equal to remote and PR head before receipt creation. The receipt/closeout commit follows; its identity is available from Git history.
+- New [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): verified OPEN, draft true, base main, head `task/gs-ui-welcome-001`; title `feat(ui): add responsive GisSino welcome screen`.
 - Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5): verified OPEN/DRAFT at `03065adbb023aafaac15a26bca99a123f6c2fe0e`; must remain untouched and unmerged.
 
 ## Objective and authority
@@ -45,9 +45,9 @@ No real Login, signup, Passkey, session, onboarding, credentials, storage, backe
 - [x] Verify responsive art selection, single logo, Thai/English, focus/history, reduced motion, touch targets and retained dashboard behavior.
 - [x] Reconcile canonical living docs, D25, task/session, dashboard and milestone history; fresh source/capture comparison.
 - [x] Complete independent finish review and fresh browser confirmation; reviewer returned **ship**, no material fixes.
-- [ ] Complete final Git delivery/status reconciliation.
-- [ ] Commit/push task branch, create/verify one Draft PR and synchronize exact SHAs/URL.
-- [ ] Create one immutable final receipt and leave the Draft PR for owner review.
+- [x] Complete final Git delivery/status reconciliation.
+- [x] Commit/push task branch, create/verify one Draft PR and synchronize exact checkpoint SHA/URL.
+- [x] Create one immutable final receipt and leave the Draft PR for owner review.
 
 ## Behavior and assets
 
@@ -65,9 +65,23 @@ Required captures: 320×568, 390×844, 844×390, 820×1180, 1180×820, 1440×900
 
 Physical-device, screen-reader, actual browser zoom and cross-browser certification are not claimed. No remaining required viewport is untested in the local browser evidence. Source changes after comparison require renewed affected checks/captures.
 
+Parent receipt-inclusive vault check: PASS,54 notes/54 unique IDs,maximum3clicks,zero metadata/link/parent/reachability errors. Closeout changes are documentation only; runtime source/assets/tests remain at the independently reviewed checkpoint. Git whitespace check passed.
+
 ## Session register
 
-- [S1 — Implementation, verification and design comparison](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — IN PROGRESS.
+- [S1 — Implementation, verification and design comparison](../20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) — CLOSED for implementation delivery.
+
+## Final receipt
+
+- [Final immutable delivery receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md) — verified pre-receipt checkpoint, actual evidence and owner-review boundary.
+
+## Exact changed-file manifest
+
+Runtime/check/test files (9): `src/welcome.js`, `src/styles/welcome.css`, `src/app.js`, `src/i18n.js`, `index.html`, `server.mjs`, `scripts/check.mjs`, `tests/welcome.test.mjs`, `tests/preview.test.mjs`.
+
+Asset files (9): `assets/welcome/mobile.webp`, `assets/welcome/mobile.webp.json`, `assets/welcome/tablet-portrait.webp`, `assets/welcome/tablet-portrait.webp.json`, `assets/welcome/tablet-landscape.webp`, `assets/welcome/tablet-landscape.webp.json`, `assets/welcome/desktop.webp`, `assets/welcome/desktop.webp.json`, `assets/welcome/README.md`.
+
+Documentation files (15): `docs/START_HERE.md`; `docs/design/COMPONENT_INVENTORY.md`, `DESIGN_TOKENS.md`, `SCREEN_MAP.md`, `UI_DATA_CONTRACTS.md`, `UI_DESIGN_SPEC.md`; `docs/pages/Pages-Hub.md`, `docs/pages/auth/Page-Auth.md`; `docs/project/DECISIONS.md`, `PROJECT_HISTORY.md`; `docs/worklog/00-Index/Task-Dashboard.md`; `docs/worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md`, `TASK-GS-UI-WELCOME-001.md`; `docs/worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md`; `docs/worklog/90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md`. Filenames grouped after a directory share that directory. Ignored local captures/scripts are evidence only and are not part of the PR.
 
 ## Touches
 
@@ -78,4 +92,4 @@ Physical-device, screen-reader, actual browser zoom and cross-browser certificat
 
 ## Open decisions and next action
 
-No open A01 implementation decision. Actual auth/setup design belongs to later tasks and planning PR #5 remains untouched. Parent completes authorized commit/push/new Draft PR; replace PENDING SHA/URL only with verified values, reconcile task/session/dashboard/focus and create one final receipt. Owner reviews and merges separately.
+No open A01 implementation decision. Actual auth/setup design belongs to later tasks; planning PR #5 remains untouched at its verified tip. Owner reviews [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6) and local preview `http://127.0.0.1:4178/#welcome`, then decides on merge separately. The task server remains running for review; Ctrl+C in its dev-server session stops it.

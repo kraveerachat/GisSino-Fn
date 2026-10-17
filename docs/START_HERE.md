@@ -27,7 +27,7 @@ updated: 2026-10-17
 
 ## Current focus
 
-[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) is IN PROGRESS: locally verified A01 [Welcome](pages/auth/Page-Auth.md), four art-directed porcelain/blue backgrounds and honest Login/Sign-up placeholders. [Session S1](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) records verification and the fresh documentation comparison; commit/push/new Draft PR and final receipt remain pending. No real authentication or production change.
+[TASK-GS-UI-WELCOME-001](worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md) implementation delivery is CLOSED in [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6): verified A01 [Welcome](pages/auth/Page-Auth.md), four art-directed porcelain/blue backgrounds and honest Login/Sign-up placeholders. [Session S1](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S1.md) and the task-linked final receipt record verification and Git checkpoint proof. Owner review/merge remain pending. No real authentication or production change.
 
 Account Board [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4) is verified MERGED into main at `a028036bcea997245fd4d2536c121813d2c2dd33`, superseding the earlier pending-review claim. Planning [PR #5](https://github.com/kraveerachat/GisSino-Fn/pull/5) remains OPEN/DRAFT and untouched.
 

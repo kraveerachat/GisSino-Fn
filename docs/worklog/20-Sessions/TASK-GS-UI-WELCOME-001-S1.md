@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WELCOME-001-S1
 type: session
 level: log
-status: IN PROGRESS
+status: CLOSED
 updated: 2026-10-17
 up: ../10-Tasks/TASK-GS-UI-WELCOME-001.md
 related:
@@ -15,7 +15,7 @@ related:
 
 ## Current state
 
-Local A01 implementation and browser evidence passed fresh independent finish review (**ship**, no material fixes) and independent browser confirmation; Git delivery is pending. Branch `task/gs-ui-welcome-001` starts from verified main `a028036bcea997245fd4d2536c121813d2c2dd33`. Source/assets/tests checkpoint: `598bff84aa53fa76341c0dfc761e07bbb7466195` (18 files). Final documentation/delivery SHA: PENDING. New Draft PR URL: PENDING. No final receipt yet. See the [parent task](../10-Tasks/TASK-GS-UI-WELCOME-001.md) for scope, acceptance and the next exact action.
+Implementation delivery is CLOSED; owner acceptance/merge remain pending in [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). A01 passed fresh independent finish review (**ship**, no material fixes) and independent browser confirmation. Branch `task/gs-ui-welcome-001` starts from verified main `a028036bcea997245fd4d2536c121813d2c2dd33`. Source/assets/tests checkpoint: `598bff84aa53fa76341c0dfc761e07bbb7466195` (18 files). Pushed pre-receipt docs checkpoint `20b5c609e622b567b6861358f936a950e33a3ed7` matched local HEAD, remote and PR head. PR state OPEN/draft true, base main and named head branch were verified before the [final receipt](../90-Receipts/20261017-152135-TASK-GS-UI-WELCOME-001-FINAL.md); its containing closeout commit follows. See the [parent task](../10-Tasks/TASK-GS-UI-WELCOME-001.md) for acceptance and exact changed-file manifest.
 
 ## Work performed and source manifest
 
@@ -51,4 +51,6 @@ Read-only scan, excluding templates, .obsidian and fenced example snippets: 53 n
 
 ## Known limits and next action
 
-Screenshots/JSON are ignored local evidence, not public URLs. Physical-device, screen-reader, actual browser zoom and cross-browser certification remain untested. Actual commit/push/PR proof and the one final receipt remain pending. Parent reconciles these states and exact values before closeout; owner reviews/merges separately. No production change.
+Parent closeout verification including the one final receipt:54 notes/54 unique IDs,maximum3clicks,zero metadata/link/parent/reachability errors; Git whitespace check passed. The source/assets/tests did not change during Git/docs delivery.
+
+Screenshots/JSON are ignored local evidence, not public URLs. Physical-device, screen-reader, actual browser zoom and cross-browser certification remain untested. Pre-receipt push/PR proof is verified and the one final receipt closes implementation delivery. Owner reviews/merges separately; local preview remains available on port4178. Planning PR #5 was reverified OPEN/DRAFT at unchanged `03065adbb023aafaac15a26bca99a123f6c2fe0e`. No production change.
