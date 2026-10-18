@@ -66,6 +66,7 @@ test('Empty and one-sided summaries never divide by zero or produce invented mov
 test('Search/type filters change only rows, leaving the full-month analytics intact',()=>{
   const model=activityModel();assert.equal(filteredActivity(model.records,{...state,filter:'income'},t).length,1);
   assert.equal(filteredActivity(model.records,{...state,search:'commute'},t).length,1);
+  assert.equal(filteredActivity(model.records,{...state,search:'income'},t).length,1);
   const html=activityScreen({...state,search:'unmatched',filter:'expense'},t,{stateCard,stateSelect:()=>''});
   assert.match(html,/26,760/);assert.match(html,/42,000/);assert.match(html,/15,240/);assert.doesNotMatch(html,/data-action="transaction"/);
 });

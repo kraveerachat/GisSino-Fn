@@ -92,5 +92,5 @@ export function activityModel(entries=activityTransactions,period=activityPeriod
 }
 export function filteredActivity(records,state,t) {
   const query=String(state.search||'').trim().toLocaleLowerCase(state.locale==='th'?'th-TH':'en-GB');
-  return records.filter(item=>(!state.filter||state.filter==='all'||item.type===state.filter)&&(!query||`${t(item.name)} ${item.type==='transfer'?t('transfer'):t(activityCategory(item).label)}`.toLocaleLowerCase(state.locale==='th'?'th-TH':'en-GB').includes(query))).sort((a,b)=>b.dayKey.localeCompare(a.dayKey)||b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
+  return records.filter(item=>(!state.filter||state.filter==='all'||item.type===state.filter)&&(!query||`${t(item.name)} ${item.type==='transfer'?t('transfer'):item.type==='income'?t('income'):t(activityCategory(item).label)}`.toLocaleLowerCase(state.locale==='th'?'th-TH':'en-GB').includes(query))).sort((a,b)=>b.dayKey.localeCompare(a.dayKey)||b.date.localeCompare(a.date)||a.id.localeCompare(b.id));
 }
