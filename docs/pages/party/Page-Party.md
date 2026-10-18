@@ -3,20 +3,22 @@ id: PAGE-party
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-17
+updated: 2026-10-18
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../design/SCREEN_MAP.md
   - ../../project/OPEN_QUESTIONS.md
   - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
-tasks: [TASK-GS-UI-BASELINE-001, TASK-FLOATING-ISLAND-NAVIGATION, TASK-GS-PLAN-005]
+tasks: [TASK-GS-UI-BASELINE-001, TASK-FLOATING-ISLAND-NAVIGATION, TASK-GS-PLAN-005, TASK-GS-UI-HOME-V2-S1]
 ---
 # Party
 
 ## Current state
 
 A private synthetic habit-status showcase in [screens.js](../../../src/screens.js), with level/XP, streak/freezes, badges, weekly ranking, members, invite explanation, feed, and visibility switches. It shows no account or transaction details.
+
+[Compact Home S2](../../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md) adds an independent explicit dated habit presentation, not a new Party engine. Home sample streak 3 / weekly XP 80 is distinct from existing Party aggregate streak 7 / XP 1240; no check-in modifies Party samples or canonical user stats. M7 must supply authoritative statistics before M8 Party reads aggregate-only authorized views. Current login/app-open qualifies no day or XP; the alternative login-reward proposal remains OPEN. No new Party/Family/leaderboard/friends flow is implemented.
 
 ## Purpose and rules
 
@@ -48,4 +50,6 @@ Real invites, membership changes, and delivery failures are [OPEN].
 ## Change log
 
 - 2026-10-16 — Added from the current Party prototype.
-- 2026-10-17 — Planned Leaderboard, Friends, Group creation, and Visibility specifications documented for [TASK-GS-PLAN-005](../../worklog/10-Tasks/TASK-GS-PLAN-005.md).
+- 2026-10-17 — Planned Leaderboard, Friends, Group creation, and Visibility specifications documented for [TASK-GS-PLAN-005, TASK-GS-UI-HOME-V2-S1](../../worklog/10-Tasks/TASK-GS-PLAN-005.md).
+
+- 2026-10-18 — Clarified aggregate-only M7/M8 dependency and independent synthetic Home habit values for [Home S2](../../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).

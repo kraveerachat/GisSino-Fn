@@ -11,6 +11,13 @@ related:
 ---
 # Design tokens
 
+## Current Home v2 extension — Focused revision S3
+
+[Compact Home](../pages/home/Page-Home.md) reuses porcelain raised/well surfaces, enamel accent/ink, text/muted/line, warning/danger and existing semantic success roles in [blue.css](../../src/styles/blue.css). No global palette, Account Board stylesheet or token module changes. Due soon replaces Today and Home Safe UI is absent; the habit card uses restrained green/orange for status with icons/text, a blue progress ring and neutral future dates. Current and selected states remain distinguishable beyond color. Money keeps tabular numerals, true negative text and masking.
+
+The new card's counters/ring and internal date scroller form two primary zones. Date chips and stepping/check-in controls preserve usable focus/targets; timeline width is local, not page overflow. Desktop/tablet composition keeps the same DOM reading order; Account Board's preserved S3 geometry and navigation breakpoints below are unchanged. Existing reduced-motion preference removes spatial celebration; no automatic popup or looping celebratory motion. Current scoped geometry: lower gap20px (20px x24px at960px+); Due soon uses compact category/title/status/date rows with restrained danger/warning/enamel urgency, no invented provider colors; habit radius16px/padding16px, ring104px (88px below360px), 48px-wide/88px-minimum-height day chips with8px gaps, 44px stepping/check-in targets. Celebration is280ms and disabled under reduced motion. Existing ring/timeline geometry remains; missing focus uses existing controls and frozen stays blue/snowflake. Browser verification is tracked in [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md). No third-reference fidelity claim is made without the missing image.
+
+
 ## Current state — Wallet S2 category roles (2026-10-18)
 
 Scoped [wallet.css](../../src/styles/wallet.css) roles now map bank `#2464d8`, ewallet `#1594ac`, cash `#bd7d13`; dark equivalents are `#78a4ff`, `#62cfdf`, `#f3c15f`. Supporting Bills text uses shared muted neutral. Category wells use light `#e8effd`/`#e3f3f6`/`#faf1de` and dark `#273752`/`#293f43`/`#493d28`. These are UI category colors, not provider brand substitutions. Existing enamel shell, Thai fonts, surfaces, focus and contact shadows remain shared.
@@ -45,7 +52,7 @@ Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](htt
 
 Artwork uses cover at center, no contain bands. Source queries and layout breakpoints differ; see [UI specification](UI_DESIGN_SPEC.md). These are scoped facts, not a replacement global scale. Root DESIGN.md/PRODUCT.md and the absent sidecar remain preserved as an ordinary extension; [S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) records pre-existing root drift; [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) adds compact status and credential-action spacing without changing the palette or composition. The former 13px technical footers are absent from current pre-Home rendering.
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 The enamel/theme primitives remain unchanged. S3 geometry and motion live in `src/account-deck.js` and `src/styles/accounts.css`: full folder minimum height 160px (measured 160–164px), 20px curved corners/shoulders, 24/28px vertical exposure with two/three rear layers below/above 520px component width, 44px grip and step controls. Vertical card width caps at 420px; horizontal at 360px. The controller uses a 260ms touch hold, 240ms cubic ease-out snap and 360ms wheel throttle; reduced motion finishes immediately. The older 220ms CSS selection token remains in source but does not govern S3 deck transforms. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records comparison evidence.
 
@@ -103,6 +110,13 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 

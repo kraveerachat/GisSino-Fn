@@ -270,6 +270,19 @@ Conventions: UUID primary keys; `created_at`, `updated_at`; `voided_at` for fina
 - Weekly board resets Monday 00:00 `Asia/Bangkok`; the winner earns a weekly badge. No demotion mechanics in v1.
 - Tone rules: no guilt copy, streak notifications can be turned off, ranking can be opted out.
 
+#### M7 backlog clarified by Compact Home preview
+
+The current [Home prototype](../pages/home/Page-Home.md) and shared Add check-in are synthetic, user-triggered presentation only. They do not implement this engine. Its weekly ring proposes unique qualifying active dates in the current Bangkok Monday-Sunday week /7, rounded; a frozen day is not a qualifying active day. Existing canonical statistics remain separate. App-open/login is not a qualifying action and awards no XP; automatic login XP is an [OPEN conflicting proposal](../project/OPEN_QUESTIONS.md).
+
+Before production M7 delivery, require:
+
+- Per-user authoritative daily activity state and qualification by `Asia/Bangkok` date; entry including needs-details, confirmed No spending today, bill paid and reconciliation events come from owned domain commands (M2/M3/M5).
+- Idempotent check-in and server-side XP rules, daily caps, event/date deduplication and race protection. Numeric preview reward values are configurable illustrations, not approved formulas.
+- Streak/freeze rollover, weekly XP calculation, badge milestones and historical daily statuses with explicit freeze confirmation.
+- First-relevant-visit-of-day state, separate welcome display and reward grant events, plus reward-popup shown-state. A page-memory preview guard proves neither persistence nor server exactly-once behavior.
+- Reminder preferences, opt-out and quiet hours integrated with M6 delivery; no implicit notification permission or scheduling from Home.
+- Midnight and Sunday/Monday Bangkok boundaries, duplicate/repeated/concurrent action tests, cross-user isolation and authorization/BOLA checks. Party access uses aggregate stats/badges only (M8), never ledger/accounts/attachments.
+
 ### 7.8 Party service
 - Reads only `user_stats`, `badges`, `party_members`, `party_feed`.
 - Visibility enforcement is done **in the query layer**: a member row is returned with only the fields allowed by its `visibility` and `shared_figures`.
@@ -308,10 +321,12 @@ Profile/Settings are reached from the **avatar** at the top of Home (not a tab).
 Welcome → Log in | Sign up (invite code/link) → [Passkey prompt] → **First-time Setup** (profile → first accounts and opening balances → notifications → install guide) → Main. Also: Forgot password; Invite-expired / invalid state.
 
 ### 8.1 Home (dashboard)
-- Total balance (THB) and per-account list → **Account detail** (balance, recent entries, reconcile, edit/archive) · **Add account**.
-- "Safe to spend" card (money − unpaid obligations this month), "Due soon" strip, this-month in/out summary.
-- Streak chip (current streak, freezes) → Habits detail (in Party).
-- Notifications inbox (bell). AI ask entry. Avatar → Settings.
+
+- Current mock composition per [D31](../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days): greeting/total-balance hero/actions, unchanged Accounts first, conditional max4 seven-day Due soon, existing gamified habit card with missing days, Recent last.
+- Safe Home UI is removed; integer-minor liquid assets minus unpaid current-month obligations, currency isolation, negative scenarios/formatter/tests remain. Future Wallet placement is OPEN; no Wallet redesign.
+- Home Due soon: selected Bangkok date, valid unpaid overdue/today/+7 inclusive, stable date/ID, same-ID or name/date/currency/amount dedupe, no inner scroll, empty hides, existing Bill details/View all Bills. Bell remains <=3 days/overdue; canonical production stages T-3/due/overdue remain M6 without schedule changes.
+- Missing activity counts strictly past current-week nonactive dates, including frozen but excluding pending today/future. Existing timeline identifies dates/first-missing focus; frozen remains distinct/no activity. Freeze model, streak, XP, ring, gestures and shared transient check-in are unchanged. No app-open/login XP or persistence.
+- Monthly/nearest Home UI remains absent, data/helpers retained; monthly destination OPEN while Activity planned analysis stays canonical. Synthetic disclosure, Home-only Settings and complete [Home inventory](../pages/home/Page-Home.md#feature-and-system-inventory) remain.
 
 ### 8.2 Activity
 - Day-grouped list; search; filters (account, category, tag, date, kind); **"Needs details" inbox**.
@@ -460,6 +475,11 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-17 — Added [D27](../project/DECISIONS.md#d27--owner-requested-pre-home-preview-revision) pre-Home preview routing without changing production architecture or original flow history.
 
 - 2026-10-17 — Added scoped D28/S4 presentation notice; production invite-only security contract and historical invite design remain preserved pending separate public-signup/Google approval before M1.
+
+- 2026-10-18 — D30/owner Compact Home revision updates §8.1 presentation and adds explicit §7.7 M7 backlog; current production qualifying-action/Party boundaries remain unchanged. [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
 
 - 2026-10-18 — Added scoped Wallet v2 presentation-model architecture under [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards); no production domain or hosting change.
 

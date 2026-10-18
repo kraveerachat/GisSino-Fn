@@ -11,6 +11,21 @@ related:
 ---
 # UI data contracts and future boundaries
 
+## Current Home v2 fixture projection — Focused revision S3
+
+[home-overview.js](../../src/home-overview.js) remains a read-only synthetic projection. Existing bill amountMinor/currency/dueDate/paid metadata, nearest calculation and illustrative monthly expense remain; their Home tile/line, including Safe, is removed. Safe to Spend still uses nonarchived bank/ewallet/cash minus unpaid current-month obligations, per THB/USD without FX. THB `11,685,000 - 1,275,000 = 10,410,000` minor units; shortfall `-8,765,000` remains negative. Invalid/missing/unsafe amounts stay unavailable; integer/BigInt formatting preserves minor units. The separate existing hero/Account Board values remain untouched.
+
+Fixed default 2026-10-18T10:00 Asia/Bangkok and existing Home-only clock/scenarios remain transient; historical examples never use the live clock. Financial source fixtures remain unchanged. The new upcoming projection copies/sorts valid unpaid dates by due date then ID, filters days-from-selected-date <=7 (all outstanding overdue included), and deduplicates stable ID or name/date/currency/minor amount. Exactly+7 is eligible;+8 is excluded. Home renders max4 category/status/short-date rows, hidden empty, existing Bill IDs/details and unfiltered View all Bills; unknown IDs fall back to Bills. No transaction/amount/paid mutation.
+
+Bell projection remains overdue/due<=3 days; Home seven-day information changes no canonical T-3/due/overdue delivery stages/preferences. Nearest still sorts across months; retained Safe reserves current month only. Its Home UI is removed while math/formatter/negative scenarios/financial tests stay available for future Wallet design.
+
+[habit-preview.js](../../src/habit-preview.js) separates pure dated projection, render/mount behavior and a page-lifetime date-keyed demonstration guard from production habits. Explicit active/freeze date fixtures generate complete/missed/pending/future/frozen states. Future explicit activity is ignored until its date; freeze dates must be past and do not increase active-day percentage. Current Monday-Sunday Bangkok week has seven calendar dates; count unique qualifying active dates /7, rounded. Presentation-only missingDays includes current-week dates strictly before today without active/completed records. Frozen dates count as missing activity but retain frozen status/no-activity explanation. Pending today/future are excluded. First-missing focus reuses existing timeline dates and selected status is atomic. No freeze, XP or qualification rule changes. The 12-18 October sample is 4/7=57%. Its independent streak 3 and weekly XP 80 are declared illustrative snapshots; Party's existing 7/1240 aggregate sample is unchanged. Unknown date-specific streak snapshots remain unavailable; no production rollover is inferred.
+
+Home and Add share the existing global sheet for No spending today. User confirmation adds a Bangkok date only to transient preview memory and can illustrate configurable rewardXP 10. Already-active or repeated dates yield no additional grant. The in-memory Map dedupes across both entry points and computes its synthetic weekly grants by Bangkok week; refresh resets it. No transaction/account/user_stats or Party aggregate changes; no storage, API, real award, financial entry or durable once-per-day assertion. Calendar selection is presentation state and does not record retroactive activity. App open/login grants no XP and qualifies no date.
+
+Authoritative daily state, per-user event/date uniqueness, server XP/caps/dedupe/weekly calculations, streak/freeze rollover, badges, first-visit and popup shown-state belong to M7; M6 owns delivery/preferences/quiet hours and M8 consumes aggregates only. The proposed Home percentage does not replace existing canonical statistics. Login XP and the final monthly-summary destination remain [OPEN](../project/OPEN_QUESTIONS.md). Current preview boundaries and full inventory: [Home](../pages/home/Page-Home.md), [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md).
+
+
 ## Current state — Wallet S2 snapshots and monthly activity (2026-10-18)
 
 [walletOverview](../../src/wallet-overview.js) now uses bank/ewallet/cash assets alone for composition denominator, shares and ring. Current synthetic assets remain THB 116,850; deduplicated current obligations THB 12,750 are supporting Bills-link information only. Credit/debit/bills are excluded from ring and primary account sections. No liability history is fabricated.
@@ -39,7 +54,7 @@ Email, password and signup confirmation remain DOM-only, outside the model; invi
 
 Consent is a demo boolean without timestamps or PDPA/compliance assertion. First Accounts reads only provider identity and THB/USD choice, with no balance, conversion, account ID, account creation or fixture mutation. Notification booleans call no permission API, subscribe to nothing and send no email. Install platform controls instructions only; no service worker, install request or success simulation. Postcard can display escaped nickname but writes neither `setup_completed_at` nor `welcome_seen_at`. No storage, cookies, network mutation, session or persistent profile/financial record is introduced. Existing dashboard account-profile demonstrations remain separate.
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 S3 adds presentation-only `accountView` (`vertical` by default or `horizontal`) and preserves `accountSelected` by stable account ID across Settings changes. All six account records render through one complete folder component; overlap and interaction use local geometry, not changed financial data. No card text is swapped during a gesture. Existing `accountProfiles`, ID/currency/minor balance preservation, unknown-provider fallback, hidden-value suppression and session-only profile boundaries continue unchanged. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records evidence.
 
@@ -96,6 +111,13 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 

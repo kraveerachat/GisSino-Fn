@@ -2,7 +2,7 @@
 id: TASK-GS-UI-WALLET-V2-001
 type: task
 level: log
-status: CLOSED
+status: IN PROGRESS
 updated: 2026-10-18
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -14,12 +14,15 @@ related:
   - ../../design/SCREEN_MAP.md
   - ../../architecture/SYSTEM_ARCHITECTURE.md
   - ../../project/DECISIONS.md
+  - ../20-Sessions/TASK-GS-UI-WALLET-V2-001-S3.md
 branch: task/gs-ui-wallet-v2
 pr: https://github.com/kraveerachat/GisSino-Fn/pull/8
 ---
 # TASK-GS-UI-WALLET-V2-001 — Wallet assets and monthly history
 
 ## Current state
+
+**S3 integration follow-up (2026-10-18):** After owner accepted the UI and merged Home [PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7), Wallet PR #8 became unmergeable with `mergeable_state=dirty`. [S3](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S3.md) records a staged conflict reconciliation preserving Home and Wallet source, docs and complete 156-file tree. This task has reopened solely for post-integration `npm run check`, `npm test` and visual regression verification. Previous S2 runtime evidence is historical; it does not prove the combined branch passes. Do not merge PR #8 until these checks and owner confirmation of the combined UI. No production changes.
 
 CLOSED for implementation delivery after owner revision [S2](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md); owner review/merge pending. Continue the same `task/gs-ui-wallet-v2` branch and existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); parent reports OPEN/DRAFT at S2 start `b56741faace42c93c096cbb3431418d4e4276d3f`, also observed as local HEAD. S2 is RUNTIME VERIFIED for the tested scope: 521 locale keys, 66/66 tests (Wallet 14/14), 56 layouts, 14 edge cases, 15 named functional groups, 12 after/3 before captures and no artifact errors/overflow/clipping. Corrected 200% text enlargement passes 3 widths; Chromium AX/contrast supplement passes; final A is SHIP. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is committed/pushed on `task/gs-ui-wallet-v2` in existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Documentation closeout follows this verified source; parent will verify and report the final remote head in the handoff. Owner review/merge remains pending. No new receipt; the S1 receipt remains unchanged. The prior S1 SHIP and receipt do not establish S2 acceptance. Parent owns source/tests/Git/PR; documenter owns docs and `.ui-craft` only. PRODUCTION_MUTATION_ALLOWED=NO.
 
@@ -72,6 +75,8 @@ Current synthetic assets THB 116,850 alone are the ring denominator. Current ded
 S1 delivered source/docs with 490 keys,61 tests,28 layouts,12 edge cases,9 functional groups and final finish SHIP. Its [immutable receipt](../90-Receipts/20261018-043759-TASK-GS-UI-WALLET-V2-001-FINAL.md) remains unchanged and applies to that checkpoint only. S2 has no new receipt. Home Q10 and production money/FX/ledger choices remain separate. Physical-device, screen-reader, actual zoom/cross-browser and production certification remain unperformed unless new evidence establishes otherwise.
 
 ## Change log
+
+- 2026-10-18 — [S3](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S3.md): Merge-conflict reconciliation after PR #7 merged; staged combined Home/Wallet code and docs; new npm/browser verification pending, no automatic PR merge.
 
 - 2026-10-18 — S1 implementation delivery closed after verified source/docs checkpoints and one immutable receipt; owner review/merge remained pending.
 - 2026-10-18 — Reopened for owner-approved D32 S2 assets-only/monthly-history revision on the same branch and Draft PR #8. Prior S1 and receipt preserved; S2 verification/review/delivery pending.
