@@ -30,3 +30,5 @@ Living UI specifications and historical verification/review evidence.
 | [Account Board Review](reviews/ACCOUNT_BOARD_REVIEW.md) | 2 | CURRENT | Responsive and interaction evidence |
 
 | [Wallet Assets Review](reviews/WALLET_ASSETS_REVIEW.md) | 2 | CURRENT | S2 assets-only/monthly history before-after evidence; final SHIP, source184b2f7 pushed |
+
+| [Activity Analytics Review](reviews/ACTIVITY_ANALYTICS_REVIEW.md) | 2 | CURRENT | Runtime verified:637 keys/102 tests,32 layouts/12 functions/six edges,200% text/contrast;final A SHIP for owner review;latest source b92cf23 pushed in Draft PR9;owner review pending |

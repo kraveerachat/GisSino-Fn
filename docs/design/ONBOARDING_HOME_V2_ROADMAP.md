@@ -3,7 +3,7 @@ id: DESIGN-ONBOARDING-HOME-V2-ROADMAP
 type: design
 level: 2
 status: DRAFT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
@@ -24,6 +24,11 @@ related:
 > Status tags follow [PROJECT_GUIDE.md](../project/PROJECT_GUIDE.md) §0: **[DECIDED]** = owner-approved requirement · **[PROPOSED]** = recommended engineering default · **[OPEN]** = unresolved question requiring owner decision.
 
 ---
+
+
+## Activity placement supersession — 2026-10-18
+
+[D33](../project/DECISIONS.md#d33--embedded-activity-monthly-analytics) and the owner [Activity v2 S1 task](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) select monthly donut/category analytics directly in existing `#activity`. This supersedes only proposed separate Summary-tab placement for this slice; `#activity/summary` remains deferred/unimplemented. Original roadmap/tab descriptions below remain historical planning. No adoption of unrelated Leaderboard/Friends/onboarding/production proposals. Activity S1 is runtime verified/final A SHIP for owner review;source ae9c611 is pushed in [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9),OPEN/DRAFT. Original broader planning below remains historical/unimplemented unless separately delivered.
 
 ## 1. Executive Summary and Architecture Stance
 
@@ -518,3 +523,5 @@ In accordance with [VAULT_RULES.md](../governance/VAULT_RULES.md) and [AGENTS.md
 
 - 2026-10-17 — Initial creation for task **GS-PLAN-005**. Established Pre-Home flow, Home v2 block specification, 10-screen feature map, critical conflict analysis, and dual-track implementation roadmap.
 - 2026-10-17 — Corrections applied: (1) auth parameters (code format, expiry, password policy) marked **[PROPOSED]**; (2) age-band boundaries and minor consent threshold marked **[OPEN/VERIFY]**; (3) E-Wallet preset list aligned to [Provider Catalog](PROVIDER_CATALOG.md) — Rabbit Line Pay removed (unverified); (4) negative Safe-to-Spend display corrected to show actual negative amount, never ฿0.00.
+
+- 2026-10-18 — D33 dates owner-directed embedded Activity presentation; original proposed tab planning retained.

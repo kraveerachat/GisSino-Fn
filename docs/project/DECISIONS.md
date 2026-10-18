@@ -180,3 +180,13 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md), same existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Affects [Wallet](../pages/wallet/Page-Wallet.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
 
 - 2026-10-18 — Reopened Wallet task for D32 S2 owner revision; source inspection recorded, verification/review/delivery pending.
+
+
+### D33 — Embedded Activity monthly analytics
+
+- Date:2026-10-18; status:DECIDED for owner-authorized synthetic Activity v2 S1 UI.
+- Statement: embed monthly income/expense donut with labelled net, maximum four leading expense categories and View all in existing `#activity`. Full fourteen-category breakdown reuses native dialog; preserve search/type chips/day groups/detail/navigation. No separate Summary route/tab.
+- Data: Activity-only dated synthetic records reconcile THB 42,000 income/15,240 expense/26,760 net; transfer 5,000 stays list-only. Integer minor units/BigInt, THB/USD isolation, honest unknown/zero/unavailable and hidden amount/share/geometry suppression apply. Donut denominator income+expense; category denominator eligible expense. Search/type filters change list only. Only coherent October 2026 available; no fake history or shared Home/Wallet fixture mutation.
+- Supersedes: proposed Activity Summary-tab placement in roadmap/Home-Leaderboard specification and D30's OPEN Activity-versus-Wallet monthly destination, for this UI slice only. Preserve original planning, D29-D32, closed sessions/receipts. Future tab separation deferred; Home Q10/Safe placement and production accounting remain separate.
+- OPEN: M2/M3 authorized owned ledger/category integration and refund/reversal/adjustment/linked-record/settlement policies. Catalog labels never automatically classify savings/investment transfers/card payments as expenses.
+- Source: [Activity task](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md), [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md); runtime verified/final A SHIP;source ae9c611c68c081ef6686353b33539cbc7980d453 pushed in [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9),OPEN/DRAFT MERGEABLE/CLEAN;owner review pending. Affects [Activity](../pages/activity/Page-Activity.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Screen Map](../design/SCREEN_MAP.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).

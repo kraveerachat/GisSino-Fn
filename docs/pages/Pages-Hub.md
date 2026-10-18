@@ -18,8 +18,8 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 |---|---:|---|---|
 | [Auth / Welcome](auth/Page-Auth.md) | 2 | PROTOTYPE (mock data) | Eleven pre-Home Demo mode screens, consumer copy, Login/Google and signup/Google navigation, six-step setup |
 | [Home](home/Page-Home.md) | 2 | PROTOTYPE (mock data) | Home S3: Accounts first, max4 seven-day Due soon, existing habit/missing days, Recent last; no Home Safe/monthly/nearest UI |
-| [Wallet](wallet/Page-Wallet.md) | 2 | PROTOTYPE (mock data) | S2 assets-only ring, Current/monthly History and activity toggles; same PR #8; runtime verified/final SHIP; source184b2f7 pushed, delivery CLOSED, owner review pending |
-| [Activity](activity/Page-Activity.md) | 2 | PROTOTYPE (mock data) | Searchable and filterable sample transaction history; Summary tab planned |
+| [Wallet](wallet/Page-Wallet.md) | 2 | PROTOTYPE (mock data) | Assets-only ring, Current/monthly synthetic History/activity toggles; PR8 merged at `90a81e8`; historical evidence retained |
+| [Activity](activity/Page-Activity.md) | 2 | PROTOTYPE (mock data) | Activity v2 S1 runtime verified: embedded monthly donut/top-four expense preview/full dialog; dated synthetic data; required checks/normal browser pass, 200% text/contrast/final SHIP pass; latest source b92cf23 pushed in Draft PR9;delivery CLOSED,owner review pending;no Summary route |
 | [Add](add/Page-Add.md) | 2 | PROTOTYPE (mock data) | Unsaved preview actions in a modal |
 | [Bills](bills/Page-Bills.md) | 2 | PROTOTYPE (mock data) | Calendar/list view of synthetic obligations |
 | [Party](party/Page-Party.md) | 2 | PROTOTYPE (mock data) | Habit status, rankings, members, feed, and visibility preview |
@@ -45,3 +45,5 @@ Current user-visible prototype surfaces. Welcome → Entry → Login/signup and 
 - 2026-10-18 — Updated Wallet v2 inventory for [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); corrected stale pre-S4 Login summary.
 
 - 2026-10-18 — Wallet S2/D32 S2 supersedes S1 composition; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) remains IN PROGRESS.
+
+- 2026-10-18 — Index Activity v2 S1/D33; reconcile Wallet PR8 merge, preserve historical sessions/receipt.
