@@ -3,7 +3,7 @@ id: HUB-DESIGN
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: ../START_HERE.md
 related:
   - ../pages/Pages-Hub.md
@@ -28,3 +28,5 @@ Living UI specifications and historical verification/review evidence.
 
 | [Provider Catalog](PROVIDER_CATALOG.md) | 2 | CURRENT | Identity evidence, proposed accents and logo fallbacks |
 | [Account Board Review](reviews/ACCOUNT_BOARD_REVIEW.md) | 2 | CURRENT | Responsive and interaction evidence |
+
+| [Wallet Assets Review](reviews/WALLET_ASSETS_REVIEW.md) | 2 | CURRENT | S2 assets-only/monthly history before-after evidence; final SHIP, source184b2f7 pushed |

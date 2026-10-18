@@ -13,11 +13,23 @@ related:
 
 # GisSino_FN — 02 SYSTEM ARCHITECTURE (Agent Briefing)
 
+## Current prototype extension — Wallet S2 (2026-10-18)
+
+The mock Wallet adds [wallet-history.js](../../src/wallet-history.js) for frozen illustrative first-of-month archive accounts/entries (2026 Jul–Oct; 2025 Nov–Dec), period selection/labels and rounded ring geometry. [wallet-overview.js](../../src/wallet-overview.js) uses assets alone for composition and filters monthly account income/expense by identity, currency and Asia/Bangkok period, excluding transfers. Current profiles supply shared identity while historical balances/type/currency/archived state remain archive-owned. October monthly activity uses separately dated current sample entries; earlier months use archive entries. These are explicit synthetic fixtures, not production snapshots or a ledger reconstruction.
+
+[wallet.js](../../src/wallet.js) presents Bank/E-wallet/Cash, current/history selection, native year/month controls and per-account activity toggles. Only Current renders a small Bills reference; no liability archive or primary debt section is added. Historical account entry explicitly opens current detail. State stays transient, with no storage, posting, FX, backend service, scheduled capture or dependency. Integer/unknown/currency and privacy geometry safeguards remain. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes the earlier Wallet-specific S1 presentation only; Home Q10 and production architecture stay separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records 521-key/66-test PASS and56 layouts/14 edges/15 named functional groups runtime verified. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+
+## Superseded Wallet S1 prototype extension (2026-10-18)
+
+The buildless mock [Wallet](../pages/wallet/Page-Wallet.md) now separates presentation derivation in [wallet-overview.js](../../src/wallet-overview.js) from [wallet.js](../../src/wallet.js) and scoped CSS. It reads existing synthetic profile/accounts, card, bills and transactions without persistence, ledger posting, bank service or FX. Safe integer minor inputs/BigInt aggregation preserve cents and expose unknown on overflow/invalid/missing data; currencies stay separate. Assets are bank/ewallet/cash, obligations combine the card and deduplicated unpaid bills/installments/subscriptions. Ring denominator is assets + obligations, center shows assets with separate liabilities; debit contributes linked bank money only and has no record here. Movement ratios use matching income/expense excluding own transfers. Hidden mode omits proportional geometry as well as values. Shared profile/provider/navigation contracts remain. [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) applies to Wallet preview only; Home Q10 and all production architecture below remain separate. [Task/S1](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) records runtime verification and source delivered; final documentation checkpoint pending.
+
 > **File 2 of 2.** HOW the system is built: edge (Cloudflare), server (Docker), application, data, engines, navigation map, security, backup, testing, build order.
 > Prerequisite: read `GisSino_01_PROJECT_GUIDE.md` first (purpose, principles, scope, status tags **[DECIDED] / [PROPOSED] / [OPEN]**, and the agent working agreement in its §14 apply here too).
 > **Level of detail:** architecture and information architecture only. Screen layouts and visual design come later, in a separate step.
 
 ---
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
 
 ## 1. Architecture at a glance
 
@@ -467,3 +479,8 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-18 — D30/owner Compact Home revision updates §8.1 presentation and adds explicit §7.7 M7 backlog; current production qualifying-action/Party boundaries remain unchanged. [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md).
 
 - 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
+
+- 2026-10-18 — Added scoped Wallet v2 presentation-model architecture under [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards); no production domain or hosting change.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

@@ -17,6 +17,21 @@ related:
 
 The new card's counters/ring and internal date scroller form two primary zones. Date chips and stepping/check-in controls preserve usable focus/targets; timeline width is local, not page overflow. Desktop/tablet composition keeps the same DOM reading order; Account Board's preserved S3 geometry and navigation breakpoints below are unchanged. Existing reduced-motion preference removes spatial celebration; no automatic popup or looping celebratory motion. Current scoped geometry: lower gap20px (20px x24px at960px+); Due soon uses compact category/title/status/date rows with restrained danger/warning/enamel urgency, no invented provider colors; habit radius16px/padding16px, ring104px (88px below360px), 48px-wide/88px-minimum-height day chips with8px gaps, 44px stepping/check-in targets. Celebration is280ms and disabled under reduced motion. Existing ring/timeline geometry remains; missing focus uses existing controls and frozen stays blue/snowflake. Browser verification is tracked in [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md). No third-reference fidelity claim is made without the missing image.
 
+
+## Current state — Wallet S2 category roles (2026-10-18)
+
+Scoped [wallet.css](../../src/styles/wallet.css) roles now map bank `#2464d8`, ewallet `#1594ac`, cash `#bd7d13`; dark equivalents are `#78a4ff`, `#62cfdf`, `#f3c15f`. Supporting Bills text uses shared muted neutral. Category wells use light `#e8effd`/`#e3f3f6`/`#faf1de` and dark `#273752`/`#293f43`/`#493d28`. These are UI category colors, not provider brand substitutions. Existing enamel shell, Thai fonts, surfaces, focus and contact shadows remain shared.
+
+The assets-only ring uses 320×320 SVG with outer/inner radii 143/113, proportional gaps and rounded corners; no minimum-sized slice exaggerates composition. Current source caps ring width at 224px on phones and 312px from 700px, content at 1120px, three summary columns, then paired ring/details and account columns from 700px. Cards use 20px corners, 16px shoulder, 36px provider badges and 44px minimum activity/period controls. Month strip scrolls; native year select and visible focus remain. Reduced motion removes transitions; hidden mode removes sensitive geometry. Values are source-observed; S2 browser verification passes56 layouts/14 edges with no overflow/clipping, and12 after/3 before captures exist. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md).
+
+## Superseded Wallet S1 presentation (2026-10-18)
+
+[wallet.css](../../src/styles/wallet.css) scopes presentation to `.wallet-v2`: bank `#133865`, ewallet `#236fc8`, cash `#76a5d7`, liabilities `#677687`, cap `#15395f` and cap ink `#f4f8ff`. Dark roles use amber `#e5ad38`, blue `#8bb6e6`, pale slate `#becedb`, liabilities `#928475`, cap `#242323` and ink `#f3eee5`; surfaces/focus/borders/contact shadows reuse shared theme roles. These are UI categories, not official provider colors.
+
+Content caps at 1120px; ring width min(100%,264px) on phones and 340px from 700px, SVG 320×320/radius 130/stroke 26; center amount clamps 20–32px. Notched cards use 24px radius and 20px SVG shoulder,44px cap minimum,36px badges,14px names and 20px amounts (18px under 359px). From 360–699px the legend uses two columns with flexible amount/percentage rows; from 700px ring/legend and category grids gain two columns. Item press uses the shared duration/ease; reduced motion removes transition/translation. Provider artwork remains contained. [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) runtime verification passed; finish is SHIP; final docs checkpoint is pending; these roles extend the existing tokens and do not redesign Home/pre-Home.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
+
 ## Current state — pre-Home preview S4
 
 [Welcome](../pages/auth/Page-Auth.md) retains scoped ground `--welcome-ground:#f6faff`, cobalt `--welcome-blue:#075dcc` and deep cobalt `--welcome-blue-deep:#034799` in [welcome.css](../../src/styles/welcome.css). Local Noto Sans Thai, ink/muted, raised surface, borders, semantic danger and contact/inset shadows reuse the incumbent light theme. Public light rendering does not mutate the in-memory dashboard theme.
@@ -101,3 +116,8 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
 
 - 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

@@ -29,6 +29,19 @@ related:
 
 No duplicate modal system, automatic daily popup, durable history, production XP formula, new Wallet dashboard or Activity Summary route is added.
 
+
+## Current state — Wallet S2 components (2026-10-18)
+
+[walletScreen](../../src/wallet.js) reuses the overview model, provider/display adapters and existing navigation. [wallet-history.js](../../src/wallet-history.js) owns frozen synthetic snapshot records, period selection/labels and rounded proportional SVG sectors. Three Bank/E-wallet/Cash summary links and sections replace the four-category S1 composition. Overview/History pressed-state buttons, native year select and scrollable month buttons use the current app event controller; unavailable months are disabled. A small Bills link exists only in Current mode.
+
+Each notched account article contains a standalone monthly activity toggle and sibling account-detail link. Per-account percentage/value state is independent; own transfers are excluded. Hidden mode removes values/percentages/proportional geometry. History links explicitly announce current account detail. Add Account, Transfer, shared profile identities and locale/theme/sidebar remain existing components. No chart/state library is added. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 presentation; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records runtime verification of56 layouts/14 edges/15 named functional groups,521 keys and66 tests. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+
+## Superseded Wallet S1 presentation (2026-10-18)
+
+[walletScreen](../../src/wallet.js) consumes the pure [walletOverview](../../src/wallet-overview.js) model and uses [Wallet CSS](../../src/styles/wallet.css), shared provider/display adapters, catalog, icons and existing actions. The ring is decorative SVG with an explicit text legend; it shows assets centrally and obligations separately. The legend defines the assets + obligations denominator and uses four category symbols/colors. Notched cards preserve provider identity/native account or credit links and bill buttons. One shared movement-basis note states that matching income/expense data excludes own transfers. Liability cards omit movement captions. Movement label/bar appears only with matching valid income/expense data; hidden mode omits percentages/arcs/bar widths. Bank/E-wallet/Cash precede credit/debit/obligations; debit refers only to linked bank money. Add Account and Transfer remain existing controls, with profile editing in canonical detail. No charting/component/state dependency is added. See [Wallet](../pages/wallet/Page-Wallet.md), [data contract](UI_DATA_CONTRACTS.md) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md); runtime verified; final finish SHIP; final documentation delivery pending.
+
+Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
+
 ## Current state — pre-Home preview S4
 
 [welcome.js](../../src/welcome.js) renders eleven public screens; [preview-flow.js](../../src/preview-flow.js) owns transient state and six-step navigation. [Auth](../pages/auth/Page-Auth.md), [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) own this scoped revision.
@@ -106,3 +119,8 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
 
 - 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
+
+
+- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
