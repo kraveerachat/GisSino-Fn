@@ -13,6 +13,21 @@ related:
 
 # GisSino_FN — 02 SYSTEM ARCHITECTURE (Agent Briefing)
 
+
+## Activity v2 S1 prototype boundary (2026-10-18)
+
+[Activity](../pages/activity/Page-Activity.md) gains local read-only monthly projection over Activity-only dated synthetic data, lightweight SVG/category rendering and shared native sheet. [D33](../project/DECISIONS.md#d33--embedded-activity-monthly-analytics) selects embedded `#activity` without Summary route. Safe integer minor units/BigInt, separate THB/USD, valid Bangkok month boundaries, unknown suppression and hidden values/shares/geometry remain required. Analytics is full-month and independent of list search/type state; Home/Wallet datasets unchanged. Source implementation observed; verification evidence recorded in [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md).
+
+No production service/schema/ledger/storage/network/dependency. M2 owns authorized owned ledger types and linked-record/settlement/reversal invariants; M3 categories/Activity queries/search/details. Refund/savings/investment/card labels do not authorize new accounting semantics. M4 FX/M5 obligations/habits/Party/security/hosting remain separate.
+
+
+RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale keys and 102/102 tests (18 focused Activity tests). Inspected final browser evidence passes 32 normal-layout cases, 12 named functional checks, six edge scenarios and 200% text enlargement at 390px with no overflow/clipping/invalid geometry. Computed text contrast minimum is 5.175:1 light/4.775:1 dark, with zero CSP errors. Final independent A is SHIP for owner review after four final captures; no rescore. Owner review/merge remains pending. See [Activity review](../design/reviews/ACTIVITY_ANALYTICS_REVIEW.md).
+
+
+Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
+
+Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
 ## Current prototype extension — Wallet S2 (2026-10-18)
 
 The mock Wallet adds [wallet-history.js](../../src/wallet-history.js) for frozen illustrative first-of-month archive accounts/entries (2026 Jul–Oct; 2025 Nov–Dec), period selection/labels and rounded ring geometry. [wallet-overview.js](../../src/wallet-overview.js) uses assets alone for composition and filters monthly account income/expense by identity, currency and Asia/Bangkok period, excluding transfers. Current profiles supply shared identity while historical balances/type/currency/archived state remain archive-owned. October monthly activity uses separately dated current sample entries; earlier months use archive entries. These are explicit synthetic fixtures, not production snapshots or a ledger reconstruction.
@@ -335,7 +350,7 @@ Welcome → Log in | Sign up (invite code/link) → [Passkey prompt] → **First
 
 ### 8.3 Add (bottom sheet, modes)
 1. **Type to AI** (default): Thai sentence → draft card(s) → confirm.
-2. **Manual**: expense / income form (amount, currency THB|USD, account, category, date, note, slip).
+2. **Manual**: expense / income form (amount, currency THB | USD, account, category, date, note, slip).
 3. **Transfer**: from-account → to-account, amount, optional fee.
 4. **No spending today** check-in.
 5. **Quick slip**: attach image now → saved as "needs details".
@@ -484,3 +499,5 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-18 — Added scoped Wallet v2 presentation-model architecture under [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards); no production domain or hosting change.
 
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
+
+- 2026-10-18 — Added scoped D33 Activity v2 S1 contract; verification pending; historical task evidence preserved.
