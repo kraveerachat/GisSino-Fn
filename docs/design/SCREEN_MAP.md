@@ -31,17 +31,6 @@ related:
 
 `#activity/summary`, Leaderboard and Friends remain unimplemented. The roadmap below is historical/planned, not a runtime claim. Monthly destination is OPEN (Activity vs Wallet); current Activity analysis responsibilities are preserved.
 
-
-## Current state — Wallet S2 routes and periods (2026-10-18)
-
-`#wallet` now has an assets-only Bank/E-wallet/Cash summary and account sections. Overview is default; History adds native year and scrollable monthly snapshot selection, with unavailable months disabled. This is local screen state, with no new route. Current-only supporting Bills link opens `#bills`; History does not show current obligations as historical data. Account activity toggles selected-month shares/values independently. `#wallet/account/<stable-id>` remains current detail and is explicitly described as current when opened from History. Session profile Edit/Add, `#transfer`, global Add, Back/Forward, balance visibility, themes and TH/EN remain shared. Credit/bill destinations stay available through existing product navigation rather than Wallet primary sections. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 below; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records passed56 layouts/14 edges/15 named functional groups and no artifact errors. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
-
-## Superseded Wallet S1 presentation (2026-10-18)
-
-`#wallet` now leads with asset/liability composition and legend, then Bank → E-wallet → Cash → Credit/debit/obligations notched-card sections. Asset center is distinct from obligations and composition basis. Debit has no extra balance/card fixture. Account links remain `#wallet/account/<stable-id>` with session profile Edit; credit opens `#credit-card`; obligation buttons open existing bill detail; footer Add Account opens the session profile form and Transfer opens `#transfer`. Balance visibility, TH/EN, themes, Back/Forward and desktop/mobile navigation are retained. No route is added. [Wallet](../pages/wallet/Page-Wallet.md), [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) describe the local implementation and runtime verification and source delivered; final documentation checkpoint pending. This dated section supersedes the minimal Wallet overview row below; Home/pre-Home/planning history remains separate.
-
-Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
-
 ## Current state — pre-Home preview S4
 
 | Destination | Public preview contract |
@@ -67,7 +56,7 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 
 | Destination | Important subviews and preview states |
 |---|---|
-| `#wallet` | Ring-led asset/obligation composition and notched Bank/E-wallet/Cash then credit/debit/obligation cards; existing detail, session profiles and transfer/Add actions; debit uses linked bank money only |
+| `#wallet` | Minimal synthetic asset overview, explicit Bank/E-wallet/Cash categories, separate card liabilities, existing account detail, own-account transfer; unsupported account creation/reconcile clearly labelled |
 | More (native popover) | Bills and Party, contextual child highlight, close/toggle/outside/Escape/Tab-away dismissal; mutually exclusive with the Add dialog |
 | `#transfer` | Own-account child screen; zero initial amount, physical keyboard/custom touch keypad, source/destination exclusion, precision validation, unsaved review; no posting |
 | `#credit-card` | Bills child screen; original sample card, outstanding/full/minimum/date summary, six tracking sheets, in-memory reminder, sample activity; no issuer controls |
@@ -146,8 +135,3 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
 
 - 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
-
-
-- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
-
-- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

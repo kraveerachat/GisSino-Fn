@@ -25,25 +25,6 @@ Home and Add share the existing global sheet for No spending today. User confirm
 
 Authoritative daily state, per-user event/date uniqueness, server XP/caps/dedupe/weekly calculations, streak/freeze rollover, badges, first-visit and popup shown-state belong to M7; M6 owns delivery/preferences/quiet hours and M8 consumes aggregates only. The proposed Home percentage does not replace existing canonical statistics. Login XP and the final monthly-summary destination remain [OPEN](../project/OPEN_QUESTIONS.md). Current preview boundaries and full inventory: [Home](../pages/home/Page-Home.md), [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md).
 
-
-## Current state — Wallet S2 snapshots and monthly activity (2026-10-18)
-
-[walletOverview](../../src/wallet-overview.js) now uses bank/ewallet/cash assets alone for composition denominator, shares and ring. Current synthetic assets remain THB 116,850; deduplicated current obligations THB 12,750 are supporting Bills-link information only. Credit/debit/bills are excluded from ring and primary account sections. No liability history is fabricated.
-
-[wallet-history.js](../../src/wallet-history.js) freezes explicit synthetic archive records, accounts and entries: 2026-07/08/09/10 and 2025-11/12, captured on each month's day 1 at 00:00 +07:00. Current profiles may supply identity presentation by stable ID; archive balance, type, currency and archived state remain snapshot-owned. History chart/account balances use the archive, never today's balance as a replacement. Snapshot opening balances and selected-month activity are distinct measures. Current original relative-day transactions receive explicit October 2026 dates in a separate adapter without mutating shared fixtures; October activity uses those dated records, earlier archive months use their explicit synthetic entries.
-
-Monthly activity filters account identity, income/expense type, currency and selected Gregorian year-month in Asia/Bangkok. Own transfers, undated/invalid dates and other months do not enter the mix. Invalid/negative amounts and overflow remain unavailable; zero-volume data has no percentage. Percent/value preference is transient and independent per stable account ID. Current/history/year/month state is in memory; missing archive months are disabled. Current account detail is explicitly labelled when entered from History. No backend/schema, snapshot persistence, scheduler, FX, financial posting or new dependency is introduced.
-
-Safe integer minor units/BigInt totals, separate THB/USD, unknown values and hidden amount/percentage/geometry suppression remain. See [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [Wallet](../pages/wallet/Page-Wallet.md) and [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md). Source inspection and parent521-key/66-test results support this contract; inspected S2 browser artifact passes56 layouts, 14 edges and 15 named functional groups. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
-
-## Superseded Wallet S1 presentation (2026-10-18)
-
-[wallet-overview.js](../../src/wallet-overview.js) derives nonarchived bank/ewallet/cash assets from session profile records; debit and credit are not cash assets. Existing card outstanding plus unpaid bill/installment/subscription records form obligations; duplicate bill IDs and the card-backed `card` bill are excluded. With current fixtures: assets THB 116,850, credit8,250 + bill 1,250 + installment 2,900 + subscription 350 = obligations12,750. Ring denominator129,600 is assets + obligations; center asset total and separately labelled obligations are never net wealth. Debit money belongs only to its linked bank balance; no debit records are fabricated.
-
-Safe integer minor amounts are checked before BigInt summation and exact-cent display formatting; invalid or overflow totals return unknown. Missing amount is never zero. Negative/unknown/all-zero composition suppresses proportional arcs and percentages. THB and USD aggregate separately, with no FX; unsupported currency is disclosed rather than silently converted. Movement mix filters matching stable account IDs (or existing legacy account names) to income/expense in account currency, excluding own transfers; it rounds the share from recorded amounts. Current daily fixture yields98% in/2% out; no matching/valid positive volume means unavailable, not a fabricated ratio. Hidden mode omits all values, percentage text, proportional arcs and movement widths. This is a local synthetic view model; production ledger/FX/ownership contracts remain unimplemented. See [Wallet](../pages/wallet/Page-Wallet.md), [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards), [task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md).
-
-Source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8); final finish SHIP, owner review/merge and final documentation checkpoint remain pending.
-
 ## Current state — pre-Home transient boundary S4
 
 [preview-flow.js](../../src/preview-flow.js) exports eleven public routes and the ordered six-step setup list. Existing route/locale/translator state remains shared; public light rendering leaves dashboard theme preference intact. Route access does not authenticate. [Auth](../pages/auth/Page-Auth.md), [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) and [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) define scope.
@@ -117,8 +98,3 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 - 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
 
 - 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
-
-
-- 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
-
-- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
