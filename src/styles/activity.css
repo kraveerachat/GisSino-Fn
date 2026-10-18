@@ -1,0 +1,109 @@
+/* Activity-only analytics. Shared Wallet, Home, navigation and dialog defaults stay intact. */
+.activity-v2,.activity-category-sheet { --activity-income:#1765cf; --activity-expense:#bc493e; --activity-track:var(--well); }
+[data-theme='dark'] .activity-v2,[data-theme='dark'] .activity-category-sheet { --activity-income:#82b6ff; --activity-expense:#ffad9e; }
+.activity-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+.activity-heading h1 { font-size:clamp(25px,2.5vw,32px); line-height:1.4; letter-spacing:-.025em; }
+.activity-heading p { color:var(--muted); font-size:14px; margin-top:4px; }
+.activity-heading-controls { display:flex; align-items:center; gap:8px; max-width:100%; }
+.activity-heading .month-select { min-height:44px; max-width:100%; }
+.activity-heading select { min-width:0; max-width:100%; }
+.activity-analytics { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); padding:24px; gap:28px; background:linear-gradient(145deg,var(--enamel-top),var(--enamel-bottom)); }
+.activity-section-heading { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.activity-section-heading h2,.activity-ledger h2 { font-size:16px; line-height:1.6; }
+.activity-section-heading>span { font-size:12px; color:var(--muted); }
+.activity-flow-body { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:22px; padding:12px 0; }
+.activity-donut { width:188px; flex:0 0 188px; aspect-ratio:1; position:relative; }
+.activity-donut>svg { width:100%; height:100%; }
+.activity-ring-track { stroke:var(--activity-track); }
+.activity-series-income { --series:var(--activity-income); }
+.activity-series-expense { --series:var(--activity-expense); }
+.activity-donut path { fill:var(--series); }
+.activity-donut-center { position:absolute; inset:18%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:3px; }
+.activity-donut-center>span,.activity-donut-center>small { font-size:12px; color:var(--muted); }
+.activity-donut-center>strong { font-size:clamp(18px,1.8vw,23px); font-weight:750; max-width:100%; white-space:nowrap; line-height:1.4; font-variant-numeric:tabular-nums; letter-spacing:-.025em; }
+.activity-flow-legend { display:flex; flex-direction:column; gap:20px; min-width:max-content; }
+.activity-flow-legend dt { display:flex; align-items:center; gap:7px; font-size:13px; }
+.activity-legend-dot { width:9px; height:9px; border-radius:50%; background:var(--series); flex:none; }
+.activity-flow-legend dd { display:flex; flex-direction:column; padding-left:16px; font-variant-numeric:tabular-nums; }
+.activity-flow-legend strong { color:var(--text); font-size:18px; line-height:1.6; white-space:nowrap; }
+.activity-flow-legend dd>span { font-size:12px; color:var(--muted); }
+.activity-basis { font-size:12px; color:var(--muted); line-height:1.7; margin-top:10px; max-width:65ch; }
+.activity-breakdown { padding-left:28px; border-left:1px solid var(--line); }
+.activity-all-categories { min-height:44px; flex-shrink:0; gap:4px; }
+.activity-all-categories:disabled { color:var(--muted); cursor:default; }
+.activity-category-list { list-style:none; margin:0; padding:0; }
+.activity-category { display:flex; align-items:center; gap:12px; min-height:57px; padding:9px 0; }
+.activity-category-icon { color:var(--category-color); flex:0 0 32px; width:32px; height:32px; display:grid; place-items:center; }
+.activity-category-icon .icon { width:22px; height:22px; }
+.activity-category-copy { flex:1; min-width:0; }
+.activity-category-copy>div:first-child { display:flex; justify-content:space-between; align-items:baseline; gap:10px; font-size:13px; }
+.activity-category-copy strong { white-space:nowrap; font-weight:650; font-variant-numeric:tabular-nums; }
+.activity-category-bottom { display:flex; align-items:center; gap:10px; margin-top:6px; }
+.activity-bar { height:4px; background:var(--activity-track); flex:1; border-radius:4px; overflow:hidden; }
+.activity-bar>svg { display:block; width:100%; height:100%; fill:var(--category-color); }
+.activity-share { min-width:42px; text-align:right; color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+.activity-category-empty { min-height:160px; display:grid; place-items:center; font-size:14px; color:var(--muted); }
+.activity-category-food_drinks { --category-color:#c05c16; }
+.activity-category-shopping { --category-color:#ac397e; }
+.activity-category-family { --category-color:#207e7b; }
+.activity-category-savings_investment { --category-color:#248457; }
+.activity-category-bill_payment { --category-color:#a67515; }
+.activity-category-entertainment { --category-color:#7953b4; }
+.activity-category-gifts { --category-color:#b84263; }
+.activity-category-transport { --category-color:#3079b3; }
+.activity-category-education { --category-color:#548330; }
+.activity-category-travel_hotel { --category-color:#1e838d; }
+.activity-category-insurance_health { --category-color:#2c846e; }
+.activity-category-housing { --category-color:#5b739d; }
+.activity-category-refund_return { --category-color:#626ca8; }
+.activity-category-other,.activity-category.is-zero { --category-color:var(--muted); }
+[data-theme='dark'] .activity-category-icon { filter:brightness(1.65) saturate(.75); }
+.activity-ledger { margin-top:28px; }
+.activity-ledger-heading { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:12px; }
+.activity-ledger-heading>span { color:var(--muted); font-size:12px; }
+.activity-v2 .activity-toolbar { margin-bottom:12px; }
+.activity-v2 .search-field { max-width:none; width:100%; min-height:48px; }
+.activity-v2 .filter-chips { margin-bottom:20px; }
+.activity-v2 .transaction-group { margin-bottom:18px; }
+.activity-v2 .transaction-group>h2 { color:var(--muted); font-size:12px; font-weight:550; margin:0 0 8px; }
+.activity-v2 .transaction-row { min-height:76px; }
+.activity-v2 .transaction-row .row-amount.expense { color:var(--text); }
+.activity-v2 .transaction-row .row-amount.income { color:var(--activity-income); }
+.activity-preview-tools { margin-top:24px; font-size:12px; color:var(--muted); }
+.activity-preview-tools summary { min-height:44px; cursor:pointer; padding:12px 0; width:fit-content; }
+.activity-preview-tools .state-control { width:fit-content; max-width:100%; }
+.activity-currency { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:16px; font-size:13px; }
+.activity-currency select { min-height:44px; background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:8px; }
+.activity-currency>span { color:var(--muted); }
+.activity-category-sheet { width:min(100%,600px); scroll-padding-top:92px; }
+.activity-category-sheet .sheet-header { position:sticky; top:-10px; z-index:1; background:var(--surface-raised); padding:12px 0; }
+.activity-category-sheet .activity-category { min-height:66px; }
+.activity-catalog-summary { padding-bottom:16px; margin-bottom:12px; border-bottom:1px solid var(--line); }
+.activity-catalog-summary p,.activity-catalog-summary>span { display:block; font-size:13px; color:var(--muted); }
+.activity-catalog-summary p { margin-bottom:14px; }
+.activity-catalog-summary strong { font-size:28px; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.activity-v2 :is(input,select) { caret-color:var(--action); }
+.activity-v2 ::selection,.activity-category-sheet ::selection { color:var(--on-accent); background:var(--action); }
+.activity-category-sheet { scrollbar-color:var(--strong-line) var(--surface-raised); }
+@media(min-width:768px) { .activity-category-sheet { inset:0; margin:auto; border-radius:var(--radius-sheet); height:fit-content; max-height:80svh; } }
+@media(max-width:1199px) { .activity-flow-body { gap:10px; }.activity-analytics { gap:20px; padding:20px; }.activity-breakdown { padding-left:20px; }.activity-donut { width:176px; flex-basis:176px; }.activity-flow-legend strong { font-size:16px; } }
+@media(max-width:767px) {
+  .activity-heading { gap:12px; margin-bottom:18px; }.activity-heading p { font-size:13px; }.activity-heading-controls { width:100%; justify-content:space-between; }
+  .activity-analytics { grid-template-columns:1fr; padding:16px; gap:18px; }.activity-flow-body { justify-content:space-around; gap:12px; padding:12px 0 6px; }
+  .activity-donut { width:176px; flex-basis:176px; }.activity-donut-center>strong { font-size:19px; }.activity-flow-legend { gap:16px; }.activity-flow-legend strong { font-size:16px; }
+  .activity-breakdown { padding:16px 0 0; border-left:0; border-top:1px solid var(--line); }.activity-section-heading>span { font-size:11px; }
+  .activity-ledger { margin-top:24px; }.activity-ledger-heading { flex-wrap:wrap; }.activity-v2 .transaction-row { min-height:74px; padding-left:12px; padding-right:12px; gap:9px; }
+  .activity-v2 .transaction-row .well-icon { width:34px; height:34px; flex-basis:34px; }.activity-v2 .transaction-row .row-copy strong { font-size:12px; }.activity-v2 .transaction-row .row-amount { font-size:12px; }.activity-v2 .row-copy small { font-size:11px; }
+  .activity-category-sheet { padding-inline:20px; }.activity-category-sheet .sheet-header h2 { font-size:19px; }
+}
+@media(max-width:359px) { .activity-donut { width:150px; flex-basis:150px; }.activity-donut-center>strong { font-size:16px; }.activity-flow-legend strong { font-size:14px; }.activity-category-copy>div:first-child { font-size:12px; }.activity-v2 .transaction-row .row-chevron { display:none; } }
+@media(prefers-reduced-motion:reduce) { .activity-category-sheet[open] { animation:none; } }
+@media(forced-colors:active) { .activity-donut path { fill:Highlight; stroke:CanvasText; stroke-width:1px; }.activity-ring-track { stroke:GrayText; }.activity-bar rect { fill:Highlight; }.activity-analytics { border:1px solid CanvasText; } }
+
+.activity-v2 .row-copy { min-width:5em; }.activity-v2 .transaction-row { flex-wrap:wrap; }.activity-v2 .row-amount { max-width:100%; white-space:nowrap; }.activity-v2 .transaction-row .row-copy { flex-basis:40%; }
+.activity-flow-legend strong { white-space:nowrap; }.activity-donut-center strong { max-width:none; }
+.activity-flow,.activity-breakdown { min-width:0; }
+.activity-section-heading { flex-wrap:wrap; }
+.activity-donut { width:max(150px,12.6em); flex:0 1 max(150px,12.6em); max-width:100%; }
+.activity-donut-center>span { white-space:nowrap; }
+.activity-v2 .activity-basis { overflow-wrap:break-word; }
