@@ -539,3 +539,40 @@ Object.assign(messages.en, {
 
 Object.assign(messages.th, { walletMovementBasis: 'สัดส่วนรับ–จ่ายจากรายการที่บันทึก · ไม่รวมโอนระหว่างบัญชี' });
 Object.assign(messages.en, { walletMovementBasis: 'Income and expense mix from recorded entries · Excludes transfers between your accounts' });
+
+Object.assign(messages.th, {
+  walletAssetsSubtitle:'ทุกบัญชี เห็นเงินครบในที่เดียว', walletSnapshotAssets:'เงินรวมต้นเดือน',
+  walletModeCurrent:'ภาพรวม', walletModeHistory:'สถิติ', walletSummaryMode:'มุมมองกระเป๋า',
+  walletYear:'ปี', walletMonthStart:'ยอด ณ วันที่ 1 ของเดือน', walletSnapshotMonth:'เลือกเดือนที่ต้องการดู',
+  walletEarlierMonths:'เลื่อนไปเดือนก่อนหน้า', walletLaterMonths:'เลื่อนไปเดือนถัดไป',
+  walletNoSnapshot:'ไม่มีข้อมูลต้นเดือน', walletUnavailableMonths:'เดือนสีจางยังไม่มีข้อมูลต้นเดือน',
+  walletAsOf:'ณ {date}', walletCurrentBalance:'ยอดคงเหลือปัจจุบัน', walletAccountCount:'{count} บัญชี',
+  walletAssetBreakdown:'สัดส่วนเงินตามประเภทบัญชี', walletMonthlyObligations:'ภาระชำระเดือนนี้',
+  walletRingDescription:'สัดส่วนเงินในบัญชีธนาคาร อีวอลเล็ต และเงินสด ดูยอดและสัดส่วนในรายการถัดไป',
+  walletMyAccounts:'บัญชีของฉัน', walletMonthlyActivity:'รับ–จ่าย · {period}',
+  walletMonthlyActivityBasis:'เฉพาะรายการเดือนนี้ ไม่รวมโอนระหว่างบัญชี · แตะรับ–จ่ายเพื่อดูยอด',
+  walletHistoryActivityBasis:'ยอดคงเหลือต้นเดือน · รับ–จ่ายเฉพาะเดือนที่เลือก ไม่รวมโอนระหว่างบัญชี',
+  walletNoMonthlyActivity:'ยังไม่มีรับ–จ่ายเดือนนี้', walletMovementValues:'เข้า {incoming} · ออก {outgoing}',
+  walletToggleActivity:'{name} · {period} · {action}', walletShowValues:'ดูยอดรับ–จ่าย', walletShowPercent:'ดูสัดส่วนรับ–จ่าย',
+  walletOpeningBalance:'ยอดต้นเดือน', walletOpenCurrentAccount:'ดูบัญชีปัจจุบัน: {name}',
+  walletCurrentAccountDetails:'รายละเอียดนี้แสดงยอดบัญชีปัจจุบัน ย้อนดูยอดต้นเดือนได้ที่สถิติ',
+  walletSelectedPeriod:'แสดงข้อมูลเดือน {period}', walletCompositionTitle:'ภาพรวมเงินของฉัน'
+});
+Object.assign(messages.en, {
+  walletAssetsSubtitle:'All your money, clearly in view', walletSnapshotAssets:'Opening assets',
+  walletModeCurrent:'Overview', walletModeHistory:'History', walletSummaryMode:'Wallet summary view',
+  walletYear:'Year', walletMonthStart:'Balance on the 1st', walletSnapshotMonth:'Choose a snapshot month',
+  walletEarlierMonths:'Scroll to earlier months', walletLaterMonths:'Scroll to later months',
+  walletNoSnapshot:'No opening snapshot', walletUnavailableMonths:'Faded months have no opening snapshot',
+  walletAsOf:'As of {date}', walletCurrentBalance:'Current balance', walletAccountCount:'{count} accounts',
+  walletAssetBreakdown:'Asset breakdown by account type', walletMonthlyObligations:'Payments due this month',
+  walletRingDescription:'Bank, e-wallet and cash asset composition. Exact balances and shares follow.',
+  walletMyAccounts:'My accounts', walletMonthlyActivity:'Activity · {period}',
+  walletMonthlyActivityBasis:'This month only. Excludes transfers. Tap an activity summary for amounts.',
+  walletHistoryActivityBasis:'Opening balances. Activity for the selected month only, excluding transfers.',
+  walletNoMonthlyActivity:'No activity this month', walletMovementValues:'In {incoming} · Out {outgoing}',
+  walletToggleActivity:'{name} · {period} · {action}', walletShowValues:'Show activity amounts', walletShowPercent:'Show activity percentages',
+  walletOpeningBalance:'Opening balance', walletOpenCurrentAccount:'View current account: {name}',
+  walletCurrentAccountDetails:'These details show the current account balance. Return to History for opening balances.',
+  walletSelectedPeriod:'Showing {period}', walletCompositionTitle:'My asset overview'
+});

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { walletOverview, movementMix, walletMoney } from '../src/wallet-overview.js';
+import { walletOverview, movementMix, monthlyActivity, walletMoney } from '../src/wallet-overview.js';
+import { walletSnapshots, walletPeriod, walletRingSegments, walletCurrentPeriod } from '../src/wallet-history.js';
 import { walletScreen } from '../src/wallet.js';
 import { accounts } from '../src/fixtures.js';
 import { translator } from '../src/i18n.js';
@@ -11,7 +12,8 @@ test('Wallet totals derive from records and count credit bill once',()=>{
   const model=walletOverview();
   assert.equal(model.totals[0].assets,11685000);
   assert.equal(model.totals[0].liabilities,1275000);
-  assert.equal(model.totals[0].composition,12960000);
+  assert.equal(model.totals[0].composition,11685000);
+  assert.deepEqual(model.totals[0].segments.map(item=>item.kind),['bank','ewallet','cash']);
   assert.equal(model.totals[0].segments[0].amount,11285000);
   assert.equal(model.liabilities.length,4);
 });
@@ -22,8 +24,8 @@ test('Movement uses legacy stable IDs, excludes own transfers, and preserves ren
 });
 test('Movement distinguishes zero, invalid, negative and different-currency records',()=>{
   const a=record();
-  assert.deepEqual(movementMix(a,[{accountId:'custom',type:'expense',amountMinor:1}]),{income:0,expense:100});
-  for(const value of [null,-1,Number.MAX_SAFE_INTEGER+1,0]) assert.equal(movementMix(a,[{accountId:'custom',type:'income',amountMinor:value}]),null);
+  assert.deepEqual(movementMix(a,[{accountId:'custom',type:'expense',amountMinor:1,date:'2026-10-01'}]),{income:0,expense:100});
+  for(const value of [null,-1,Number.MAX_SAFE_INTEGER+1,0]) assert.equal(movementMix(a,[{accountId:'custom',type:'income',amountMinor:value,date:'2026-10-01'}]),null);
   assert.equal(movementMix(a,[{accountId:'custom',type:'income',amountMinor:100,currency:'USD'}]),null);
 });
 test('Summary separates currencies, excludes archived and debit records, and handles missing totals',()=>{
@@ -48,18 +50,77 @@ test('Currency formatting retains exact cents near safe-integer limits and negat
   assert.equal(walletMoney(Number.MAX_SAFE_INTEGER,'USD','en'),'$90,071,992,547,409.91');
   assert.equal(walletMoney(100,'EUR'),null);
 });
-test('Rendered Wallet preserves profile, credit, bill, transfer, and add actions',()=>{
+test('Rendered Wallet leads with assets and preserves profile, Bills, transfer, and add actions',()=>{
   const html=walletScreen(state,translator('en'));
-  for(const match of ['#wallet/account/daily','data-account-id="daily"','#credit-card','data-action="bill" data-id="power"','#transfer','data-action="add-account"','Credit · debit · obligations','In 98% · Out 2%']) assert.ok(html.includes(match),match);
-  assert.ok(!html.includes('data-wallet-jump'));
+  for(const match of ['#wallet/account/daily','data-account-id="daily"','href="#bills"','#transfer','data-action="add-account"','In 98% · Out 2%']) assert.ok(html.includes(match),match);
+  for(const match of ['wallet-category-liabilities','Credit · debit · obligations','href="#credit-card"','wallet-mix-track']) assert.ok(!html.includes(match),match);
   assert.ok(!html.includes('16:00'));
   for (const cap of html.matchAll(/class="wallet-item wallet-obligation"[^>]*>[\s\S]*?class="wallet-item-cap">([\s\S]*?)<\/span>\s*<svg/g)) assert.ok(!cap[1].includes('wallet-movement'));
-  assert.ok(html.includes('Excludes transfers between your accounts'));
+  assert.ok(html.includes('Excludes transfers'));
 });
 test('Hidden mode removes amounts, percentage text, and proportional ring geometry',()=>{
   const html=walletScreen({...state,balanceVisible:false},translator('en'));
-  for(const value of ['116,850','12,750','98%','stroke-dasharray','width:98%']) assert.ok(!html.includes(value),value);
+  for(const value of ['116,850','12,750','98%','stroke-dasharray','wallet-ring-segment','width:98%','wallet-activity-toggle']) assert.ok(!html.includes(value),value);
   assert.ok(html.includes('Balance hidden'));
+});
+
+test('Monthly activity excludes other months, undated entries, own transfers, and invalid dates',()=>{
+  const item=record();
+  const row=overrides=>({accountId:'custom',type:'income',amountMinor:10000,currency:'THB',date:'2026-10-01',...overrides});
+  const entries=[row({}),row({type:'expense',amountMinor:2000}),row({date:'2026-09-30'}),row({date:undefined}),row({date:'bad'}),row({date:'2026-10-32'}),row({type:'transfer',amountMinor:999999}),row({currency:'USD'})];
+  assert.deepEqual(monthlyActivity(item,entries,'2026-10'),{income:83,expense:17,incoming:10000,outgoing:2000});
+  assert.deepEqual(monthlyActivity(item,entries,'2026-09'),{income:100,expense:0,incoming:10000,outgoing:0});
+  assert.equal(monthlyActivity(item,entries,'2025-10'),null);
+  assert.deepEqual(monthlyActivity(item,[row({date:'2026-09-30T18:00:00Z'})],'2026-10'),{income:100,expense:0,incoming:10000,outgoing:0});
+  assert.equal(monthlyActivity(item,[row({date:'2026-09-30T16:59:59Z'})],'2026-10'),null);
+  assert.equal(monthlyActivity(item,[row({date:'2026-09-31T12:00:00Z'})],'2026-10'),null);
+  assert.equal(monthlyActivity(item,[row({amountMinor:-1}),row({})],'2026-10'),null);
+  assert.deepEqual(monthlyActivity(item,[row({amountMinor:0})]),{income:null,expense:null,incoming:0,outgoing:0});
+});
+
+test('Snapshots are explicit first-of-month archives independent from live balances and newly added profiles',()=>{
+  const original=JSON.stringify(walletSnapshots);
+  for(const snapshot of walletSnapshots) assert.ok(snapshot.capturedAt.startsWith(`${snapshot.period}-01T00:00:00+07:00`));
+  const profiles=accounts.map(item=>({...item,balanceMinor:1,nickname:'New name'}));
+  profiles.push(record());
+  const selected=walletPeriod({walletMode:'history',walletPeriod:'2026-09'},profiles);
+  assert.equal(selected.records.length,6);
+  assert.equal(selected.records[0].balanceMinor,5980000);
+  assert.equal(selected.records[0].nickname,'New name');
+  assert.equal(selected.period,'2026-09');
+  assert.equal(JSON.stringify(walletSnapshots),original);
+  assert.equal(walletPeriod({walletMode:'current'},profiles).records,profiles);
+  assert.equal(walletPeriod({walletMode:'current'},profiles).period,walletCurrentPeriod);
+});
+
+test('History balances and monthly activity follow the selected period, never current liabilities',()=>{
+  const t=translator('en');
+  const history={...state,walletMode:'history',walletPeriod:'2026-09',walletActivityValues:{daily:true}};
+  const html=walletScreen(history,t);
+  assert.ok(html.includes('THB 102,300'));
+  assert.ok(html.includes('THB 59,800'));
+  assert.ok(html.includes('In THB 39,500 · Out THB 13,250'));
+  assert.ok(html.includes('Opening balance'));
+  assert.ok(html.includes('As of 1 Sept 2026'));
+  assert.ok(!html.includes('Payments due this month'));
+  assert.ok(html.includes('data-period="2026-01" aria-pressed="false" aria-label="Jan 2026 · No opening snapshot" disabled'));
+  assert.ok(!walletScreen({...history,balanceVisible:false},t).includes('THB 39,500'));
+});
+
+test('Activity uses an independent button rather than a nested link control',()=>{
+  const html=walletScreen(state,translator('en'));
+  assert.ok(html.includes('data-action="wallet-activity" data-id="daily" aria-pressed="false"'));
+  for(const match of html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g))assert.ok(!match[0].includes('<button'));
+  assert.ok(walletScreen({...state,walletActivityValues:{daily:true}},translator('en')).includes('In THB 42,000 · Out THB 845'));
+});
+
+test('Rounded ring keeps all positive categories without inventing slices for zeros or invalid values',()=>{
+  assert.equal(walletRingSegments([{kind:'bank',amount:100},{kind:'cash',amount:0}],100).length,1);
+  assert.equal(walletRingSegments([{kind:'bank',amount:null}],100).length,0);
+  assert.equal(walletRingSegments([{kind:'bank',amount:0}],0).length,0);
+  const segments=walletRingSegments(walletOverview().totals[0].segments,11685000);
+  assert.deepEqual(segments.map(item=>item.kind),['bank','ewallet','cash']);
+  assert.ok(segments.every(item=>!item.path.includes('NaN')&&!item.path.includes('Infinity')));
 });
 test('New profile names are escaped and unavailable balances remain honest',()=>{
   for(const locale of ['th','en']) {

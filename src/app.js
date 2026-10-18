@@ -11,6 +11,8 @@ import { mountAccountDeck } from './account-deck.js';
 import { accountProfileForm, profileDraft, applyProfile } from './account-profile.js';
 import { publicRoutes, isPublicRoute, welcomeScreen } from './welcome.js';
 import { createPreviewFlow,mountPreviewFlow,routeTitles } from './preview-flow.js';
+import { walletScreen } from './wallet.js';
+import { walletSnapshots, walletPeriodLabel } from './wallet-history.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
@@ -21,6 +23,7 @@ const state = {
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
   accountProfiles: accounts.map(account=>({...account})),
+  walletMode:'current', walletPeriod:walletSnapshots[0].period, walletActivityValues:Object.create(null),
   transferSource:'daily', transferDestination:'savings', transferAmount:'0', cardReminder:false,cardReturn:'bills'
 };
 const scrollPositions = new Map();
@@ -54,6 +57,7 @@ function render(focusMain = false) {
   if(isPublicRoute(state.route))mountPreviewFlow(app,previewFlow,t,id=>{render();document.getElementById(id)?.focus({preventScroll:true});});
   sidebar.rendered();
   mountDeck();
+  if(state.route==='wallet'&&state.walletMode==='history') app.querySelector('.wallet-months [aria-pressed="true"]')?.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
 }
 function announce(message) { document.querySelector('#announcer').textContent = message; }
@@ -125,7 +129,7 @@ function openVisibility() {
 function openAccount(id) {
   accountDetailId=id;
   const account=assetAccounts(state.accountProfiles).find(a=>a.id===id);
-  showSheet('accountDetail',account?accountPreview(account,state,t):`<p class="settings-info">${t('boardUnavailableBody')}</p>`);
+  showSheet('accountDetail',account?`${state.walletMode==='history'?`<p class="info-callout">${icon('info')}${t('walletCurrentAccountDetails')}</p>`:''}${accountPreview(account,state,t)}`:`<p class="settings-info">${t('boardUnavailableBody')}</p>`);
 }
 function openProfile(id=null) {
   const account=state.accountProfiles.find(a=>a.id===id);
@@ -152,11 +156,51 @@ function selectBoardAccount(id,focusSelector='[data-account-deck]') {
   document.querySelector(focusSelector)?.focus({preventScroll:true});
 }
 
+function refreshWallet(focusSelector, periodChanged = false) {
+  const wallet = app.querySelector('.wallet-v2');
+  if (!wallet) return;
+  const monthScroll = wallet.querySelector('.wallet-months')?.scrollLeft || 0;
+  wallet.outerHTML = walletScreen(state,t);
+  const months = app.querySelector('.wallet-months');
+  if (months) {
+    months.scrollLeft = monthScroll;
+    if (periodChanged) months.querySelector('[aria-pressed="true"]')?.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+  }
+  app.querySelector(focusSelector)?.focus({preventScroll:true});
+  if (periodChanged && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    app.querySelector('.wallet-ring')?.animate([{opacity:.65},{opacity:1}],{duration:180,easing:'ease-out'});
+  }
+}
+
 document.addEventListener('click',event=>{
   const button = event.target.closest('[data-action]');
   if (!button) return;
   const action=button.dataset.action;
-  if(action==='close-more')moreOverlay.close(true);
+  if(action==='wallet-mode') {
+    if (!['current','history'].includes(button.dataset.mode)) return;
+    state.walletMode=button.dataset.mode;
+    refreshWallet(`[data-action="wallet-mode"][data-mode="${state.walletMode}"]`,true);
+    announce(t(state.walletMode==='history'?'walletModeHistory':'walletModeCurrent'));
+  } else if(action==='wallet-month') {
+    if(!walletSnapshots.some(snapshot=>snapshot.period===button.dataset.period))return;
+    state.walletPeriod=button.dataset.period;
+    refreshWallet(`[data-action="wallet-month"][data-period="${state.walletPeriod}"]`,true);
+    announce(t('walletSelectedPeriod',{period:walletPeriodLabel(state.walletPeriod,state.locale)}));
+  } else if(action==='wallet-activity') {
+    if(!state.balanceVisible)return;
+    state.walletActivityValues[button.dataset.id]=!state.walletActivityValues[button.dataset.id];
+    refreshWallet(`[data-action="wallet-activity"][data-id="${CSS.escape(button.dataset.id)}"]`);
+    const selected=app.querySelector(`[data-action="wallet-activity"][data-id="${CSS.escape(button.dataset.id)}"]`);
+    if(selected)announce(`${selected.getAttribute('aria-label')}. ${selected.textContent}`);
+  } else if(action==='wallet-jump') {
+    event.preventDefault();
+    if(!['bank','ewallet','cash'].includes(button.dataset.kind))return;
+    const section=app.querySelector(`#wallet-${button.dataset.kind}`);
+    section?.scrollIntoView({block:'start',behavior:'instant'});
+    section?.focus({preventScroll:true});
+  } else if(action==='wallet-month-scroll') {
+    app.querySelector('.wallet-months')?.scrollBy({left:Number(button.dataset.step)*176,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  } else if(action==='close-more')moreOverlay.close(true);
   else if (action==='add') { state.mode=null; showSheet('addTitle',addMenu(t)); }
   else if (action==='close') closeSheet();
   else if (action==='mode') openMode(button.dataset.mode);
@@ -254,7 +298,13 @@ document.addEventListener('change',event=>{
     return;
   }
   const control=event.target.dataset.control;
-  if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
+  if(control==='wallet-year') {
+    const candidates=walletSnapshots.filter(snapshot=>snapshot.period.startsWith(`${event.target.value}-`));
+    if(!candidates.length)return;
+    state.walletPeriod=(candidates.find(snapshot=>snapshot.period.slice(5)===state.walletPeriod.slice(5))||candidates[0]).period;
+    refreshWallet('#wallet-year',true);
+    announce(t('walletSelectedPeriod',{period:walletPeriodLabel(state.walletPeriod,state.locale)}));
+  } else if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
   else if(control==='account-display-mode') {state.accountView=event.target.value==='horizontal'?'horizontal':'vertical';render();document.querySelector('#account-display-mode')?.focus({preventScroll:true});}
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }
