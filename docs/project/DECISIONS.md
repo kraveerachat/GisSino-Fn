@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -121,3 +121,36 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Welcome task](../worklog/10-Tasks/TASK-GS-UI-WELCOME-001.md), [S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), existing [Draft PR #6](https://github.com/kraveerachat/GisSino-Fn/pull/6). Affects [Auth](../pages/auth/Page-Auth.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Screen Map](../design/SCREEN_MAP.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md), [Guide](PROJECT_GUIDE.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md) and [Open Questions](OPEN_QUESTIONS.md). Planning PR #5 remains untouched at `03065adbb023aafaac15a26bca99a123f6c2fe0e`.
 
 - 2026-10-17 — Added D28 as a preview-scoped revision with explicit pending production-policy approval; prior decisions preserved.
+
+### D29 — Home v2 S1 daily overview scope
+
+- Date: 2026-10-18; status: DECIDED for the synthetic S1 UI foundation; decided by owner in the GS-UI-HOME-V2-S1 brief and first-two-plus-expand clarification.
+- Statement: preserve greeting/hero/quick actions, add conditional Today priorities, revise Safe to Spend/nearest unpaid obligation, move streak before unchanged Account Board, and replace Home monthly chart with one-line existing Activity navigation. Today shows the first two categories with native expansion; empty means zero strip DOM. Use a fixed controllable Bangkok synthetic snapshot, explicit sample disclosures and Home-only scenario projections.
+- Financial boundary: integer minor units per THB/USD, no FX; liquid assets minus unpaid current-month obligations, true negative shortfall. Earliest unpaid obligation may be overdue/across months. No new ledger, obligation or habit engine. Synthetic streak/freezes/rank do not read other users' finances; primary-party selection remains OPEN.
+- Supersedes: only the prior Home composition/monthly chart presentation for this slice. Retain the source planning roadmap and prior decisions; Activity Summary, compact Global Leaderboard, spending boards, Friends and Party/Family creation remain later slices. Existing Account Board components/styles/providers/gestures/Settings mode are preserved.
+- Source: [Home S1 task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [session](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S1.md). Affects [Home](../pages/home/Page-Home.md), [Settings](../pages/settings/Page-Settings.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data Contracts](../design/UI_DATA_CONTRACTS.md) and [Screen Map](../design/SCREEN_MAP.md).
+
+- 2026-10-18 — Added D29 as an S1-scoped implementation decision; historical planning and existing primary-party question remain unchanged.
+
+### D30 — Compact Home and gamified habit preview
+
+- Date: 2026-10-18; status: DECIDED for the owner-requested synthetic UI revision. The weekly activity percentage remains PROPOSED as a Home presentation metric; production XP/freeze tunables are not approved by this UI sample.
+- Statement: preserve header/hero/actions/navigation, then unchanged My Accounts first, compact Today without due bills, compact Safe to Spend, two-zone Streak/weekly XP/ring/calendar, Recent Transactions last. Remove Home Monthly Summary and standalone nearest tile; retain financial fixtures and calculations. Put small deduplicated synthetic due/overdue notices behind the existing bell sheet.
+- Weekly metric: qualifying active dates in the current Bangkok Monday-Sunday week /7 ×100 rounded, with n/7 shown (4/7=57%). Completed/missed/pending/future/frozen use explicit dated sample data and non-color cues. Freeze is not an active day. This does not replace canonical habit statistics.
+- Shared interaction: Home and existing Add No spending today use the same existing sheet; explicit confirmation may complete today's transient preview and illustrate configurable synthetic XP once per Bangkok date during the page lifetime. No persistence, transactions/accounts/user_stats/Party-stat mutation or automatic daily popup. App-open/login never qualifies or awards XP under current rules.
+- Supersedes: D29 Home hierarchy, due-tile, one-line monthly and streak-strip presentation only. Preserve D29, CLOSED S1 session, immutable receipt and planning history. Account Board renderer/styles/controller/assets/selection/gestures/Settings modes remain protected.
+- OPEN: final monthly destination (Activity vs Wallet) and separate automatic login/app-open XP proposal conflicting with current qualifying-action rules. No new Wallet dashboard, Activity Summary, reward engine or notification service is approved. Automatic first-day welcome/shown state and authoritative grants remain future M7.
+- Source: [Home task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md), same [Draft PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7). Affects [Home](../pages/home/Page-Home.md), [architecture](../architecture/SYSTEM_ARCHITECTURE.md), [UI spec](../design/UI_DESIGN_SPEC.md), [data contracts](../design/UI_DATA_CONTRACTS.md), [Activity](../pages/activity/Page-Activity.md), [Party](../pages/party/Page-Party.md) and [open questions](OPEN_QUESTIONS.md).
+
+- 2026-10-18 — D30 records the owner revision; D29 remains the historical S1 delivery decision.
+
+### D31 — Seven-day Home due list and missing activity days
+
+- Date:2026-10-18; DECIDED for owner-requested focused preview refinement. Owner confirmed relative status plus short date.
+- Preserve header/hero/actions/nav/complete Account Board. Below hero Accounts → conditional Due soon → existing gamified Streak/XP → Recent last. Remove Safe Home rendering only, retain arithmetic/formatter/fixtures/scenarios/tests; future Wallet placement OPEN, no loss of product scope.
+- Due soon: selected Bangkok date, valid unpaid overdue/today/+7 inclusive; exclude paid/invalid/+8/duplicates. Date then stable ID, same-ID or name/date/currency/amount dedupe; max4 compact category/status/date rows, no inner scroll, hidden empty. Red/orange/blue urgency plus text/icons; known Bill IDs reuse existing details, View all existing Bills unfiltered.
+- Seven-day Home visibility does not change bell <=3-day preview or production T-3/due/overdue schedules/preferences/dispatch.
+- Replace visible freeze allowance only with strictly past current-week missing activity, including frozen but excluding pending today/future. Existing timeline/first-missing focus/atomic selected status; frozen retains blue snowflake/no-activity meaning. Zero missing gets positive copy.
+- Preserve freeze data/model, streak, weekly XP, 4/7 metric/ring, gestures/keyboard, shared check-in/idempotent illustrative rewards and reduced motion. No app-open/login XP, new calendar/modal or production persistence.
+- Supersedes only D30 Today/Safe Home presentation and visible freeze allowance. D29/D30, S1/S2 sessions and immutable receipt remain unchanged. Existing monthly/nearest removal and production boundaries remain.
+- Source: [Home task](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md), [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md), same [Draft PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7). Affects [Home](../pages/home/Page-Home.md), [architecture](../architecture/SYSTEM_ARCHITECTURE.md#81-home-dashboard), [UI spec](../design/UI_DESIGN_SPEC.md), [data contracts](../design/UI_DATA_CONTRACTS.md), [Screen Map](../design/SCREEN_MAP.md).

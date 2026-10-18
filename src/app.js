@@ -1,7 +1,9 @@
+import { bangkokClock,homeOverview,notificationPreview } from './home-overview.js';
+import { createCheckinPreview,habitOverview,mountHabitTimeline } from './habit-preview.js';
 import { shell, addMenu, addForm, activityResults } from './screens.js';
 import { translator, money, escapeHTML as esc } from './i18n.js';
 import { icon } from './icons.js';
-import { transactions, bills, accounts, creditCard } from './fixtures.js';
+import { transactions, bills, accounts, creditCard, homePreview } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
 import { navigationOverlay } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
@@ -17,6 +19,7 @@ const sheet = document.querySelector('#sheet');
 const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card',...publicRoutes];
 const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
+  homeScenario:'sample', homeNow:homePreview.nowLocal,
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
@@ -25,6 +28,7 @@ const state = {
 };
 const scrollPositions = new Map();
 const previewFlow=createPreviewFlow();
+const checkinPreview=createCheckinPreview();
 let opener = null;
 let toastTimer;
 let searchTimer;
@@ -33,6 +37,7 @@ let accountSheetClosingForNavigation=false;
 let accountDetailId=null;
 let editingProfileId=null;
 let accountDeck=null;
+let habitTimelineCleanup=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -43,7 +48,9 @@ function applyTheme() {
   document.querySelector('meta[name="theme-color"]').content = isPublicRoute(state.route)?'#f6faff':appearance === 'dark' ? '#242323' : '#94dffc';
 }
 function render(focusMain = false) {
+  syncHabitPreview();
   app.querySelectorAll('[data-credential]').forEach(input=>input.value='');
+  habitTimelineCleanup?.();habitTimelineCleanup=null;
   accountDeck?.destroy();accountDeck=null;
   applyTheme();
   document.documentElement.lang = state.locale;
@@ -54,7 +61,17 @@ function render(focusMain = false) {
   if(isPublicRoute(state.route))mountPreviewFlow(app,previewFlow,t,id=>{render();document.getElementById(id)?.focus({preventScroll:true});});
   sidebar.rendered();
   mountDeck();
+  habitTimelineCleanup=mountHabitTimeline(app.querySelector('[data-habit-card]'),habitOverview(state),state,t);
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
+}
+function syncHabitPreview() {
+  state.homeDemoDays=checkinPreview.days();
+  state.homeDemoXP=checkinPreview.xpForWeek(state.homeNow.slice(0,10));
+}
+function openHabitCheckin(back=false) {
+  syncHabitPreview();
+  const model=habitOverview(state);
+  showSheet('habitWelcome',`<div class="habit-checkin-intro">${icon('flame')}<strong>${model.streak===null?t('habitNoSnapshot'):t('habitStreak',{n:model.streak})}</strong><p>${t(model.complete?'habitTodayComplete':'habitTodayPending')}</p></div><p class="sheet-subtitle">${t(model.complete?'habitAlreadyBody':'habitConfirmBody')}</p>${model.complete?'':`<button type="button" class="button primary full-width" data-action="checkin-preview">${t('habitConfirm')}${icon('check')}</button>`}<p class="sheet-disclaimer">${t('habitPreviewBoundary')}</p>`,back);
 }
 function announce(message) { document.querySelector('#announcer').textContent = message; }
 function toast(message) {
@@ -101,7 +118,7 @@ function openMode(mode) {
   if (['expense','income','transfer'].includes(mode)) {
     showSheet(({expense:'manualExpense',income:'manualIncome',transfer:'transferAction'})[mode], addForm(mode,state,t),true);
   } else if (mode === 'check') {
-    showSheet('checkinTitle',`<div class="checkin-art" aria-hidden="true">${icon('check')}</div><p class="centered">${t('checkinBody')}</p><button class="button primary full-width" data-action="checkin-preview">${t('checkinAction')}${icon('arrow')}</button><p class="sheet-disclaimer">${t('addNote')}</p>`,true);
+    openHabitCheckin(true);
   } else if (mode === 'slip') {
     showSheet('slipTitle',`<div class="attachment-preview">${icon('upload')}<strong>${t('slipTitle')}</strong><p>${t('slipPrivacy')}</p><button class="button secondary" data-action="sample-slip">${t('showSlip')}</button></div><p class="sheet-disclaimer">${t('addNote')}</p>`,true);
   } else if (mode === 'ai') {
@@ -214,7 +231,7 @@ document.addEventListener('click',event=>{
   } else if (action==='bills-view') {
     state.billsView=button.dataset.view; render(); document.querySelector(`[data-action="bills-view"][data-view="${state.billsView}"]`)?.focus({preventScroll:true});
   } else if (action==='notifications') {
-    showSheet('notifications',`<div class="empty-state sheet-empty"><span class="empty-symbol">${icon('bell')}</span><h3>${t('notificationsEmpty')}</h3><p>${t('notificationsBody')}</p></div>`);
+    showSheet('notifications',notificationPreview(homeOverview(state),state,t));
   } else if (action==='invite') {
     showSheet('inviteTitle',`<div class="invite-symbol">${icon('party')}</div><p class="centered">${t('inviteBody')}</p><p class="info-callout">${icon('info')}${t('inviteNote')}</p>`);
   } else if (action==='visibility') openVisibility();
@@ -223,8 +240,15 @@ document.addEventListener('click',event=>{
     showSheet(button.dataset.title,`<p class="settings-info">${t(button.dataset.content)}</p><p class="sheet-disclaimer">${icon('info')}${t('settingsPreview')}</p>`);
   } else if (action==='sample-slip') {
     showSheet('slipTitle',`<div class="sample-attachment">${icon('bills')}<strong>${t('slipBody')}</strong><span class="status">${t('sampleOnly')}</span></div><p class="info-callout">${icon('shield')}${t('slipPrivacy')}</p>`,true);
-  } else if (action==='checkin-preview') {
-    showSheet('checkinTitle',`<div class="checkin-art complete" aria-hidden="true">${icon('check')}</div><p class="centered">${t('checkinResult')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`,true);
+  } else if (action==='habit-checkin') openHabitCheckin();
+  else if (action==='checkin-preview') {
+    const model=habitOverview(state);
+    const result=checkinPreview.confirm(model.today,model.complete);
+    const returnAction=opener?.dataset.action==='habit-checkin'?'habit-checkin':'add';
+    render();
+    opener=[...document.querySelectorAll(`[data-action="${returnAction}"]`)].find(element=>element.getClientRects().length);
+    showSheet('habitResultTitle',`<div class="habit-reward ${result.awarded?'is-new':''}"><div class="checkin-art complete" aria-hidden="true">${icon('check')}</div><strong>${t(result.awarded?'habitReward':'habitAlready',{n:result.xp})}</strong><p>${t('habitTodayComplete')}</p></div><p class="sheet-disclaimer">${t('habitPreviewBoundary')}</p>`);
+    announce(t(result.awarded?'habitReward':'habitAlready',{n:result.xp}));
   }
 });
 document.addEventListener('input',event=>{
@@ -254,7 +278,9 @@ document.addEventListener('change',event=>{
     return;
   }
   const control=event.target.dataset.control;
-  if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
+  if(control==='home-scenario') {state.homeScenario=homePreview.scenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
+  else if(control==='home-clock') {if(bangkokClock(event.target.value)){state.homeNow=event.target.value;announce(t('homeClockChanged'));}else{event.target.value=state.homeNow;announce(t('homeClockInvalid'));}}
+  else if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
   else if(control==='account-display-mode') {state.accountView=event.target.value==='horizontal'?'horizontal':'vertical';render();document.querySelector('#account-display-mode')?.focus({preventScroll:true});}
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }

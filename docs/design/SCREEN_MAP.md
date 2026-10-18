@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,6 +11,25 @@ related:
   - ../pages/Pages-Hub.md
 ---
 # Screen map
+
+## Current Home v2 — Focused owner revision S3
+
+`#home` preserves greeting/balance/actions/navigation, then My Accounts first → conditional max4 seven-day Due soon → existing gamified Streak/XP with missing days → Recent Transactions last. No Today/Safe Home card, standalone nearest or monthly Home UI; underlying Safe math remains for future Wallet design. Settings retains synthetic scenario/Bangkok clock and Account Board mode controls. No route is added. See [Home](../pages/home/Page-Home.md) and [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md).
+
+| Home action | Actual destination / behavior |
+|---|---|
+| Bell | Existing sheet with deduplicated synthetic due/overdue notices or empty; notice link → `#bills`, no item highlight/delivery |
+| Due soon row | Existing Bill handler with real fixture ID: card uses established credit-card tracking route, other bills existing detail dialog |
+| Due soon View all | Existing Bills screen, no applied filter claim |
+| View missed days | Focus/scroll first existing current-week missing date, including distinct frozen/no-activity status |
+| Habit card check-in/review | Existing shared No spending today confirmation/result sheet, transient only |
+| Calendar day / stepping | Internal selected date and bounded timeline focus/scroll; no route or historical write |
+| Party link | Existing `#party`, aggregate preview unchanged |
+| Snapshot adjustment | `#settings`, Home-only clock/scenarios |
+| Account selection / detail | Existing selection and `#wallet/account/<stable-id>` preserved |
+| Recent rows / View all | Existing transaction detail / `#activity` |
+
+`#activity/summary`, Leaderboard and Friends remain unimplemented. The roadmap below is historical/planned, not a runtime claim. Monthly destination is OPEN (Activity vs Wallet); current Activity analysis responsibilities are preserved.
 
 ## Current state — pre-Home preview S4
 
@@ -31,7 +50,7 @@ related:
 
 Each of the eleven public routes has exactly one compact visible header Demo mode indicator (`โหมดสาธิต`) with a screen-reader description. Forms and footers use concise consumer copy without repetitive technical warnings. Every non-Welcome route has one header Back; each wizard step and Postcard has one primary action. Native hash Back/Forward, main focus/title, locale and invalid-route fallback remain. Primary/Google actions clear existing credential-node values before navigation; they create no authentication, registration or provider-success state. Deep links need no identity. Routing is presentation, not authorization. [D28](../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) supersedes S3 credential validation/separate demo/skip and duplicate back/exit controls only for this preview. Canonical production invite-only signup remains in force pending a separate owner/security decision before M1. See [Auth](../pages/auth/Page-Auth.md), [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), [welcome.js](../../src/welcome.js) and [preview-flow.js](../../src/preview-flow.js).
 
-## Dashboard current state — S3
+## Preserved Account Board contract — S3
 
 Home defaults to a vertical deck of complete account folders. Horizontal is the only alternate mode and is selected only in Settings; mode changes preserve the selected account ID. Every account uses the same full folder component in both modes. S1/S2 tab strips, Stack/Grid choices and wrapping selection are historical and SUPERSEDED by the owner’s S3 attachment. The shared 13 provider assets, session profile form, Wallet detail routes and financial preview boundary remain intact. Home selection stays on `#home`; explicit detail or active-only double-tap/double-click opens `#wallet/account/<stable-id>`. Escape retains the existing Wallet return contract. Settings controls mode with no new route. [Account Board S3](../worklog/20-Sessions/TASK-GS-UI-ACCOUNT-BOARD-001-S3.md) records the change.
 
@@ -41,12 +60,12 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 | More (native popover) | Bills and Party, contextual child highlight, close/toggle/outside/Escape/Tab-away dismissal; mutually exclusive with the Add dialog |
 | `#transfer` | Own-account child screen; zero initial amount, physical keyboard/custom touch keypad, source/destination exclusion, precision validation, unsaved review; no posting |
 | `#credit-card` | Bills child screen; original sample card, outstanding/full/minimum/date summary, six tracking sheets, in-memory reminder, sample activity; no issuer controls |
-| `#home` | Balance visibility, complete overlapping asset folders (vertical default; horizontal selected in Settings), canonical Wallet account detail sheet, expense/income/transfer/no-spend quick actions, recent transaction details, upcoming bills, habit summary |
+| `#home` | Balance visibility, complete overlapping asset folders (vertical default; horizontal selected in Settings), canonical Wallet account detail sheet, expense/income/transfer/bills quick actions, compact Today/Safe, gamified calendar/check-in, bell due preview and recent details last; no Home monthly UI |
 | `#activity` | October sample context, income/expense summaries, search, all/expense/income/own-transfer filters, day grouping, needs-details transaction, detail sheet; sample, empty, loading, error, unavailable, and no-search-results |
 | Add (modal action) | Mode chooser; manual expense/income, own-account transfer, synthetic receipt, no-spend check-in, inactive AI; field validation and explicitly unsaved result |
 | `#bills` | October commitments, calendar/list, credit cards, monthly bills, installments, subscriptions, due/status badges, detail sheet; empty/loading/error/unavailable. Compact agenda below 360px |
 | `#party` | Private personal habit status, level/XP, streak/freezes, milestones, weekly habit leaderboard, members, invitation explanation, activity feed, visibility switches. No account/transaction details |
-| `#settings` | Light/dark, Thai/English, Account Board vertical/horizontal display mode, profile, currency/FX, categories, notifications, privacy, security, installation guide explanation |
+| `#settings` | Light/dark, Thai/English, Account Board vertical/horizontal display mode, Home-only scenario/Bangkok datetime, profile, currency/FX, categories, notifications, privacy, security, installation guide explanation |
 | Header | Notifications empty-state sheet, theme action, avatar/settings entry |
 | Desktop sidebar (1100px+) | 72px collapsed / 240px temporary overlay / 240px pinned; five direct destination links, stable pin toggle, keyboard disclosure, profile Settings |
 | Desktop header Add | One 48px circle invokes the shared Add modal; absent from the desktop navigation list; mobile Add stays in its floating island |
@@ -110,3 +129,9 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-17 — Reconciled owner-requested pre-Home S3 preview for [Welcome S3](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md); S1/S2 history remains preserved.
 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
+
+- 2026-10-18 — Reconciled source-level Home v2 S1 behavior and preserved Account Board for [Home S1](../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md); verification/delivery gates remain in progress.
+
+- 2026-10-18 — Reconciled owner-approved Compact Home/gamified transient preview for [Home S2](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S2.md); D29 presentation superseded by D30, production engine boundaries retained.
+
+- 2026-10-18 — Owner [Home S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md) reconciles seven-day Due soon, Home Safe removal with retained math and missing activity versus frozen days; other contracts preserved.
