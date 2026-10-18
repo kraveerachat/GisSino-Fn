@@ -56,3 +56,5 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) records the public signup/Google proposals as pending separate approval before M1; invite-only remains canonical.
 
 - 2026-10-18 — Recorded the owner-confirmed Wallet-only summary/debit decision D32; no change to Home Q10 or production finance choices.
+
+- 2026-10-18 — [D32 S2](DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) confirms assets-only Wallet/monthly history and current-only Bills reference. No new Wallet design decision remains open; Home Q10 and production finance/snapshot architecture remain separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) tested scope runtime verified/final SHIP; source184b2f7 pushed, delivery CLOSED and owner review/merge pending.

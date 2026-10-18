@@ -27,7 +27,7 @@ updated: 2026-10-18
 
 ## Current focus
 
-[Wallet v2](worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) has CLOSED implementation delivery with final finish SHIP on `task/gs-ui-wallet-v2`, based on main `bb27e2812789346fc322d4bad3fc6d847ed3823d`. The local mock adapts the owner-selected ring/notched cards with assets central, separate obligations, truthful transaction mix and linked-bank debit semantics ([D32](project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards)). [S1](worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) records 490 locale keys/61 tests,28 layout cases, 12 edge cases, 9 functional groups and 6 final captures; source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) (OPEN/DRAFT). Documentation checkpoint 15e4f3225b21540eec41c59a3078934bf14a5f09 matched local/remote/PR head before one immutable receipt was written; owner review/merge remains pending. Separate Home PR #7 remains unmerged/untouched at `1945a38f1362ae95bfb56b5cc9ca57e288f0a7d9`; no Home changes are imported and no production action is authorized. Prior Welcome/planning delivery remains historical in the [dashboard](worklog/00-Index/Task-Dashboard.md) and [history](project/PROJECT_HISTORY.md).
+[Wallet v2](worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) has CLOSED implementation delivery for [S2](worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) on the same branch `task/gs-ui-wallet-v2` and existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). [D32 S2](project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) changes Wallet to an assets-only blue/cyan/amber ring, Current/monthly History, frozen first-of-month synthetic snapshots and independent monthly activity toggles. Primary liability sections are removed; Current may retain one small Bills reference. S2 tested scope is runtime verified: 521 keys/66 tests, 56 layouts/14 edges/15 groups, 12 after/3 before captures with no artifact errors/overflow/clipping. Final A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in the same Draft PR #8; documentation closeout follows verified source and final remote head is reported in handoff. Owner review/merge pending. Prior S1 SHIP and immutable receipt remain historical. Home PR #7 stays outside scope; no production action is authorized.
 
 ## Agent reading order
 
@@ -51,3 +51,5 @@ updated: 2026-10-18
 - 2026-10-17 — Reopened current focus for [Welcome S4](worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md), same Draft PR #6; final review and source/docs delivery pending.
 
 - 2026-10-18 — Current focus moved to the new Wallet v2 task; prior delivery records retained in dashboard/history.
+
+- 2026-10-18 — Reopened Wallet current focus for [S2](worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md); same Draft PR #8, verification/delivery pending.

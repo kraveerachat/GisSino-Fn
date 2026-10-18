@@ -11,7 +11,17 @@ related:
 ---
 # UI data contracts and future boundaries
 
-## Current state — Wallet v2 presentation model (2026-10-18)
+## Current state — Wallet S2 snapshots and monthly activity (2026-10-18)
+
+[walletOverview](../../src/wallet-overview.js) now uses bank/ewallet/cash assets alone for composition denominator, shares and ring. Current synthetic assets remain THB 116,850; deduplicated current obligations THB 12,750 are supporting Bills-link information only. Credit/debit/bills are excluded from ring and primary account sections. No liability history is fabricated.
+
+[wallet-history.js](../../src/wallet-history.js) freezes explicit synthetic archive records, accounts and entries: 2026-07/08/09/10 and 2025-11/12, captured on each month's day 1 at 00:00 +07:00. Current profiles may supply identity presentation by stable ID; archive balance, type, currency and archived state remain snapshot-owned. History chart/account balances use the archive, never today's balance as a replacement. Snapshot opening balances and selected-month activity are distinct measures. Current original relative-day transactions receive explicit October 2026 dates in a separate adapter without mutating shared fixtures; October activity uses those dated records, earlier archive months use their explicit synthetic entries.
+
+Monthly activity filters account identity, income/expense type, currency and selected Gregorian year-month in Asia/Bangkok. Own transfers, undated/invalid dates and other months do not enter the mix. Invalid/negative amounts and overflow remain unavailable; zero-volume data has no percentage. Percent/value preference is transient and independent per stable account ID. Current/history/year/month state is in memory; missing archive months are disabled. Current account detail is explicitly labelled when entered from History. No backend/schema, snapshot persistence, scheduler, FX, financial posting or new dependency is introduced.
+
+Safe integer minor units/BigInt totals, separate THB/USD, unknown values and hidden amount/percentage/geometry suppression remain. See [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [Wallet](../pages/wallet/Page-Wallet.md) and [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md). Source inspection and parent521-key/66-test results support this contract; inspected S2 browser artifact passes56 layouts, 14 edges and 15 named functional groups. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+
+## Superseded Wallet S1 presentation (2026-10-18)
 
 [wallet-overview.js](../../src/wallet-overview.js) derives nonarchived bank/ewallet/cash assets from session profile records; debit and credit are not cash assets. Existing card outstanding plus unpaid bill/installment/subscription records form obligations; duplicate bill IDs and the card-backed `card` bill are excluded. With current fixtures: assets THB 116,850, credit8,250 + bill 1,250 + installment 2,900 + subscription 350 = obligations12,750. Ring denominator129,600 is assets + obligations; center asset total and separately labelled obligations are never net wealth. Debit money belongs only to its linked bank balance; no debit records are fabricated.
 
@@ -88,3 +98,5 @@ state.accountProfiles starts as a copy of fixtures. Add/edit updates this array 
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

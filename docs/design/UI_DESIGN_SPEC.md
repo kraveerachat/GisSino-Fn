@@ -12,7 +12,13 @@ related:
 ---
 # UI design specification
 
-## Current state — Wallet v2 (2026-10-18)
+## Current state — Wallet S2 owner revision (2026-10-18)
+
+[D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes the Wallet S1 composition below. Wallet leads with a compact centered assets-only ring: Bank royal blue, E-wallet cyan, Cash amber; separated segments have rounded corners without inflating small shares. Center amount stays clean and labels concise. The same colors connect summary links and Bank → E-wallet → Cash section headings. Credit/debit/debt/bill sections leave the primary Wallet content; Current keeps one muted Bills reference, History none.
+
+Overview/History switches the summary and card period. History has a native year select and scrollable month buttons, with missing snapshots disabled. Account cards retain notched surfaces and provider identity while removing unnecessary underline/divider treatment. Their header activity buttons independently toggle selected-month income/expense shares and amounts; account links are sibling controls, never nested interactive elements. Own transfers are excluded. History balances are first-of-month snapshots; card detail explicitly remains current. Shared shell/navigation/profile actions and privacy/unknown/currency safeguards remain. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records 521-key/66-test PASS and runtime 56-layout/14-edge/15-group verification with 12 after/3 before captures. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending. The following S1 evidence is historical.
+
+## Superseded Wallet S1 presentation (2026-10-18)
 
 [Wallet](../pages/wallet/Page-Wallet.md) now adapts the owner's ring and notched cards within the existing enamel world. A ring-led overview shows assets at the center and obligations separately; category legend explicitly defines assets + obligations as its composition basis, never net wealth. Bank/E-wallet/Cash sections precede credit/debit/obligations. Cards retain provider badges, shared profile identity, amount hierarchy and native detail/bill actions. Debit references linked bank money only; no debit fixture exists. Matching income/expense mix excludes transfers and uses unavailable text when no data exists. Hidden mode removes values and proportional geometry/percentages. Shared theme/locale/sidebar/nav and profile/credit/bill/transfer/Add behavior remain. Mobile ring caps at 264px with two-column legend from 360px; shared movement-basis text excludes own transfers, liability cards omit movement captions and redundant header subtitle is removed. Layout begins stacked, then pairs ring/legend and account columns at 700px; narrow translated text must wrap without overflow. [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards), [data contract](UI_DATA_CONTRACTS.md) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) record semantics and verified runtime and source delivered; final documentation checkpoint pending. This supersedes only the former Wallet overview presentation; Home and pre-Home history below remain.
 
@@ -102,3 +108,5 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

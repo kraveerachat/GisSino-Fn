@@ -12,7 +12,11 @@ related:
 ---
 # Screen map
 
-## Current state — Wallet v2 (2026-10-18)
+## Current state — Wallet S2 routes and periods (2026-10-18)
+
+`#wallet` now has an assets-only Bank/E-wallet/Cash summary and account sections. Overview is default; History adds native year and scrollable monthly snapshot selection, with unavailable months disabled. This is local screen state, with no new route. Current-only supporting Bills link opens `#bills`; History does not show current obligations as historical data. Account activity toggles selected-month shares/values independently. `#wallet/account/<stable-id>` remains current detail and is explicitly described as current when opened from History. Session profile Edit/Add, `#transfer`, global Add, Back/Forward, balance visibility, themes and TH/EN remain shared. Credit/bill destinations stay available through existing product navigation rather than Wallet primary sections. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 below; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records passed56 layouts/14 edges/15 named functional groups and no artifact errors. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+
+## Superseded Wallet S1 presentation (2026-10-18)
 
 `#wallet` now leads with asset/liability composition and legend, then Bank → E-wallet → Cash → Credit/debit/obligations notched-card sections. Asset center is distinct from obligations and composition basis. Debit has no extra balance/card fixture. Account links remain `#wallet/account/<stable-id>` with session profile Edit; credit opens `#credit-card`; obligation buttons open existing bill detail; footer Add Account opens the session profile form and Transfer opens `#transfer`. Balance visibility, TH/EN, themes, Back/Forward and desktop/mobile navigation are retained. No route is added. [Wallet](../pages/wallet/Page-Wallet.md), [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) and [S1](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S1.md) describe the local implementation and runtime verification and source delivered; final documentation checkpoint pending. This dated section supersedes the minimal Wallet overview row below; Home/pre-Home/planning history remains separate.
 
@@ -118,3 +122,5 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

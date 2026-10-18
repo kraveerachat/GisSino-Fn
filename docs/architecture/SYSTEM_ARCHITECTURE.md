@@ -13,7 +13,13 @@ related:
 
 # GisSino_FN — 02 SYSTEM ARCHITECTURE (Agent Briefing)
 
-## Current prototype extension — Wallet v2 (2026-10-18)
+## Current prototype extension — Wallet S2 (2026-10-18)
+
+The mock Wallet adds [wallet-history.js](../../src/wallet-history.js) for frozen illustrative first-of-month archive accounts/entries (2026 Jul–Oct; 2025 Nov–Dec), period selection/labels and rounded ring geometry. [wallet-overview.js](../../src/wallet-overview.js) uses assets alone for composition and filters monthly account income/expense by identity, currency and Asia/Bangkok period, excluding transfers. Current profiles supply shared identity while historical balances/type/currency/archived state remain archive-owned. October monthly activity uses separately dated current sample entries; earlier months use archive entries. These are explicit synthetic fixtures, not production snapshots or a ledger reconstruction.
+
+[wallet.js](../../src/wallet.js) presents Bank/E-wallet/Cash, current/history selection, native year/month controls and per-account activity toggles. Only Current renders a small Bills reference; no liability archive or primary debt section is added. Historical account entry explicitly opens current detail. State stays transient, with no storage, posting, FX, backend service, scheduled capture or dependency. Integer/unknown/currency and privacy geometry safeguards remain. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes the earlier Wallet-specific S1 presentation only; Home Q10 and production architecture stay separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records 521-key/66-test PASS and56 layouts/14 edges/15 named functional groups runtime verified. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+
+## Superseded Wallet S1 prototype extension (2026-10-18)
 
 The buildless mock [Wallet](../pages/wallet/Page-Wallet.md) now separates presentation derivation in [wallet-overview.js](../../src/wallet-overview.js) from [wallet.js](../../src/wallet.js) and scoped CSS. It reads existing synthetic profile/accounts, card, bills and transactions without persistence, ledger posting, bank service or FX. Safe integer minor inputs/BigInt aggregation preserve cents and expose unknown on overflow/invalid/missing data; currencies stay separate. Assets are bank/ewallet/cash, obligations combine the card and deduplicated unpaid bills/installments/subscriptions. Ring denominator is assets + obligations, center shows assets with separate liabilities; debit contributes linked bank money only and has no record here. Movement ratios use matching income/expense excluding own transfers. Hidden mode omits proportional geometry as well as values. Shared profile/provider/navigation contracts remain. [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards) applies to Wallet preview only; Home Q10 and all production architecture below remain separate. [Task/S1](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) records runtime verification and source delivered; final documentation checkpoint pending.
 
@@ -456,3 +462,5 @@ Order rationale: the ledger and security first (everything depends on them); obl
 - 2026-10-17 — Added scoped D28/S4 presentation notice; production invite-only security contract and historical invite design remain preserved pending separate public-signup/Google approval before M1.
 
 - 2026-10-18 — Added scoped Wallet v2 presentation-model architecture under [D32](../project/DECISIONS.md#d32--wallet-composition-and-notched-account-cards); no production domain or hosting change.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.

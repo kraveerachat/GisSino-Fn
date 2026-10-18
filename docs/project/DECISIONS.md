@@ -135,3 +135,14 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - 2026-10-18 — Added D32 for the scoped Wallet prototype; final verification and new Draft Wallet PR pending.
 
 - 2026-10-18 — D32 Wallet implementation is runtime verified/finish SHIP; source `eac4d7193fd6d2a261d8e7286c63c819806f2f60` is pushed in new [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8), OPEN/DRAFT. Final docs checkpoint/receipt and owner review remain separate.
+
+### D32 S2 — Assets-only Wallet and monthly snapshots
+
+- Date: 2026-10-18; status: DECIDED for Wallet mock UI; decided by owner through the latest Wallet refinement brief and confirmed bold rounded separated-ring direction.
+- Statement: Wallet primary content is Bank → E-wallet → Cash. Assets alone determine ring shares/center; use royal blue, cyan and amber consistently. Compact centered layout, rounded separated proportional segments and notched cards remain in the existing visual world. Current may retain one small muted Bills reference; History must not show current liabilities as historical obligations.
+- Periods: Current is default. History selects year and a scrollable month list; unavailable months disabled. Explicit frozen synthetic snapshots represent first-of-month 00:00 Asia/Bangkok balances for July–October 2026 and November–December 2025. No Week mode, production snapshot persistence or reconstructed balance history.
+- Activity: each account independently toggles selected-month income/expense percentages and amounts, excluding own transfers. Missing/invalid data remains unavailable. Account detail entered from History explicitly remains current; preserve shared identities/providers/actions, integer/unknown/currency safeguards and privacy suppression of amounts, percentages and proportional geometry.
+- Supersedes: D32 S1 assets-plus-obligations denominator, primary credit/debit/obligation sections and unbounded movement-period presentation only. Original D32, closed S1 and immutable receipt remain historical. Home Q10, unrelated Home work and production finance architecture remain separate.
+- Source: [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md), same existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Affects [Wallet](../pages/wallet/Page-Wallet.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
+
+- 2026-10-18 — Reopened Wallet task for D32 S2 owner revision; source inspection recorded, verification/review/delivery pending.

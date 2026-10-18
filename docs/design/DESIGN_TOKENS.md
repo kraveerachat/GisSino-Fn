@@ -11,7 +11,13 @@ related:
 ---
 # Design tokens
 
-## Current state — Wallet v2 scoped roles (2026-10-18)
+## Current state — Wallet S2 category roles (2026-10-18)
+
+Scoped [wallet.css](../../src/styles/wallet.css) roles now map bank `#2464d8`, ewallet `#1594ac`, cash `#bd7d13`; dark equivalents are `#78a4ff`, `#62cfdf`, `#f3c15f`. Supporting Bills text uses shared muted neutral. Category wells use light `#e8effd`/`#e3f3f6`/`#faf1de` and dark `#273752`/`#293f43`/`#493d28`. These are UI category colors, not provider brand substitutions. Existing enamel shell, Thai fonts, surfaces, focus and contact shadows remain shared.
+
+The assets-only ring uses 320×320 SVG with outer/inner radii 143/113, proportional gaps and rounded corners; no minimum-sized slice exaggerates composition. Current source caps ring width at 224px on phones and 312px from 700px, content at 1120px, three summary columns, then paired ring/details and account columns from 700px. Cards use 20px corners, 16px shoulder, 36px provider badges and 44px minimum activity/period controls. Month strip scrolls; native year select and visible focus remain. Reduced motion removes transitions; hidden mode removes sensitive geometry. Values are source-observed; S2 browser verification passes56 layouts/14 edges with no overflow/clipping, and12 after/3 before captures exist. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md).
+
+## Superseded Wallet S1 presentation (2026-10-18)
 
 [wallet.css](../../src/styles/wallet.css) scopes presentation to `.wallet-v2`: bank `#133865`, ewallet `#236fc8`, cash `#76a5d7`, liabilities `#677687`, cap `#15395f` and cap ink `#f4f8ff`. Dark roles use amber `#e5ad38`, blue `#8bb6e6`, pale slate `#becedb`, liabilities `#928475`, cap `#242323` and ink `#f3eee5`; surfaces/focus/borders/contact shadows reuse shared theme roles. These are UI categories, not official provider colors.
 
@@ -99,3 +105,5 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-17 — [Welcome S4](../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 replaces only pre-Home copy, open-signup/Google presentation and demonstration navigation; production security and prior session history remain preserved.
 
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
+
+- 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
