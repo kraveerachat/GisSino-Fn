@@ -3,7 +3,7 @@ id: GUIDE-home-leaderboard-spec
 type: guide
 level: 2
 status: DRAFT
-updated: 2026-10-17
+updated: 2026-10-18
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -23,6 +23,11 @@ related:
 > **Scope rule:** this file records changes; it does not authorize skipping the vault rules. Apply it through normal tasks (one slice = one task = one Draft PR). Do NOT silently rewrite the guide or architecture; section 9 lists the edits to make in a docs task.
 
 ---
+
+
+## Activity placement supersession — 2026-10-18
+
+[D33](DECISIONS.md#d33--embedded-activity-monthly-analytics) and the owner [Activity v2 S1 task](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) select monthly donut/category analytics directly in existing `#activity`. This supersedes only proposed separate Summary-tab placement for this slice; `#activity/summary` remains deferred/unimplemented. Original roadmap/tab descriptions below remain historical planning. No adoption of unrelated Leaderboard/Friends/onboarding/production proposals. Activity S1 is runtime verified/final A SHIP for owner review;source ae9c611 is pushed in [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9),OPEN/DRAFT. Original broader planning below remains historical/unimplemented unless separately delivered.
 
 ## 1. Summary of what changes
 
@@ -271,3 +276,5 @@ Rules for every slice: check for existing components before creating new ones; T
 ## Change log
 
 - 2026-10-17 — Created from the owner's decisions of this date. Not yet applied to the guide, architecture or code.
+
+- 2026-10-18 — D33 dates owner-directed embedded Activity presentation; original proposed tab planning retained.

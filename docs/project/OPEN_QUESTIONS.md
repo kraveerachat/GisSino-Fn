@@ -13,9 +13,14 @@ related:
 ---
 # Open Questions
 
+
+## Activity monthly analytics — 2026-10-18
+
+[D33](DECISIONS.md#d33--embedded-activity-monthly-analytics) settles current UI placement: monthly donut/categories embedded in existing Activity. Independent Summary route/tab remains deferred. Production M2/M3 refund/return, reversal/adjustment, savings/investment transfers, linked records, credit settlement/deduplication and canonical category persistence remain OPEN; catalog labels create no accounting policy. Future authorized owned queries and coherent historical months are unimplemented. Home Q10/Safe placement/reward/Party policies remain separate. [Activity task](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md).
+
 ## Bills v2 production finance questions — 2026-10-26
 
-[D33](DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow) settles preview presentation only. The following need owner/product and ledger design before M5/M6:
+[D35](DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow) settles preview presentation only. The following need owner/product and ledger design before M5/M6:
 
 | Topic | State | Decision needed |
 |---|---|---|
@@ -32,7 +37,7 @@ No question here authorizes a frontend implementation of backend behavior. [Bill
 
 ## Wallet summary decision — 2026-10-18
 
-[DECIDED for Wallet mock UI] [D32](DECISIONS.md#d32--wallet-composition-and-notched-account-cards) puts asset total at the center and obligations separately; ring percentages use the labelled assets + obligations composition basis, never net wealth. Debit money is represented only by linked bank balance; no debit fixture exists. THB/USD remain separate without FX. This closes the Wallet-specific summary choice for [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) only; the Home Q10 row below and separate unmerged Home PR #7 remain untouched.
+[DECIDED for Wallet mock UI] [D32](DECISIONS.md#d32--wallet-composition-and-notched-account-cards) puts asset total at the center and obligations separately; D32 S2 supersedes original S1 composition with assets-only Current/monthly History, never net wealth. Debit money is represented only by linked bank balance; no debit fixture exists. THB/USD remain separate without FX. This closes the Wallet-specific summary choice for [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) only; the Home Q10 row below remain separate; Home PR7 and Wallet PR8 are merged per Activity start audit.
 
 These questions come from the Project Guide, System Architecture, and the GS-PLAN-005 Onboarding/Home v2 planning roadmap. Agents must not silently choose answers.
 
@@ -64,11 +69,11 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 | Streak primary party (Q8) | [OPEN] | Confirm streak card rank is derived from the user's designated primary party. Historical S1 used explicitly synthetic optional rank. The compact S2 habit card links to Party without choosing a primary-party policy. |
 | DOB & Marital status (Q9) | [OPEN] | Confirm verbal mentions of exact birth date and marital status are excluded from registration requirements. (Conflict 6) |
 | Gross balance vs Net worth (Q10) | [OPEN] | Should Home hero balance display Gross Assets or Net Worth (assets minus credit card liabilities)? |
-| Home destination follow-ups | [OPEN / LATER SLICE] | S3 reuses existing Bill details/View all Bills without filter/highlight; needs-details prefilter and Activity Summary remain later work. |
+| Home destination follow-ups | [OPEN / LATER SLICE] | S3 reuses existing Bill details/View all Bills without filter/highlight; needs-details prefilter remains later work. D33 implements embedded monthly analytics in the Activity slice; separate Summary tab remains deferred. |
 | Safe-to-Spend future placement | [OPEN / FUTURE WALLET DESIGN] | D31 removes Home UI only; retain exact minor-unit math/scenarios/tests. Reconsider placement during Wallet/dashboard redesign; PR7 creates no Wallet UI. |
 | Home live reminders and totals | [OPEN / FUTURE ENGINE] | Fixed Bangkok snapshots and dated habit fixtures are prototype-only; monthly expense data remains while its Home UI is removed. Define authorized ledger/obligation/habit adapters and scheduling in M2/M3/M5/M6/M7. |
 
-| Monthly Summary final destination | [OPEN — OWNER CONFIRMATION REQUIRED] | D30 removes all Home monthly UI. Activity currently owns planned analysis; owner is reconsidering Wallet dashboard responsibility. Do not silently move the summary to Wallet or create Activity Summary in PR #7. |
+| Monthly Summary placement for Activity S1 | [DECIDED 2026-10-18; D33] | Owner selects embedded analytics in existing Activity. D30 destination question is settled for this slice; separate Summary tab deferred. Home Q10/Safe placement/production accounting remain separate. |
 | Login/app-open automatic XP | [OPEN — CONFLICTING OWNER PROPOSAL] | Current Guide §6 and architecture §7.7 qualify entry (including needs-details), confirmed No spending today, paid obligation or reconciliation; login/app-open is not qualifying and grants no XP. Any change needs explicit rule approval and authoritative M7 design, never frontend-only grants. |
 | Home weekly activity ring | [PROPOSED PRESENTATION] | D30 demonstrates qualifying Bangkok Monday-Sunday active dates /7, rounded. Confirm eventual integration alongside existing canonical metrics rather than replacing them. |
 | Daily welcome/reward scheduling | [PROPOSED / FUTURE M7] | Define first relevant visit, per-user/day first-visit and popup shown-state, authoritative grants and preferences. Current sheet is user-triggered with a page-lifetime date guard only. |
@@ -89,4 +94,6 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 
 - 2026-10-18 — Recorded the owner-confirmed Wallet-only summary/debit decision D32; no change to Home Q10 or production finance choices.
 
-- 2026-10-18 — [D32 S2](DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) confirms assets-only Wallet/monthly history and current-only Bills reference. No new Wallet design decision remains open; Home Q10 and production finance/snapshot architecture remain separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) tested scope runtime verified/final SHIP; source184b2f7 pushed, delivery CLOSED and owner review/merge pending.
+- 2026-10-18 — [D32 S2](DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) confirms assets-only Wallet/monthly history and current-only Bills reference. No new Wallet design decision remains open; Home Q10 and production finance/snapshot architecture remain separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) tested scope runtime verified/final SHIP; source184b2f7 pushed at the historical S2 checkpoint. PR8 is now merged at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, per Activity start audit.
+
+- 2026-10-18 — D33 settles current Activity monthly placement; tab deferred and production classifications remain OPEN.

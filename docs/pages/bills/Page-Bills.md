@@ -45,7 +45,7 @@ Empty, loading, error and unavailable states remain. The monthly amount is hidde
 
 ## Decisions and open questions
 
-Mobile Bills lives inside More under [D23](../../project/DECISIONS.md#d23--responsive-primary-navigation). [D33](../../project/DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow) approves the preview presentation only. Production payment, statement coverage, finance charges/allocation and variable-bill rules remain [open](../../project/OPEN_QUESTIONS.md).
+Mobile Bills lives inside More under [D23](../../project/DECISIONS.md#d23--responsive-primary-navigation). [D35](../../project/DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow) approves the preview presentation only. Production payment, statement coverage, finance charges/allocation and variable-bill rules remain [open](../../project/OPEN_QUESTIONS.md).
 
 ## Feature and system inventory
 

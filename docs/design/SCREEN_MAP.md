@@ -12,6 +12,19 @@ related:
 ---
 # Screen map
 
+
+## Activity v2 S1 navigation and period (2026-10-18)
+
+[D33](../project/DECISIONS.md#d33--embedded-activity-monthly-analytics): existing `#activity` contains month selector, monthly donut/net/income/expense, maximum four expense categories, View all, search/type chips and dated list. View all opens shared native dialog with selected-month/full fourteen-category breakdown; Escape/Close restores trigger. Existing transaction details/global Add/header/sidebar/bottom navigation remain. Month state transient; only coherent October 2026 selectable. Search/type filters affect list only. No `#activity/summary` implementation/new tab. Historical roadmap below remains deferred planning. [Task/S1](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) records source implemented; verification evidence recorded.
+
+
+RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale keys and 102/102 tests (18 focused Activity tests). Inspected final browser evidence passes 32 normal-layout cases, 12 named functional checks, six edge scenarios and 200% text enlargement at 390px with no overflow/clipping/invalid geometry. Computed text contrast minimum is 5.175:1 light/4.775:1 dark, with zero CSP errors. Final independent A is SHIP for owner review after four final captures; no rescore. Owner review/merge remains pending. See [Activity review](reviews/ACTIVITY_ANALYTICS_REVIEW.md).
+
+
+Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
+
+Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
 ## Current Bills v2 route — 2026-10-26
 
 `#bills` opens the selected-month list by default. Month selection updates summary, list and calendar; the type filter affects list rows only. Calendar date opens every cycle for that day. A row opens the existing dialog infrastructure with amount/status and, for installments, period progress, products, schedule and merchant/financing/funding. A credit-card statement detail retains its `#credit-card` destination. Bills Add opens the four-type draft form → review → Edit or Discard; sample Edit is prefilled. Record paid opens review → confirm and updates in-memory projection until reload. Existing global Add, Mobile More placement, desktop sidebar, Home/Wallet/Activity routes and privacy/theme/locale controls remain. [Page contract](../pages/bills/Page-Bills.md).
@@ -33,12 +46,12 @@ related:
 | Account selection / detail | Existing selection and `#wallet/account/<stable-id>` preserved |
 | Recent rows / View all | Existing transaction detail / `#activity` |
 
-`#activity/summary`, Leaderboard and Friends remain unimplemented. The roadmap below is historical/planned, not a runtime claim. Monthly destination is OPEN (Activity vs Wallet); current Activity analysis responsibilities are preserved.
+`#activity/summary`, Leaderboard and Friends remain unimplemented. The roadmap below is historical/planned, not a runtime claim. D33 selects embedded Activity monthly analysis for this slice; independent Summary tab remains deferred.
 
 
 ## Current state — Wallet S2 routes and periods (2026-10-18)
 
-`#wallet` now has an assets-only Bank/E-wallet/Cash summary and account sections. Overview is default; History adds native year and scrollable monthly snapshot selection, with unavailable months disabled. This is local screen state, with no new route. Current-only supporting Bills link opens `#bills`; History does not show current obligations as historical data. Account activity toggles selected-month shares/values independently. `#wallet/account/<stable-id>` remains current detail and is explicitly described as current when opened from History. Session profile Edit/Add, `#transfer`, global Add, Back/Forward, balance visibility, themes and TH/EN remain shared. Credit/bill destinations stay available through existing product navigation rather than Wallet primary sections. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 below; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records passed56 layouts/14 edges/15 named functional groups and no artifact errors. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+`#wallet` now has an assets-only Bank/E-wallet/Cash summary and account sections. Overview is default; History adds native year and scrollable monthly snapshot selection, with unavailable months disabled. This is local screen state, with no new route. Current-only supporting Bills link opens `#bills`; History does not show current obligations as historical data. Account activity toggles selected-month shares/values independently. `#wallet/account/<stable-id>` remains current detail and is explicitly described as current when opened from History. Session profile Edit/Add, `#transfer`, global Add, Back/Forward, balance visibility, themes and TH/EN remain shared. Credit/bill destinations stay available through existing product navigation rather than Wallet primary sections. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 below; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records passed56 layouts/14 edges/15 named functional groups and no artifact errors. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Current integration status: [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) is MERGED at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, verified in the Activity start audit; prior review/push/checkpoint statements describe historical S2 delivery.
 
 ## Superseded Wallet S1 presentation (2026-10-18)
 
@@ -127,7 +140,7 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 | `#setup/install` | Onboarding Step 6: Platform-specific PWA installation guidance | DESIGNED |
 | `#postcard` | Modal overlay: One-time dismissible celebratory Welcome Postcard preceding Home | DESIGNED |
 | `#home` (v2) | Enhanced layout: Today strip, Nearest Obligation, Streak with Party rank, 1-line summary, compact Leaderboard card | DESIGNED |
-| `#activity/summary` | Activity Summary tab: Relocated monthly totals, 7-day bar chart, category breakdown | DESIGNED |
+| `#activity/summary` | Historical separate Summary-tab proposal, superseded for S1 by D33 embedded analytics | DEFERRED; no route implemented |
 | `#leaderboard` | Full Leaderboard page: Global & My Friends tabs, age category and period filter chips | PLANNED / DRAFT |
 | `#friends` | Friends list: Search by exact name / 6-digit code, pending requests, friend management | DESIGNED |
 | `#party/create` | Group creation overlay: Create custom friend party with icon and invite picker | DESIGNED |
@@ -155,3 +168,5 @@ The comprehensive roadmap is defined in [ONBOARDING_HOME_V2_ROADMAP.md](ONBOARDI
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
+
+- 2026-10-18 — Added scoped D33 Activity v2 S1 contract; verification pending; historical task evidence preserved.

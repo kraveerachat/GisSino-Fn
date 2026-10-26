@@ -1,3 +1,4 @@
+import { activityCategoryDialog,activityTransactionDetail,activityContext } from './activity.js';
 import { bangkokClock,homeOverview,notificationPreview } from './home-overview.js';
 import { createCheckinPreview,habitOverview,mountHabitTimeline } from './habit-preview.js';
 import { shell, addMenu, addForm, activityResults } from './screens.js';
@@ -24,7 +25,7 @@ const validRoutes = ['home','wallet','activity','bills','party','settings','tran
 const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
   homeScenario:'sample', homeNow:homePreview.nowLocal,
-  balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october', billMonth:'2026-10', billTypeFilter:'all', billPreviewPaid:[],
+  balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october', billMonth:'2026-10', billTypeFilter:'all', billPreviewPaid:[], activityPeriod:'2026-10', activityCurrency:'THB',
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
   accountProfiles: accounts.map(account=>({...account})),
@@ -54,6 +55,7 @@ function applyTheme() {
   document.querySelector('meta[name="theme-color"]').content = isPublicRoute(state.route)?'#f6faff':appearance === 'dark' ? '#242323' : '#94dffc';
 }
 function render(focusMain = false) {
+  const activityToolsOpen=app.querySelector('.activity-preview-tools')?.open;
   syncHabitPreview();
   app.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   habitTimelineCleanup?.();habitTimelineCleanup=null;
@@ -65,6 +67,7 @@ function render(focusMain = false) {
   document.querySelector('#skip-link').textContent = t('skip');
   app.innerHTML = isPublicRoute(state.route)?welcomeScreen(state,t,previewFlow):shell(state, t);
   if(isPublicRoute(state.route))mountPreviewFlow(app,previewFlow,t,id=>{render();document.getElementById(id)?.focus({preventScroll:true});});
+  if(activityToolsOpen&&state.route==='activity')app.querySelector('.activity-preview-tools').open=true;
   sidebar.rendered();
   mountDeck();
   habitTimelineCleanup=mountHabitTimeline(app.querySelector('[data-habit-card]'),habitOverview(state),state,t);
@@ -93,6 +96,7 @@ function showSheet(titleKey, content, back = false) {
   if (!sheet.open) opener = document.activeElement;
   sheet.innerHTML = `<div class="sheet-handle" aria-hidden="true"></div><div class="sheet-header">${back ? `<button class="icon-button sheet-back" data-action="add" aria-label="${t('back')}">${icon('arrow')}</button>` : ''}<h2 id="sheet-title" tabindex="-1">${t(titleKey)}</h2><button class="icon-button close-button" data-action="close" aria-label="${t('close')}">${icon('close')}</button></div><div class="sheet-content">${content}</div>`;
   sheet.classList.toggle('add-sheet', titleKey === 'addTitle');
+  sheet.classList.toggle('activity-category-sheet',titleKey==='activityAllCategories');
   if (!sheet.open) { sheet.showModal(); document.body.classList.add('has-sheet'); }
   sheet.scrollTop = 0;
   document.querySelector('#sheet-title').focus({ preventScroll: true });
@@ -112,6 +116,15 @@ sheet.addEventListener('close', () => {
   else document.querySelector('[data-action="visibility"], [data-title="privacy"]')?.focus({ preventScroll: true });
   opener = null;
   accountDetailId=null;
+});
+sheet.addEventListener('keydown',event=>{
+  if(event.key!=='Tab'||!sheet.classList.contains('activity-category-sheet'))return;
+  // The catalog has one interactive close control. Keep traversal inside the
+  // modal even when Chromium's native dialog traversal would focus body.
+  const controls=[...sheet.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),[tabindex="0"]')];
+  const first=controls[0],last=controls.at(-1);
+  if(!first){event.preventDefault();sheet.querySelector('#sheet-title').focus();}
+  else if(controls.length===1||event.shiftKey&&document.activeElement===first||!event.shiftKey&&document.activeElement===last){event.preventDefault();(event.shiftKey?last:first).focus();}
 });
 sheet.addEventListener('click', event => {
   if (event.target !== sheet) return;
@@ -134,6 +147,7 @@ function openMode(mode) {
 }
 function definitionList(rows) { return `<dl class="details-list">${rows.map(([name,value])=>`<div><dt>${name}</dt><dd>${value}</dd></div>`).join('')}</dl>`; }
 function openTransaction(id) {
+  if(state.route==='activity'){const content=activityTransactionDetail(id,state,t);if(content)showSheet('transactionDetail',content);return;}
   const item = transactions.find(x=>x.id===id); if (!item) return;
   const value = state.balanceVisible ? money(item.amount,state.locale,true) : t('hiddenAmount');
   showSheet('transactionDetail',`<div class="detail-hero"><span class="well-icon ${item.type}">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${value}</strong>${item.needsDetails?`<span class="status warning">${t('needsDetails')}</span>`:''}</div>${definitionList([[t('category'),t(item.category)],[t('account'),t(item.account)],[t('time'),item.time],[t('reference'),`DEMO-${item.id.toUpperCase()}`]])}<p class="info-callout">${icon('info')}${t(item.type==='transfer'?'transferNote':item.needsDetails?'needDetailBody':'detailNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
@@ -222,6 +236,7 @@ document.addEventListener('click',event=>{
   } else if(action==='wallet-month-scroll') {
     app.querySelector('.wallet-months')?.scrollBy({left:Number(button.dataset.step)*176,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
   } else if(action==='close-more')moreOverlay.close(true);
+  else if(action==='activity-categories') { showSheet('activityAllCategories',activityCategoryDialog(state,t)); }
   else if (action==='add') { state.mode=null; showSheet('addTitle',addMenu(t)); }
   else if (action==='close') closeSheet();
   else if (action==='mode') openMode(button.dataset.mode);
@@ -363,6 +378,10 @@ document.addEventListener('change',event=>{
   else if(control==='board-state') { state.accountState=event.target.value;refreshAccountBoard('[data-control="board-state"]'); }
   else if(control==='account-display-mode') {state.accountView=event.target.value==='horizontal'?'horizontal':'vertical';render();document.querySelector('#account-display-mode')?.focus({preventScroll:true});}
   else if (control==='preview-state') { state.previewState=event.target.value; render(); document.querySelector('#preview-state')?.focus({preventScroll:true}); }
+  else if(control==='activity-month') {
+    if(activityContext(state).model.periods.includes(event.target.value)){state.activityPeriod=event.target.value;render();document.querySelector('#activity-month')?.focus({preventScroll:true});announce(t('walletSelectedPeriod',{period:activityContext(state).periodLabel}));if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelector('.activity-analytics')?.animate([{opacity:.65},{opacity:1}],{duration:180,easing:'cubic-bezier(.16,1,.3,1)'});}
+  }
+  else if(control==='activity-currency') {state.activityCurrency=event.target.value;render();document.querySelector('[data-control=activity-currency]')?.focus({preventScroll:true});}
   else if (control==='month') { state.month=event.target.value; toast(t('monthNote')); }
   else if (control==='locale') { state.locale=event.target.value; render(); document.querySelector('#locale-select')?.focus({preventScroll:true}); announce(t('localeChanged')); }
   else if(control==='transfer-source') {

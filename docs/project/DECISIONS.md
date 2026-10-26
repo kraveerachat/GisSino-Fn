@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. D32 records the new Wallet preview; D29–D31 are reserved for the separate unmerged Home PR #7 and are not imported here. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. D32 records the new Wallet preview; D33 records Activity monthly analytics and D35 records Bills preview composition (D34 is reserved for the pending Party branch). D29–D31 are reserved for the separate unmerged Home PR #7 and are not imported here. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -181,11 +181,21 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 
 - 2026-10-18 — Reopened Wallet task for D32 S2 owner revision; source inspection recorded, verification/review/delivery pending.
 
-### D33 — Bills v2 preview composition and manual obligation flow
+
+### D33 — Embedded Activity monthly analytics
+
+- Date:2026-10-18; status:DECIDED for owner-authorized synthetic Activity v2 S1 UI.
+- Statement: embed monthly income/expense donut with labelled net, maximum four leading expense categories and View all in existing `#activity`. Full fourteen-category breakdown reuses native dialog; preserve search/type chips/day groups/detail/navigation. No separate Summary route/tab.
+- Data: Activity-only dated synthetic records reconcile THB 42,000 income/15,240 expense/26,760 net; transfer 5,000 stays list-only. Integer minor units/BigInt, THB/USD isolation, honest unknown/zero/unavailable and hidden amount/share/geometry suppression apply. Donut denominator income+expense; category denominator eligible expense. Search/type filters change list only. Only coherent October 2026 available; no fake history or shared Home/Wallet fixture mutation.
+- Supersedes: proposed Activity Summary-tab placement in roadmap/Home-Leaderboard specification and D30's OPEN Activity-versus-Wallet monthly destination, for this UI slice only. Preserve original planning, D29-D32, closed sessions/receipts. Future tab separation deferred; Home Q10/Safe placement and production accounting remain separate.
+- OPEN: M2/M3 authorized owned ledger/category integration and refund/reversal/adjustment/linked-record/settlement policies. Catalog labels never automatically classify savings/investment transfers/card payments as expenses.
+- Source: [Activity task](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md), [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md); runtime verified/final A SHIP;source ae9c611c68c081ef6686353b33539cbc7980d453 pushed in [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9),OPEN/DRAFT MERGEABLE/CLEAN;owner review pending. Affects [Activity](../pages/activity/Page-Activity.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Screen Map](../design/SCREEN_MAP.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
+
+### D35 — Bills v2 preview composition and manual obligation flow
 
 - Date: 2026-10-26; status: DECIDED for mock UI only under the owner's Bills v2 brief.
 - Selected-month known unpaid cycles form a by-currency commitment summary; prior arrears remain separate. Explicit schedule cycles drive list, calendar and details. Products describe one plan and never add another payable obligation. Statement-covered cycles are excluded from duplicate commitment counting.
 - Bills-specific Add offers Installment, Credit Card Statement, Monthly Bill and Subscription forms, then unsaved Review/Edit/Discard. Mark paid requires a separate confirmation and changes page memory only. Existing global Add behavior remains.
 - Detail separates marketplace, financing provider and funding account. Unknown variable actual amounts remain unknown; estimates are labelled. A draft due day after a short month's end clamps to its last day pending production owner approval.
 - This decision does not approve actual payment, durable mutation, liability settlement, automatic posting, reminders, FX or owner-scoped APIs. Those remain M2/M5/M6 and [open finance questions](OPEN_QUESTIONS.md).
-- Source: [Bills task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md), [page](../pages/bills/Page-Bills.md), [review](../design/reviews/BILLS_V2_REVIEW.md). Activity PR #9 is separate and may need a later conflict/integration pass.
+- Source: [Bills task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md), [page](../pages/bills/Page-Bills.md), [review](../design/reviews/BILLS_V2_REVIEW.md). Activity D33 is already merged; this decision is scoped to Bills only.

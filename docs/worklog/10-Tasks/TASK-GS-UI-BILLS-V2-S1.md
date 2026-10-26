@@ -2,7 +2,7 @@
 id: TASK-GS-UI-BILLS-V2-S1
 type: task
 level: log
-status: DELIVERED FOR OWNER REVIEW
+status: INTEGRATION VERIFIED
 updated: 2026-10-26
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -11,6 +11,7 @@ related:
   - ../../design/UI_DATA_CONTRACTS.md
   - ../../project/DECISIONS.md
   - ../20-Sessions/TASK-GS-UI-BILLS-V2-S1-S1.md
+  - ../20-Sessions/TASK-GS-UI-BILLS-V2-S1-INTEGRATION.md
 branch: task/gs-ui-bills-v2-s1
 pr: https://github.com/kraveerachat/GisSino-Fn/pull/10
 ---
@@ -28,7 +29,7 @@ Source: `src/bills-overview.js`, `src/bills-ui.js`, `src/styles/bills.css`, `src
 
 ## Feature and system inventory
 
-Owner decision status applies to every row: D33 decides only the UI behavior delivered in this PR. Production behavior is OPEN/DEFERRED unless separately stated in the canonical architecture; automatic subscription posting is an approved future direction still unimplemented in M5. The milestone column is a dependency, not evidence that the engine exists.
+Owner decision status applies to every row: D35 decides only the UI behavior delivered in this PR. Production behavior is OPEN/DEFERRED unless separately stated in the canonical architecture; automatic subscription posting is an approved future direction still unimplemented in M5. The milestone column is a dependency, not evidence that the engine exists.
 
 | Feature | Current prototype | Future production behavior / decision | Data dependency | Milestone | This PR |
 |---|---|---|---|---|---|
@@ -56,7 +57,7 @@ Owner decision status applies to every row: D33 decides only the UI behavior del
 | User-owned records | No backend | Durable CRUD and ownership | M1/M2 auth/data | M2/M5 | Deferred |
 | Cross-user authorization | Cannot test without backend | BOLA prevention and tests | Owner-scoped APIs | M2/M5 | Deferred |
 
-Production rules for statement coverage, irregular installments, partial payment, finance charges, variable bill confirmation and subscription FX remain [open](../../project/OPEN_QUESTIONS.md). [D33](../../project/DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow) decides preview presentation only.
+Production rules for statement coverage, irregular installments, partial payment, finance charges, variable bill confirmation and subscription FX remain [open](../../project/OPEN_QUESTIONS.md). [D35](../../project/DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow) decides preview presentation only.
 
 ## Verification and review
 
@@ -64,8 +65,12 @@ Production rules for statement coverage, irregular installments, partial payment
 
 ## Integration and owner gate
 
-Built from main after Wallet PR #8 merged. Activity PR #9 remained separate during this implementation. Resolve any shared `src/app.js`, `src/screens.js`, `src/i18n.js` and style conflicts if Activity lands first, then rerun checks and inspect the combined UI. [Draft PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) is OPEN/DRAFT at source checkpoint `e1687b13077cd153814ab3f1a4155df4178e8b53`. Owner visual approval is required before marking it ready to merge. No automatic merge or production deployment. The [final receipt](../90-Receipts/20261026-TASK-GS-UI-BILLS-V2-S1-FINAL.md) records this delivery.
+The owner approved the mockup and explicitly authorized merging PR #10 after verification. Activity PR #9 merged to main at `18e087e360734d52b0a66a026da34834afdc70d3`. A normal merge of that main into this existing Bills branch preserves Activity monthly analytics and Bills obligation flows. The conflicting D33 decision number belongs to Activity; Bills is D35, with all Bills links updated. Both scoped CSS imports, route state, event handlers and Thai/English catalog entries coexist. See [integration session](../20-Sessions/TASK-GS-UI-BILLS-V2-S1-INTEGRATION.md) for exact checks and conflict files. PR #10 remains open until GitHub checks and mergeability are confirmed.
+
+No production finance, authentication, persistence or payment behavior is implied. The historical [delivery receipt](../90-Receipts/20261026-TASK-GS-UI-BILLS-V2-S1-FINAL.md) remains unchanged.
 
 ## Change log
 
 - 2026-10-26 — Implemented and runtime verified Bills v2 for Draft PR review.
+
+- 2026-10-26 — Activity PR #9 integration verified on existing Bills branch; 641 locale keys, 112 tests and Chromium combined routes/interactions passed.
