@@ -2,7 +2,7 @@
 id: TASK-GS-UI-BILLS-V2-S1
 type: task
 level: log
-status: INTEGRATION VERIFIED
+status: MERGED
 updated: 2026-10-26
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -65,7 +65,7 @@ Production rules for statement coverage, irregular installments, partial payment
 
 ## Integration and owner gate
 
-The owner approved the mockup and explicitly authorized merging PR #10 after verification. Activity PR #9 merged to main at `18e087e360734d52b0a66a026da34834afdc70d3`. A normal merge of that main into this existing Bills branch preserves Activity monthly analytics and Bills obligation flows. The conflicting D33 decision number belongs to Activity; Bills is D35, with all Bills links updated. Both scoped CSS imports, route state, event handlers and Thai/English catalog entries coexist. See [integration session](../20-Sessions/TASK-GS-UI-BILLS-V2-S1-INTEGRATION.md) for exact checks and conflict files. PR #10 remains open until GitHub checks and mergeability are confirmed.
+The owner approved the mockup and explicitly authorized merging PR #10 after verification. Activity PR #9 merged to main at `18e087e360734d52b0a66a026da34834afdc70d3`. A normal merge of that main into this existing Bills branch preserves Activity monthly analytics and Bills obligation flows. The conflicting D33 decision number belongs to Activity; Bills is D35, with all Bills links updated. Both scoped CSS imports, route state, event handlers and Thai/English catalog entries coexist. See [integration session](../20-Sessions/TASK-GS-UI-BILLS-V2-S1-INTEGRATION.md) for exact checks and conflict files. GitHub confirmed [PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) merged at `40d52ff9e0ae9dc4f610b485f930f94855a9c0ca` after checks and mergeability passed.
 
 No production finance, authentication, persistence or payment behavior is implied. The historical [delivery receipt](../90-Receipts/20261026-TASK-GS-UI-BILLS-V2-S1-FINAL.md) remains unchanged.
 
@@ -74,3 +74,7 @@ No production finance, authentication, persistence or payment behavior is implie
 - 2026-10-26 — Implemented and runtime verified Bills v2 for Draft PR review.
 
 - 2026-10-26 — Activity PR #9 integration verified on existing Bills branch; 641 locale keys, 112 tests and Chromium combined routes/interactions passed.
+
+## External merge closeout
+
+PR #10 is merged. The original delivery receipt is unchanged. Bills was regression-checked again with Party on PR #11 and final main (693 locale keys, 121 tests).

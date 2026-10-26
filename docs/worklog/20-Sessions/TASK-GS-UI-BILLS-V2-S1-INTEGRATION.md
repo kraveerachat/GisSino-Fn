@@ -19,3 +19,7 @@ Conflicted files: `index.html`, `src/app.js`, `src/screens.js`, `docs/START_HERE
 Verification: `npm run check` PASS (641 keys per locale); `npm test` PASS 112/112 with local loopback access. First sandboxed test attempt returned EACCES for the local preview-server test; rerun passed. Chromium at 390, 820 and 1440px in light/dark covered all five routes: 30 route-layout cases, no page/console errors or horizontal overflow. Focused Activity month selection, donut, category dialog, expense filter, search and transaction detail passed. Bills month change, list/calendar, day sheet, installment detail, Add dialog, invalid form errors (5 fields), two-step paid preview and dialog close passed. One attempted Activity currency switch found no control because the coherent fixture exposes one currency; it was not counted as a tested interaction. Screenshot `C:/Users/User/AppData/Local/Temp/gissino-bills-integrated-phone.png` was inspected.
 
 The app remains a synthetic, in-memory preview. Production owner scoping, financial posting, persistence and real payment remain unimplemented.
+
+## External result
+
+GitHub confirmed PR #10 merged at `40d52ff9e0ae9dc4f610b485f930f94855a9c0ca`. No source branch deletion or production change was performed.

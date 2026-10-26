@@ -22,3 +22,7 @@ Verification: `npm run check` PASS (693 locale keys per language); `npm test` PA
 An initial manual probe used `pim.grows`, a sample with an incoming request, and correctly found no new-request button. The corrected probe used eligible `nara.kind` and passed at all three widths. No product defect was found.
 
 All Party relationships/rankings remain synthetic and session-only. Production friend discovery, authorization, owner-scoped data, financial posting and persistence are unimplemented.
+
+## External result and final main
+
+GitHub confirmed PR #11 merged at `cd1fa82906c203ba4db93616db6ad6fd3e70a0a3`. PRs #9 and #10 were also confirmed merged; GitHub search found no open PRs. Final main before this documentation checkpoint passed `npm run check` (693 keys per locale), `npm test` (121/121), and Chromium 30 route/theme/viewport cases at 390, 820 and 1440px without page/console errors or horizontal overflow. No source branch was deleted, and no production service or data was changed.

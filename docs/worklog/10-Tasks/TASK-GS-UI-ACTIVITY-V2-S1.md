@@ -2,8 +2,8 @@
 id: TASK-GS-UI-ACTIVITY-V2-S1
 type: task
 level: log
-status: CLOSED
-updated: 2026-10-18
+status: MERGED
+updated: 2026-10-26
 up: ../00-Index/Task-Dashboard.md
 related:
   - ../../pages/activity/Page-Activity.md
@@ -80,3 +80,7 @@ Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/g
 One final [immutable receipt](../90-Receipts/20261018-224320-TASK-GS-UI-ACTIVITY-V2-S1-FINAL.md) records source/evidence and pending human review. No existing receipt or closed historical session was changed. Final local/remote/PR-head equality for documentation is a parent handoff action, not an invented completed checkpoint.
 
 Latest pushed source follow-up: `b92cf237a54ed364fda4fdb48b81b98e6c2188bf` preserves salary search by visible Income category text rather than Other;an assertion was added to an existing test. Parent reran required checks:637 locale keys/102 tests PASS. No visible fixture/screenshot change. Earlier feature checkpoint `ae9c611c68c081ef6686353b33539cbc7980d453` remains the immutable receipt checkpoint;receipt is not edited. Final docs checkpoint/head reconciliation follows on Draft PR9.
+
+## External merge closeout
+
+GitHub confirms [PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) merged to main at `18e087e360734d52b0a66a026da34834afdc70d3`. The prior delivery evidence and immutable receipt remain historical. Activity was regression-checked with Bills and Party during PR #10/#11 integration and on final main (693 locale keys, 121 tests).
