@@ -28,6 +28,11 @@ This timeline is append-only.
 - 2026-10-16 — Canonical `docs/` vault structure, hubs, page notes, and governance sources prepared in [Draft PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3). See [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 - 2026-10-16 — Account Board complete overlapping folder deck merged to `main` in [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). See [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
 - 2026-10-17 — Planning roadmap for Onboarding, Home v2, and future screen roadmap prepared under [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md) on branch `task/gs-plan-005-onboarding-home-v2`. Documentation-only milestone; no production mutation.
+- 2026-10-26 — [Bills v2 task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) implements a selected-month synthetic obligation projection, compact list/calendar, explicit installment progress and four unsaved manual-entry forms in [Draft PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10). Checks passed (94 tests; nine Chromium viewport sizes). Owner visual review remains pending; no production finance milestone. Wallet PR #8 is merged in the main base; Activity PR #9 remains separate at this checkpoint.
+
+- 2026-10-26 — [Activity PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) merged at `18e087e360734d52b0a66a026da34834afdc70d3`. Bills PR #10 was integrated with that main on its existing branch; 641 locale keys, 112 tests and 30 Chromium route/theme/viewport cases passed. Bills D35 resolves its collision with Activity D33; PR #10 merge is pending GitHub confirmation.
+
+- 2026-10-26 — [Bills PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) merged at `40d52ff9e0ae9dc4f610b485f930f94855a9c0ca` after Activity/Bills integration checks. The existing Party PR #11 branch then merged this new main normally; D33 Activity, D34 Party and D35 Bills coexist. Party integration passed 693 locale keys, 121 tests and 30 Chromium route/theme/viewport cases plus focused Party, Activity and Bills actions. PR #11 merge remains pending GitHub confirmation.
 
 ## Change log
 
@@ -94,3 +99,13 @@ This timeline is append-only.
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) implementation delivery CLOSED: final SHIP and source `184b2f7053940f7e2129d41c8f61342c76a7b875` committed/pushed on same branch/Draft PR #8. Documentation closeout follows verified source; final remote head reported in handoff. Owner review/merge pending; S1 receipt unchanged, no new receipt.
 
 - 2026-10-18 — [Home PR #7](https://github.com/kraveerachat/GisSino-Fn/pull/7) merged into `main`; Wallet [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) subsequently conflicted on shared code/docs. [Wallet S3](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S3.md) records integration on the existing Wallet branch with runtime checks pending; historical PR7/PR8 records remain intact.
+
+- 2026-10-18 — [Activity v2 S1](../worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) starts from merged Home PR7 (`175677c`)/Wallet PR8 (`90a81e8d7a44fc5472e254be7c2197c0e5fc411f`) on new `task/gs-ui-activity-v2-s1`. [D33](DECISIONS.md#d33--embedded-activity-monthly-analytics) embeds donut/top-four expense preview/full catalog dialog; prior tab proposal deferred. Implementation/verification/new Draft PR pending; no production milestone.
+
+- 2026-10-18 — [Activity S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) required checks pass (637 matching locale keys,100 tests including16 focused Activity cases); normal browser32 layouts/12 functional checks pass after financial/date/focus/CSP/wrapping corrections. 200% text-enlargement overflow/final review/Git remain pending; no complete-runtime/owner acceptance claim.
+
+- 2026-10-18 — [Activity S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) final tested scope RUNTIME VERIFIED:637 keys/102 tests including18 focused Activity cases;32 layouts/12 named functional checks/six edges/200% text/contrast/CSP pass. Final A SHIP for owner review after four final captures,no rescore. Five unchanged screenshots are in the review folder;Git/PR/receipt and owner acceptance pending.
+
+- 2026-10-18 — [Activity S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) implementation delivery CLOSED:source ae9c611c68c081ef6686353b33539cbc7980d453 committed/pushed,new [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9) created/attached and verified OPEN/DRAFT MERGEABLE/CLEAN,head equal to source checkpoint. One [immutable receipt](../worklog/90-Receipts/20261018-224320-TASK-GS-UI-ACTIVITY-V2-S1-FINAL.md) records102 tests/18 Activity,32 layouts/12 functions/six edges,200% text/contrast and final A SHIP. Final docs commit/push/head reconciliation and owner visual review/merge remain pending.
+
+- 2026-10-18 — Activity source follow-up `b92cf237a54ed364fda4fdb48b81b98e6c2188bf` committed/pushed after receipt feature checkpoint ae9c611;preserves salary category search compatibility,637-key/102-test rerun PASS. Receipt remains immutable;final docs checkpoint follows.

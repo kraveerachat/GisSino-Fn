@@ -68,7 +68,7 @@ export const messages = {
     close: 'ปิด', back: 'ย้อนกลับ', list: 'รายการ', calendar: 'ปฏิทิน', billsView: 'รูปแบบการแสดงบิล', committed: 'ยอดภาระผูกพัน', fourBills: '4 รายการตัวอย่าง',
     installments: 'ผ่อนชำระ', creditCards: 'บัตรเครดิต', monthlyBills: 'บิลรายเดือน', subscriptions: 'สมาชิกและบริการ',
     billCard: 'บัตรเครดิตประจำเดือน', billPower: 'ค่าไฟฟ้า', billDevice: 'ผ่อนอุปกรณ์ทำงาน', billMusic: 'บริการฟังเพลง', dueSoon: 'ใกล้ถึงกำหนด', upcoming: 'รอชำระ',
-    billDetail: 'รายละเอียดบิล', installment: 'งวดที่', paymentNote: 'ตัวอย่างหน้ารายละเอียดเท่านั้น ไม่มีการชำระเงินหรือหักบัญชีอัตโนมัติ',
+    billDetail: 'รายละเอียดบิล', billAddTitle:'เพิ่มภาระชำระ', billReviewTitle:'ตรวจสอบรายการตัวอย่าง', billPaidTitle:'ทำเครื่องหมายจ่ายแล้วในตัวอย่าง', billDayTitle:'รายการตามวัน', installment: 'งวดที่', paymentNote: 'ตัวอย่างหน้ารายละเอียดเท่านั้น ไม่มีการชำระเงินหรือหักบัญชีอัตโนมัติ',
     billEmptyTitle: 'เดือนนี้ยังไม่มีบิล', billEmptyBody: 'ภาระผูกพันจะแสดงที่นี่เมื่อคุณเริ่มเพิ่มข้อมูลจริง',
     calendarHint: 'เลือกวันที่มีเครื่องหมายเพื่อดูรายละเอียดบิลตัวอย่าง', weekDays: 'จ,อ,พ,พฤ,ศ,ส,อา',
     myProgress: 'ก้าวเล็ก ๆ ของฉัน', level: 'เลเวล {n}', xp: 'XP', nextLevel: 'อีก 260 XP สู่เลเวล 9', freezes: 'สิทธิ์พักสตรีก', freezeCount: '2 ครั้ง',
@@ -170,7 +170,7 @@ export const messages = {
     close: 'Close', back: 'Back', list: 'List', calendar: 'Calendar', billsView: 'Bills view', committed: 'Monthly commitments', fourBills: '4 sample bills',
     installments: 'Installments', creditCards: 'Credit cards', monthlyBills: 'Monthly bills', subscriptions: 'Subscriptions',
     billCard: 'Monthly credit card', billPower: 'Electricity', billDevice: 'Work equipment', billMusic: 'Music subscription', dueSoon: 'Due soon', upcoming: 'Upcoming',
-    billDetail: 'Bill details', installment: 'Installment', paymentNote: 'A design preview only. No payment or automatic debit takes place.',
+    billDetail: 'Bill details', billAddTitle:'Add obligation', billReviewTitle:'Review draft', billPaidTitle:'Preview marking paid', billDayTitle:'Obligations on this day', installment: 'Installment', paymentNote: 'A design preview only. No payment or automatic debit takes place.',
     billEmptyTitle: 'A clear month ahead.', billEmptyBody: 'Your commitments will appear here when you add real records.',
     calendarHint: 'Choose a marked date to see its sample bill.', weekDays: 'M,T,W,T,F,S,S',
     myProgress: 'My small steps', level: 'Level {n}', xp: 'XP', nextLevel: '260 XP to level 9', freezes: 'Streak freezes', freezeCount: '2 available',
@@ -755,6 +755,41 @@ Object.assign(messages.en, {
   walletSelectedPeriod:'Showing {period}', walletCompositionTitle:'My asset overview'
 });
 
+Object.assign(messages.th, {
+  activitySubtitleV2:'เห็นภาพรับ–จ่าย เข้าใจทุกการใช้เงิน', activityMonthlyOverview:'ภาพรวมเดือนนี้',
+  activityNet:'รายรับสุทธิ', activityTopCategories:'หมวดรายจ่าย', activityAllCategories:'หมวดรายจ่ายทั้งหมด',
+  activityExpenseTotal:'รายจ่ายรวม', activityTransactionsTitle:'รายการเคลื่อนไหว',
+  activityListScope:'ตัวกรองใช้กับรายการเท่านั้น', activityMovementBasis:'สัดส่วนจากรายรับ + รายจ่าย · ไม่รวมโอนระหว่างบัญชี',
+  activityCategoryBasis:'สัดส่วนเทียบรายจ่ายรวมของเดือน', activityNoMovement:'ยังไม่มีรับ–จ่ายในเดือนนี้',
+  activityNoExpenses:'ยังไม่มีรายจ่ายในเดือนนี้', activityIncomplete:'ข้อมูลยังไม่ครบ จึงยังสรุปยอดและสัดส่วนไม่ได้',
+  activityFixtureNote:'ข้อมูลตัวอย่างเดือนตุลาคม 2569 · เดือนอื่นยังไม่มีข้อมูล', activityPreviewStates:'ดูสถานะตัวอย่าง',
+  activityCurrency:'สกุลเงิน', activityTxRent:'ค่าเช่าบ้าน', activityTxElectricity:'ค่าไฟฟ้า', activityTxFamily:'ค่าใช้จ่ายครอบครัว',
+  activityTxHealth:'ค่าดูแลสุขภาพ', activityTxCourse:'คอร์สเรียนออนไลน์', activityTxShopping:'ของใช้ส่วนตัว',activityTxMusic:'บริการฟังเพลง',
+  activityCategory_food_drinks:'อาหารและเครื่องดื่ม', activityCategory_shopping:'ช้อปปิ้ง', activityCategory_family:'ครอบครัว',
+  activityCategory_savings_investment:'ออมและลงทุน', activityCategory_bill_payment:'ชำระบิล', activityCategory_entertainment:'บันเทิง',
+  activityCategory_gifts:'ของขวัญ', activityCategory_transport:'ค่าเดินทาง', activityCategory_education:'การศึกษา',
+  activityCategory_travel_hotel:'ท่องเที่ยวและโรงแรม', activityCategory_insurance_health:'ประกันและสุขภาพ', activityCategory_housing:'ที่อยู่อาศัย',
+  activityCategory_refund_return:'โอนเงินคืน', activityCategory_other:'อื่น ๆ'
+});
+Object.assign(messages.en, {
+  activitySubtitleV2:'Follow your money, understand your spending', activityMonthlyOverview:'Monthly overview',
+  activityNet:'Net income', activityTopCategories:'Spending categories', activityAllCategories:'All spending categories',
+  activityExpenseTotal:'Total expenses', activityTransactionsTitle:'Transactions', activityListScope:'Filters apply to the list only',
+  activityMovementBasis:'Share of income + expenses · Excludes transfers between your accounts',
+  activityCategoryBasis:'Shares of this month’s total expenses', activityNoMovement:'No income or expenses this month',
+  activityNoExpenses:'No expenses this month', activityIncomplete:'Totals and shares need complete records',
+  activityFixtureNote:'October 2026 sample data · Other months are not available yet', activityPreviewStates:'Preview states',
+  activityCurrency:'Currency', activityTxRent:'Home rent', activityTxElectricity:'Electricity bill', activityTxFamily:'Family expenses',
+  activityTxHealth:'Healthcare', activityTxCourse:'Online course', activityTxShopping:'Personal essentials',activityTxMusic:'Music subscription',
+  activityCategory_food_drinks:'Food & Drinks', activityCategory_shopping:'Shopping', activityCategory_family:'Family',
+  activityCategory_savings_investment:'Savings & Investment', activityCategory_bill_payment:'Bill Payment', activityCategory_entertainment:'Entertainment',
+  activityCategory_gifts:'Gifts', activityCategory_transport:'Transportation', activityCategory_education:'Education',
+  activityCategory_travel_hotel:'Travel & Hotels', activityCategory_insurance_health:'Insurance & Health', activityCategory_housing:'Housing',
+  activityCategory_refund_return:'Refund / Return', activityCategory_other:'Other'
+});
+
+Object.assign(messages.th,{activityViewAllCategories:'ดูสัดส่วนทั้งหมด'});
+Object.assign(messages.en,{activityViewAllCategories:'View all categories'});
 Object.assign(messages.th, {
   partyFriendsTitle:'เพิ่มเพื่อน',partyFriendsRanking:'อันดับเพื่อนประจำสัปดาห์',
   partyFriendsRankingIntro:'จัดอันดับความสม่ำเสมอของเพื่อนที่ตอบรับแล้ว',

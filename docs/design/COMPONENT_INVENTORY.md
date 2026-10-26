@@ -11,6 +11,25 @@ related:
 ---
 # Component inventory
 
+
+## Activity v2 S1 components (2026-10-18)
+
+Source observed: `src/activity-data.js` owns dated synthetic records/category registry and `activityModel`/date/eligibility/deduplication/share/filter helpers. `src/activity.js` exports `activityContext`, `activityScreen`, `activityResults`, `activityCategoryDialog`, `activityTransactionDetail`; `src/styles/activity.css` scopes visuals. Existing screens/app/i18n/index integrate. Final verification/manifest in [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) remains pending.
+
+Reuse existing transaction-row visual structure and detail sheet infrastructure, `walletMoney` exact formatter, `walletRingSegments` rounded SVG geometry, translator/icons, `showSheet` native dialog/title/focus restoration, header/sidebar/floating navigation/global Add. Activity-specific dated detail content preserves original Home/Wallet detail behavior. New conceptual units: monthly summary/donut, compact category rows/full-catalog dialog content. No framework/chart dependency/modal system/route/tab. Full-month analytics independent of list search/type filters; privacy suppresses sensitive text/geometry. [Activity](../pages/activity/Page-Activity.md), [Data contracts](UI_DATA_CONTRACTS.md).
+
+
+RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale keys and 102/102 tests (18 focused Activity tests). Inspected final browser evidence passes 32 normal-layout cases, 12 named functional checks, six edge scenarios and 200% text enlargement at 390px with no overflow/clipping/invalid geometry. Computed text contrast minimum is 5.175:1 light/4.775:1 dark, with zero CSP errors. Final independent A is SHIP for owner review after four final captures; no rescore. Owner review/merge remains pending. See [Activity review](reviews/ACTIVITY_ANALYTICS_REVIEW.md).
+
+
+Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
+
+Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 components — 2026-10-26
+
+The [Bills screen](../../src/bills-ui.js) adds a selected-month summary, overdue annotation, compact cycle row, type filter, shared-cycle calendar with multi-item day sheet, installment detail (progress, products, schedule, distinct merchant/financing/funding metadata), and four type-specific manual draft forms. A review sheet supports Edit/Discard; a separate two-step paid-preview sheet changes page memory only. [bills-overview.js](../../src/bills-overview.js) supplies pure totals/status/schedule validation; [bills.css](../../src/styles/bills.css) scopes light/dark responsive styling. Existing shell, modal focus/Escape, sidebar, floating navigation, icons, amount formatter and global Add are reused. No new framework, payment API or durable form component is added. See [task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md).
+
 ## Party preview components — GS-UI-PARTY-V2-S1
 
 `partyGrid` in [party-ui.js](../../src/party-ui.js) preserves the status card/badges/feed and composes compact Friends and Global boards plus a Friends summary. `partyFriendsSheet`, `partyRankingSheet` and `partyVisibilitySheet` reuse the existing native dialog controller, icon set, locale catalog, focus restoration and navigation. [party-preview.js](../../src/party-preview.js) owns a separate synthetic aggregate/relationship view model. [party.css](../../src/styles/party.css) scopes responsive board and sheet refinements to Party; it does not change the shared shell.
@@ -38,7 +57,7 @@ No duplicate modal system, automatic daily popup, durable history, production XP
 
 [walletScreen](../../src/wallet.js) reuses the overview model, provider/display adapters and existing navigation. [wallet-history.js](../../src/wallet-history.js) owns frozen synthetic snapshot records, period selection/labels and rounded proportional SVG sectors. Three Bank/E-wallet/Cash summary links and sections replace the four-category S1 composition. Overview/History pressed-state buttons, native year select and scrollable month buttons use the current app event controller; unavailable months are disabled. A small Bills link exists only in Current mode.
 
-Each notched account article contains a standalone monthly activity toggle and sibling account-detail link. Per-account percentage/value state is independent; own transfers are excluded. Hidden mode removes values/percentages/proportional geometry. History links explicitly announce current account detail. Add Account, Transfer, shared profile identities and locale/theme/sidebar remain existing components. No chart/state library is added. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 presentation; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records runtime verification of56 layouts/14 edges/15 named functional groups,521 keys and66 tests. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending.
+Each notched account article contains a standalone monthly activity toggle and sibling account-detail link. Per-account percentage/value state is independent; own transfers are excluded. Hidden mode removes values/percentages/proportional geometry. History links explicitly announce current account detail. Add Account, Transfer, shared profile identities and locale/theme/sidebar remain existing components. No chart/state library is added. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes S1 presentation; [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records runtime verification of56 layouts/14 edges/15 named functional groups,521 keys and66 tests. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Current integration status: [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) is MERGED at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, verified in the Activity start audit; prior review/push/checkpoint statements describe historical S2 delivery.
 
 ## Superseded Wallet S1 presentation (2026-10-18)
 
@@ -128,3 +147,5 @@ Replaced textual pager/helper/demo-state controls with44px visual indicator butt
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
+
+- 2026-10-18 — Added scoped D33 Activity v2 S1 contract; verification pending; historical task evidence preserved.

@@ -1,3 +1,4 @@
+import { activityScreen, activityResults as monthlyActivityResults } from './activity.js';
 import { homePreviewControls } from './home-overview.js';
 import { icon, logo } from './icons.js';
 import { preview, transactions, accounts, bills } from './fixtures.js';
@@ -5,6 +6,7 @@ import { money, escapeHTML as esc } from './i18n.js';
 import { blueHome, transferScreen, creditCardScreen } from './blue-screens.js';
 import { floatingNavigation, desktopContext, desktopAdd } from './navigation.js';
 import { walletScreen } from './wallet.js';
+import { billsScreen as billsV2Screen } from './bills-ui.js';
 import { partyGrid } from './party-ui.js';
 
 export const destinations = ['home', 'wallet', 'activity', 'bills', 'party'];
@@ -63,19 +65,8 @@ export function stateCard(kind, t, billsEmpty = false) {
 function monthSelect(state, t) {
   return `<label class="month-select">${icon('calendar')}<span class="sr-only">${t('month')}</span><select data-control="month" aria-label="${t('month')}" title="${t('monthNote')}"><option value="october">${t('october')}</option></select></label>`;
 }
-export function activityResults(state, t) {
-  if (state.previewState !== 'sample') return stateCard(state.previewState, t);
-  const query = state.search.trim().toLocaleLowerCase();
-  const items = transactions.filter(item => (state.filter === 'all' || item.type === state.filter) && (!query || `${t(item.name)} ${t(item.category)}`.toLocaleLowerCase().includes(query)));
-  if (!items.length) return `<section class="empty-state panel"><span class="empty-symbol">${icon('search')}</span><h2>${t('noResultsTitle')}</h2><p>${t('noResultsBody')}</p><button class="button secondary" data-action="clear-search">${t('clearSearch')}</button></section>`;
-  return ['today', 'yesterday'].map(day => {
-    const group = items.filter(item => item.day === day);
-    return group.length ? `<section class="transaction-group"><h2>${t(day)}</h2><div class="panel">${group.map(item => transactionRow(item, state, t)).join('')}</div></section>` : '';
-  }).join('');
-}
-function activity(state, t) {
-  return `${pageHead(state,t,monthSelect(state,t))}<div class="summary-grid"><div class="panel summary-card"><span class="well-icon income">${icon('income')}</span><div><span>${t('income')}</span><strong>${displayMoney(preview.income,state)}</strong></div></div><div class="panel summary-card"><span class="well-icon expense">${icon('expense')}</span><div><span>${t('expense')}</span><strong>${displayMoney(preview.expense,state)}</strong></div></div></div><div class="activity-toolbar"><label class="search-field">${icon('search')}<span class="sr-only">${t('search')}</span><input id="activity-search" type="search" placeholder="${t('searchPlaceholder')}" value="${esc(state.search)}" autocomplete="off" maxlength="120"></label>${stateSelect(state,t)}</div><div class="filter-chips" role="group" aria-label="${t('filterLabel')}">${['all','expense','income','transfer'].map(filter => `<button class="chip ${state.filter === filter ? 'selected' : ''}" data-action="filter" data-filter="${filter}" aria-pressed="${state.filter === filter}">${t(filter)}</button>`).join('')}</div><div id="activity-results">${activityResults(state,t)}</div><p class="context-note">${t('monthNote')}</p>`;
-}
+export function activityResults(state,t) { return monthlyActivityResults(state,t,stateCard); }
+function activity(state,t) { return activityScreen(state,t,{stateCard,stateSelect}); }
 function calendar(state,t) {
   return `<section class="panel calendar-panel"><div class="calendar-week" aria-hidden="true">${t('weekDays').split(',').map(x=>`<span>${x}</span>`).join('')}</div><div class="calendar-days">${Array.from({length:3},()=>'<span class="calendar-blank"></span>').join('')}${Array.from({length:31},(_,i)=>{
     const day=i+1;const due=bills.find(b=>b.due===day);
@@ -97,7 +88,8 @@ export function screen(state,t) {
   if(state.route==='home') return blueHome(state,t,transactionRow);
   if(state.route==='transfer') return transferScreen(state,t);
   if(state.route==='credit-card') return creditCardScreen(state,t,transactionRow);
-  return ({activity,bills:billsScreen,party,settings}[state.route]||home)(state,t);
+  if(state.route==='bills')return billsV2Screen(state,t,{stateSelect,stateCard});
+  return ({activity,party,settings}[state.route]||home)(state,t);
 }
 export function addMenu(t) {
   const options=[['expense','expense','manualExpense','manualDesc'],['income','income','manualIncome','manualDesc'],['transfer','transfer','transferAction','transferDesc'],['slip','upload','slip','slipDesc'],['check','check','checkin','checkinDesc']];
