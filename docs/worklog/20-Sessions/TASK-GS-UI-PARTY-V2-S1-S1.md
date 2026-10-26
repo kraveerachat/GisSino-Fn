@@ -34,7 +34,7 @@ This proves the local UI preview only. No production M7 aggregate correctness, M
 
 ## Delivery gate
 
-The work awaits final detector, docs/Git check, Draft PR creation and owner visual approval. No merge or force push.
+Impeccable detector returned `[]` / exit 0, `git diff --cached --check` passed, and source/docs checkpoint `e32ceddbf05491f6038f04142ad44b89fd5ae0b7` was pushed. [Draft PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11) is OPEN/DRAFT, mergeable, based on unchanged main `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`; Activity #9 and Bills #10 remain separate OPEN/DRAFT. Owner visual approval and merge remain pending. This session is runtime verified; no production rollout, final task receipt, merge or force push.
 
 ## Vault actions
 

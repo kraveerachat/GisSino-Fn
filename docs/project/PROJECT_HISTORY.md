@@ -14,7 +14,7 @@ related:
 
 This timeline is append-only.
 
-- 2026-10-26 — [Party v2](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) added synthetic Friends and opted-in Global weekly-XP rankings, exact-match friendship preview and bounded sample suggestions on a separate branch. No real directory, ranking service or finance sharing; Draft PR/owner approval pending.
+- 2026-10-26 — [Party v2](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) added synthetic Friends and opted-in Global weekly-XP rankings, exact-match friendship preview and bounded sample suggestions in separate [Draft PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11). No real directory, ranking service or finance sharing; owner approval/merge pending.
 
 ## Background from source documents
 

@@ -2,7 +2,7 @@
 id: TASK-GS-UI-PARTY-V2-S1
 type: task
 level: log
-status: REVIEW
+status: RUNTIME VERIFIED
 updated: 2026-10-26
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -12,6 +12,7 @@ related:
   - ../../project/OPEN_QUESTIONS.md
   - ../20-Sessions/TASK-GS-UI-PARTY-V2-S1-S1.md
 branch: task/gs-ui-party-v2-s1
+pr: https://github.com/kraveerachat/GisSino-Fn/pull/11
 ---
 # TASK-GS-UI-PARTY-V2-S1 — Friends and weekly rankings
 
@@ -27,7 +28,7 @@ Friends includes accepted eligible friends and eligible viewer. Global includes 
 
 ## Verification and delivery
 
-See [S1](../20-Sessions/TASK-GS-UI-PARTY-V2-S1-S1.md) for exact commands, tests, browser viewports and review evidence. Preview URL: `http://127.0.0.1:4184/#party`. Screenshots are in [Party review](../../design/reviews/PARTY_V2_REVIEW.md). Draft PR and owner visual approval are pending at this task-note checkpoint.
+See [S1](../20-Sessions/TASK-GS-UI-PARTY-V2-S1-S1.md) for exact commands, tests, browser viewports and review evidence. Preview URL: `http://127.0.0.1:4184/#party`. Screenshots are in [Party review](../../design/reviews/PARTY_V2_REVIEW.md). Source/docs checkpoint `e32ceddbf05491f6038f04142ad44b89fd5ae0b7` was pushed and [Draft PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11) verified OPEN/DRAFT, mergeable against unchanged main. Owner visual approval and merge are pending. The task remains RUNTIME VERIFIED; no final immutable receipt is created before task acceptance under workflow §18.
 
 ## Open decisions
 
