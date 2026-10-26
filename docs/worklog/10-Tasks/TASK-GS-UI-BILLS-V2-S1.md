@@ -12,6 +12,7 @@ related:
   - ../../project/DECISIONS.md
   - ../20-Sessions/TASK-GS-UI-BILLS-V2-S1-S1.md
 branch: task/gs-ui-bills-v2-s1
+pr: https://github.com/kraveerachat/GisSino-Fn/pull/10
 ---
 # TASK-GS-UI-BILLS-V2-S1 — Bills v2 mock UI
 
@@ -63,7 +64,7 @@ Production rules for statement coverage, irregular installments, partial payment
 
 ## Integration and owner gate
 
-Built from main after Wallet PR #8 merged. Activity PR #9 remained separate during this implementation. Resolve any shared `src/app.js`, `src/screens.js`, `src/i18n.js` and style conflicts if Activity lands first, then rerun checks and inspect the combined UI. Owner visual approval is required before marking this Draft PR ready to merge. No automatic merge or production deployment.
+Built from main after Wallet PR #8 merged. Activity PR #9 remained separate during this implementation. Resolve any shared `src/app.js`, `src/screens.js`, `src/i18n.js` and style conflicts if Activity lands first, then rerun checks and inspect the combined UI. [Draft PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) is OPEN/DRAFT at source checkpoint `e1687b13077cd153814ab3f1a4155df4178e8b53`. Owner visual approval is required before marking it ready to merge. No automatic merge or production deployment. The [final receipt](../90-Receipts/20261026-TASK-GS-UI-BILLS-V2-S1-FINAL.md) records this delivery.
 
 ## Change log
 
