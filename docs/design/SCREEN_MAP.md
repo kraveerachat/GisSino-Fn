@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,6 +11,10 @@ related:
   - ../pages/Pages-Hub.md
 ---
 # Screen map
+
+## Current Bills v2 route — 2026-10-26
+
+`#bills` opens the selected-month list by default. Month selection updates summary, list and calendar; the type filter affects list rows only. Calendar date opens every cycle for that day. A row opens the existing dialog infrastructure with amount/status and, for installments, period progress, products, schedule and merchant/financing/funding. A credit-card statement detail retains its `#credit-card` destination. Bills Add opens the four-type draft form → review → Edit or Discard; sample Edit is prefilled. Record paid opens review → confirm and updates in-memory projection until reload. Existing global Add, Mobile More placement, desktop sidebar, Home/Wallet/Activity routes and privacy/theme/locale controls remain. [Page contract](../pages/bills/Page-Bills.md).
 
 ## Current Home v2 — Focused owner revision S3
 

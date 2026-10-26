@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -26,6 +26,7 @@ This timeline is append-only.
 - 2026-10-16 — Canonical `docs/` vault structure, hubs, page notes, and governance sources prepared in [Draft PR #3](https://github.com/kraveerachat/GisSino-Fn/pull/3). See [TASK-VAULT-STRUCTURE-001](../worklog/10-Tasks/TASK-VAULT-STRUCTURE-001.md).
 - 2026-10-16 — Account Board complete overlapping folder deck merged to `main` in [PR #4](https://github.com/kraveerachat/GisSino-Fn/pull/4). See [TASK-GS-UI-ACCOUNT-BOARD-001](../worklog/10-Tasks/TASK-GS-UI-ACCOUNT-BOARD-001.md).
 - 2026-10-17 — Planning roadmap for Onboarding, Home v2, and future screen roadmap prepared under [TASK-GS-PLAN-005](../worklog/10-Tasks/TASK-GS-PLAN-005.md) on branch `task/gs-plan-005-onboarding-home-v2`. Documentation-only milestone; no production mutation.
+- 2026-10-26 — [Bills v2 task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) implements a selected-month synthetic obligation projection, compact list/calendar, explicit installment progress and four unsaved manual-entry forms. Checks passed (94 tests; nine Chromium viewport sizes). Draft PR review is pending; no production finance milestone. Wallet PR #8 is merged in the main base; Activity PR #9 remains separate at this checkpoint.
 
 ## Change log
 

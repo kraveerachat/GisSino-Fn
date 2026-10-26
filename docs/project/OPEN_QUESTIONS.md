@@ -3,7 +3,7 @@ id: PROJECT-OPEN-QUESTIONS
 type: guide
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -12,6 +12,23 @@ related:
   - ../design/ONBOARDING_HOME_V2_ROADMAP.md
 ---
 # Open Questions
+
+## Bills v2 production finance questions — 2026-10-26
+
+[D33](DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow) settles preview presentation only. The following need owner/product and ledger design before M5/M6:
+
+| Topic | State | Decision needed |
+|---|---|---|
+| Card-backed installment coverage | [OPEN / M5] | Exact cycle/statement linkage, partial coverage and how settlement avoids a second expense. |
+| Partial and irregular installments | [OPEN / M5] | Allocation of principal, interest, fees, extra payments, refunds and schedule changes; authoritative paid/remaining status. |
+| Variable bill actual amount | [OPEN / M5] | When an estimate becomes a confirmed payable and how to handle revisions. |
+| Short-month due dates | [OPEN / M5] | Confirm last-day clamp versus skip/roll-forward; current draft preview clamps. |
+| Multi-product purchase allocation | [OPEN / M5] | Whether product-level amounts are needed beyond descriptive grouping. |
+| Subscription FX and catch-up | [OPEN / M5] | USD valuation, exchange source, failed runs, idempotency, price history and charge reconciliation. |
+| Manual paid evidence | [OPEN / M5] | Required proof and ledger event to mark a bill settled; current tap is in-memory only. |
+| Reminder channels | [OPEN / M6] | Preferences, quiet hours and allowed in-app/Web Push/email/owner Telegram delivery. |
+
+No question here authorizes a frontend implementation of backend behavior. [Bills feature inventory](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md#feature-and-system-inventory) maps dependencies.
 
 ## Wallet summary decision — 2026-10-18
 

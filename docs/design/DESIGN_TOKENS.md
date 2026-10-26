@@ -3,13 +3,17 @@ id: DESIGN-TOKENS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - COMPONENT_INVENTORY.md
 ---
 # Design tokens
+
+## Current Bills v2 roles — 2026-10-26
+
+[bills.css](../../src/styles/bills.css) scopes the Bills extension to `.bills-v2`: royal blue summary/primary action, porcelain and pale-blue wells, navy financial text, slate support copy, amber due-soon/today, restrained red overdue, green paid, and neutral unknown. Every status also has text. Amounts use tabular alignment; the monthly total is visually dominant while list rows stay compact. Existing global theme colors, Thai typography, focus ring, shared motion and reduced-motion media query are reused. No global palette or Account Board token change. [Review](reviews/BILLS_V2_REVIEW.md).
 
 ## Current Home v2 extension — Focused revision S3
 

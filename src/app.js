@@ -15,6 +15,8 @@ import { publicRoutes, isPublicRoute, welcomeScreen } from './welcome.js';
 import { createPreviewFlow,mountPreviewFlow,routeTitles } from './preview-flow.js';
 import { walletScreen } from './wallet.js';
 import { walletSnapshots, walletPeriodLabel } from './wallet-history.js';
+import { billDetail, billDaySheet, billForm, billReview, billEditData, billsText } from './bills-ui.js';
+import { validateBillDraft, validBillDate } from './bills-overview.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
@@ -22,7 +24,7 @@ const validRoutes = ['home','wallet','activity','bills','party','settings','tran
 const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
   homeScenario:'sample', homeNow:homePreview.nowLocal,
-  balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
+  balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october', billMonth:'2026-10', billTypeFilter:'all', billPreviewPaid:[],
   mode: null, shareStreak: true, shareXP: true,
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
   accountProfiles: accounts.map(account=>({...account})),
@@ -41,6 +43,7 @@ let accountDetailId=null;
 let editingProfileId=null;
 let accountDeck=null;
 let habitTimelineCleanup=null;
+let billDraftData=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -136,9 +139,10 @@ function openTransaction(id) {
   showSheet('transactionDetail',`<div class="detail-hero"><span class="well-icon ${item.type}">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${value}</strong>${item.needsDetails?`<span class="status warning">${t('needsDetails')}</span>`:''}</div>${definitionList([[t('category'),t(item.category)],[t('account'),t(item.account)],[t('time'),item.time],[t('reference'),`DEMO-${item.id.toUpperCase()}`]])}<p class="info-callout">${icon('info')}${t(item.type==='transfer'?'transferNote':item.needsDetails?'needDetailBody':'detailNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
 }
 function openBill(id) {
-  if(id==='card') {closeSheet();location.hash='credit-card';return;}
-  const item = bills.find(x=>x.id===id); if (!item) return;
-  showSheet('billDetail',`<div class="detail-hero"><span class="well-icon">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${state.balanceVisible?money(item.amount,state.locale,true):t('hiddenAmount')}</strong><span class="status ${item.status==='dueSoon'?'warning':''}">${t(item.status)}</span></div>${definitionList([[t('category'),t(item.category)],[t('date'),t('dayMonth',{day:item.due})],...(item.installment?[[t('installment'),item.installment]]:[])])}<p class="info-callout">${icon('shield')}${t('paymentNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
+  if(id==='card'){closeSheet();location.hash='credit-card';return;}
+  const legacy={power:'power-2026-10',device:'device-3',music:'music-2026-10'};
+  const content=billDetail(legacy[id]||id,state,t);
+  if(content)showSheet('billDetail',content);
 }
 function openVisibility() {
   showSheet('visibilityTitle',`<p class="sheet-subtitle">${t('privacyBody')}</p><div class="visibility-options">${[['shareStreak','share-streak'],['shareXP','share-xp']].map(([key,id])=>`<label class="switch-row"><span>${t(key)}</span><input type="checkbox" role="switch" id="${id}" data-control="${key}" ${state[key]?'checked':''}><span class="switch-track" aria-hidden="true"></span></label>`).join('')}</div><p class="sheet-disclaimer">${icon('shield')}${t('privacyPreview')}</p>`);
@@ -263,6 +267,28 @@ document.addEventListener('click',event=>{
     state.balanceVisible=!state.balanceVisible; render(); document.querySelector('[data-action="balance"]')?.focus({preventScroll:true}); announce(t(state.balanceVisible?'showBalance':'hiddenAmount'));
   } else if (action==='transaction') openTransaction(button.dataset.id);
   else if (action==='bill') openBill(button.dataset.id);
+  else if (action==='bill-calendar-day') {
+    if(validBillDate(button.dataset.date))showSheet('billDayTitle',billDaySheet(button.dataset.date,state,t));
+  } else if (action==='bill-add') {
+    billDraftData=null;showSheet('billAddTitle',billForm('installments',state.locale));
+  } else if (action==='bill-edit-sample') {
+    const data=billEditData(button.dataset.id,state);
+    if(data){billDraftData=null;showSheet('billAddTitle',billForm(data.type,state.locale,data));}
+  } else if (action==='bill-edit') {
+    if(billDraftData)showSheet('billAddTitle',billForm(billDraftData.draft.type,state.locale,billDraftData.raw));
+  } else if (action==='bill-discard') {billDraftData=null;closeSheet();}
+  else if (action==='bill-pay-review') {
+    const id=button.dataset.id;
+    if(!billDetail(id,state,t))return;
+    showSheet('billPaidTitle',`<p class="info-callout">${icon('shield')}${billsText(state.locale,'payNote')}</p><div class="bills-v2-review-actions"><button type="button" class="button secondary" data-action="bill" data-id="${esc(id)}">${t('back')}</button><button type="button" class="button primary" data-action="bill-pay-confirm" data-id="${esc(id)}">${billsText(state.locale,'markPaidConfirm')}</button></div>`);
+  } else if (action==='bill-pay-confirm') {
+    const id=button.dataset.id;
+    if(!billDetail(id,state,t))return;
+    state.billPreviewPaid=[...new Set([...state.billPreviewPaid,id])];
+    render();opener=document.querySelector(`[data-action="bill"][data-id="${CSS.escape(id)}"]`);
+    showSheet('billDetail',billDetail(id,state,t));
+    announce(billsText(state.locale,'paidPreview'));
+  }
   else if (action==='account') {
     if(assetAccounts(state.accountProfiles).some(a=>a.id===button.dataset.id)) location.hash=`wallet/account/${encodeURIComponent(button.dataset.id)}`;
   } else if (action==='filter') {
@@ -322,6 +348,9 @@ document.addEventListener('change',event=>{
     return;
   }
   const control=event.target.dataset.control;
+  if(control==='bill-month') {state.billMonth=event.target.value;render();document.querySelector('[data-control="bill-month"]')?.focus({preventScroll:true});return;}
+  if(control==='bill-type-filter') {state.billTypeFilter=event.target.value;render();document.querySelector('[data-control="bill-type-filter"]')?.focus({preventScroll:true});return;}
+  if(control==='bill-type') {showSheet('billAddTitle',billForm(event.target.value,state.locale));sheet.querySelector('[data-control="bill-type"]')?.focus({preventScroll:true});return;}
   if(control==='home-scenario') {state.homeScenario=homePreview.scenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
   else if(control==='home-clock') {if(bangkokClock(event.target.value)){state.homeNow=event.target.value;announce(t('homeClockChanged'));}else{event.target.value=state.homeNow;announce(t('homeClockInvalid'));}}
   else if(control==='wallet-year') {
@@ -350,6 +379,25 @@ function updateTransferAmount(updateInput=true) {
   document.querySelector('#transfer-amount').removeAttribute('aria-invalid');
 }
 document.addEventListener('submit',event=>{
+  if(event.target.id==='bill-entry-form') {
+    event.preventDefault();
+    const form=event.target,raw=Object.fromEntries(new FormData(form)),result=validateBillDraft(raw);
+    form.querySelectorAll('.bills-v2-field-error').forEach(node=>node.remove());
+    form.querySelectorAll('[aria-invalid]').forEach(node=>node.removeAttribute('aria-invalid'));
+    if(!result.valid){
+      const B=key=>billsText(state.locale,key);
+      for(const [field,kind] of Object.entries(result.errors)){
+        const input=form.elements[field];if(!input)continue;
+        input.setAttribute('aria-invalid','true');
+        const error=document.createElement('small');error.className='bills-v2-field-error';error.textContent=kind==='schedule'?B('scheduleError'):B('required');
+        input.insertAdjacentElement('afterend',error);
+      }
+      const summary=form.querySelector('#bill-form-error');summary.textContent=B('error');summary.hidden=false;summary.focus();
+      form.elements[Object.keys(result.errors)[0]]?.focus();return;
+    }
+    billDraftData={raw,draft:result.draft};
+    showSheet('billReviewTitle',billReview(result.draft,state.locale));return;
+  }
   if(event.target.id==='account-profile-form') {
     event.preventDefault();
     const form=event.target;

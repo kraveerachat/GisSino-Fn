@@ -3,13 +3,17 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
   - UI_DESIGN_SPEC.md
 ---
 # Component inventory
+
+## Current Bills v2 components — 2026-10-26
+
+The [Bills screen](../../src/bills-ui.js) adds a selected-month summary, overdue annotation, compact cycle row, type filter, shared-cycle calendar with multi-item day sheet, installment detail (progress, products, schedule, distinct merchant/financing/funding metadata), and four type-specific manual draft forms. A review sheet supports Edit/Discard; a separate two-step paid-preview sheet changes page memory only. [bills-overview.js](../../src/bills-overview.js) supplies pure totals/status/schedule validation; [bills.css](../../src/styles/bills.css) scopes light/dark responsive styling. Existing shell, modal focus/Escape, sidebar, floating navigation, icons, amount formatter and global Add are reused. No new framework, payment API or durable form component is added. See [task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md).
 
 ## Current Home v2 components — Focused revision S3
 

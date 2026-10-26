@@ -3,13 +3,19 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - ../architecture/SYSTEM_ARCHITECTURE.md
 ---
 # UI data contracts and future boundaries
+
+## Current Bills v2 synthetic projection — 2026-10-26
+
+[bills-overview.js](../../src/bills-overview.js) is an in-memory read-only cycle model for `#bills`; its fixed clock is 2026-10-18, Asia/Bangkok. Each explicit cycle has a stable ID, due date, currency, integer minor amount or unknown, and paid flag. The selected month controls summary, sorted list, calendar markers and count. Eligible monthly totals sum known unpaid cycles due that month by currency. Prior arrears have a separate subtotal. Unknown actual amounts remain pending; estimates do not silently become payable. THB/USD never convert. Child products add no payable amount; `coveredBy` statement metadata excludes a card-backed cycle from duplicate commitment totals. The same cycles serve list, calendar and detail, including multiple items per date.
+
+Installment progress counts explicit paid periods and sums explicit unpaid amounts; the next unpaid period is separate from paid count. A fixed draft schedule clamps due days 29–31 to a short month's final day. The draft validator accepts four obligation types, rejects invalid dates/amounts/counts, and builds no durable records. Form review, sample edit and mark-paid confirmation are page-memory projections. No fixture, account balance, Wallet snapshot, Activity transaction or Home total is mutated. Authorized persistence, owner scoping, ledger reconciliation, card liability settlement, subscription posting, reminders and FX are future M2/M5/M6 work. See [Bills page](../pages/bills/Page-Bills.md) and [D33](../project/DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow).
 
 ## Current Home v2 fixture projection — Focused revision S3
 

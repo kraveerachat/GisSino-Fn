@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 ---
 # GisSino_FN — Start Here
 
@@ -26,6 +26,8 @@ updated: 2026-10-18
 - [Obsidian home pointer](00-Home.md)
 
 ## Current focus
+
+[Bills v2](worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) is delivered for owner visual review on `task/gs-ui-bills-v2-s1`. Its selected-month totals, installment details, list/calendar and four validated entry forms use synthetic in-memory data; no payment or durable record is created. [Page contract](pages/bills/Page-Bills.md), [review captures](design/reviews/BILLS_V2_REVIEW.md) and [D33](project/DECISIONS.md#d33--bills-v2-preview-composition-and-manual-obligation-flow) describe the tested scope. Activity PR #9 is separate and may need integration after merge. The older Wallet/Home paragraphs below preserve their historical checkpoints.
 
 [Wallet v2](worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) has CLOSED implementation delivery for [S2](worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) on the same branch `task/gs-ui-wallet-v2` and existing [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). [D32 S2](project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) changes Wallet to an assets-only blue/cyan/amber ring, Current/monthly History, frozen first-of-month synthetic snapshots and independent monthly activity toggles. Primary liability sections are removed; Current may retain one small Bills reference. S2 tested scope is runtime verified: 521 keys/66 tests, 56 layouts/14 edges/15 groups, 12 after/3 before captures with no artifact errors/overflow/clipping. Final A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in the same Draft PR #8; documentation closeout follows verified source and final remote head is reported in handoff. Owner review/merge pending. Prior S1 SHIP and immutable receipt remain historical. Home PR #7 has since merged into main; production action is outside scope.
 

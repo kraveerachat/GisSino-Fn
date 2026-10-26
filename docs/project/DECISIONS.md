@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -180,3 +180,12 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md), same existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Affects [Wallet](../pages/wallet/Page-Wallet.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
 
 - 2026-10-18 — Reopened Wallet task for D32 S2 owner revision; source inspection recorded, verification/review/delivery pending.
+
+### D33 — Bills v2 preview composition and manual obligation flow
+
+- Date: 2026-10-26; status: DECIDED for mock UI only under the owner's Bills v2 brief.
+- Selected-month known unpaid cycles form a by-currency commitment summary; prior arrears remain separate. Explicit schedule cycles drive list, calendar and details. Products describe one plan and never add another payable obligation. Statement-covered cycles are excluded from duplicate commitment counting.
+- Bills-specific Add offers Installment, Credit Card Statement, Monthly Bill and Subscription forms, then unsaved Review/Edit/Discard. Mark paid requires a separate confirmation and changes page memory only. Existing global Add behavior remains.
+- Detail separates marketplace, financing provider and funding account. Unknown variable actual amounts remain unknown; estimates are labelled. A draft due day after a short month's end clamps to its last day pending production owner approval.
+- This decision does not approve actual payment, durable mutation, liability settlement, automatic posting, reminders, FX or owner-scoped APIs. Those remain M2/M5/M6 and [open finance questions](OPEN_QUESTIONS.md).
+- Source: [Bills task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md), [page](../pages/bills/Page-Bills.md), [review](../design/reviews/BILLS_V2_REVIEW.md). Activity PR #9 is separate and may need a later conflict/integration pass.
