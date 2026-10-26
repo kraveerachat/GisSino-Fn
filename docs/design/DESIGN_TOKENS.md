@@ -11,6 +11,19 @@ related:
 ---
 # Design tokens
 
+
+## Activity v2 S1 scoped visual roles (2026-10-18)
+
+Reuse shared porcelain/enamel shell, raised/well surfaces, ink/muted/line/focus, Thai type/tabular amounts and reduced-motion rules. Income blue/expense coral are Activity roles; fourteen category colors/icons bind to stable IDs and readable labels. No global palette/token/provider-brand change. Source-observed Activity income/expense light roles are `#1765cf`/`#bc493e`, dark `#82b6ff`/`#ffad9e`; the neutral track uses shared well. Donut widths are 188px default, 176px on narrower/tablet/phone views and 150px below 360px. Bars are 4px; analytics padding is 24/20/16px; shared sheet caps at 600px and centers from 768px. These scoped values may change during review; final source dimensions/evidence recorded in [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md); no contrast pass before measurement. Hidden state removes proportional arcs/widths. Existing Home/Wallet/Account Board/navigation geometry remains protected.
+
+
+RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale keys and 102/102 tests (18 focused Activity tests). Inspected final browser evidence passes 32 normal-layout cases, 12 named functional checks, six edge scenarios and 200% text enlargement at 390px with no overflow/clipping/invalid geometry. Computed text contrast minimum is 5.175:1 light/4.775:1 dark, with zero CSP errors. Final independent A is SHIP for owner review after four final captures; no rescore. Owner review/merge remains pending. See [Activity review](reviews/ACTIVITY_ANALYTICS_REVIEW.md).
+
+
+Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
+
+Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
 ## Current Home v2 extension — Focused revision S3
 
 [Compact Home](../pages/home/Page-Home.md) reuses porcelain raised/well surfaces, enamel accent/ink, text/muted/line, warning/danger and existing semantic success roles in [blue.css](../../src/styles/blue.css). No global palette, Account Board stylesheet or token module changes. Due soon replaces Today and Home Safe UI is absent; the habit card uses restrained green/orange for status with icons/text, a blue progress ring and neutral future dates. Current and selected states remain distinguishable beyond color. Money keeps tabular numerals, true negative text and masking.
@@ -22,7 +35,7 @@ The new card's counters/ring and internal date scroller form two primary zones. 
 
 Scoped [wallet.css](../../src/styles/wallet.css) roles now map bank `#2464d8`, ewallet `#1594ac`, cash `#bd7d13`; dark equivalents are `#78a4ff`, `#62cfdf`, `#f3c15f`. Supporting Bills text uses shared muted neutral. Category wells use light `#e8effd`/`#e3f3f6`/`#faf1de` and dark `#273752`/`#293f43`/`#493d28`. These are UI category colors, not provider brand substitutions. Existing enamel shell, Thai fonts, surfaces, focus and contact shadows remain shared.
 
-The assets-only ring uses 320×320 SVG with outer/inner radii 143/113, proportional gaps and rounded corners; no minimum-sized slice exaggerates composition. Current source caps ring width at 224px on phones and 312px from 700px, content at 1120px, three summary columns, then paired ring/details and account columns from 700px. Cards use 20px corners, 16px shoulder, 36px provider badges and 44px minimum activity/period controls. Month strip scrolls; native year select and visible focus remain. Reduced motion removes transitions; hidden mode removes sensitive geometry. Values are source-observed; S2 browser verification passes56 layouts/14 edges with no overflow/clipping, and12 after/3 before captures exist. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md).
+The assets-only ring uses 320×320 SVG with outer/inner radii 143/113, proportional gaps and rounded corners; no minimum-sized slice exaggerates composition. Current source caps ring width at 224px on phones and 312px from 700px, content at 1120px, three summary columns, then paired ring/details and account columns from 700px. Cards use 20px corners, 16px shoulder, 36px provider badges and 44px minimum activity/period controls. Month strip scrolls; native year select and visible focus remain. Reduced motion removes transitions; hidden mode removes sensitive geometry. Values are source-observed; S2 browser verification passes56 layouts/14 edges with no overflow/clipping, and12 after/3 before captures exist. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Current integration status: [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) is MERGED at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, verified in the Activity start audit; prior review/push/checkpoint statements describe historical S2 delivery. [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md).
 
 ## Superseded Wallet S1 presentation (2026-10-18)
 
@@ -121,3 +134,5 @@ Active navy uses#153a71/#0b244c with existing dark-shell adaptation. Curved shou
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
+
+- 2026-10-18 — Added scoped D33 Activity v2 S1 contract; verification pending; historical task evidence preserved.

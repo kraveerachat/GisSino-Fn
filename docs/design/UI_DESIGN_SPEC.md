@@ -12,6 +12,21 @@ related:
 ---
 # UI design specification
 
+
+## Activity v2 S1 owner direction (2026-10-18)
+
+Existing `#activity` receives compact rounded income/expense donut, labelled net center and readable monthly totals/shares. Expense-only bars show maximum four leading categories and View all; full fourteen-category breakdown uses shared native dialog. Preserve search/type chips/dated list/detail/header/navigation/Add and synthetic disclosure. No Summary route/tab or oversized duplicate cards. [D33](../project/DECISIONS.md#d33--embedded-activity-monthly-analytics) supersedes proposed tab placement only.
+
+Reuse porcelain/enamel surfaces, navy text, income blue/expense coral, stable category roles with icons/labels and tabular TH/EN money. Mobile reading order heading/month → analytics/categories → search/filters/list; tablet/desktop may pair regions. Light/dark, reduced motion, readable text, 44px controls, visible focus, Escape/focus restoration and sheet safe-area scroll required. Privacy removes numbers/shares/proportional geometry. Source dimensions/colors and actual evidence PENDING in [S1](../worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md).
+
+
+RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale keys and 102/102 tests (18 focused Activity tests). Inspected final browser evidence passes 32 normal-layout cases, 12 named functional checks, six edge scenarios and 200% text enlargement at 390px with no overflow/clipping/invalid geometry. Computed text contrast minimum is 5.175:1 light/4.775:1 dark, with zero CSP errors. Final independent A is SHIP for owner review after four final captures; no rescore. Owner review/merge remains pending. See [Activity review](reviews/ACTIVITY_ANALYTICS_REVIEW.md).
+
+
+Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
+
+Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
 ## Current Home v2 — Focused owner revision S3
 
 [D31](../project/DECISIONS.md#d31--seven-day-home-due-list-and-missing-activity-days) preserves existing header/hero/four actions/navigation and Account Board. Below them Accounts → conditional compact Due soon → existing gamified habits → Recent last. Home Today/Safe are removed; nearest/monthly remain absent. Financial calculations/scenarios/formatters/tests remain; future Safe Wallet placement is OPEN.
@@ -27,7 +42,7 @@ Streak, weekly XP, proposed Bangkok Monday-Sunday qualifying active dates/7 ring
 
 [D32 S2](../project/DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) supersedes the Wallet S1 composition below. Wallet leads with a compact centered assets-only ring: Bank royal blue, E-wallet cyan, Cash amber; separated segments have rounded corners without inflating small shares. Center amount stays clean and labels concise. The same colors connect summary links and Bank → E-wallet → Cash section headings. Credit/debit/debt/bill sections leave the primary Wallet content; Current keeps one muted Bills reference, History none.
 
-Overview/History switches the summary and card period. History has a native year select and scrollable month buttons, with missing snapshots disabled. Account cards retain notched surfaces and provider identity while removing unnecessary underline/divider treatment. Their header activity buttons independently toggle selected-month income/expense shares and amounts; account links are sibling controls, never nested interactive elements. Own transfers are excluded. History balances are first-of-month snapshots; card detail explicitly remains current. Shared shell/navigation/profile actions and privacy/unknown/currency safeguards remain. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records 521-key/66-test PASS and runtime 56-layout/14-edge/15-group verification with 12 after/3 before captures. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Owner review/merge pending. The following S1 evidence is historical.
+Overview/History switches the summary and card period. History has a native year select and scrollable month buttons, with missing snapshots disabled. Account cards retain notched surfaces and provider identity while removing unnecessary underline/divider treatment. Their header activity buttons independently toggle selected-month income/expense shares and amounts; account links are sibling controls, never nested interactive elements. Own transfers are excluded. History balances are first-of-month snapshots; card detail explicitly remains current. Shared shell/navigation/profile actions and privacy/unknown/currency safeguards remain. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) records 521-key/66-test PASS and runtime 56-layout/14-edge/15-group verification with 12 after/3 before captures. Final independent A is SHIP; corrected 200% text enlargement and AX/contrast checks pass. Source `184b2f7053940f7e2129d41c8f61342c76a7b875` is pushed in existing Draft PR #8; documentation closeout follows the verified source. Current integration status: [PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8) is MERGED at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, verified in the Activity start audit; prior review/push/checkpoint statements describe historical S2 delivery. The following S1 evidence is historical.
 
 ## Superseded Wallet S1 presentation (2026-10-18)
 
@@ -128,3 +143,5 @@ The dedicated 44px grip holds 260ms for vertical touch; horizontal touch follows
 - 2026-10-18 — Added scoped Wallet v2 current state for [TASK-GS-UI-WALLET-V2-001](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md); final verification/delivery pending.
 
 - 2026-10-18 — [Wallet S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) / D32 S2 supersedes S1 Wallet presentation with assets-only composition and monthly history; S2 verification/delivery pending.
+
+- 2026-10-18 — Added scoped D33 Activity v2 S1 contract; verification pending; historical task evidence preserved.
