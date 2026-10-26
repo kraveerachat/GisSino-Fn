@@ -35,6 +35,10 @@ related:
 
 No question here authorizes a frontend implementation of backend behavior. [Bills feature inventory](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md#feature-and-system-inventory) maps dependencies.
 
+## Party preview policy gates — 2026-10-26
+
+[D34](DECISIONS.md#d34--party-friends-and-global-preview) approves only synthetic UI. Global audience and visible nickname/metric fields remain [OPEN] under Q7 and require owner/security approval before a real all-users board. Recommendations need a separate [OPEN] opt-in discoverability policy and permitted relationship context; no age, gender, birth date, finance or private activity matching is approved. M8 must define authenticated exact lookup, rate limiting, blocked-user behavior, request lifecycle and cross-user authorization before persistent friends/invites. M7 must produce approved period aggregates and field allowlists; test user A cannot fetch user B's transactions, accounts or attachments through Party endpoints. The current browser tests cannot establish backend security.
+
 ## Wallet summary decision — 2026-10-18
 
 [DECIDED for Wallet mock UI] [D32](DECISIONS.md#d32--wallet-composition-and-notched-account-cards) puts asset total at the center and obligations separately; D32 S2 supersedes original S1 composition with assets-only Current/monthly History, never net wealth. Debit money is represented only by linked bank balance; no debit fixture exists. THB/USD remain separate without FX. This closes the Wallet-specific summary choice for [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md) only; the Home Q10 row below remain separate; Home PR7 and Wallet PR8 are merged per Activity start audit.

@@ -29,6 +29,10 @@ Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary s
 
 `#bills` opens the selected-month list by default. Month selection updates summary, list and calendar; the type filter affects list rows only. Calendar date opens every cycle for that day. A row opens the existing dialog infrastructure with amount/status and, for installments, period progress, products, schedule and merchant/financing/funding. A credit-card statement detail retains its `#credit-card` destination. Bills Add opens the four-type draft form → review → Edit or Discard; sample Edit is prefilled. Record paid opens review → confirm and updates in-memory projection until reload. Existing global Add, Mobile More placement, desktop sidebar, Home/Wallet/Activity routes and privacy/theme/locale controls remain. [Page contract](../pages/bills/Page-Bills.md).
 
+## Party preview route — GS-UI-PARTY-V2-S1
+
+`#party` retains personal XP/streak/freezes, badges, feed and Visibility, then shows Friends Weekly Ranking followed by a synthetic opted-in Global Ranking for the current Bangkok week. The Friends card opens the shared mobile bottom sheet/desktop dialog with Search, Requests and Friends subviews; search requires exact username or six-digit code and state resets on reload. Home's existing habit link reaches `#party`; mobile More and desktop Party navigation are unchanged. Separate `#leaderboard` and `#friends` remain planned, not new routes. See [Party](../pages/party/Page-Party.md).
+
 ## Current Home v2 — Focused owner revision S3
 
 `#home` preserves greeting/balance/actions/navigation, then My Accounts first → conditional max4 seven-day Due soon → existing gamified Streak/XP with missing days → Recent Transactions last. No Today/Safe Home card, standalone nearest or monthly Home UI; underlying Safe math remains for future Wallet design. Settings retains synthetic scenario/Bangkok clock and Account Board mode controls. No route is added. See [Home](../pages/home/Page-Home.md) and [S3](../worklog/20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md).
@@ -92,7 +96,7 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 | `#activity` | October sample context, income/expense summaries, search, all/expense/income/own-transfer filters, day grouping, needs-details transaction, detail sheet; sample, empty, loading, error, unavailable, and no-search-results |
 | Add (modal action) | Mode chooser; manual expense/income, own-account transfer, synthetic receipt, no-spend check-in, inactive AI; field validation and explicitly unsaved result |
 | `#bills` | October commitments, calendar/list, credit cards, monthly bills, installments, subscriptions, due/status badges, detail sheet; empty/loading/error/unavailable. Compact agenda below 360px |
-| `#party` | Private personal habit status, level/XP, streak/freezes, milestones, weekly habit leaderboard, members, invitation explanation, activity feed, visibility switches. No account/transaction details |
+| `#party` | Personal habit status, level/XP, streak/freezes, badges; accepted Friends weekly board then synthetic opted-in Global board; Friends summary/search/requests sheet; aggregate feed and three visibility levels. No account/transaction details |
 | `#settings` | Light/dark, Thai/English, Account Board vertical/horizontal display mode, Home-only scenario/Bangkok datetime, profile, currency/FX, categories, notifications, privacy, security, installation guide explanation |
 | Header | Notifications empty-state sheet, theme action, avatar/settings entry |
 | Desktop sidebar (1100px+) | 72px collapsed / 240px temporary overlay / 240px pinned; five direct destination links, stable pin toggle, keyboard disclosure, profile Settings |

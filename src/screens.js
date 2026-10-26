@@ -1,12 +1,13 @@
 import { activityScreen, activityResults as monthlyActivityResults } from './activity.js';
 import { homePreviewControls } from './home-overview.js';
 import { icon, logo } from './icons.js';
-import { preview, transactions, accounts, bills, members } from './fixtures.js';
-import { money, number, escapeHTML as esc } from './i18n.js';
+import { preview, transactions, accounts, bills } from './fixtures.js';
+import { money, escapeHTML as esc } from './i18n.js';
 import { blueHome, transferScreen, creditCardScreen } from './blue-screens.js';
 import { floatingNavigation, desktopContext, desktopAdd } from './navigation.js';
 import { walletScreen } from './wallet.js';
 import { billsScreen as billsV2Screen } from './bills-ui.js';
+import { partyGrid } from './party-ui.js';
 
 export const destinations = ['home', 'wallet', 'activity', 'bills', 'party'];
 export function navigation(state, t) {
@@ -25,7 +26,6 @@ const sectionHeader = (title, action = '') => `<div class="section-heading"><h2>
 const link = (href, label) => `<a class="text-link" href="#${href}">${label}${icon('arrow')}</a>`;
 const pageHead = (state, t, options = '') => `<div class="page-heading"><div><p class="greeting">${state.route === 'home' ? t('hello') : t(state.route)}</p><h1>${t(`${state.route}Title`)}</h1><p class="page-subtitle">${t(`${state.route}Subtitle`)}</p></div>${options || `<span class="date-label">${icon('calendar')}${t('sampleDate')}</span>`}</div>`;
 const displayMoney = (value, state, decimals = false) => state.balanceVisible ? money(value, state.locale, decimals) : '••••••';
-const pill = (text, kind = '') => `<span class="status ${kind}">${text}</span>`;
 
 export function transactionRow(item, state, t) {
   const sign = item.type === 'income' ? '+' : item.type === 'expense' ? '−' : '';
@@ -77,7 +77,7 @@ function billsScreen(state,t) {
   return `${pageHead(state,t,monthSelect(state,t))}<section class="commitments-panel enamel"><div><span>${t('committed')}</span><strong>${displayMoney(preview.obligations,state)}</strong><p>${t('fourBills')}</p></div><span class="commitments-icon">${icon('calendar')}</span></section><div class="bills-toolbar"><div class="segmented" role="group" aria-label="${t('billsView')}">${['list','calendar'].map(view=>`<button data-action="bills-view" data-view="${view}" class="${state.billsView===view?'selected':''}" aria-pressed="${state.billsView===view}">${icon(view)}${t(view)}</button>`).join('')}</div>${stateSelect(state,t)}</div>${state.previewState !== 'sample' ? stateCard(state.previewState,t,true) : state.billsView === 'calendar' ? calendar(state,t) : `<div class="bills-sections">${['creditCards','monthlyBills','installments','subscriptions'].map(cat=>`<section>${sectionHeader(t(cat))}<div class="panel">${bills.filter(b=>b.category===cat).map(b=>billRow(b,state,t)).join('')}</div></section>`).join('')}</div>`}`;
 }
 function party(state,t) {
-  return `${pageHead(state,t,`<button class="button secondary" data-action="visibility">${icon('shield')}${t('visibility')}</button>`)}<div class="party-grid"><div class="party-primary"><section class="party-status enamel"><div class="party-status-header"><span class="avatar avatar-large">GS</span><div><span>${t('myProgress')}</span><h2>${t('hello')}</h2></div><span class="level-pill">${t('level',{n:8})}</span></div><div class="xp-line"><strong>1,240 <span>${t('xp')}</span></strong><span>${t('nextLevel')}</span></div><progress max="1500" value="1240" aria-label="${t('xp')}"></progress><div class="party-stats"><div>${icon('flame')}<span>${t('dayStreak')}<strong>${t('days',{n:7})}</strong></span></div><div>${icon('snow')}<span>${t('freezes')}<strong>${t('freezeCount')}</strong></span></div></div></section><section class="panel badges-panel">${sectionHeader(t('badges'))}<div class="badge-gallery">${[['star','badgeFirst'],['flame','badgeWeek'],['wallet','badgeCalm'],['lock','badgeMonth']].map(([i,k],n)=>`<div class="badge-item ${n===3?'locked':''}"><span class="medallion">${icon(i)}</span><strong>${t(k)}</strong>${n===3?`<small>${t('locked')}</small>`:''}</div>`).join('')}</div></section><section class="panel leaderboard-panel">${sectionHeader(t('leaderboard'),pill(t('weekly')))}${members.map((m,i)=>`<div class="leaderboard-row"><span class="rank">${i+1}</span><span class="avatar ${i===0?'you':''}">${m.initials}</span><span class="row-copy"><strong>${t(m.name)}</strong><small>${m.id==='you'&&!state.shareStreak?t('hiddenFromParty'):t('days',{n:m.streak})}</small></span><strong class="xp-value">${m.id==='you'&&!state.shareXP?`<small>${t('hiddenFromParty')}</small>`:`${number(m.xp,state.locale)} <small>${t('xp')}</small>`}</strong></div>`).join('')}</section></div><div class="party-secondary"><div class="privacy-note panel">${icon('shield')}<div><strong>${t('privacyTitle')}</strong><p>${t('privacyBody')}</p></div></div><section class="panel members-panel">${sectionHeader(t('members'),'<span class="muted small">03</span>')}<div class="member-stack">${members.map(m=>`<span class="avatar">${m.initials}</span>`).join('')}</div><p class="muted small">${t('inviteNote')}</p><button class="button primary full-width" data-action="invite">${icon('plus')}${t('invite')}</button></section><section class="panel feed-panel">${sectionHeader(t('activityFeed'))}<div class="feed-item"><span class="well-icon">${icon('flame')}</span><div><strong>${t('feedOne')}</strong><small>${t('feedTime')}</small></div></div><div class="feed-item"><span class="well-icon">${icon('trophy')}</span><div><strong>${t('feedTwo')}</strong><small>${t('feedTime')}</small></div></div></section></div></div>`;
+  return `${pageHead(state,t,`<button class="button secondary" data-action="visibility">${icon("shield")}${t("visibility")}</button>`)}${partyGrid(state,t,state.partySession)}`;
 }
 function settings(state,t) {
   const rows=[['party','profileSettings','profileInfo'],['globe','currency','fxInfo'],['tag','categories','categoryInfo'],['bell','notifications','notificationsBody'],['shield','privacy','privacyPreview'],['lock','security','securityInfo'],['download','install','installInfo']];

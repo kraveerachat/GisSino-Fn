@@ -14,6 +14,8 @@ related:
 
 This timeline is append-only.
 
+- 2026-10-26 — [Party v2](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) added synthetic Friends and opted-in Global weekly-XP rankings, exact-match friendship preview and bounded sample suggestions in separate [Draft PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11). No real directory, ranking service or finance sharing; owner approval/merge pending.
+
 ## Background from source documents
 
 - The earlier Sina_FN prototype became too broad; GisSino narrows the product to the seven blocks in the Project Guide.
@@ -29,6 +31,8 @@ This timeline is append-only.
 - 2026-10-26 — [Bills v2 task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) implements a selected-month synthetic obligation projection, compact list/calendar, explicit installment progress and four unsaved manual-entry forms in [Draft PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10). Checks passed (94 tests; nine Chromium viewport sizes). Owner visual review remains pending; no production finance milestone. Wallet PR #8 is merged in the main base; Activity PR #9 remains separate at this checkpoint.
 
 - 2026-10-26 — [Activity PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) merged at `18e087e360734d52b0a66a026da34834afdc70d3`. Bills PR #10 was integrated with that main on its existing branch; 641 locale keys, 112 tests and 30 Chromium route/theme/viewport cases passed. Bills D35 resolves its collision with Activity D33; PR #10 merge is pending GitHub confirmation.
+
+- 2026-10-26 — [Bills PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) merged at `40d52ff9e0ae9dc4f610b485f930f94855a9c0ca` after Activity/Bills integration checks. The existing Party PR #11 branch then merged this new main normally; D33 Activity, D34 Party and D35 Bills coexist. Party integration passed 693 locale keys, 121 tests and 30 Chromium route/theme/viewport cases plus focused Party, Activity and Bills actions. PR #11 merge remains pending GitHub confirmation.
 
 ## Change log
 

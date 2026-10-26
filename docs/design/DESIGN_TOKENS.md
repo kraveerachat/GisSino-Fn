@@ -28,6 +28,8 @@ Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary s
 
 [bills.css](../../src/styles/bills.css) scopes the Bills extension to `.bills-v2`: royal blue summary/primary action, porcelain and pale-blue wells, navy financial text, slate support copy, amber due-soon/today, restrained red overdue, green paid, and neutral unknown. Every status also has text. Amounts use tabular alignment; the monthly total is visually dominant while list rows stay compact. Existing global theme colors, Thai typography, focus ring, shared motion and reduced-motion media query are reused. No global palette or Account Board token change. [Review](reviews/BILLS_V2_REVIEW.md).
 
+Party v2 uses the existing porcelain/enamel semantic colors, radii, shadows and motion tokens. [party.css](../../src/styles/party.css) adds scoped compact ranking rows, 44px friend controls and a centered desktop dialog animation; it introduces no new product-wide palette or token.
+
 ## Current Home v2 extension — Focused revision S3
 
 [Compact Home](../pages/home/Page-Home.md) reuses porcelain raised/well surfaces, enamel accent/ink, text/muted/line, warning/danger and existing semantic success roles in [blue.css](../../src/styles/blue.css). No global palette, Account Board stylesheet or token module changes. Due soon replaces Today and Home Safe UI is absent; the habit card uses restrained green/orange for status with icons/text, a blue progress ring and neutral future dates. Current and selected states remain distinguishable beyond color. Money keeps tabular numerals, true negative text and masking.

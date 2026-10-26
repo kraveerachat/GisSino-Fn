@@ -13,7 +13,7 @@ related:
 ---
 # Decisions
 
-The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. D32 records the new Wallet preview; D33 records Activity monthly analytics and D35 records Bills preview composition (D34 is reserved for the pending Party branch). D29–D31 are reserved for the separate unmerged Home PR #7 and are not imported here. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
+The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-approved navigation; D24 records the Account Board; D25 records the A01 Welcome extension; D26 the shield replacement; D27 the owner-requested pre-Home preview revision. D28 records consumer copy and public signup/Google presentation. D32 records the new Wallet preview; D33 records Activity monthly analytics and D35 records Bills preview composition (D34 records the Party weekly rankings and Friends preview). D29–D31 record the merged Home PR #7. Original D4 text below is preserved; D27 supersedes its direct Welcome choice and D28 refines its preview controls only. Production invite-only policy remains canonical.
 
 | ID | Decision | Status |
 |---|---|---|
@@ -46,6 +46,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for S3 preview; control/copy details superseded by D28 |
 | D28 | Consumer copy, one Demo mode header, open-signup/Google presentation and no-data navigation | [DECIDED] for preview; production public signup/Google [OPEN] pending approval |
 | D32 | Wallet ring composition, notched cards, assets central/separate obligations and linked-bank debit semantics | [DECIDED] for Wallet mock UI |
+| D34 | Party Friends and Global ranking with exact-match, session-only friend preview | [DECIDED] for Party mock UI only; production policy [OPEN] |
 
 ### D23 — Responsive primary navigation
 
@@ -199,3 +200,12 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Detail separates marketplace, financing provider and funding account. Unknown variable actual amounts remain unknown; estimates are labelled. A draft due day after a short month's end clamps to its last day pending production owner approval.
 - This decision does not approve actual payment, durable mutation, liability settlement, automatic posting, reminders, FX or owner-scoped APIs. Those remain M2/M5/M6 and [open finance questions](OPEN_QUESTIONS.md).
 - Source: [Bills task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md), [page](../pages/bills/Page-Bills.md), [review](../design/reviews/BILLS_V2_REVIEW.md). Activity D33 is already merged; this decision is scoped to Bills only.
+
+### D34 — Party Friends and Global preview
+
+- Date: 2026-10-26; status: [DECIDED] for the local mock UI only. Activity PR #9 is merged as D33 and Bills PR #10 as D35; Party uses D34.
+- Preserve the approved Party personal XP/streak/freezes card, badges and aggregate feed. Replace the single ranking with compact Friends Weekly Ranking then Global Ranking; remove only the standalone privacy explanation card. Friends shows accepted eligible friends and eligible viewer; Global shows opted-in eligible sample participants including friends. Both use synthetic current Bangkok Monday–Sunday weekly XP, never lifetime XP or financial data.
+- The Friends card opens the existing dialog for exact username/six-digit-code lookup, local request states and at most three explicitly synthetic suggestions. Preview relationships are not Party membership, global opt-in or production discoverability. Session memory resets on reload; no network, persistence or real-user directory.
+- Preserve three visibility tiers and independent ranking opt-in. Private, opted-out, blocked, missing-metric and wrong-week people are unranked. Full visibility never authorizes itemized transactions in this UI slice.
+- Production Global audience, discoverability/recommendations, M7 aggregates and M8 friendship authorization remain [OPEN]. This decision does not approve public ranking endpoints or amend canonical Project Guide policy.
+- Source: [Party task](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md), [Page Party](../pages/party/Page-Party.md), [Open Questions](OPEN_QUESTIONS.md).

@@ -17,6 +17,8 @@ related:
 
 # Change Spec — Home v2, Leaderboard, Friends, Onboarding, Announcements
 
+> **Party UI preview, 2026-10-26:** [GS-UI-PARTY-V2-S1](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) implements compact Friends and synthetic opted-in Global weekly habit-XP boards inside `#party`, plus a transient exact-match Friends sheet and up to three clearly synthetic recommendations. The separate `#leaderboard`/`#friends` routes, Home Global card, spending boards, age categories, persistent requests, all-users audience policy and production discoverability remain unimplemented/open. The earlier section 4.3 recommendation against suggested friends is superseded only for the bounded synthetic popup preview; it does not approve a live directory or production recommendation service. Project Guide privacy rules still govern.
+
 > **Audience:** the implementation agent (ChatGPT-written task prompts → Codex / Claude Code) and the owner.
 > **Stage:** mock-data UI prototype. Nothing here is implemented yet. Every number shown in the UI must be labeled sample data. Never present mock data as real.
 > **Source:** owner decisions from the design discussion on 2026-10-17, plus analyst proposals. Tags: **[DECIDED]** = owner said so · **[PROPOSED]** = analyst default, use it and say so · **[OPEN]** = do not assume, ask the owner.

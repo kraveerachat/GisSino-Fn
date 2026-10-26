@@ -1,0 +1,111 @@
+.party-v2 .party-board {margin-top:22px;padding:19px 24px 12px;overflow:hidden}
+.party-v2 .party-board-global {background:linear-gradient(155deg,var(--surface) 54%,var(--accent-well));border:1px solid var(--line)}
+.party-board-heading {display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.party-board-heading h2 {font-size:17px;color:var(--text)}
+.party-board-heading p {font-size:12px;color:var(--muted);margin-top:2px}
+.party-board-icon {width:36px;height:36px;display:grid;place-items:center;flex:none;border-radius:12px;background:var(--accent-well);color:var(--accent-ink)}
+.party-board-icon .icon {width:17px;height:17px}
+.party-period {display:flex;align-items:center;gap:7px;margin:13px 0 3px;font-size:11px;color:var(--muted)}
+.party-period .icon {width:14px;height:14px}
+.party-rank-row {display:grid;grid-template-columns:27px 38px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:66px;padding:9px 0}
+.party-rank-row+.party-rank-row {border-top:1px solid var(--line)}
+.party-rank-row.is-own-position {border-top:1px solid var(--strong-line);margin-top:3px}
+.party-rank-row.is-you {border-radius:14px;padding-inline:8px;background:var(--accent-well)}
+.party-rank-number {width:26px;height:26px;display:grid;place-items:center;border-radius:9px;color:var(--accent-ink);background:var(--well);font-weight:700;font-size:12px}
+.party-rank-row:first-child .party-rank-number {background:var(--accent-well)}
+.party-avatar {width:38px;height:38px;font-size:11px}
+.party-rank-person {min-width:0;display:flex;flex-direction:column;line-height:1.35}
+.party-rank-person strong {font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.party-rank-person small {font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.party-weekly-value {display:flex;flex-direction:column;align-items:flex-end;white-space:nowrap;color:var(--accent-ink);font-size:14px;font-variant-numeric:tabular-nums;line-height:1.25}
+.party-weekly-value small {font-size:10px;color:var(--muted);font-weight:500}
+.party-board-empty {padding:20px 0;text-align:center;color:var(--muted)}
+.party-board-empty .button {margin:12px auto 0;min-height:44px}
+.party-view-all,.party-view-friends {min-height:44px;display:flex;align-items:center;justify-content:center;gap:6px;width:100%;font-size:12px;font-weight:650;color:var(--accent-ink)}
+.party-view-all {border-top:1px solid var(--line);margin-top:4px}
+.party-view-all .icon,.party-view-friends .icon {width:14px;height:14px}
+.party-sample-note {font-size:11px;color:var(--muted);margin:8px 0 0}
+.party-board .party-sample-note {border-top:1px solid var(--line);padding-top:8px}
+.party-v2 .party-secondary .members-panel {margin-top:0}
+.party-card-title {display:flex;align-items:center;justify-content:space-between;gap:12px}
+.party-card-title h2 {font-size:17px}
+.party-count {min-width:30px;min-height:30px;display:grid;place-items:center;padding:2px 7px;border-radius:10px;color:var(--accent-ink);background:var(--accent-well);font-variant-numeric:tabular-nums}
+.party-friend-summary {display:flex;align-items:center;gap:17px;min-height:68px;margin:8px 0 10px;color:var(--muted);font-size:12px}
+.party-friends-card .member-stack {padding:0 8px 0 0;flex:none}
+.party-friends-card .member-stack .avatar {width:36px;height:36px;font-size:11px}
+.party-friends-card>.button {min-height:46px;text-align:center;justify-content:center}
+.party-friends-card>.button .icon {width:16px;height:16px}
+.party-friends-card .party-view-friends {margin-top:5px}
+.party-v2 .feed-panel {margin-top:22px}
+.party-v2 .feed-panel .party-sample-note {margin-top:17px}
+.party-friends-sheet,.party-ranking-sheet,.party-visibility-sheet {padding-bottom:8px}
+.party-sheet-tabs {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;background:var(--well);border-radius:15px;margin:18px 0 20px}
+.party-sheet-tabs button {min-height:44px;text-align:center;border-radius:11px;padding:5px;font-size:12px;font-weight:650;color:var(--muted)}
+.party-sheet-tabs button[aria-pressed="true"] {color:var(--accent-ink);background:var(--surface-raised);box-shadow:var(--key-shadow)}
+.party-friend-search label {display:block;font-size:12px;font-weight:700;margin-bottom:7px}
+.party-search-control {display:flex;gap:8px}
+.party-search-control input {flex:1;min-width:0;height:46px;border:1px solid var(--line);border-radius:12px;padding:0 13px;background:var(--surface);font:inherit;font-size:16px;outline-offset:2px}
+.party-search-control .button {min-height:46px;display:flex;align-items:center;justify-content:center;gap:5px;padding:0 15px}
+.party-search-control .icon {width:15px;height:15px}
+.party-friend-search>p {font-size:11px;color:var(--muted);margin-top:7px}
+.party-search-result,.party-search-message {margin-top:18px;padding:12px 14px;border:1px solid var(--line);border-radius:15px;background:var(--surface)}
+.party-search-result h3 {font-size:13px;margin-bottom:4px}
+.party-search-message {color:var(--muted);font-size:12px}
+.party-subheading {display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:20px 0 4px}
+.party-subheading h3 {font-size:14px}
+.party-subheading span {font-size:11px;color:var(--muted)}
+.party-person-row {display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:62px;padding:9px 0}
+.party-person-row+.party-person-row {border-top:1px solid var(--line)}
+.party-person-copy {min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.party-person-copy strong,.party-person-copy small {overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.party-person-copy strong {font-size:13px}
+.party-person-copy small {font-size:11px;color:var(--muted)}
+.party-person-action,.party-relationship {min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:11px;font-size:11px;font-weight:650;white-space:nowrap}
+.party-person-action {background:var(--accent-well);color:var(--accent-ink)}
+.party-person-action:hover {background:var(--well)}
+.party-person-action.is-secondary {background:var(--well);color:var(--muted)}
+.party-relationship {color:var(--muted);background:var(--well)}
+.party-request-actions {display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+.party-sheet-list {min-height:100px}
+.party-empty-copy {padding:22px 4px;text-align:center;color:var(--muted);font-size:12px}
+.party-visibility-levels {border:0;margin:0 0 15px;padding:0}
+.party-visibility-levels legend {font-size:12px;font-weight:700;margin-bottom:7px}
+.party-visibility-choice {display:flex;align-items:center;gap:12px;padding:10px 3px;border-top:1px solid var(--line)}
+.party-visibility-choice input {width:18px;height:18px;flex:none}
+.party-visibility-choice span {display:flex;flex-direction:column;line-height:1.4}
+.party-visibility-choice strong {font-size:12px}
+.party-visibility-choice small,.party-visibility-hint {font-size:11px;color:var(--muted)}
+.party-visibility-hint {margin:3px 0 12px}
+.party-visibility-sheet .visibility-options {margin-top:11px}
+.sheet.party-dialog[open] {animation:party-sheet-in var(--duration-sheet) var(--ease-out)}
+@keyframes party-sheet-in {from {transform:translateY(24px)} to {transform:translateY(0)}}
+@media (max-width:899px) {
+  .party-v2 .party-secondary {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .party-v2 .party-secondary .members-panel,.party-v2 .party-secondary .feed-panel {margin-top:0}
+}
+@media (max-width:599px) {
+  .party-v2 .party-secondary {grid-template-columns:minmax(0,1fr);gap:20px}
+  .party-v2 .party-board {padding:18px 16px 10px;margin-top:20px}
+  .party-v2 .party-board-heading h2 {font-size:16px}
+  .party-rank-row {gap:8px;grid-template-columns:25px 34px minmax(0,1fr) auto}
+  .party-avatar {width:34px;height:34px}
+  .party-weekly-value {font-size:13px}
+  .party-friends-card,.party-v2 .feed-panel {padding:20px 18px}
+}
+@media (max-width:359px) {
+  .party-v2 .party-board {padding-inline:13px}
+  .party-rank-row {gap:6px}
+  .party-rank-person strong {font-size:12px}
+  .party-search-control .button {padding-inline:11px}
+  .party-person-row {gap:7px}
+  .party-request-actions {grid-column:2/-1}
+}
+@media (min-width:700px) {
+  .sheet.party-dialog {inset:50% auto auto 50%;transform:translate(-50%,-50%);margin:0;width:min(540px,calc(100vw - 48px));max-height:min(82svh,760px);border-radius:24px}
+  .sheet.party-dialog[open] {animation:party-dialog-in var(--duration-sheet) var(--ease-out)}
+  @keyframes party-dialog-in {from {transform:translate(-50%,calc(-50% + 16px))} to {transform:translate(-50%,-50%)}}
+}
+@media (prefers-reduced-motion:reduce) {
+  .sheet.party-dialog[open] {animation:none}
+  .party-v2 *, .party-friends-sheet * {scroll-behavior:auto!important;transition-duration:0.01ms!important;animation-duration:0.01ms!important}
+}
