@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -26,6 +26,10 @@ RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale k
 Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
 
 Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 presentation — 2026-10-26
+
+The [Bills page](../pages/bills/Page-Bills.md) has a single dominant monthly summary and compact chronological rows. It presents known selected-month THB commitments prominently, USD separately, and prior arrears in a distinct annotation. Due date, title, amount, status text and installment period remain visible in list mode. Calendar uses the same model; day selection reveals all due cycles. The detail sheet moves payable facts and progress above the period schedule and product grouping. Type-specific form fields flow vertically into an explicitly unsaved review. Scoped porcelain/enamel highlights, navy/cobalt hierarchy and restrained semantic status colors connect Bills to existing GisSino surfaces. Phone layouts prioritize thumb access and leave room for the floating island; tablet/desktop use capped content and dialog width. Focus, Escape and reduced-motion behavior reuse the shared shell. [Review captures](reviews/BILLS_V2_REVIEW.md) document inspected sizes.
 
 ## Current Home v2 — Focused owner revision S3
 

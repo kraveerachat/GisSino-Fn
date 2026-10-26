@@ -3,7 +3,7 @@ id: DESIGN-TOKENS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
@@ -23,6 +23,10 @@ RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale k
 Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
 
 Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 roles — 2026-10-26
+
+[bills.css](../../src/styles/bills.css) scopes the Bills extension to `.bills-v2`: royal blue summary/primary action, porcelain and pale-blue wells, navy financial text, slate support copy, amber due-soon/today, restrained red overdue, green paid, and neutral unknown. Every status also has text. Amounts use tabular alignment; the monthly total is visually dominant while list rows stay compact. Existing global theme colors, Thai typography, focus ring, shared motion and reduced-motion media query are reused. No global palette or Account Board token change. [Review](reviews/BILLS_V2_REVIEW.md).
 
 ## Current Home v2 extension — Focused revision S3
 

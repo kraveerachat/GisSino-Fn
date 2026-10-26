@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 ---
 # GisSino_FN — Start Here
 
@@ -27,7 +27,9 @@ updated: 2026-10-18
 
 ## Current focus
 
-[Activity v2 S1](worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) has CLOSED implementation delivery, RUNTIME VERIFIED for tested scope on `task/gs-ui-activity-v2-s1`, based on main `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`. [D33](project/DECISIONS.md#d33--embedded-activity-monthly-analytics) selects embedded monthly donut, maximum four expense categories/full fourteen-category shared dialog, preserving transactions/search/type filters/detail/navigation. Activity-only dated synthetic data reconciles THB 42,000 income,15,240 expense,26,760 net. Source/checks and normal browser matrix pass: 637 locale keys,102 tests,32 layouts/12 named functional checks. Final text enlargement/contrast and independent SHIP pass; latest source b92cf23 committed/pushed and new [Draft PR9](https://github.com/kraveerachat/GisSino-Fn/pull/9) OPEN/DRAFT MERGEABLE/CLEAN;final docs checkpoint follows,owner review pending in [S1](worklog/20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md); no new Summary route/tab or production service.
+[Activity v2](worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) is merged in [PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) at `18e087e360734d52b0a66a026da34834afdc70d3`. [D33](project/DECISIONS.md#d33--embedded-activity-monthly-analytics) records the embedded monthly donut, category breakdown and preserved transaction tools.
+
+[Bills v2](worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) is integration-verified in [PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10). Its selected-month totals, installment details, list/calendar and four validated entry forms use synthetic in-memory data; no payment or durable record is created. [Page contract](pages/bills/Page-Bills.md), [review captures](design/reviews/BILLS_V2_REVIEW.md) and [D35](project/DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow) describe the scope.
 
 Parent verified Home [PR7](https://github.com/kraveerachat/GisSino-Fn/pull/7) MERGED at `175677c` and Wallet [PR8](https://github.com/kraveerachat/GisSino-Fn/pull/8) MERGED at base SHA. Prior closed sessions/receipts retain historical checkpoint evidence. Other production/privacy/finance/habit/Party policies and unresolved decisions remain in force.
 

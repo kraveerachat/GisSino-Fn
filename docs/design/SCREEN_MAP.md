@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -24,6 +24,10 @@ RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale k
 Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
 
 Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 route — 2026-10-26
+
+`#bills` opens the selected-month list by default. Month selection updates summary, list and calendar; the type filter affects list rows only. Calendar date opens every cycle for that day. A row opens the existing dialog infrastructure with amount/status and, for installments, period progress, products, schedule and merchant/financing/funding. A credit-card statement detail retains its `#credit-card` destination. Bills Add opens the four-type draft form → review → Edit or Discard; sample Edit is prefilled. Record paid opens review → confirm and updates in-memory projection until reload. Existing global Add, Mobile More placement, desktop sidebar, Home/Wallet/Activity routes and privacy/theme/locale controls remain. [Page contract](../pages/bills/Page-Bills.md).
 
 ## Current Home v2 — Focused owner revision S3
 

@@ -6,6 +6,7 @@ import { money, number, escapeHTML as esc } from './i18n.js';
 import { blueHome, transferScreen, creditCardScreen } from './blue-screens.js';
 import { floatingNavigation, desktopContext, desktopAdd } from './navigation.js';
 import { walletScreen } from './wallet.js';
+import { billsScreen as billsV2Screen } from './bills-ui.js';
 
 export const destinations = ['home', 'wallet', 'activity', 'bills', 'party'];
 export function navigation(state, t) {
@@ -87,7 +88,8 @@ export function screen(state,t) {
   if(state.route==='home') return blueHome(state,t,transactionRow);
   if(state.route==='transfer') return transferScreen(state,t);
   if(state.route==='credit-card') return creditCardScreen(state,t,transactionRow);
-  return ({activity,bills:billsScreen,party,settings}[state.route]||home)(state,t);
+  if(state.route==='bills')return billsV2Screen(state,t,{stateSelect,stateCard});
+  return ({activity,party,settings}[state.route]||home)(state,t);
 }
 export function addMenu(t) {
   const options=[['expense','expense','manualExpense','manualDesc'],['income','income','manualIncome','manualDesc'],['transfer','transfer','transferAction','transferDesc'],['slip','upload','slip','slipDesc'],['check','check','checkin','checkinDesc']];

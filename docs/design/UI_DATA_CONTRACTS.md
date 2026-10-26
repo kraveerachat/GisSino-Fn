@@ -3,7 +3,7 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
@@ -35,6 +35,12 @@ RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale k
 Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
 
 Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 synthetic projection — 2026-10-26
+
+[bills-overview.js](../../src/bills-overview.js) is an in-memory read-only cycle model for `#bills`; its fixed clock is 2026-10-18, Asia/Bangkok. Each explicit cycle has a stable ID, due date, currency, integer minor amount or unknown, and paid flag. The selected month controls summary, sorted list, calendar markers and count. Eligible monthly totals sum known unpaid cycles due that month by currency. Prior arrears have a separate subtotal. Unknown actual amounts remain pending; estimates do not silently become payable. THB/USD never convert. Child products add no payable amount; `coveredBy` statement metadata excludes a card-backed cycle from duplicate commitment totals. The same cycles serve list, calendar and detail, including multiple items per date.
+
+Installment progress counts explicit paid periods and sums explicit unpaid amounts; the next unpaid period is separate from paid count. A fixed draft schedule clamps due days 29–31 to a short month's final day. The draft validator accepts four obligation types, rejects invalid dates/amounts/counts, and builds no durable records. Form review, sample edit and mark-paid confirmation are page-memory projections. No fixture, account balance, Wallet snapshot, Activity transaction or Home total is mutated. Authorized persistence, owner scoping, ledger reconciliation, card liability settlement, subscription posting, reminders and FX are future M2/M5/M6 work. See [Bills page](../pages/bills/Page-Bills.md) and [D35](../project/DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow).
 
 ## Current Home v2 fixture projection — Focused revision S3
 

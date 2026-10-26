@@ -3,7 +3,7 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
@@ -25,6 +25,10 @@ RUNTIME VERIFIED for the tested scope: parent check passes 637 matching locale k
 Source `ae9c611c68c081ef6686353b33539cbc7980d453` is committed/pushed on `task/gs-ui-activity-v2-s1` in new [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9), verified OPEN/DRAFT, MERGEABLE/CLEAN against main. Implementation delivery is CLOSED after final SHIP; owner visual review/merge remains pending. Documentation closeout/receipt is prepared on the same branch; parent final docs commit/push/head equality follows. No future documentation SHA is claimed.
 
 Latest pushed source head is `b92cf237a54ed364fda4fdb48b81b98e6c2188bf`:salary search retains visible Income category compatibility;637-key/102-test rerun passes. The receipt preserves earlier feature checkpoint ae9c611c68c081ef6686353b33539cbc7980d453;no screenshot change.
+
+## Current Bills v2 components — 2026-10-26
+
+The [Bills screen](../../src/bills-ui.js) adds a selected-month summary, overdue annotation, compact cycle row, type filter, shared-cycle calendar with multi-item day sheet, installment detail (progress, products, schedule, distinct merchant/financing/funding metadata), and four type-specific manual draft forms. A review sheet supports Edit/Discard; a separate two-step paid-preview sheet changes page memory only. [bills-overview.js](../../src/bills-overview.js) supplies pure totals/status/schedule validation; [bills.css](../../src/styles/bills.css) scopes light/dark responsive styling. Existing shell, modal focus/Escape, sidebar, floating navigation, icons, amount formatter and global Add are reused. No new framework, payment API or durable form component is added. See [task](../worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md).
 
 ## Current Home v2 components — Focused revision S3
 

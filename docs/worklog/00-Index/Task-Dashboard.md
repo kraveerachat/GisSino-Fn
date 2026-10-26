@@ -3,7 +3,7 @@ id: HUB-WORKLOG
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: ../../START_HERE.md
 related:
   - ../../project/PROJECT_HISTORY.md
@@ -24,4 +24,5 @@ related:
 | [TASK-GS-UI-HOME-V2-S1](../10-Tasks/TASK-GS-UI-HOME-V2-S1.md) | MERGED (historical RUNTIME VERIFIED) | [PR #7 merged](https://github.com/kraveerachat/GisSino-Fn/pull/7) | [S3](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md): Accounts → max 4 seven-day Due soon → existing habits/missing days → Recent; Home Safe removed/math retained; source 6f1a252 pushed; check 550 keys/tests 70; browser84 cases/19 captures/11 groups errors[]issues[]; A32/40 Good/B no findings/detector[]/parent finish PASS; historical S3 checkpoint; PR #7 merged to main on 2026-10-18; historical sessions/receipt preserved |
 
 | [TASK-GS-UI-WALLET-V2-001](../10-Tasks/TASK-GS-UI-WALLET-V2-001.md) | EXTERNALLY ACCEPTED | [PR #8 merged](https://github.com/kraveerachat/GisSino-Fn/pull/8) | Merged at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`; assets-only Wallet/monthly synthetic history; historical S1-S3/receipt retain checkpoint evidence |
-| [TASK-GS-UI-ACTIVITY-V2-S1](../10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) | CLOSED implementation delivery | [Draft PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) | Embedded monthly donut/top-four expense preview/full fourteen-category dialog; coherent Activity-only data; source implemented,637 keys/102 tests/32 normal layouts/12 functional checks pass; 200% text/contrast/final SHIP pass; latest source b92cf23 pushed;PR9 OPEN/DRAFT MERGEABLE/CLEAN;documentation/receipt included; final Git HEAD in owner handoff; owner review pending; [S1](../20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) |
+| [TASK-GS-UI-ACTIVITY-V2-S1](../10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) | MERGED | [PR #9 merged](https://github.com/kraveerachat/GisSino-Fn/pull/9) | Embedded monthly donut/top-four expense preview/full fourteen-category dialog; coherent Activity-only data; merged at 18e087e360734d52b0a66a026da34834afdc70d3; prior source and test evidence preserved; [S1](../20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) |
+| [TASK-GS-UI-BILLS-V2-S1](../10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) | INTEGRATION VERIFIED | [PR #10 open](https://github.com/kraveerachat/GisSino-Fn/pull/10) | Compact Bills v2; selected-month/overdue projections, installment details and four preview-only forms; initial check and 94 tests passed; integrated 641 keys/112 tests/30 route-layout cases; nine original Chromium sizes and [review captures](../../design/reviews/BILLS_V2_REVIEW.md). Built from main after Wallet PR #8 merge; Activity PR #9 is merged; combined verification passed. |
