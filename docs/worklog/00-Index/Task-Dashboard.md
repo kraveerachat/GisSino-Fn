@@ -3,7 +3,7 @@ id: HUB-WORKLOG
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: ../../START_HERE.md
 related:
   - ../../project/PROJECT_HISTORY.md
@@ -24,3 +24,4 @@ related:
 | [TASK-GS-UI-HOME-V2-S1](../10-Tasks/TASK-GS-UI-HOME-V2-S1.md) | MERGED (historical RUNTIME VERIFIED) | [PR #7 merged](https://github.com/kraveerachat/GisSino-Fn/pull/7) | [S3](../20-Sessions/TASK-GS-UI-HOME-V2-S1-S3.md): Accounts → max 4 seven-day Due soon → existing habits/missing days → Recent; Home Safe removed/math retained; source 6f1a252 pushed; check 550 keys/tests 70; browser84 cases/19 captures/11 groups errors[]issues[]; A32/40 Good/B no findings/detector[]/parent finish PASS; historical S3 checkpoint; PR #7 merged to main on 2026-10-18; historical sessions/receipt preserved |
 
 | [TASK-GS-UI-WALLET-V2-001](../10-Tasks/TASK-GS-UI-WALLET-V2-001.md) | IN PROGRESS (integration verification) | [PR #8 open](https://github.com/kraveerachat/GisSino-Fn/pull/8) | [S2](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) reopened: assets-only ring, frozen monthly history and independent activity toggles; 521keys/66tests,56layouts/14edges/15groups,12after/3before captures; runtime verified; final SHIP;3 text-enlargement cases/AX/contrast pass; source184b2f7 pushed; docs checkpoint follows; owner UI accepted; [S3](../20-Sessions/TASK-GS-UI-WALLET-V2-001-S3.md) integrates merged Home PR #7; npm/browser regression tests after merge PENDING; S1/receipt preserved |
+| [TASK-GS-UI-PARTY-V2-S1](../10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) | RUNTIME VERIFIED; Draft PR pending | task/gs-ui-party-v2-s1 | Friends/Global synthetic weekly habit rankings, exact friend popup and preview requests; 93/93 tests and 10 responsive browser viewports; owner visual review pending |

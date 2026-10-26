@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,6 +11,10 @@ related:
   - ../pages/Pages-Hub.md
 ---
 # Screen map
+
+## Party preview route — GS-UI-PARTY-V2-S1
+
+`#party` retains personal XP/streak/freezes, badges, feed and Visibility, then shows Friends Weekly Ranking followed by a synthetic opted-in Global Ranking for the current Bangkok week. The Friends card opens the shared mobile bottom sheet/desktop dialog with Search, Requests and Friends subviews; search requires exact username or six-digit code and state resets on reload. Home's existing habit link reaches `#party`; mobile More and desktop Party navigation are unchanged. Separate `#leaderboard` and `#friends` remain planned, not new routes. See [Party](../pages/party/Page-Party.md).
 
 ## Current Home v2 — Focused owner revision S3
 
@@ -75,7 +79,7 @@ Home defaults to a vertical deck of complete account folders. Horizontal is the 
 | `#activity` | October sample context, income/expense summaries, search, all/expense/income/own-transfer filters, day grouping, needs-details transaction, detail sheet; sample, empty, loading, error, unavailable, and no-search-results |
 | Add (modal action) | Mode chooser; manual expense/income, own-account transfer, synthetic receipt, no-spend check-in, inactive AI; field validation and explicitly unsaved result |
 | `#bills` | October commitments, calendar/list, credit cards, monthly bills, installments, subscriptions, due/status badges, detail sheet; empty/loading/error/unavailable. Compact agenda below 360px |
-| `#party` | Private personal habit status, level/XP, streak/freezes, milestones, weekly habit leaderboard, members, invitation explanation, activity feed, visibility switches. No account/transaction details |
+| `#party` | Personal habit status, level/XP, streak/freezes, badges; accepted Friends weekly board then synthetic opted-in Global board; Friends summary/search/requests sheet; aggregate feed and three visibility levels. No account/transaction details |
 | `#settings` | Light/dark, Thai/English, Account Board vertical/horizontal display mode, Home-only scenario/Bangkok datetime, profile, currency/FX, categories, notifications, privacy, security, installation guide explanation |
 | Header | Notifications empty-state sheet, theme action, avatar/settings entry |
 | Desktop sidebar (1100px+) | 72px collapsed / 240px temporary overlay / 240px pinned; five direct destination links, stable pin toggle, keyboard disclosure, profile Settings |

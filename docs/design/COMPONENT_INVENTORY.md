@@ -3,13 +3,17 @@ id: DESIGN-COMPONENT-INVENTORY
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - SCREEN_MAP.md
   - UI_DESIGN_SPEC.md
 ---
 # Component inventory
+
+## Party preview components — GS-UI-PARTY-V2-S1
+
+`partyGrid` in [party-ui.js](../../src/party-ui.js) preserves the status card/badges/feed and composes compact Friends and Global boards plus a Friends summary. `partyFriendsSheet`, `partyRankingSheet` and `partyVisibilitySheet` reuse the existing native dialog controller, icon set, locale catalog, focus restoration and navigation. [party-preview.js](../../src/party-preview.js) owns a separate synthetic aggregate/relationship view model. [party.css](../../src/styles/party.css) scopes responsive board and sheet refinements to Party; it does not change the shared shell.
 
 ## Current Home v2 components — Focused revision S3
 

@@ -3,7 +3,7 @@ id: HUB-DESIGN
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: ../START_HERE.md
 related:
   - ../pages/Pages-Hub.md
@@ -30,3 +30,4 @@ Living UI specifications and historical verification/review evidence.
 | [Account Board Review](reviews/ACCOUNT_BOARD_REVIEW.md) | 2 | CURRENT | Responsive and interaction evidence |
 
 | [Wallet Assets Review](reviews/WALLET_ASSETS_REVIEW.md) | 2 | CURRENT | S2 assets-only/monthly history before-after evidence; final SHIP, source184b2f7 pushed |
+| [Party v2 Review](reviews/PARTY_V2_REVIEW.md) | 2 | REVIEW | Friends/Global preview, Add Friend sheet and responsive captures |

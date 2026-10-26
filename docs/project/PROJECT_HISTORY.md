@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -13,6 +13,8 @@ related:
 # Project History
 
 This timeline is append-only.
+
+- 2026-10-26 — [Party v2](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) added synthetic Friends and opted-in Global weekly-XP rankings, exact-match friendship preview and bounded sample suggestions on a separate branch. No real directory, ranking service or finance sharing; Draft PR/owner approval pending.
 
 ## Background from source documents
 

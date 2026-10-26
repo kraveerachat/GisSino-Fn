@@ -3,7 +3,7 @@ id: PROJECT-OPEN-QUESTIONS
 type: guide
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -12,6 +12,10 @@ related:
   - ../design/ONBOARDING_HOME_V2_ROADMAP.md
 ---
 # Open Questions
+
+## Party preview policy gates — 2026-10-26
+
+[D34](DECISIONS.md#d34--party-friends-and-global-preview) approves only synthetic UI. Global audience and visible nickname/metric fields remain [OPEN] under Q7 and require owner/security approval before a real all-users board. Recommendations need a separate [OPEN] opt-in discoverability policy and permitted relationship context; no age, gender, birth date, finance or private activity matching is approved. M8 must define authenticated exact lookup, rate limiting, blocked-user behavior, request lifecycle and cross-user authorization before persistent friends/invites. M7 must produce approved period aggregates and field allowlists; test user A cannot fetch user B's transactions, accounts or attachments through Party endpoints. The current browser tests cannot establish backend security.
 
 ## Wallet summary decision — 2026-10-18
 

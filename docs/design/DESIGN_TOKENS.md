@@ -3,13 +3,15 @@ id: DESIGN-TOKENS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - COMPONENT_INVENTORY.md
 ---
 # Design tokens
+
+Party v2 uses the existing porcelain/enamel semantic colors, radii, shadows and motion tokens. [party.css](../../src/styles/party.css) adds scoped compact ranking rows, 44px friend controls and a centered desktop dialog animation; it introduces no new product-wide palette or token.
 
 ## Current Home v2 extension — Focused revision S3
 

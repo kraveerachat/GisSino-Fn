@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -11,6 +11,10 @@ related:
   - SCREEN_MAP.md
 ---
 # UI design specification
+
+## Party v2 preview
+
+The approved porcelain/enamel Party world remains. Personal progress and badges lead; compact Friends then Global weekly boards use the same current Bangkok period and sample weekly-XP unit, with a quieter treatment for Global. The Friends card and aggregate feed remain secondary. Exact-match search, request states and at most three labelled synthetic suggestions live in the shared modal: bottom sheet on mobile, centered dialog on desktop. Focus, keyboard dismissal, 44px actions, light/dark themes and reduced motion follow the shared UI contract. No financial values, real-user lookup or production Global audience policy are introduced. See [Party review](reviews/PARTY_V2_REVIEW.md).
 
 ## Current Home v2 — Focused owner revision S3
 

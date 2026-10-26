@@ -15,6 +15,8 @@ import { publicRoutes, isPublicRoute, welcomeScreen } from './welcome.js';
 import { createPreviewFlow,mountPreviewFlow,routeTitles } from './preview-flow.js';
 import { walletScreen } from './wallet.js';
 import { walletSnapshots, walletPeriodLabel } from './wallet-history.js';
+import { createPartySession, exactPartyLookup, setPartyRelationship } from './party-preview.js';
+import { partyFriendsSheet, partyGrid, partyRankingSheet, partyVisibilitySheet } from './party-ui.js';
 
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
@@ -23,7 +25,8 @@ const state = {
   locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
   homeScenario:'sample', homeNow:homePreview.nowLocal,
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october',
-  mode: null, shareStreak: true, shareXP: true,
+  mode: null, shareStreak: true, shareXP: true, partyVisibility:'status', partyRankingOptIn:true,
+  partySession:createPartySession(),
   accountSelected: 'daily', accountView: 'vertical', accountState: 'sample',
   accountProfiles: accounts.map(account=>({...account})),
   walletMode:'current', walletPeriod:walletSnapshots[0].period, walletActivityValues:Object.create(null),
@@ -90,6 +93,7 @@ function showSheet(titleKey, content, back = false) {
   if (!sheet.open) opener = document.activeElement;
   sheet.innerHTML = `<div class="sheet-handle" aria-hidden="true"></div><div class="sheet-header">${back ? `<button class="icon-button sheet-back" data-action="add" aria-label="${t('back')}">${icon('arrow')}</button>` : ''}<h2 id="sheet-title" tabindex="-1">${t(titleKey)}</h2><button class="icon-button close-button" data-action="close" aria-label="${t('close')}">${icon('close')}</button></div><div class="sheet-content">${content}</div>`;
   sheet.classList.toggle('add-sheet', titleKey === 'addTitle');
+  sheet.classList.toggle('party-dialog', ['partyFriendsTitle','partyFriendsRanking','partyGlobalRanking'].includes(titleKey));
   if (!sheet.open) { sheet.showModal(); document.body.classList.add('has-sheet'); }
   sheet.scrollTop = 0;
   document.querySelector('#sheet-title').focus({ preventScroll: true });
@@ -141,7 +145,23 @@ function openBill(id) {
   showSheet('billDetail',`<div class="detail-hero"><span class="well-icon">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${state.balanceVisible?money(item.amount,state.locale,true):t('hiddenAmount')}</strong><span class="status ${item.status==='dueSoon'?'warning':''}">${t(item.status)}</span></div>${definitionList([[t('category'),t(item.category)],[t('date'),t('dayMonth',{day:item.due})],...(item.installment?[[t('installment'),item.installment]]:[])])}<p class="info-callout">${icon('shield')}${t('paymentNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
 }
 function openVisibility() {
-  showSheet('visibilityTitle',`<p class="sheet-subtitle">${t('privacyBody')}</p><div class="visibility-options">${[['shareStreak','share-streak'],['shareXP','share-xp']].map(([key,id])=>`<label class="switch-row"><span>${t(key)}</span><input type="checkbox" role="switch" id="${id}" data-control="${key}" ${state[key]?'checked':''}><span class="switch-track" aria-hidden="true"></span></label>`).join('')}</div><p class="sheet-disclaimer">${icon('shield')}${t('privacyPreview')}</p>`);
+  showSheet('visibilityTitle',partyVisibilitySheet(state,t));
+}
+function refreshPartyGrid() {
+  const root=app.querySelector('.party-v2');
+  if(!root)return;
+  root.outerHTML=partyGrid(state,t,state.partySession);
+  if(opener&&!opener.isConnected)opener=app.querySelector('[data-action="party-friends-open"][data-tab="search"]')||app.querySelector('[data-action="visibility"]');
+}
+function refreshPartyFriends(focusSelector) {
+  const content=sheet.querySelector('.sheet-content');
+  if(!content)return;
+  content.innerHTML=partyFriendsSheet(state,t,state.partySession);
+  if(focusSelector)content.querySelector(focusSelector)?.focus({preventScroll:true});
+}
+function openPartyFriends(tab='search') {
+  state.partySession.tab=['search','requests','friends'].includes(tab)?tab:'search';
+  showSheet('partyFriendsTitle',partyFriendsSheet(state,t,state.partySession));
 }
 function openAccount(id) {
   accountDetailId=id;
@@ -278,6 +298,21 @@ document.addEventListener('click',event=>{
     showSheet('notifications',notificationPreview(homeOverview(state),state,t));
   } else if (action==='invite') {
     showSheet('inviteTitle',`<div class="invite-symbol">${icon('party')}</div><p class="centered">${t('inviteBody')}</p><p class="info-callout">${icon('info')}${t('inviteNote')}</p>`);
+  } else if(action==='party-friends-open') {
+    openPartyFriends(button.dataset.tab);
+  } else if(action==='party-friends-tab') {
+    state.partySession.tab=button.dataset.tab;
+    refreshPartyFriends(`[data-action="party-friends-tab"][data-tab="${state.partySession.tab}"]`);
+  } else if(action==='party-board-all') {
+    const audience=button.dataset.board;
+    if(!['friends','global'].includes(audience))return;
+    showSheet(audience==='friends'?'partyFriendsRanking':'partyGlobalRanking',partyRankingSheet(audience,state,t,state.partySession));
+  } else if(['party-friend-request','party-friend-accept','party-friend-decline'].includes(action)) {
+    const kind=action==='party-friend-request'?'request':action==='party-friend-accept'?'accept':'decline';
+    if(!setPartyRelationship(state.partySession,button.dataset.id,kind))return;
+    refreshPartyGrid();
+    refreshPartyFriends(state.partySession.tab==='search'?(state.partySession.lookup?.kind==='found'?'#party-search-result':'#party-suggestion-title'):`[data-action="party-friends-tab"][data-tab="${state.partySession.tab}"]`);
+    announce(t('partyPreviewStateNotice'));
   } else if (action==='visibility') openVisibility();
   else if (action==='settings-detail') {
     if (button.dataset.title==='privacy') { openVisibility(); return; }
@@ -341,7 +376,17 @@ document.addEventListener('change',event=>{
     if(state.transferSource===state.transferDestination)state.transferDestination=accounts.find(a=>a.id!==state.transferSource).id;
     render();document.querySelector('#transfer-source')?.focus({preventScroll:true});
   } else if(control==='card-reminder') {state.cardReminder=event.target.checked;announce(t(state.cardReminder?'cardReminderEnabled':'cardReminderDisabled'));}
-  else if (['shareStreak','shareXP'].includes(control)) { state[control]=event.target.checked; render(); announce(t('privacyPreview')); }
+  else if(['shareStreak','shareXP','party-visibility','party-ranking-opt-in'].includes(control)) {
+    if(control==='party-visibility') {
+      if(!['private','status','full'].includes(event.target.value))return;
+      state.partyVisibility=event.target.value;
+    } else if(control==='party-ranking-opt-in')state.partyRankingOptIn=event.target.checked;
+    else state[control]=event.target.checked;
+    refreshPartyGrid();
+    sheet.querySelector('.sheet-content').innerHTML=partyVisibilitySheet(state,t);
+    sheet.querySelector(`[data-control="${control}"]${control==='party-visibility'?`[value="${state.partyVisibility}"]`:''}`)?.focus({preventScroll:true});
+    announce(t('partyVisibilityPreviewNote'));
+  }
 });
 function updateTransferAmount(updateInput=true) {
   if(updateInput)document.querySelector('#transfer-amount').value=state.transferAmount;
@@ -350,6 +395,14 @@ function updateTransferAmount(updateInput=true) {
   document.querySelector('#transfer-amount').removeAttribute('aria-invalid');
 }
 document.addEventListener('submit',event=>{
+  if(event.target.id==='party-friend-search') {
+    event.preventDefault();
+    state.partySession.query=String(new FormData(event.target).get('query')||'').slice(0,40);
+    state.partySession.lookup=exactPartyLookup(state.partySession.query,state.partySession);
+    refreshPartyFriends(state.partySession.lookup.kind==='idle'?'#party-friend-query':'#party-search-result');
+    announce(t(({invalidCode:'partyInvalidCode',self:'partySelfSearch',unavailable:'partyUnavailable',notFound:'partyNoResult',found:'partySearchResult',idle:'partyFindSubtitle'})[state.partySession.lookup.kind]));
+    return;
+  }
   if(event.target.id==='account-profile-form') {
     event.preventDefault();
     const form=event.target;

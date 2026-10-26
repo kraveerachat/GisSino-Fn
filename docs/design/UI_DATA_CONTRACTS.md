@@ -3,13 +3,17 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - ../architecture/SYSTEM_ARCHITECTURE.md
 ---
 # UI data contracts and future boundaries
+
+## Party Friends and Global preview — GS-UI-PARTY-V2-S1
+
+[party-preview.js](../../src/party-preview.js) keeps a Party-only synthetic viewer, explicit relationship states, opt-in/visibility flags, aggregate weekly XP, badges and aggregate feed. Its date derives the current Asia/Bangkok Monday–Sunday week, but the numbers are illustrative and reset with each page load. [party-ui.js](../../src/party-ui.js) receives only that model and renders Friends (accepted eligible friends plus eligible viewer) and Global (all eligible opted-in sample participants, including friends). Private, opted-out, blocked, wrong-week and unavailable metrics do not rank; lifetime XP is never used as weekly XP. No finance/account/transaction field is in this Party model. Exact username or six-digit code lookup and at most three marked synthetic suggestions change only transient relationship state. The original `src/fixtures.js` remains in place for other surfaces. Future M7 must provide authorized aggregate metrics; M8 must enforce lookup, friendship, blocking and cross-user authorization before any real service.
 
 ## Current Home v2 fixture projection — Focused revision S3
 

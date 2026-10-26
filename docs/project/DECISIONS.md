@@ -3,7 +3,7 @@ id: PROJECT-DECISIONS
 type: decision-log
 level: 2
 status: CURRENT
-updated: 2026-10-18
+updated: 2026-10-26
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -46,6 +46,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D27 | Welcome → Get Started → Entry; separate Login/demo and six-step setup preview → Postcard → Home | [DECIDED] for S3 preview; control/copy details superseded by D28 |
 | D28 | Consumer copy, one Demo mode header, open-signup/Google presentation and no-data navigation | [DECIDED] for preview; production public signup/Google [OPEN] pending approval |
 | D32 | Wallet ring composition, notched cards, assets central/separate obligations and linked-bank debit semantics | [DECIDED] for Wallet mock UI |
+| D34 | Party Friends and Global ranking with exact-match, session-only friend preview | [DECIDED] for Party mock UI only; production policy [OPEN] |
 
 ### D23 — Responsive primary navigation
 
@@ -180,3 +181,12 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Source: [Wallet task](../worklog/10-Tasks/TASK-GS-UI-WALLET-V2-001.md), [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md), same existing [Draft PR #8](https://github.com/kraveerachat/GisSino-Fn/pull/8). Affects [Wallet](../pages/wallet/Page-Wallet.md), [UI spec](../design/UI_DESIGN_SPEC.md), [Data contracts](../design/UI_DATA_CONTRACTS.md), [Architecture](../architecture/SYSTEM_ARCHITECTURE.md).
 
 - 2026-10-18 — Reopened Wallet task for D32 S2 owner revision; source inspection recorded, verification/review/delivery pending.
+
+### D34 — Party Friends and Global preview
+
+- Date: 2026-10-26; status: [DECIDED] for the local mock UI only. D33 appears in both separate unmerged Activity PR #9 and Bills PR #10; this Party branch uses D34, while the sibling D33 collision must be reconciled before both merge.
+- Preserve the approved Party personal XP/streak/freezes card, badges and aggregate feed. Replace the single ranking with compact Friends Weekly Ranking then Global Ranking; remove only the standalone privacy explanation card. Friends shows accepted eligible friends and eligible viewer; Global shows opted-in eligible sample participants including friends. Both use synthetic current Bangkok Monday–Sunday weekly XP, never lifetime XP or financial data.
+- The Friends card opens the existing dialog for exact username/six-digit-code lookup, local request states and at most three explicitly synthetic suggestions. Preview relationships are not Party membership, global opt-in or production discoverability. Session memory resets on reload; no network, persistence or real-user directory.
+- Preserve three visibility tiers and independent ranking opt-in. Private, opted-out, blocked, missing-metric and wrong-week people are unranked. Full visibility never authorizes itemized transactions in this UI slice.
+- Production Global audience, discoverability/recommendations, M7 aggregates and M8 friendship authorization remain [OPEN]. This decision does not approve public ranking endpoints or amend canonical Project Guide policy.
+- Source: [Party task](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md), [Page Party](../pages/party/Page-Party.md), [Open Questions](OPEN_QUESTIONS.md).
