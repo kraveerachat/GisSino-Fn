@@ -1,0 +1,282 @@
+[
+  {
+    "test": "Chrome persistent-profile installability",
+    "installabilityErrors": []
+  },
+  {
+    "route": "home",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "home",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "home",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "home",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "home",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "route": "home",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "wallet",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "activity",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "bills",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "route": "party",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 320,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 320,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 360,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 360,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 390,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 390,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 430,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 430,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 768,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 768,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 820,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 820,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 1024,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 1024,
+    "theme": "dark",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 1440,
+    "theme": "light",
+    "overflow": false
+  },
+  {
+    "test": "Settings install guide",
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false
+  }
+]

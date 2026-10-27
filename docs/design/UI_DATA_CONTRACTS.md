@@ -13,6 +13,11 @@ related:
 
 # UI data contracts and future boundaries
 
+## PWA shell boundary (2026-10-27)
+
+Only immutable app code/assets and bundled synthetic fixtures enter the versioned shell cache. API responses, form input, credentials and financial mutations never enter Cache Storage. Offline writes remain off. Preview confirmation gates an install offer without posting or awarding XP. Dismissal timestamp is the only new user state in localStorage. Badging reuses overdue-cycle and needs-details counts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
+
+
 ## Current audit checkpoint — 2026-10-27
 
 [WP-01 source/data audit](../project/AUDIT_2026-10_LOGIC_AND_DATA.md) inventories the existing routes, model boundaries, number lineage and reusable widgets at main bdbedae. It changes no screen, data contract or component. GitHub confirmed Activity PR #9, Bills PR #10 and Party PR #11 merged before this audit; earlier delivery/review-pending paragraphs below are historical checkpoints, superseded for current status by this note and the [task dashboard](../worklog/00-Index/Task-Dashboard.md).

@@ -13,6 +13,11 @@ related:
 
 # GisSino_FN — 02 SYSTEM ARCHITECTURE (Agent Briefing)
 
+## Prototype PWA shell (2026-10-27)
+
+Batch A adds a standalone manifest and versioned allowlisted service worker to the current vanilla JS prototype only. This does not adopt the proposed production stack or a persistence/offline-write design. Network-first HTML and cache-first immutable shell assets exclude API responses and mutations. Updates are opt-in, with dirty-input protection; no push notifications. Existing finance/clock/domain sources remain unchanged. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](../design/reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
+
+
 
 ## Activity v2 S1 prototype boundary (2026-10-18)
 

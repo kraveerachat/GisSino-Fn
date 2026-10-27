@@ -3,7 +3,7 @@ id: DESIGN-UI-SPEC
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: Design-Hub.md
 related:
   - DESIGN_TOKENS.md
@@ -11,6 +11,11 @@ related:
   - SCREEN_MAP.md
 ---
 # UI design specification
+
+## PWA additions (2026-10-27)
+
+Preserve enamel layouts, shield, typography and token colors. Add localized offline banner, compact update/install notices, Settings Back/Refresh and an explicit dirty-input confirmation. One shared installation guide has distinct iPhone/iPad Share placement diagrams and Android/desktop fallback. Existing Floating Island and sibling + retain bottom safe-area spacing; standalone top and landscape left/right insets apply. No new decorative motion. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
+
 
 
 ## Activity v2 S1 owner direction (2026-10-18)

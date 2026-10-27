@@ -50,3 +50,9 @@ The supplied blue-enamel Image A guides the revised Home, own-account Transfer, 
 See [UI specification](docs/design/UI_DESIGN_SPEC.md), [tokens](docs/design/DESIGN_TOKENS.md), [screen map](docs/design/SCREEN_MAP.md), [component inventory](docs/design/COMPONENT_INVENTORY.md), [UI data boundaries](docs/design/UI_DATA_CONTRACTS.md), and [verification](docs/design/reviews/VERIFICATION.md).
 
 Noto Sans Thai is self-hosted under the [SIL Open Font License](assets/fonts/OFL.txt). Its variable font supports the Thai and Latin text used here; the browser loads it from this server with `font-display: swap`. Upstream source: https://github.com/google/fonts/tree/main/ofl/notosansthai. No font service receives browsing requests.
+
+## PWA sample shell
+
+Run `npm run pwa:build` after changing shell code/assets; `npm run check` detects a stale inventory. The existing `npm run dev` serves the root manifest, worker and generated shield icons. PWA features require HTTPS or localhost. Settings provides installation guidance and Refresh; the existing setup guide is reused. Offline mode caches the sample shell only and does not save or sync financial entries. Updates wait for explicit Refresh; dirty input can be kept instead of discarded. See the [Batch A review](docs/design/reviews/PWA_SHELL_REVIEW.md) for actual browser evidence and untested devices.
+
+For browser checks, set `PLAYWRIGHT_MODULE` to an installed Playwright module and `CHROME_BINARY` to Chrome, start the local preview, then run `node scripts/qa-pwa.mjs` (`PWA_URL` defaults to localhost:4188). The test uses a short temporary Chrome profile on Windows and writes sample screenshots/evidence. It does not install a real app or delete profiles.

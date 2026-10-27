@@ -1,3 +1,6 @@
+import { mountPwa } from './pwa.js';
+import { installEnvironment, badgeCount } from './pwa-install.js';
+import { billsOverview } from './bills-overview.js';
 import { activityCategoryDialog,activityTransactionDetail,activityContext } from './activity.js';
 import { bangkokClock,homeOverview,notificationPreview } from './home-overview.js';
 import { createCheckinPreview,habitOverview,mountHabitTimeline } from './habit-preview.js';
@@ -37,6 +40,7 @@ const state = {
 };
 const scrollPositions = new Map();
 const previewFlow=createPreviewFlow();
+previewFlow.installPlatform=installEnvironment({userAgent:navigator.userAgent,platform:navigator.platform,maxTouchPoints:navigator.maxTouchPoints}).platform;
 const checkinPreview=createCheckinPreview();
 let opener = null;
 let toastTimer;
@@ -51,11 +55,13 @@ let billDraftData=null;
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
+const pwa=mountPwa({ t, showSheet, toast, hasPendingDraft:()=>!!billDraftData, isPublic:()=>isPublicRoute(state.route), getBadgeCount:()=>badgeCount(billsOverview().overdue.filter(row=>!state.billPreviewPaid.includes(row.id)).length,transactions.filter(row=>row.needsDetails).length) });
 
 function applyTheme() {
   const appearance=isPublicRoute(state.route)?'light':state.theme;
   document.documentElement.dataset.theme = appearance;
-  document.querySelector('meta[name="theme-color"]').content = isPublicRoute(state.route)?'#f6faff':appearance === 'dark' ? '#242323' : '#94dffc';
+  const color=getComputedStyle(document.documentElement).getPropertyValue('--action').trim();
+  document.querySelectorAll('meta[name="theme-color"]').forEach(meta=>meta.content=color);
 }
 function render(focusMain = false) {
   const activityToolsOpen=app.querySelector('.activity-preview-tools')?.open;
@@ -75,6 +81,7 @@ function render(focusMain = false) {
   mountDeck();
   habitTimelineCleanup=mountHabitTimeline(app.querySelector('[data-habit-card]'),habitOverview(state),state,t);
   if(state.route==='wallet'&&state.walletMode==='history') app.querySelector('.wallet-months [aria-pressed="true"]')?.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
+  pwa.refresh();
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
 }
 function syncHabitPreview() {
@@ -104,6 +111,7 @@ function showSheet(titleKey, content, back = false) {
   if (!sheet.open) { sheet.showModal(); document.body.classList.add('has-sheet'); }
   sheet.scrollTop = 0;
   document.querySelector('#sheet-title').focus({ preventScroll: true });
+  pwa.refresh();
 }
 function closeSheet(restoreFocus=true) { if (sheet.open) {suppressSheetFocus=!restoreFocus;sheet.close();} }
 sheet.addEventListener('close', () => {
@@ -274,11 +282,13 @@ document.addEventListener('click',event=>{
     if(editingProfileId)openAccount(editingProfileId);else closeSheet();
   }
   else if (action==='amount-key') {
+    pwa.transferChanged();
     state.transferAmount=amountKey(/^\d{1,9}(?:\.\d{0,2})?$/.test(state.transferAmount)?state.transferAmount:'0',button.dataset.key);
     updateTransferAmount();
   } else if(action==='transfer-destination') {
     state.transferDestination=button.dataset.id;render();document.querySelector(`[data-action="transfer-destination"][data-id="${state.transferDestination}"]`)?.focus({preventScroll:true});
   } else if(action==='review-transfer') {
+    if(navigator.onLine===false){toast(t('pwaOfflineUnknown'));return;}
     const invalid=!validAmountText(state.transferAmount)||state.transferSource===state.transferDestination;
     const error=document.querySelector('#transfer-error');
     document.querySelector('#transfer-amount').setAttribute('aria-invalid',String(invalid));
@@ -317,9 +327,11 @@ document.addEventListener('click',event=>{
     if(!billDetail(id,state,t))return;
     showSheet('billPaidTitle',`<p class="info-callout">${icon('shield')}${billsText(state.locale,'payNote')}</p><div class="bills-v2-review-actions"><button type="button" class="button secondary" data-action="bill" data-id="${esc(id)}">${t('back')}</button><button type="button" class="button primary" data-action="bill-pay-confirm" data-id="${esc(id)}">${billsText(state.locale,'markPaidConfirm')}</button></div>`);
   } else if (action==='bill-pay-confirm') {
+    if(navigator.onLine===false){toast(t('pwaOfflineUnknown'));return;}
     const id=button.dataset.id;
     if(!billDetail(id,state,t))return;
     state.billPreviewPaid=[...new Set([...state.billPreviewPaid,id])];
+    pwa.updateBadge();
     render();opener=document.querySelector(`[data-action="bill"][data-id="${CSS.escape(id)}"]`);
     showSheet('billDetail',billDetail(id,state,t));
     announce(billsText(state.locale,'paidPreview'));
@@ -355,7 +367,11 @@ document.addEventListener('click',event=>{
     refreshPartyFriends(state.partySession.tab==='search'?(state.partySession.lookup?.kind==='found'?'#party-search-result':'#party-suggestion-title'):`[data-action="party-friends-tab"][data-tab="${state.partySession.tab}"]`);
     announce(t('partyPreviewStateNotice'));
   } else if (action==='visibility') openVisibility();
+  else if (action==='confirm-entry-preview') {
+    pwa.confirmedEntry();button.disabled=true;button.textContent=t('pwaPreviewConfirmed');
+  }
   else if (action==='settings-detail') {
+    if (button.dataset.title==='install') { pwa.openGuide(); return; }
     if (button.dataset.title==='privacy') { openVisibility(); return; }
     showSheet(button.dataset.title,`<p class="settings-info">${t(button.dataset.content)}</p><p class="sheet-disclaimer">${icon('info')}${t('settingsPreview')}</p>`);
   } else if (action==='sample-slip') {
@@ -443,6 +459,7 @@ function updateTransferAmount(updateInput=true) {
   document.querySelector('#transfer-amount').removeAttribute('aria-invalid');
 }
 document.addEventListener('submit',event=>{
+  if(navigator.onLine===false && ['entry-form','bill-entry-form'].includes(event.target.id)){event.preventDefault();toast(t('pwaOfflineUnknown'));return;}
   if(event.target.id==='party-friend-search') {
     event.preventDefault();
     state.partySession.query=String(new FormData(event.target).get('query')||'').slice(0,40);
@@ -509,11 +526,12 @@ document.addEventListener('submit',event=>{
     error.hidden=false;error.focus();return;
   }
   const account=accounts.find(a=>a.id===data.get('account'));
-  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${money(amount,state.locale,true)}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
+  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${money(amount,state.locale,true)}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
 });
 window.addEventListener('hashchange',()=>{
   const accountId=parseAccountHash(location.hash);
   const next=accountId?'wallet':location.hash.slice(1)||'welcome';
+  if(next==='add/expense'){history.replaceState(null,'','#home');state.route='home';closeSheet(false);render(true);openMode('expense');return;}
   if (!validRoutes.includes(next)) { if(next!=='main') location.hash='welcome';return; }
   document.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   scrollPositions.set(state.route,window.scrollY);
@@ -525,4 +543,5 @@ window.addEventListener('hashchange',()=>{
   if(accountId)openAccount(accountId);
 });
 render();
+if(location.hash==='#add/expense'){state.route='home';history.replaceState(null,'','#home');render();openMode('expense');}
 if(parseAccountHash(location.hash))openAccount(parseAccountHash(location.hash));

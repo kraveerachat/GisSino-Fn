@@ -10,7 +10,7 @@ export function createPreviewFlow() {
 }
 export function updatePreviewValue(flow,key,value) {
   if (!Object.hasOwn(createPreviewFlow(),key)) return false;
-  const choices={avatar:['shield','sun','flame','wallet'],gender:['male','female','unspecified'],accountType:['bank','ewallet','cash'],currency:['THB','USD'],installPlatform:['ios','android','desktop']};
+  const choices={avatar:['shield','sun','flame','wallet'],gender:['male','female','unspecified'],accountType:['bank','ewallet','cash'],currency:['THB','USD'],installPlatform:['ios','ipad','android','desktop']};
   if (choices[key] && !choices[key].includes(value)) return false;
   if (['consentDemo','inApp','push','emailNotice'].includes(key)) { if(typeof value!=='boolean')return false; }
   else if(typeof value!=='string')return false;

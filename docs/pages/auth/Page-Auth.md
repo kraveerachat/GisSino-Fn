@@ -3,7 +3,7 @@ id: PAGE-AUTH
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-17
+updated: 2026-10-27
 up: ../Pages-Hub.md
 related:
   - ../../design/ONBOARDING_HOME_V2_ROADMAP.md
@@ -19,6 +19,8 @@ related:
 # Auth and Welcome
 
 ## Current state
+
+Batch A extends the current sample app with installable shell support, offline disclosure and explicit refresh/update protection. Settings and #setup/install reuse one iPhone/iPad/Android/desktop guide. Installation prompts are hidden in standalone. The explicit confirmed sample entry gates proactive install offers; no real entry is saved and offline financial writes remain unavailable. See [PWA task](../../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [review](../../design/reviews/PWA_SHELL_REVIEW.md); Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier owner-merge-pending prose is historical: Welcome PR #6 and dashboard PRs #9–#11 are already merged.
 
 Eleven public pre-Home screens form one navigable design demonstration. Welcome has exactly one Get Started → Entry → Login or normal signup. Login primary/Google actions → Home; signup primary/Google actions → Profile → About You → Privacy → First Accounts → Notifications → Install → Postcard → Home. Empty and typed credential fields follow the same preview routes without authentication or created-user claims. Signup has no invitation field or invitation copy. [D28](../../project/DECISIONS.md#d28--consumer-copy-and-open-signup-presentation-in-demo-mode) records this owner-requested S4 revision; [Screen Map](../../design/SCREEN_MAP.md) owns hashes and [S4](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) implementation delivery is CLOSED after independent finish SHIP and verified documentation checkpoint `e649eb2228500cf6abaef3958f9b14a1134f5d2c`; owner review/merge remains pending. Closed S1–S3 and the receipt remain historical.
 
@@ -125,3 +127,5 @@ The onboarding flow follows the sequence detailed in [ONBOARDING_HOME_V2_ROADMAP
 - 2026-10-17 — [S3](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S3.md) expands responsive Welcome into the eleven-route design preview; D27 preserves D4 history and all real security/data boundaries.
 
 - 2026-10-17 — [S4](../../worklog/20-Sessions/TASK-GS-UI-WELCOME-001-S4.md) / D28 adds consumer copy, compact Demo mode, invitation-free signup/Google presentation and no-data navigation; production invite-only policy stays canonical pending approval.
+
+- 2026-10-27 — Added scoped Batch A PWA/install/refresh notes; finance behavior unchanged.
