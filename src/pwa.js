@@ -1,5 +1,6 @@
 import { createInstaller, installEnvironment, installGuide, updateBadge } from './pwa-install.js';
 import { icon } from './icons.js';
+import { formatTime } from './core/dates.js';
 export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPendingDraft = () => false }) {
   const mode = matchMedia('(display-mode: standalone)');
   const environment = installEnvironment({ userAgent: navigator.userAgent, platform: navigator.platform, maxTouchPoints: navigator.maxTouchPoints, standalone: mode.matches || navigator.standalone === true });
@@ -16,7 +17,7 @@ export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPend
   function refresh() {
     const model = installer.snapshot();
     document.documentElement.classList.toggle('pwa-standalone', model.standalone);
-    const time = lastOnline ? new Intl.DateTimeFormat(document.documentElement.lang, { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Bangkok' }).format(new Date(lastOnline)) : null;
+    const time = lastOnline ? formatTime(new Date(lastOnline), { locale: document.documentElement.lang }) : null;
     offline.hidden = navigator.onLine !== false;
     offline.textContent = time ? t('pwaOffline', { time }) : t('pwaOfflineUnknown');
     root.innerHTML = `${worker ? `<div class="pwa-notice" role="status"><span>${t('pwaUpdate')}</span><button type="button" data-pwa-action="refresh">${t('pwaRefresh')}</button></div>` : ''}${model.offer && !isPublic() ? `<div class="pwa-notice" role="status"><span>${t('pwaInstallHint')}</span><button type="button" data-pwa-action="offer">${t('pwaInstall')}</button><button type="button" class="icon-button" data-pwa-action="dismiss" aria-label="${t('close')}">${icon('close')}</button></div>` : ''}`;

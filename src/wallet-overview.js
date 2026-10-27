@@ -2,6 +2,8 @@ import { accounts, bills, creditCard } from './fixtures.js';
 import { assetAccounts } from './account-display.js';
 import { toMinorUnits } from './amount.js';
 import { walletCurrentPeriod, walletCurrentEntries } from './wallet-history.js';
+import { bkkMonth } from './core/clock.js';
+import { formatMoney } from './core/money.js';
 
 const currencies = ['THB', 'USD'];
 const checked = value => Number.isSafeInteger(value) ? value : null;
@@ -12,16 +14,8 @@ const sum = values => {
   return total > BigInt(Number.MAX_SAFE_INTEGER) || total < BigInt(Number.MIN_SAFE_INTEGER) ? null : Number(total);
 };
 
-// Integer arithmetic keeps display totals exact; currencies are never converted.
-export function walletMoney(value, currency, locale = 'th') {
-  if (!Number.isSafeInteger(value) || !currencies.includes(currency)) return null;
-  const absolute = BigInt(value) < 0n ? -BigInt(value) : BigInt(value);
-  const decimals = absolute % 100n === 0n ? 0 : 2;
-  const major = BigInt(value) / 100n;
-  const parts = new Intl.NumberFormat(locale === 'th' ? 'th-TH' : 'en-US', { style: 'currency', currency, minimumFractionDigits: decimals, maximumFractionDigits: 2 }).formatToParts(major);
-  if (value < 0 && major === 0n) parts.unshift({ type: 'minusSign', value: '-' });
-  return parts.map(part => part.type === 'fraction' ? String(absolute % 100n).padStart(2, '0') : part.value).join('');
-}
+// @deprecated thin wrapper; use formatMoney from core/money.js.
+export const walletMoney = (value, currency, locale = 'th') => formatMoney(value, currency, { locale });
 
 export function monthlyActivity(account, entries = walletCurrentEntries, period = walletCurrentPeriod) {
   const legacyName = accounts.find(item => item.id === account.id)?.name;
@@ -34,10 +28,7 @@ export function monthlyActivity(account, entries = walletCurrentEntries, period 
     if (!/^\d{4}-\d{2}-\d{2}T.*(?:Z|[+-]\d{2}:\d{2})$/.test(item.date)) return null;
     const calendarDate = new Date(`${item.date.slice(0, 10)}T00:00:00Z`);
     if (Number.isNaN(calendarDate.getTime()) || calendarDate.toISOString().slice(0, 10) !== item.date.slice(0, 10)) return null;
-    const date = new Date(item.date);
-    if (Number.isNaN(date.getTime())) return null;
-    const parts = new Intl.DateTimeFormat('en', { timeZone: 'Asia/Bangkok', year: 'numeric', month: '2-digit' }).formatToParts(date);
-    return `${parts.find(part => part.type === 'year').value}-${parts.find(part => part.type === 'month').value}`;
+    return bkkMonth(new Date(item.date));
   };
   const rows = entries.filter(item => (item.accountId === account.id || (!item.accountId && legacyName && item.account === legacyName)) && ['income', 'expense'].includes(item.type) && (!item.currency || item.currency === account.currency) && periodFor(item) === period);
   if (!rows.length) return null;

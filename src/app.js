@@ -5,7 +5,8 @@ import { activityCategoryDialog,activityTransactionDetail,activityContext } from
 import { bangkokClock,homeOverview,notificationPreview } from './home-overview.js';
 import { createCheckinPreview,habitOverview,mountHabitTimeline } from './habit-preview.js';
 import { shell, addMenu, addForm, activityResults } from './screens.js';
-import { translator, money, escapeHTML as esc } from './i18n.js';
+import { translator, escapeHTML as esc } from './i18n.js';
+import { formatMoney, minor } from './core/money.js';
 import { icon } from './icons.js';
 import { transactions, bills, accounts, creditCard, homePreview } from './fixtures.js';
 import { amountKey, validAmountText } from './amount.js';
@@ -157,11 +158,13 @@ function openMode(mode) {
     showSheet('aiEntry',`<div class="future-preview"><span class="empty-symbol">${icon('sparkle')}</span><span class="status">${t('future')}</span><p>${t('aiDisabled')}</p><label class="field">${t('aiDesc')}<textarea disabled rows="3" aria-describedby="ai-note"></textarea></label><p id="ai-note" class="small muted">${t('aiDisabled')}</p></div>`,true);
   }
 }
+// Every amount on these sheets goes through the one formatter, in minor units.
+const thb = minorUnits => formatMoney(minorUnits,'THB',{locale:state.locale})||t('notRecorded');
 function definitionList(rows) { return `<dl class="details-list">${rows.map(([name,value])=>`<div><dt>${name}</dt><dd>${value}</dd></div>`).join('')}</dl>`; }
 function openTransaction(id) {
   if(state.route==='activity'){const content=activityTransactionDetail(id,state,t);if(content)showSheet('transactionDetail',content);return;}
   const item = transactions.find(x=>x.id===id); if (!item) return;
-  const value = state.balanceVisible ? money(item.amount,state.locale,true) : t('hiddenAmount');
+  const value = state.balanceVisible ? thb(minor(item.amount)) : t('hiddenAmount');
   showSheet('transactionDetail',`<div class="detail-hero"><span class="well-icon ${item.type}">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${value}</strong>${item.needsDetails?`<span class="status warning">${t('needsDetails')}</span>`:''}</div>${definitionList([[t('category'),t(item.category)],[t('account'),t(item.account)],[t('time'),item.time],[t('reference'),`DEMO-${item.id.toUpperCase()}`]])}<p class="info-callout">${icon('info')}${t(item.type==='transfer'?'transferNote':item.needsDetails?'needDetailBody':'detailNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
 }
 function openBill(id) {
@@ -294,13 +297,13 @@ document.addEventListener('click',event=>{
     document.querySelector('#transfer-amount').setAttribute('aria-invalid',String(invalid));
     if(invalid){error.textContent=t('transferAmountError');error.hidden=false;document.querySelector('#transfer-amount').focus();return;}
     const from=accounts.find(a=>a.id===state.transferSource),to=accounts.find(a=>a.id===state.transferDestination);
-    showSheet('sampleTransferSummary',`<div class="result-status">${icon('eye')}${t('resultNote')}</div>${definitionList([[t('fromAccount'),t(from.name)],[t('toAccount'),t(to.name)],[t('amount'),money(Number(state.transferAmount),state.locale,true)]])}<p class="info-callout">${icon('shield')}${t('unchangedBalance')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
+    showSheet('sampleTransferSummary',`<div class="result-status">${icon('eye')}${t('resultNote')}</div>${definitionList([[t('fromAccount'),t(from.name)],[t('toAccount'),t(to.name)],[t('amount'),thb(minor(state.transferAmount))]])}<p class="info-callout">${icon('shield')}${t('unchangedBalance')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
   } else if(action==='card-preview') {
     const view=button.dataset.view;
-    if(view==='activity') {showSheet('cardSampleActivity',`<p class="sheet-subtitle">${t('noIssuerSync')}</p>${definitionList(transactions.slice(0,2).map(item=>[t(item.name),state.balanceVisible?money(item.amount,state.locale):t('hiddenAmount')]))}`);return;}
+    if(view==='activity') {showSheet('cardSampleActivity',`<p class="sheet-subtitle">${t('noIssuerSync')}</p>${definitionList(transactions.slice(0,2).map(item=>[t(item.name),state.balanceVisible?thb(minor(item.amount)):t('hiddenAmount')]))}`);return;}
     const titles={statement:'cardStatement',due:'cardAmountDue',payment:'cardPayment',reminder:'cardReminder',account:'cardInformation'};
     const copy={statement:'cardStatementPreview',payment:'cardPaymentPreview',reminder:'reminderPreview',account:'accountNote'};
-    showSheet(titles[view],view==='due'?`${definitionList([[t('fullPayment'),state.balanceVisible?money(creditCard.fullAmountMinor/100,state.locale):t('hiddenAmount')],[t('paymentDueDate'),t('dayMonth',{day:creditCard.dueDay})],[t('minimumPayment'),t('notRecorded')]])}<p class="sheet-disclaimer">${t('detailNote')}</p>`:`<p class="settings-info">${t(copy[view])}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
+    showSheet(titles[view],view==='due'?`${definitionList([[t('fullPayment'),state.balanceVisible?thb(creditCard.fullAmountMinor):t('hiddenAmount')],[t('paymentDueDate'),t('dayMonth',{day:creditCard.dueDay})],[t('minimumPayment'),t('notRecorded')]])}<p class="sheet-disclaimer">${t('detailNote')}</p>`:`<p class="settings-info">${t(copy[view])}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
   }
   else if (action==='focus-field') { event.preventDefault(); document.querySelector(`#entry-${button.dataset.field}`)?.focus(); }
   else if (action==='settings') location.hash='settings';
@@ -454,7 +457,7 @@ document.addEventListener('change',event=>{
 });
 function updateTransferAmount(updateInput=true) {
   if(updateInput)document.querySelector('#transfer-amount').value=state.transferAmount;
-  document.querySelector('#transfer-summary-amount').textContent=validAmountText(state.transferAmount)?money(Number(state.transferAmount),state.locale,true):'—';
+  document.querySelector('#transfer-summary-amount').textContent=validAmountText(state.transferAmount)?thb(minor(state.transferAmount)):'—';
   document.querySelector('#transfer-error').hidden=true;
   document.querySelector('#transfer-amount').removeAttribute('aria-invalid');
 }
@@ -526,7 +529,7 @@ document.addEventListener('submit',event=>{
     error.hidden=false;error.focus();return;
   }
   const account=accounts.find(a=>a.id===data.get('account'));
-  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${money(amount,state.locale,true)}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
+  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${thb(minor(String(data.get('amount'))))}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
 });
 window.addEventListener('hashchange',()=>{
   const accountId=parseAccountHash(location.hash);

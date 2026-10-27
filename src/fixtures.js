@@ -1,5 +1,8 @@
 // Synthetic, in-memory design fixtures. Served only by the development server.
 // These are not account records, calculations, or a future database schema.
+import { bkkLocal } from './core/clock.js';
+// @deprecated preview.safe (14,500) is stale; the derived value is 104,100 and Safe to
+// Spend is not shown on Home (D31). Nothing may read preview.safe (grep test).
 export const preview = Object.freeze({ balance: 116850, safe: 14500, obligations: 12750, income: 42000, expense: 15240, month: 9, year: 2026 });
 export const accounts = [
   { id: 'daily', name: 'accountDaily', kind: 'bank', accountType: 'bank', providerId: 'kbank', currency: 'THB', balanceMinor: 6845000, amount: 68450, suffix: '0428', context: 'mainAccount', archived: false, sortOrder: 0 },
@@ -19,13 +22,15 @@ export const transactions = [
 export const bills = [
   { id: 'card', name: 'billCard', category: 'creditCards', icon: 'card', amount: 8250, amountMinor:825000, currency:'THB', dueDate:'2026-10-20', paid:false, due: 20, status: 'dueSoon' },
   { id: 'power', name: 'billPower', category: 'monthlyBills', icon: 'bolt', amount: 1250, amountMinor:125000, currency:'THB', dueDate:'2026-10-22', paid:false, due: 22, status: 'upcoming' },
-  { id: 'device', name: 'billDevice', category: 'installments', icon: 'bag', amount: 2900, amountMinor:290000, currency:'THB', dueDate:'2026-10-25', paid:false, due: 25, status: 'upcoming', installment: '3 / 10' },
+  { id: 'device', name: 'billDevice', category: 'installments', icon: 'bag', amount: 2900, amountMinor:290000, currency:'THB', dueDate:'2026-10-25', paid:false, due: 25, status: 'upcoming',
+    // @deprecated legacy installment label; the five-cycle Bills record (3 of 5) is the source. Nothing may read it (grep test).
+    installment: '3 / 10' },
   { id: 'music', name: 'billMusic', category: 'subscriptions', icon: 'music', amount: 350, amountMinor:35000, currency:'THB', dueDate:'2026-10-28', paid:false, due: 28, status: 'upcoming' }
 ];
 // Fixed, synthetic Home-only snapshots. Never advance these with the live clock.
 // Scenario overrides do not change Bills, Account Board or any source records.
 export const homePreview = Object.freeze({
-  nowLocal:'2026-10-18T10:00', reminderAt:'20:00', streak:7, freezes:2,
+  nowLocal:bkkLocal(), reminderAt:'20:00', streak:7, freezes:2,
   activityDays:Object.freeze(['2026-10-18']), monthlyExpense:Object.freeze({amountMinor:1524000,currency:'THB',month:'2026-10',illustrative:true}),
   scenarios:Object.freeze(['sample','actionable','clear','shortfall','party']),
   sampleParty:Object.freeze({synthetic:true,rank:2,nameTh:'ครอบครัวตัวอย่าง',nameEn:'Sample family'}),

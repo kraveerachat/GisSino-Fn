@@ -2,7 +2,11 @@ import { icon } from './icons.js';
 import { accounts } from './fixtures.js';
 import { escapeHTML as esc } from './i18n.js';
 import { accountDisplay, providerBadge } from './account-display.js';
-import { walletOverview, walletMoney } from './wallet-overview.js';
+import { walletOverview } from './wallet-overview.js';
+import { formatMoney } from './core/money.js';
+import { bkkDate, bkkMonth } from './core/clock.js';
+import { billsOverview, withPaid } from './core/obligations.js';
+import { worldObligations } from './fixtures/world.js';
 import { walletSnapshots, walletPeriod, walletPeriodLabel, walletRingSegments } from './wallet-history.js';
 
 const categories = [
@@ -17,7 +21,10 @@ export function walletScreen(state, t) {
   const primary = model.totals[0];
   const periodLabel = walletPeriodLabel(period.period, state.locale);
   const snapshotLabel = walletPeriodLabel(period.period, state.locale, { day: 'numeric' });
-  const amount = (value, currency = 'THB') => esc(!state.balanceVisible ? t('hiddenAmount') : walletMoney(value, currency, state.locale) || t('notRecorded'));
+  // The ring centre keeps compact numerals ('auto' drops ".00") so it fits at 390px.
+  const amount = (value, currency = 'THB', decimals = 'fixed') => esc(!state.balanceVisible ? t('hiddenAmount') : formatMoney(value, currency, { locale: state.locale, decimals }) || t('notRecorded'));
+  // "Payments due this month" is the Bills base dataset with the session's mark-paid overlay.
+  const monthDue = billsOverview({ month: bkkMonth(), today: bkkDate(), records: withPaid(worldObligations, state.billPreviewPaid || []) }).totals.THB.minor;
   const percent = value => new Intl.NumberFormat(state.locale === 'th' ? 'th-TH' : 'en-US', { maximumFractionDigits: 1 }).format(value);
   const activityButton = (item, display) => {
     if (!state.balanceVisible) return `<span class="wallet-movement">${t('hiddenAmount')}</span>`;
@@ -58,9 +65,9 @@ export function walletScreen(state, t) {
     return `<section id="wallet-${category.kind}" tabindex="-1" class="wallet-category wallet-category-${category.kind}"><div class="wallet-section-heading"><h2><span class="wallet-section-icon wallet-series-${category.kind}" aria-hidden="true">${icon(category.icon)}</span>${t(category.label)}</h2><span>${t('walletAccountCount', { count: items.length })}</span></div><div class="wallet-item-grid">${items.map(itemCard).join('') || `<div class="wallet-category-empty">${icon(category.icon)}<p>${t('walletEmptyCategory', { category: t(category.label) })}</p>${period.history ? '' : `<button class="button secondary" data-action="add-account">${icon('plus')}${t('addAccount')}</button>`}</div>`}</div></section>`;
   }).join('');
   const otherCurrencies = model.totals.filter(total => total.present && total.currency !== 'THB').map(total => `<div class="wallet-other-currency"><strong>${total.currency}</strong><span>${t('walletAssetTotal')} ${amount(total.assets, total.currency)}</span></div>`).join('');
-  const obligation = !period.history ? `<a href="#bills" class="wallet-obligations-link">${icon('bills')}<span>${t('walletMonthlyObligations')}</span><strong>${amount(primary.liabilities)}</strong>${icon('chevron')}</a>` : '';
+  const obligation = !period.history ? `<a href="#bills" class="wallet-obligations-link">${icon('bills')}<span>${t('walletMonthlyObligations')}</span><strong>${amount(monthDue)}</strong>${icon('chevron')}</a>` : '';
   return `<div class="wallet-screen wallet-v2"><header class="wallet-heading"><div><h1>${t('walletTitle')}</h1><p>${t('walletAssetsSubtitle')}</p></div><button class="icon-plate" data-action="balance" aria-label="${t(state.balanceVisible ? 'hideBalance' : 'showBalance')}">${icon(state.balanceVisible ? 'eye' : 'eyeoff')}</button></header>
-    <section class="wallet-composition" aria-label="${t('walletCompositionTitle')}"><div class="wallet-ring"><svg viewBox="0 0 320 320" role="img" aria-label="${esc(t(state.balanceVisible ? 'walletRingDescription' : 'hiddenAmount'))}"><circle class="wallet-ring-track" cx="160" cy="160" r="128"/>${arcs}</svg><div class="wallet-ring-center"><span>${t(period.history ? 'walletSnapshotAssets' : 'walletAssetTotal')}</span><strong class="${state.balanceVisible && (walletMoney(primary.assets, 'THB', state.locale)?.length || 0) > 15 ? 'wallet-long-amount' : ''}">${amount(primary.assets)}</strong><small>${period.history ? esc(t('walletAsOf', { date: snapshotLabel })) : t('walletCurrentBalance')}</small><span class="wallet-currency-label">THB</span></div></div>
+    <section class="wallet-composition" aria-label="${t('walletCompositionTitle')}"><div class="wallet-ring"><svg viewBox="0 0 320 320" role="img" aria-label="${esc(t(state.balanceVisible ? 'walletRingDescription' : 'hiddenAmount'))}"><circle class="wallet-ring-track" cx="160" cy="160" r="128"/>${arcs}</svg><div class="wallet-ring-center"><span>${t(period.history ? 'walletSnapshotAssets' : 'walletAssetTotal')}</span><strong class="${state.balanceVisible && (formatMoney(primary.assets, 'THB', { locale: state.locale, decimals: 'auto' })?.length || 0) > 15 ? 'wallet-long-amount' : ''}">${amount(primary.assets, 'THB', 'auto')}</strong><small>${period.history ? esc(t('walletAsOf', { date: snapshotLabel })) : t('walletCurrentBalance')}</small><span class="wallet-currency-label">THB</span></div></div>
     <div class="wallet-composition-details"><div class="wallet-mode-switch" role="group" aria-label="${t('walletSummaryMode')}"><button type="button" data-action="wallet-mode" data-mode="current" aria-pressed="${!period.history}">${t('walletModeCurrent')}</button><button type="button" data-action="wallet-mode" data-mode="history" aria-pressed="${period.history}">${icon('calendar')}${t('walletModeHistory')}</button></div>${historyControls}<nav class="wallet-legend" aria-label="${t('walletAssetBreakdown')}">${legend}</nav>${obligation}${state.balanceVisible && !primary.chartAvailable ? `<p class="wallet-chart-note">${t('walletChartUnavailable')}</p>` : ''}</div>
     ${otherCurrencies ? `<div class="wallet-currency-note">${otherCurrencies}<small>${t('walletSeparateCurrencies')}</small></div>` : ''}${model.unsupportedCurrency ? `<p class="wallet-chart-note">${t('walletUnknownCurrency')}</p>` : ''}</section>
     <p class="wallet-movement-basis"><span class="wallet-month-context">${icon('calendar')}${t('walletMonthlyActivity', { period: periodLabel })}</span><span>${t(period.history ? 'walletHistoryActivityBasis' : 'walletMonthlyActivityBasis')}</span></p><div class="wallet-categories">${sections}</div><div class="wallet-footer-actions"><button class="button primary" data-action="add-account">${icon('plus')}${t('addAccount')}</button><a class="button secondary" href="#transfer">${icon('transfer')}${t('transferAction')}</a></div></div>`;

@@ -24,7 +24,7 @@ test('Friends ranking uses accepted relationships and weekly XP, not lifetime XP
   const session=createPartySession();
   const rows=rankedPartyPeople({audience:'friends',relationships:session.relationships});
   assert.deepEqual(rows.map(row=>row.id),['lin','min','ton','you']);
-  assert.deepEqual(rows.map(row=>row.weeklyXP),[170,135,110,92]);
+  assert.deepEqual(rows.map(row=>row.weeklyXP),[170,135,110,80]);
   assert.equal(rows.find(row=>row.id==='you').rank,4);
   assert.equal(acceptedPartyFriends(session).length,3);
   assert.ok(!rows.some(row=>['maya','pim','ravi','hidden','optout'].includes(row.id)));

@@ -2,13 +2,14 @@ import { accounts } from './fixtures.js';
 import { resolveProvider, providerTheme } from './providers.js';
 import { escapeHTML as esc } from './i18n.js';
 import { icon } from './icons.js';
+import { formatMoney } from './core/money.js';
 
 export const assetAccounts = (records=accounts) => records.filter(a=>['bank','ewallet','cash'].includes(a.accountType)&&!a.archived).slice().sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));
 export function accountDisplay(account,state,t) {
   const provider=resolveProvider(account.providerId,account.accountType);
   const currency=['THB','USD'].includes(account.currency)?account.currency:null;
   const validBalance=Number.isSafeInteger(account.balanceMinor)&&currency;
-  const balance=!state.balanceVisible?t('hiddenAmount'):!validBalance?t('notRecorded'):new Intl.NumberFormat(state.locale==='th'?'th-TH':'en-US',{style:'currency',currency,minimumFractionDigits:2,maximumFractionDigits:2}).format(account.balanceMinor/100);
+  const balance=!state.balanceVisible?t('hiddenAmount'):!validBalance?t('notRecorded'):formatMoney(account.balanceMinor,currency,{locale:state.locale});
   return {id:account.id,name:account.nickname?String(account.nickname):t(account.name||'account'),provider,
     providerName:state.locale==='th'?provider.nameTh:provider.nameEn,
     providerLabel:provider.providerId==='baac'?(state.locale==='th'?'ธ.ก.ส.':'BAAC'):(state.locale==='th'?provider.nameTh:provider.nameEn),
