@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 # GisSino_FN — Start Here
 
@@ -26,6 +26,8 @@ updated: 2026-10-26
 - [Obsidian home pointer](00-Home.md)
 
 ## Current focus
+
+[WP-01 repository audit](project/AUDIT_2026-10_LOGIC_AND_DATA.md) is complete for owner review on wp-01-repository-audit (Draft PR pending). It maps current logic/data and reusable components before any remediation or redesign. No application behavior changed. The original referenced screenshots were unavailable; eight replacement views and their numeric traces are explicitly identified.
 
 [Activity v2](worklog/10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md), [Bills v2](worklog/10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) and [Party v2](worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) are merged in [PR #9](https://github.com/kraveerachat/GisSino-Fn/pull/9) (`18e087e360734d52b0a66a026da34834afdc70d3`), [PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) (`40d52ff9e0ae9dc4f610b485f930f94855a9c0ca`) and [PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11) (`cd1fa82906c203ba4db93616db6ad6fd3e70a0a3`). The combined prototype passed `npm run check` (693 keys per language), `npm test` (121/121) and final-main Chromium checks on all five routes at 390/820/1440px in light/dark. Activity [D33](project/DECISIONS.md#d33--embedded-activity-monthly-analytics), Party [D34](project/DECISIONS.md#d34--party-friends-and-global-preview) and Bills [D35](project/DECISIONS.md#d35--bills-v2-preview-composition-and-manual-obligation-flow) are distinct. [Integration notes](worklog/20-Sessions/TASK-GS-UI-PARTY-V2-S1-INTEGRATION.md) record conflict resolution.
 

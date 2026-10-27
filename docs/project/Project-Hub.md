@@ -3,7 +3,7 @@ id: HUB-PROJECT
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-17
+updated: 2026-10-27
 up: ../START_HERE.md
 related:
   - ../pages/Pages-Hub.md
@@ -22,3 +22,4 @@ Project identity, product intent, decisions, history, terminology, and unresolve
 | [Project History](PROJECT_HISTORY.md) | 2 | CURRENT | Append-only project timeline |
 | [Open Questions](OPEN_QUESTIONS.md) | 2 | CURRENT | Questions that require owner or external verification |
 | [Glossary](GLOSSARY.md) | 2 | CURRENT | Shared finance, habit, and infrastructure terms |
+| [Logic and Data Audit — October 2026](AUDIT_2026-10_LOGIC_AND_DATA.md) | 2 | AUDITED BASELINE | WP-01: source/export inventory, numeric trace, computation helpers and reusable widgets; no implementation change |

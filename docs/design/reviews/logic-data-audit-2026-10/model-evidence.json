@@ -1,0 +1,783 @@
+{
+  "preview": {
+    "balance": 116850,
+    "safe": 14500,
+    "obligations": 12750,
+    "income": 42000,
+    "expense": 15240,
+    "month": 9,
+    "year": 2026
+  },
+  "home": {
+    "clock": {
+      "instant": "2026-10-18T03:00:00.000Z",
+      "date": "2026-10-18",
+      "month": "2026-10",
+      "time": "10:00"
+    },
+    "totals": [
+      {
+        "currency": "THB",
+        "available": true,
+        "liquidMinor": 11685000,
+        "unpaidMinor": 1275000,
+        "safeMinor": 10410000
+      }
+    ],
+    "nearest": {
+      "id": "card",
+      "name": "billCard",
+      "category": "creditCards",
+      "icon": "card",
+      "amount": 8250,
+      "amountMinor": 825000,
+      "currency": "THB",
+      "dueDate": "2026-10-20",
+      "paid": false,
+      "due": 20,
+      "status": "dueSoon",
+      "days": 2
+    },
+    "notices": [
+      {
+        "id": "card",
+        "name": "billCard",
+        "category": "creditCards",
+        "icon": "card",
+        "amount": 8250,
+        "amountMinor": 825000,
+        "currency": "THB",
+        "dueDate": "2026-10-20",
+        "paid": false,
+        "due": 20,
+        "status": "dueSoon"
+      }
+    ],
+    "upcoming": [
+      {
+        "id": "card",
+        "name": "billCard",
+        "category": "creditCards",
+        "icon": "card",
+        "amount": 8250,
+        "amountMinor": 825000,
+        "currency": "THB",
+        "dueDate": "2026-10-20",
+        "paid": false,
+        "due": 20,
+        "status": "dueSoon"
+      },
+      {
+        "id": "power",
+        "name": "billPower",
+        "category": "monthlyBills",
+        "icon": "bolt",
+        "amount": 1250,
+        "amountMinor": 125000,
+        "currency": "THB",
+        "dueDate": "2026-10-22",
+        "paid": false,
+        "due": 22,
+        "status": "upcoming"
+      },
+      {
+        "id": "device",
+        "name": "billDevice",
+        "category": "installments",
+        "icon": "bag",
+        "amount": 2900,
+        "amountMinor": 290000,
+        "currency": "THB",
+        "dueDate": "2026-10-25",
+        "paid": false,
+        "due": 25,
+        "status": "upcoming",
+        "installment": "3 / 10"
+      }
+    ],
+    "today": [
+      {
+        "kind": "details",
+        "route": "activity",
+        "count": 1
+      }
+    ],
+    "streak": 3,
+    "freezes": 2,
+    "party": null,
+    "monthlyExpense": {
+      "amountMinor": 1524000,
+      "currency": "THB",
+      "month": "2026-10",
+      "illustrative": true
+    }
+  },
+  "habit": {
+    "today": "2026-10-18",
+    "week": [
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-17",
+      "2026-10-18"
+    ],
+    "count": 4,
+    "missingDays": [
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-17"
+    ],
+    "percentage": 57,
+    "days": [
+      {
+        "date": "2026-10-05",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-06",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-07",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-08",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-09",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-10",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-11",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-12",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-13",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-14",
+        "status": "missed",
+        "current": false
+      },
+      {
+        "date": "2026-10-15",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-16",
+        "status": "complete",
+        "current": false
+      },
+      {
+        "date": "2026-10-17",
+        "status": "frozen",
+        "current": false
+      },
+      {
+        "date": "2026-10-18",
+        "status": "complete",
+        "current": true
+      },
+      {
+        "date": "2026-10-19",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-20",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-21",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-22",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-23",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-24",
+        "status": "future",
+        "current": false
+      },
+      {
+        "date": "2026-10-25",
+        "status": "future",
+        "current": false
+      }
+    ],
+    "selected": {
+      "date": "2026-10-18",
+      "status": "complete",
+      "current": true
+    },
+    "streak": 3,
+    "weeklyXP": 80,
+    "complete": true
+  },
+  "wallet": {
+    "totals": [
+      {
+        "currency": "THB",
+        "assets": 11685000,
+        "liabilities": 1275000,
+        "segments": [
+          {
+            "kind": "bank",
+            "amount": 11285000
+          },
+          {
+            "kind": "ewallet",
+            "amount": 250000
+          },
+          {
+            "kind": "cash",
+            "amount": 150000
+          }
+        ],
+        "composition": 11685000,
+        "chartAvailable": true,
+        "present": true
+      },
+      {
+        "currency": "USD",
+        "assets": 0,
+        "liabilities": 0,
+        "segments": [
+          {
+            "kind": "bank",
+            "amount": 0
+          },
+          {
+            "kind": "ewallet",
+            "amount": 0
+          },
+          {
+            "kind": "cash",
+            "amount": 0
+          }
+        ],
+        "composition": 0,
+        "chartAvailable": false,
+        "present": false
+      }
+    ],
+    "movements": {
+      "daily": {
+        "income": 98,
+        "expense": 2,
+        "incoming": 4200000,
+        "outgoing": 84500
+      },
+      "savings": null,
+      "reserve": null,
+      "everyday-wallet": null,
+      "pocket-cash": null,
+      "family-savings": null
+    }
+  },
+  "history": {
+    "period": "2026-09",
+    "totals": [
+      {
+        "currency": "THB",
+        "assets": 10230000,
+        "liabilities": 0,
+        "segments": [
+          {
+            "kind": "bank",
+            "amount": 9930000
+          },
+          {
+            "kind": "ewallet",
+            "amount": 180000
+          },
+          {
+            "kind": "cash",
+            "amount": 120000
+          }
+        ],
+        "composition": 10230000,
+        "chartAvailable": true,
+        "present": true
+      },
+      {
+        "currency": "USD",
+        "assets": 0,
+        "liabilities": 0,
+        "segments": [
+          {
+            "kind": "bank",
+            "amount": 0
+          },
+          {
+            "kind": "ewallet",
+            "amount": 0
+          },
+          {
+            "kind": "cash",
+            "amount": 0
+          }
+        ],
+        "composition": 0,
+        "chartAvailable": false,
+        "present": false
+      }
+    ]
+  },
+  "activity": [
+    {
+      "currency": "THB",
+      "income": 4200000,
+      "expense": 1524000,
+      "movement": 5724000,
+      "net": 2676000,
+      "incomeShare": 73.4,
+      "expenseShare": 26.6,
+      "categories": [
+        {
+          "id": "housing",
+          "icon": "home",
+          "label": "activityCategory_housing",
+          "amount": 850000,
+          "share": 55.8
+        },
+        {
+          "id": "shopping",
+          "icon": "bag",
+          "label": "activityCategory_shopping",
+          "amount": 193000,
+          "share": 12.7
+        },
+        {
+          "id": "family",
+          "icon": "party",
+          "label": "activityCategory_family",
+          "amount": 160000,
+          "share": 10.5
+        },
+        {
+          "id": "bill_payment",
+          "icon": "bills",
+          "label": "activityCategory_bill_payment",
+          "amount": 125000,
+          "share": 8.2
+        },
+        {
+          "id": "insurance_health",
+          "icon": "shield",
+          "label": "activityCategory_insurance_health",
+          "amount": 90000,
+          "share": 5.9
+        },
+        {
+          "id": "education",
+          "icon": "list",
+          "label": "activityCategory_education",
+          "amount": 50500,
+          "share": 3.3
+        },
+        {
+          "id": "entertainment",
+          "icon": "music",
+          "label": "activityCategory_entertainment",
+          "amount": 35000,
+          "share": 2.3
+        },
+        {
+          "id": "transport",
+          "icon": "train",
+          "label": "activityCategory_transport",
+          "amount": 12000,
+          "share": 0.8
+        },
+        {
+          "id": "food_drinks",
+          "icon": "coffee",
+          "label": "activityCategory_food_drinks",
+          "amount": 8500,
+          "share": 0.5
+        },
+        {
+          "id": "gifts",
+          "icon": "star",
+          "label": "activityCategory_gifts",
+          "amount": 0,
+          "share": 0
+        },
+        {
+          "id": "other",
+          "icon": "more",
+          "label": "activityCategory_other",
+          "amount": 0,
+          "share": 0
+        },
+        {
+          "id": "refund_return",
+          "icon": "refresh",
+          "label": "activityCategory_refund_return",
+          "amount": 0,
+          "share": 0
+        },
+        {
+          "id": "savings_investment",
+          "icon": "bank",
+          "label": "activityCategory_savings_investment",
+          "amount": 0,
+          "share": 0
+        },
+        {
+          "id": "travel_hotel",
+          "icon": "globe",
+          "label": "activityCategory_travel_hotel",
+          "amount": 0,
+          "share": 0
+        }
+      ],
+      "available": true,
+      "present": true
+    },
+    {
+      "currency": "USD",
+      "income": 0,
+      "expense": 0,
+      "movement": 0,
+      "net": 0,
+      "incomeShare": null,
+      "expenseShare": null,
+      "categories": [
+        {
+          "id": "bill_payment",
+          "icon": "bills",
+          "label": "activityCategory_bill_payment",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "education",
+          "icon": "list",
+          "label": "activityCategory_education",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "entertainment",
+          "icon": "music",
+          "label": "activityCategory_entertainment",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "family",
+          "icon": "party",
+          "label": "activityCategory_family",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "food_drinks",
+          "icon": "coffee",
+          "label": "activityCategory_food_drinks",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "gifts",
+          "icon": "star",
+          "label": "activityCategory_gifts",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "housing",
+          "icon": "home",
+          "label": "activityCategory_housing",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "insurance_health",
+          "icon": "shield",
+          "label": "activityCategory_insurance_health",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "other",
+          "icon": "more",
+          "label": "activityCategory_other",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "refund_return",
+          "icon": "refresh",
+          "label": "activityCategory_refund_return",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "savings_investment",
+          "icon": "bank",
+          "label": "activityCategory_savings_investment",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "shopping",
+          "icon": "bag",
+          "label": "activityCategory_shopping",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "transport",
+          "icon": "train",
+          "label": "activityCategory_transport",
+          "amount": 0,
+          "share": null
+        },
+        {
+          "id": "travel_hotel",
+          "icon": "globe",
+          "label": "activityCategory_travel_hotel",
+          "amount": 0,
+          "share": null
+        }
+      ],
+      "available": true,
+      "present": false
+    }
+  ],
+  "bills": {
+    "totals": {
+      "THB": {
+        "minor": 1275000,
+        "knownCount": 4,
+        "unknownCount": 0
+      },
+      "USD": {
+        "minor": 0,
+        "knownCount": 0,
+        "unknownCount": 0
+      }
+    },
+    "overdue": {
+      "THB": {
+        "minor": 78000,
+        "unknownCount": 0
+      },
+      "USD": {
+        "minor": 0,
+        "unknownCount": 0
+      }
+    },
+    "unpaidCount": 4,
+    "rows": [
+      {
+        "id": "late-phone-2026-09",
+        "days": -19,
+        "status": "overdue",
+        "amountMinor": 78000
+      },
+      {
+        "id": "card-2026-10",
+        "days": 2,
+        "status": "dueSoon",
+        "amountMinor": 825000
+      },
+      {
+        "id": "power-2026-10",
+        "days": 4,
+        "status": "upcoming",
+        "amountMinor": 125000
+      },
+      {
+        "id": "device-3",
+        "days": 7,
+        "status": "upcoming",
+        "amountMinor": 290000
+      },
+      {
+        "id": "music-2026-10",
+        "days": 10,
+        "status": "upcoming",
+        "amountMinor": 35000
+      }
+    ]
+  },
+  "installment": {
+    "total": 5,
+    "paidCount": 2,
+    "nextPeriod": 3,
+    "next": {
+      "id": "device-3",
+      "period": 3,
+      "dueDate": "2026-10-25",
+      "amountMinor": 290000,
+      "paid": false
+    },
+    "paidMinor": 580000,
+    "remainingMinor": 870000,
+    "complete": false
+  },
+  "party": {
+    "today": "2026-10-27",
+    "week": {
+      "start": "2026-10-26",
+      "end": "2026-11-01"
+    },
+    "stats": {
+      "level": 8,
+      "totalXP": 1240,
+      "nextLevelXP": 1500,
+      "streak": 7,
+      "freezes": 2
+    },
+    "friends": [
+      {
+        "id": "lin",
+        "nickname": {
+          "th": "ลิน",
+          "en": "Lin"
+        },
+        "initials": "LN",
+        "weeklyXP": 170,
+        "streak": 8,
+        "rank": 1
+      },
+      {
+        "id": "min",
+        "nickname": {
+          "th": "มิน",
+          "en": "Min"
+        },
+        "initials": "MN",
+        "weeklyXP": 135,
+        "streak": 5,
+        "rank": 2
+      },
+      {
+        "id": "ton",
+        "nickname": {
+          "th": "ต้น",
+          "en": "Ton"
+        },
+        "initials": "TN",
+        "weeklyXP": 110,
+        "streak": 4,
+        "rank": 3
+      },
+      {
+        "id": "you",
+        "nickname": {
+          "th": "คุณกิส",
+          "en": "You"
+        },
+        "initials": "GS",
+        "weeklyXP": 92,
+        "streak": 7,
+        "rank": 4
+      }
+    ],
+    "global": [
+      {
+        "id": "lin",
+        "nickname": {
+          "th": "ลิน",
+          "en": "Lin"
+        },
+        "initials": "LN",
+        "weeklyXP": 170,
+        "streak": 8,
+        "rank": 1
+      },
+      {
+        "id": "ravi",
+        "nickname": {
+          "th": "ราวี",
+          "en": "Ravi"
+        },
+        "initials": "RV",
+        "weeklyXP": 150,
+        "streak": 6,
+        "rank": 2
+      },
+      {
+        "id": "min",
+        "nickname": {
+          "th": "มิน",
+          "en": "Min"
+        },
+        "initials": "MN",
+        "weeklyXP": 135,
+        "streak": 5,
+        "rank": 3
+      },
+      {
+        "id": "ton",
+        "nickname": {
+          "th": "ต้น",
+          "en": "Ton"
+        },
+        "initials": "TN",
+        "weeklyXP": 110,
+        "streak": 4,
+        "rank": 4
+      },
+      {
+        "id": "you",
+        "nickname": {
+          "th": "คุณกิส",
+          "en": "You"
+        },
+        "initials": "GS",
+        "weeklyXP": 92,
+        "streak": 7,
+        "rank": 5
+      },
+      {
+        "id": "pim",
+        "nickname": {
+          "th": "พิม",
+          "en": "Pim"
+        },
+        "initials": "PM",
+        "weeklyXP": 80,
+        "streak": 3,
+        "rank": 6
+      }
+    ]
+  }
+}
