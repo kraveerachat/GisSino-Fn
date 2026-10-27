@@ -60,7 +60,7 @@ What reads them now:
 - **Wallet "Payments due this month"** is computed from the same records (฿12,750).
 - **Bills "Mark paid"** is a session overlay (`withPaid`) that Home, Wallet and Bills all read. Paying the card brings Wallet down to ฿4,500 and removes the card from Home.
 
-## Habit — two candidate sets (owner chooses)
+## Habit — two candidate sets (decided: Home set, D36, 2026-10-28)
 
 | Set | Streak | Weekly XP | Other | Derivable from events? |
 |---|---:|---:|---|---|
@@ -75,4 +75,4 @@ Party level 8 and lifetime 1,240 XP stay Party-only.
 
 1. Which balances should win: the archive plus ledger (฿137,060) or the screen values (฿116,850)? If the screen values win, what are the missing October transactions (about ฿22,510 more outflow from daily, plus ฿1,900 / ฿300 / ฿100 more inflow to savings / e-wallet / cash)?
 2. Which account did the ฿5,000 "Move to savings" come from?
-3. Confirm the Home habit set (3 / 80) or choose the Party set (7 / 92).
+3. ~~Confirm the Home habit set (3 / 80) or choose the Party set (7 / 92).~~ Decided 2026-10-28: Home set (D36).

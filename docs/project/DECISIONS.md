@@ -47,6 +47,7 @@ The D1–D22 entries preserve the Project Guide snapshot. D23 records owner-appr
 | D28 | Consumer copy, one Demo mode header, open-signup/Google presentation and no-data navigation | [DECIDED] for preview; production public signup/Google [OPEN] pending approval |
 | D32 | Wallet ring composition, notched cards, assets central/separate obligations and linked-bank debit semantics | [DECIDED] for Wallet mock UI |
 | D34 | Party Friends and Global ranking with exact-match, session-only friend preview | [DECIDED] for Party mock UI only; production policy [OPEN] |
+| D36 | One shared habit source for Home and Party uses the Home set (streak 3, weekly XP 80) | [DECIDED] for mock UI (2026-10-28) |
 
 ### D23 — Responsive primary navigation
 
@@ -209,3 +210,10 @@ Owner-directed2026-10-16 refinement: straight curved folders, compact mobile vis
 - Preserve three visibility tiers and independent ranking opt-in. Private, opted-out, blocked, missing-metric and wrong-week people are unranked. Full visibility never authorizes itemized transactions in this UI slice.
 - Production Global audience, discoverability/recommendations, M7 aggregates and M8 friendship authorization remain [OPEN]. This decision does not approve public ranking endpoints or amend canonical Project Guide policy.
 - Source: [Party task](../worklog/10-Tasks/TASK-GS-UI-PARTY-V2-S1.md), [Page Party](../pages/party/Page-Party.md), [Open Questions](OPEN_QUESTIONS.md).
+
+### D36 — Shared habit source uses the Home set
+
+- Date: 2026-10-28; status: [DECIDED] for the synthetic mock UI; decided by the owner in chat: "Keep the Home habit set (streak 3, 80 weekly XP) as canonical."
+- Statement: Home and Party read one habit source (WP-02, `habitStats`). Streak and current-week XP derive from the dated Home fixture events (active days 6, 8, 9, 12, 15, 16, 18 Oct; 17 Oct frozen): streak 3, weekly XP 80. Flag `habitSource` stays `'home'`; the Party candidate set (streak 7, weekly XP 92) is not adopted.
+- Unchanged: Party level 8 and lifetime 1,240 XP remain Party-only illustrative values. The 20 XP per qualifying day rate is implied by the fixture, not an approved production tunable. D30/D31 habit presentation and D34 ranking rules are preserved; production XP/streak engine remains M7.
+- Source: [Fixture World reconciliation](FIXTURE_WORLD_RECONCILIATION.md), [Draft PR #14](https://github.com/kraveerachat/GisSino-Fn/pull/14).
