@@ -9,13 +9,19 @@ related:
   - COMPONENT_INVENTORY.md
   - ONBOARDING_HOME_V2_ROADMAP.md
   - ../pages/Pages-Hub.md
+  - ../project/AUDIT_2026-10_LOGIC_AND_DATA.md
 ---
+
 # Screen map
 
 ## PWA shell and install entry points (2026-10-27)
 
 Manifest start /?source=pwa#home; shortcuts to existing Expense form (#add/expense), #transfer and #bills. Existing #setup/install and Settings native sheet share one guide; no parallel route. Settings Back/Refresh available. Sub-screen Back/Close remains in-app. Standalone suppresses install prompts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
 
+
+## Current audit checkpoint — 2026-10-27
+
+[WP-01 source/data audit](../project/AUDIT_2026-10_LOGIC_AND_DATA.md) inventories the existing routes, model boundaries, number lineage and reusable widgets at main bdbedae. It changes no screen, data contract or component. GitHub confirmed Activity PR #9, Bills PR #10 and Party PR #11 merged before this audit; earlier delivery/review-pending paragraphs below are historical checkpoints, superseded for current status by this note and the [task dashboard](../worklog/00-Index/Task-Dashboard.md).
 
 
 ## Activity v2 S1 navigation and period (2026-10-18)

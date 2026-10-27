@@ -1,0 +1,1133 @@
+[
+  {
+    "file": "src/account-board.js",
+    "lines": 39,
+    "sha256": "a5664980636f97caf18d8034f8fdbc7a09969e80feae1b6eb09e338758126807",
+    "exports": [
+      {
+        "name": "selectedAccount",
+        "line": 6
+      },
+      {
+        "name": "stepAccount",
+        "line": 7
+      },
+      {
+        "name": "parseAccountHash",
+        "line": 8
+      },
+      {
+        "name": "accountFolder",
+        "line": 14
+      },
+      {
+        "name": "accountBoard",
+        "line": 27
+      }
+    ],
+    "directDOM": false,
+    "fixture": "indirect account defaults",
+    "money": "delegated format",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/account-deck.js",
+    "lines": 189,
+    "sha256": "635266bec63130bf62cbb4c16a834b061ba8e7ed18f91070aa1f8f93cdc94511",
+    "exports": [
+      {
+        "name": "deckTiming",
+        "line": 3
+      },
+      {
+        "name": "boundedIndex",
+        "line": 4
+      },
+      {
+        "name": "deckMode",
+        "line": 5
+      },
+      {
+        "name": "deckLayout",
+        "line": 6
+      },
+      {
+        "name": "dragDecision",
+        "line": 18
+      },
+      {
+        "name": "wheelDecision",
+        "line": 23
+      },
+      {
+        "name": "mountAccountDeck",
+        "line": 32
+      }
+    ],
+    "directDOM": true,
+    "fixture": "timing/geometry config only",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/account-display.js",
+    "lines": 28,
+    "sha256": "7cb8f8fcc1aa0fd708fd0d6848e4aaf80c6812ef556dffd2d57a8f153f8f282e",
+    "exports": [
+      {
+        "name": "assetAccounts",
+        "line": 6
+      },
+      {
+        "name": "accountDisplay",
+        "line": 7
+      },
+      {
+        "name": "providerBadge",
+        "line": 20
+      },
+      {
+        "name": "accountPreview",
+        "line": 21
+      },
+      {
+        "name": "walletAccountRow",
+        "line": 25
+      }
+    ],
+    "directDOM": false,
+    "fixture": "imports accounts",
+    "money": "format only",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/account-profile.js",
+    "lines": 48,
+    "sha256": "c87033ae17b2c953681dcacbab9bd6b9b9538c832fe726adaf6455049ef4a9cf",
+    "exports": [
+      {
+        "name": "profileLabels",
+        "line": 5
+      },
+      {
+        "name": "profileDraft",
+        "line": 7
+      },
+      {
+        "name": "normalizeProfile",
+        "line": 15
+      },
+      {
+        "name": "applyProfile",
+        "line": 24
+      },
+      {
+        "name": "accountProfileForm",
+        "line": 30
+      }
+    ],
+    "directDOM": false,
+    "fixture": "transient profile defaults",
+    "money": "preserves balance",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/activity-data.js",
+    "lines": 96,
+    "sha256": "a9defa1a7c60a900a2d89031f2456db06b114b071bce10374e77a3df87adf83f",
+    "exports": [
+      {
+        "name": "activityCategories",
+        "line": 4
+      },
+      {
+        "name": "activityPeriod",
+        "line": 12
+      },
+      {
+        "name": "activitySnapshotDate",
+        "line": 13
+      },
+      {
+        "name": "activityTransactions",
+        "line": 27
+      },
+      {
+        "name": "activityDay",
+        "line": 32
+      },
+      {
+        "name": "activityDateLabel",
+        "line": 41
+      },
+      {
+        "name": "activityCategory",
+        "line": 46
+      },
+      {
+        "name": "activityRecords",
+        "line": 52
+      },
+      {
+        "name": "activityEligible",
+        "line": 57
+      },
+      {
+        "name": "activityShares",
+        "line": 59
+      },
+      {
+        "name": "activityModel",
+        "line": 70
+      },
+      {
+        "name": "filteredActivity",
+        "line": 93
+      }
+    ],
+    "directDOM": false,
+    "fixture": "dated extras/catalog + imported transactions",
+    "money": "exact totals/shares",
+    "dates": "parse/format/month",
+    "habit": "no"
+  },
+  {
+    "file": "src/activity.js",
+    "lines": 56,
+    "sha256": "870032619d927442be2122d3ad3d8096a1ecec9098fd1e8d9930b3293040c8be",
+    "exports": [
+      {
+        "name": "activityContext",
+        "line": 7
+      },
+      {
+        "name": "activityResults",
+        "line": 33
+      },
+      {
+        "name": "activityScreen",
+        "line": 42
+      },
+      {
+        "name": "activityCategoryDialog",
+        "line": 48
+      },
+      {
+        "name": "activityTransactionDetail",
+        "line": 52
+      }
+    ],
+    "directDOM": false,
+    "fixture": "imports Activity records",
+    "money": "format/ratio geometry",
+    "dates": "date/time format",
+    "habit": "no"
+  },
+  {
+    "file": "src/amount.js",
+    "lines": 17,
+    "sha256": "fa1e02183ecf7104394fa0ba556d67bfc4147cf2f5011d39501ac7994dfd7298",
+    "exports": [
+      {
+        "name": "amountKey",
+        "line": 2
+      },
+      {
+        "name": "validAmountText",
+        "line": 10
+      },
+      {
+        "name": "toMinorUnits",
+        "line": 13
+      }
+    ],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "parse/validate minor",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/app.js",
+    "lines": 528,
+    "sha256": "157b0d5f7a12bb530eb4727d5579a02f568981423d0d648482322b9009b4c009",
+    "exports": [],
+    "directDOM": true,
+    "fixture": "state/date defaults + imports",
+    "money": "validation/display/delegation",
+    "dates": "scenario defaults",
+    "habit": "session grants"
+  },
+  {
+    "file": "src/bills-overview.js",
+    "lines": 111,
+    "sha256": "312141341c75f94fe8f465d9eec44da58c11bc050be874abb382b54ccc2d1a68",
+    "exports": [
+      {
+        "name": "billPreviewToday",
+        "line": 5
+      },
+      {
+        "name": "billPreviewMonths",
+        "line": 6
+      },
+      {
+        "name": "billPreviewRecords",
+        "line": 7
+      },
+      {
+        "name": "validBillDate",
+        "line": 16
+      },
+      {
+        "name": "validBillMonth",
+        "line": 17
+      },
+      {
+        "name": "billDateLabel",
+        "line": 21
+      },
+      {
+        "name": "billFullDateLabel",
+        "line": 22
+      },
+      {
+        "name": "billMonthLabel",
+        "line": 23
+      },
+      {
+        "name": "billMoney",
+        "line": 24
+      },
+      {
+        "name": "installmentProgress",
+        "line": 26
+      },
+      {
+        "name": "billsOverview",
+        "line": 38
+      },
+      {
+        "name": "dueDateForMonth",
+        "line": 68
+      },
+      {
+        "name": "fixedInstallmentSchedule",
+        "line": 74
+      },
+      {
+        "name": "validateBillDraft",
+        "line": 85
+      }
+    ],
+    "directDOM": false,
+    "fixture": "explicit cycles",
+    "money": "exact totals/progress",
+    "dates": "status/month/clamp",
+    "habit": "no"
+  },
+  {
+    "file": "src/bills-ui.js",
+    "lines": 102,
+    "sha256": "89c7bca6bbf6127441bb6f8dec89c3406a43eab42b5d487423a593f68fdb6943",
+    "exports": [
+      {
+        "name": "billsText",
+        "line": 10
+      },
+      {
+        "name": "billRecordsForState",
+        "line": 11
+      },
+      {
+        "name": "billModel",
+        "line": 15
+      },
+      {
+        "name": "billRow",
+        "line": 22
+      },
+      {
+        "name": "billsScreen",
+        "line": 42
+      },
+      {
+        "name": "billDaySheet",
+        "line": 54
+      },
+      {
+        "name": "billDetail",
+        "line": 59
+      },
+      {
+        "name": "billEditData",
+        "line": 74
+      },
+      {
+        "name": "billForm",
+        "line": 82
+      },
+      {
+        "name": "billReview",
+        "line": 98
+      }
+    ],
+    "directDOM": false,
+    "fixture": "copy/form defaults",
+    "money": "draft sums/display",
+    "dates": "calendar/date format",
+    "habit": "no"
+  },
+  {
+    "file": "src/blue-screens.js",
+    "lines": 35,
+    "sha256": "7052f1bb967f0a9a8637386aa4ff0b56a482c65d28d1cffaa26f9ecb36b922fc",
+    "exports": [
+      {
+        "name": "coverHeader",
+        "line": 14
+      },
+      {
+        "name": "blueHome",
+        "line": 19
+      },
+      {
+        "name": "transferScreen",
+        "line": 24
+      },
+      {
+        "name": "creditCardScreen",
+        "line": 31
+      }
+    ],
+    "directDOM": false,
+    "fixture": "legacy records imported",
+    "money": "major-unit display",
+    "dates": "label defaults",
+    "habit": "delegates"
+  },
+  {
+    "file": "src/desktop-sidebar.js",
+    "lines": 105,
+    "sha256": "5052e9e9d64ef3854a72ff8b43a003092cfd6a0f88308c81fc30d8bd973afbd8",
+    "exports": [
+      {
+        "name": "sidebarTiming",
+        "line": 2
+      },
+      {
+        "name": "sidebarState",
+        "line": 3
+      },
+      {
+        "name": "sidebarTransition",
+        "line": 6
+      },
+      {
+        "name": "desktopSidebar",
+        "line": 31
+      }
+    ],
+    "directDOM": true,
+    "fixture": "timing/state config only",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/fixtures.js",
+    "lines": 50,
+    "sha256": "cef98721fa5858ed6b6fab59c51eedd036e753e542e4bc7fbe354664bf451cbb",
+    "exports": [
+      {
+        "name": "preview",
+        "line": 3
+      },
+      {
+        "name": "accounts",
+        "line": 4
+      },
+      {
+        "name": "transactions",
+        "line": 12
+      },
+      {
+        "name": "bills",
+        "line": 19
+      },
+      {
+        "name": "homePreview",
+        "line": 27
+      },
+      {
+        "name": "members",
+        "line": 38
+      },
+      {
+        "name": "creditCard",
+        "line": 43
+      },
+      {
+        "name": "dailySpending",
+        "line": 47
+      }
+    ],
+    "directDOM": false,
+    "fixture": "legacy records + Home snapshots",
+    "money": "values only",
+    "dates": "fixed literals",
+    "habit": "values only"
+  },
+  {
+    "file": "src/habit-preview.js",
+    "lines": 108,
+    "sha256": "32a327849e255e504e40dd806537869af2368abac32c0133144880b012ddd6a5",
+    "exports": [
+      {
+        "name": "bangkokWeek",
+        "line": 10
+      },
+      {
+        "name": "deriveHabitPreview",
+        "line": 17
+      },
+      {
+        "name": "createCheckinPreview",
+        "line": 31
+      },
+      {
+        "name": "habitOverview",
+        "line": 44
+      },
+      {
+        "name": "habitCard",
+        "line": 57
+      },
+      {
+        "name": "mountHabitTimeline",
+        "line": 71
+      }
+    ],
+    "directDOM": true,
+    "fixture": "Home fixtures + transient Map",
+    "money": "no",
+    "dates": "week/day",
+    "habit": "active-day ratio/grant dedupe"
+  },
+  {
+    "file": "src/home-overview.js",
+    "lines": 111,
+    "sha256": "773117983acd11db10b98bbb78f93e234ab25b56e6d6466b198d6602d3a1fff4",
+    "exports": [
+      {
+        "name": "bangkokClock",
+        "line": 8
+      },
+      {
+        "name": "deriveHomeOverview",
+        "line": 18
+      },
+      {
+        "name": "homeOverview",
+        "line": 44
+      },
+      {
+        "name": "homeMoney",
+        "line": 53
+      },
+      {
+        "name": "todayStrip",
+        "line": 62
+      },
+      {
+        "name": "homeDecisions",
+        "line": 71
+      },
+      {
+        "name": "dueNotices",
+        "line": 83
+      },
+      {
+        "name": "upcomingDueList",
+        "line": 84
+      },
+      {
+        "name": "notificationPreview",
+        "line": 95
+      },
+      {
+        "name": "homeStreak",
+        "line": 99
+      },
+      {
+        "name": "homeMonthly",
+        "line": 102
+      },
+      {
+        "name": "homeSnapshot",
+        "line": 106
+      },
+      {
+        "name": "homePreviewControls",
+        "line": 109
+      }
+    ],
+    "directDOM": false,
+    "fixture": "imports + scenario overrides",
+    "money": "exact safe/totals",
+    "dates": "Bangkok clock/due dates",
+    "habit": "presentation"
+  },
+  {
+    "file": "src/i18n.js",
+    "lines": 852,
+    "sha256": "2469249298069a5dc9490844ef9ba8c4b1559c989d2a5d1d005c64e0de89010d",
+    "exports": [
+      {
+        "name": "messages",
+        "line": 1
+      },
+      {
+        "name": "translator",
+        "line": 667
+      },
+      {
+        "name": "money",
+        "line": 675
+      },
+      {
+        "name": "number",
+        "line": 676
+      },
+      {
+        "name": "escapeHTML",
+        "line": 677
+      }
+    ],
+    "directDOM": false,
+    "fixture": "localized numeric copy",
+    "money": "major-unit THB format",
+    "dates": "literal labels",
+    "habit": "literal XP/freezes"
+  },
+  {
+    "file": "src/icons.js",
+    "lines": 53,
+    "sha256": "9d7db185573803133f0ceb01aa910c97e05da1693aa570da9bd319702f643e75",
+    "exports": [
+      {
+        "name": "icon",
+        "line": 50
+      },
+      {
+        "name": "logo",
+        "line": 53
+      }
+    ],
+    "directDOM": false,
+    "fixture": "SVG/brand assets only",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/navigation.js",
+    "lines": 66,
+    "sha256": "d1950c886f80cbd48a87e2201e6f6b69618177cdf67d3ed15937a4d4735fe678",
+    "exports": [
+      {
+        "name": "islandDestinations",
+        "line": 3
+      },
+      {
+        "name": "moreDestinations",
+        "line": 4
+      },
+      {
+        "name": "navigationContext",
+        "line": 8
+      },
+      {
+        "name": "desktopContext",
+        "line": 14
+      },
+      {
+        "name": "desktopAdd",
+        "line": 18
+      },
+      {
+        "name": "floatingNavigation",
+        "line": 21
+      },
+      {
+        "name": "navigationOverlay",
+        "line": 27
+      }
+    ],
+    "directDOM": true,
+    "fixture": "menu config only",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/party-preview.js",
+    "lines": 101,
+    "sha256": "e980747833aaa85dac83d4ef8b2a9230c17500df23286bc443ca8711efd5f739",
+    "exports": [
+      {
+        "name": "partyPreviewToday",
+        "line": 2
+      },
+      {
+        "name": "partySelfStats",
+        "line": 10
+      },
+      {
+        "name": "partyBadges",
+        "line": 11
+      },
+      {
+        "name": "partyFeed",
+        "line": 14
+      },
+      {
+        "name": "partyPeople",
+        "line": 18
+      },
+      {
+        "name": "createPartySession",
+        "line": 38
+      },
+      {
+        "name": "relationFor",
+        "line": 41
+      },
+      {
+        "name": "setPartyRelationship",
+        "line": 42
+      },
+      {
+        "name": "partyWeek",
+        "line": 53
+      },
+      {
+        "name": "rankedPartyPeople",
+        "line": 63
+      },
+      {
+        "name": "acceptedPartyFriends",
+        "line": 83
+      },
+      {
+        "name": "recommendedPartyFriends",
+        "line": 86
+      },
+      {
+        "name": "exactPartyLookup",
+        "line": 91
+      }
+    ],
+    "directDOM": false,
+    "fixture": "people/stats/relationships",
+    "money": "no",
+    "dates": "live Bangkok date/week",
+    "habit": "weekly-XP ranking"
+  },
+  {
+    "file": "src/party-ui.js",
+    "lines": 119,
+    "sha256": "0654cb21552568d327b2ba7dd1f40655ad7fa5cbf46aa4d9e13b70a473353ab8",
+    "exports": [
+      {
+        "name": "partyBoardRows",
+        "line": 22
+      },
+      {
+        "name": "partyGrid",
+        "line": 62
+      },
+      {
+        "name": "partyFriendsSheet",
+        "line": 107
+      },
+      {
+        "name": "partyRankingSheet",
+        "line": 112
+      },
+      {
+        "name": "partyVisibilitySheet",
+        "line": 116
+      }
+    ],
+    "directDOM": false,
+    "fixture": "Party aggregates imported",
+    "money": "no",
+    "dates": "week-label format",
+    "habit": "ranking/progress display"
+  },
+  {
+    "file": "src/preview-flow.js",
+    "lines": 97,
+    "sha256": "a22693e62810e05e6f6575406dfc9143eddf9ca969d60897115ca86e1243f4f4",
+    "exports": [
+      {
+        "name": "setupSteps",
+        "line": 2
+      },
+      {
+        "name": "publicRoutes",
+        "line": 3
+      },
+      {
+        "name": "isPublicRoute",
+        "line": 4
+      },
+      {
+        "name": "routeTitles",
+        "line": 5
+      },
+      {
+        "name": "credentialDemoTarget",
+        "line": 7
+      },
+      {
+        "name": "createPreviewFlow",
+        "line": 8
+      },
+      {
+        "name": "updatePreviewValue",
+        "line": 11
+      },
+      {
+        "name": "stepNavigation",
+        "line": 24
+      },
+      {
+        "name": "approximateAge",
+        "line": 28
+      },
+      {
+        "name": "validatePreviewFields",
+        "line": 31
+      },
+      {
+        "name": "mountPreviewFlow",
+        "line": 36
+      }
+    ],
+    "directDOM": true,
+    "fixture": "transient setup defaults",
+    "money": "no",
+    "dates": "host-year age",
+    "habit": "no"
+  },
+  {
+    "file": "src/providers.js",
+    "lines": 57,
+    "sha256": "393341619348f99030c33ab2c97f6e0deb49d5e1da59145eb5ec17889d51abf5",
+    "exports": [
+      {
+        "name": "providers",
+        "line": 29
+      },
+      {
+        "name": "fallbackProviders",
+        "line": 47
+      },
+      {
+        "name": "resolveProvider",
+        "line": 48
+      },
+      {
+        "name": "providerTheme",
+        "line": 53
+      },
+      {
+        "name": "providerOptions",
+        "line": 57
+      }
+    ],
+    "directDOM": false,
+    "fixture": "provider catalog only",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/screens.js",
+    "lines": 101,
+    "sha256": "04ace977d69703e587bc2986479563f0d0635f27d5fb1d86976d15369dc37a7e",
+    "exports": [
+      {
+        "name": "destinations",
+        "line": 12
+      },
+      {
+        "name": "navigation",
+        "line": 13
+      },
+      {
+        "name": "shell",
+        "line": 17
+      },
+      {
+        "name": "transactionRow",
+        "line": 30
+      },
+      {
+        "name": "stateCard",
+        "line": 58
+      },
+      {
+        "name": "activityResults",
+        "line": 68
+      },
+      {
+        "name": "screen",
+        "line": 86
+      },
+      {
+        "name": "addMenu",
+        "line": 94
+      },
+      {
+        "name": "addForm",
+        "line": 98
+      }
+    ],
+    "directDOM": false,
+    "fixture": "imports + legacy/form defaults",
+    "money": "display/legacy render",
+    "dates": "fixed form date/calendar",
+    "habit": "legacy card"
+  },
+  {
+    "file": "src/styles/accounts.css",
+    "lines": 148,
+    "sha256": "6b12770037c3149c1ab53d22458b817e50d06a60ac0c18dfa2e35ec195ff3406",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/activity.css",
+    "lines": 109,
+    "sha256": "a8dd49b315eda6ccf5b336379f3ff89a14df21629650fedb904e645fb774238b",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/app.css",
+    "lines": 560,
+    "sha256": "2a1103eb7476c6b5df3312d3296da31d99222c7d06129d92e607f2a5cdeba40f",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/bills.css",
+    "lines": 144,
+    "sha256": "714b3b9ecd5c5e73c783456550cebea8978b548570793f9c306ba19a25e4cf9d",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/blue.css",
+    "lines": 402,
+    "sha256": "b89680fa374c3216be86889bda938ced35f26e5a9c14e608c874118bbb665421",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/navigation.css",
+    "lines": 98,
+    "sha256": "03a8ca014dce871915aa20da3f86ae5b401eed97970bbed017d734ed8c155887",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/party.css",
+    "lines": 111,
+    "sha256": "32f01a2cac7a6a700d86a98e6bd4481d8ae8379de141ea3209fbd13d3566a3d2",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/tokens.css",
+    "lines": 141,
+    "sha256": "1c54609f5e826901dbc1559eb785ff8f8f88b1b0078c9583d1e4067f4c05f268",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/wallet.css",
+    "lines": 154,
+    "sha256": "35549aab2c8e1944279c18a5a3bb52a93cfa64c3455ceeba2d9645e559c5d95a",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/styles/welcome.css",
+    "lines": 178,
+    "sha256": "dc086d497b87283a93facbb83d1591421e07ade768c1884c60623c4a7efd978e",
+    "exports": [],
+    "directDOM": false,
+    "fixture": "none",
+    "money": "no",
+    "dates": "no",
+    "habit": "no"
+  },
+  {
+    "file": "src/wallet-history.js",
+    "lines": 81,
+    "sha256": "e064f1386c01facef3e30696f25d243c9c097aa8821de89b9d3e4adf1495ddd8",
+    "exports": [
+      {
+        "name": "walletCurrentPeriod",
+        "line": 5
+      },
+      {
+        "name": "walletSnapshots",
+        "line": 17
+      },
+      {
+        "name": "walletCurrentEntries",
+        "line": 28
+      },
+      {
+        "name": "walletPeriod",
+        "line": 32
+      },
+      {
+        "name": "walletPeriodLabel",
+        "line": 49
+      },
+      {
+        "name": "walletRingSegments",
+        "line": 57
+      }
+    ],
+    "directDOM": false,
+    "fixture": "six frozen archives + dated legacy rows",
+    "money": "values/geometry",
+    "dates": "period/format/archive",
+    "habit": "no"
+  },
+  {
+    "file": "src/wallet-overview.js",
+    "lines": 79,
+    "sha256": "b292801776b34c415788ba44c0f3d9f236453587e1a8726ff7498fb34606a666",
+    "exports": [
+      {
+        "name": "walletMoney",
+        "line": 16
+      },
+      {
+        "name": "monthlyActivity",
+        "line": 26
+      },
+      {
+        "name": "movementMix",
+        "line": 54
+      },
+      {
+        "name": "walletOverview",
+        "line": 59
+      }
+    ],
+    "directDOM": false,
+    "fixture": "legacy defaults imported",
+    "money": "exact sums/ratios",
+    "dates": "monthly entry filter",
+    "habit": "no"
+  },
+  {
+    "file": "src/wallet.js",
+    "lines": 67,
+    "sha256": "da319cc157a995bd7ddc4fd9e066d9924ed47b03cc16c143c579d4b111e3603d",
+    "exports": [
+      {
+        "name": "walletScreen",
+        "line": 14
+      }
+    ],
+    "directDOM": false,
+    "fixture": "account defaults imported",
+    "money": "legend percentages/display",
+    "dates": "delegates period",
+    "habit": "no"
+  },
+  {
+    "file": "src/welcome.js",
+    "lines": 85,
+    "sha256": "2a71fc8dadc19027bf73f6c8f7fe368dcedd239f18eea3cc415073ccc2bfab2f",
+    "exports": [
+      {
+        "name": "welcomeArt",
+        "line": 10
+      },
+      {
+        "name": "backgroundArtwork",
+        "line": 15
+      },
+      {
+        "name": "welcomeScreen",
+        "line": 78
+      },
+      {
+        "name": "publicRoutes",
+        "line": 6,
+        "reexport": true
+      },
+      {
+        "name": "isPublicRoute",
+        "line": 6,
+        "reexport": true
+      }
+    ],
+    "directDOM": false,
+    "fixture": "art/setup presentation",
+    "money": "no",
+    "dates": "host-year age bound",
+    "habit": "no"
+  }
+]
