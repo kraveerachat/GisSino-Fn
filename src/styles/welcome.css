@@ -85,7 +85,7 @@
 .avatar-choice input:focus-visible+span { outline:3px solid var(--welcome-blue-deep); outline-offset:4px; }
 .flow-radio-group { display:grid; gap:8px; }
 .flow-radio-group label,.flow-check { display:flex; align-items:center; min-height:48px; gap:12px; cursor:pointer; font-size:15px; line-height:1.6; }
-.flow-radio-group input,.flow-check input { width:22px; height:22px; flex:none; margin:0; accent-color:var(--welcome-blue-deep); }
+.flow-radio-group input,.flow-check input { width:24px; height:24px; flex:none; margin:0; accent-color:var(--welcome-blue-deep); }
 .age-preview { color:var(--welcome-blue-deep); font-size:15px; margin:0; line-height:1.7; }
 .privacy-principles { display:grid; gap:24px; }
 .privacy-principles section { display:flex; align-items:flex-start; gap:14px; }

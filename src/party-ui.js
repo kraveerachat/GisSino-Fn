@@ -92,7 +92,7 @@ function lookupResult(state,t,session) {
 
 function searchTab(state,t,session) {
   const suggestions=recommendedPartyFriends(session);
-  return `<form id="party-friend-search" class="party-friend-search" role="search" novalidate><label for="party-friend-query">${t('partySearchLabel')}</label><div class="party-search-control"><input id="party-friend-query" name="query" type="search" maxlength="40" autocomplete="off" spellcheck="false" value="${esc(session.query)}" placeholder="${t('partySearchPlaceholder')}"><button type="submit" class="button primary">${icon('search')}<span>${t('search')}</span></button></div><p>${t('partyExactSearchHint')}</p></form>
+  return `<form id="party-friend-search" class="party-friend-search" role="search" novalidate><label for="party-friend-query">${t('partySearchLabel')}</label><div class="party-search-control"><input id="party-friend-query" name="query" type="search" maxlength="40" autocomplete="off" spellcheck="false" value="${esc(session.query)}" placeholder="${t('partySearchPlaceholder')}"><button type="submit" class="button primary">${icon('search')}<span>${t('partySearchFriends')}</span></button></div><p>${t('partyExactSearchHint')}</p></form>
     ${lookupResult(state,t,session)}
     <section class="party-suggestions" aria-labelledby="party-suggestion-title"><div class="party-subheading"><h3 id="party-suggestion-title" tabindex="-1">${t('partySuggestions')}</h3><span>${t('partySampleLabel')}</span></div>${suggestions.length?suggestions.map(person=>candidate(person,state,t,session,true)).join(''):`<p class="party-empty-copy">${t('partyNoSuggestions')}</p>`}</section>`;
 }

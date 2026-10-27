@@ -1,6 +1,7 @@
 import { providerOptions, resolveProvider } from './providers.js';
 import { accountDisplay, providerBadge } from './account-display.js';
 import { escapeHTML as esc } from './i18n.js';
+import { openingBalanceMinor } from './amount.js';
 
 export const profileLabels = ['profileSavings','profileCurrent','profileWallet','profileCash','profileOther'];
 const labelsForType = type => type==='bank'?['profileSavings','profileCurrent','profileOther']:type==='ewallet'?['profileWallet','profileOther']:['profileCash','profileOther'];
@@ -25,7 +26,11 @@ export function applyProfile(records,input,id,newId) {
   const profile=normalizeProfile(input);
   if(!profile.nickname)throw new Error('profileNameRequired');
   if(id&&!records.some(a=>a.id===id))throw new Error('boardUnavailableTitle');
-  return id?records.map(a=>a.id===id?{...a,...profile}:a):[...records,{...profile,id:newId,currency:'THB',balanceMinor:undefined,archived:false,sortOrder:Math.max(-1,...records.map(a=>a.sortOrder||0))+1}];
+  if(id)return records.map(a=>a.id===id?{...a,...profile}:a);
+  // New accounts may record an optional opening balance in the existing balanceMinor field.
+  const opening=openingBalanceMinor(input.openingBalance);
+  if(opening===null)throw new Error('profileOpeningError');
+  return [...records,{...profile,id:newId,currency:'THB',balanceMinor:opening,archived:false,sortOrder:Math.max(-1,...records.map(a=>a.sortOrder||0))+1}];
 }
 export function accountProfileForm(draft,state,t,editing=false) {
   const d=normalizeProfile(draft),provider=resolveProvider(d.providerId,d.accountType);
@@ -37,6 +42,7 @@ export function accountProfileForm(draft,state,t,editing=false) {
       ${select('accountType','providerType',[['bank',t('bankAccounts')],['ewallet',t('eWallets')],['cash',t('cashAccounts')]])}
       ${d.accountType!=='cash'?select('providerId','profileProvider',providerOptions(d.accountType).map(p=>[p.providerId,state.locale==='th'?p.nameTh:p.nameEn])):''}
       <label class="field" for="profile-nickname">${t('profileNickname')}<input id="profile-nickname" name="nickname" value="${esc(d.nickname)}" maxlength="60" required autocomplete="off" aria-describedby="profile-name-error"><span class="profile-field-error" id="profile-name-error" hidden>${t('profileNameRequired')}</span></label>
+      ${editing?'':`<label class="field" for="profile-opening">${t('profileOpeningBalance')}<input id="profile-opening" name="openingBalance" value="${esc(draft.openingBalance||'')}" inputmode="decimal" maxlength="12" autocomplete="off" aria-describedby="profile-opening-error"><span class="profile-field-error" id="profile-opening-error" hidden>${t('profileOpeningError')}</span></label>`}
       <details class="profile-options" ${draft.optionsOpen?'open':''}><summary>${t('profileOptions')}</summary>
         <label class="field" for="profile-suffix">${t('profileSuffix')}<input id="profile-suffix" name="suffix" value="${esc(d.suffix)}" maxlength="12" autocomplete="off"></label>
         ${select('profileLabel','profileAccountLabel',labelsForType(d.accountType).map(key=>[key,t(key)]))}

@@ -1,6 +1,11 @@
 import { accounts,bills,transactions,homePreview } from './fixtures.js';
 import { icon } from './icons.js';
 import { escapeHTML as esc } from './i18n.js';
+import { flags } from './config/feature-flags.js';
+
+// "Spending shortfall" and "Sample group context" change nothing visible since D31 (their
+// renderers are unmounted), so they stay hidden unless flags.homeScenarioExtras is on.
+export const previewScenarios=homePreview.scenarios.filter(key=>flags.homeScenarioExtras||!['shortfall','party'].includes(key));
 
 const currencies=['THB','USD'];
 const dayOrdinal=key=>Date.parse(key+'T00:00:00Z')/86400000;
@@ -107,5 +112,5 @@ export function homeSnapshot(model,state,t) {
   return `<p class="home-snapshot">${icon('info')}<span>${t('homeSnapshot',{date:new Intl.DateTimeFormat(state.locale==='th'?'th-TH':'en-GB',{timeZone:'Asia/Bangkok',dateStyle:'medium',timeStyle:'short'}).format(model.clock.instant)})}</span><a href="#settings">${t('homePreviewAdjust')}</a></p>`;
 }
 export function homePreviewControls(state,t) {
-  return `<section class="panel home-preview-controls"><h2>${t('homePreviewControls')}</h2><p>${t('homePreviewScope')}</p><label for="home-preview-scenario">${t('homeScenario')}</label><select id="home-preview-scenario" data-control="home-scenario">${homePreview.scenarios.map(key=>`<option value="${key}" ${state.homeScenario===key?'selected':''}>${t('homeScenario'+key)}</option>`).join('')}</select><label for="home-preview-clock">${t('homeClock')}</label><input id="home-preview-clock" type="datetime-local" min="2000-01-01T00:00" max="2099-12-31T23:59" step="60" data-control="home-clock" value="${esc(state.homeNow||homePreview.nowLocal)}" aria-describedby="home-clock-note"><p id="home-clock-note">${t('homeClockNote',{time:homePreview.reminderAt})}</p><a class="text-link" href="#home">${t('homeReturn')}</a></section>`;
+  return `<section class="panel home-preview-controls"><h2>${t('homePreviewControls')}</h2><p>${t('homePreviewScope')}</p><label for="home-preview-scenario">${t('homeScenario')}</label><select id="home-preview-scenario" data-control="home-scenario">${previewScenarios.map(key=>`<option value="${key}" ${state.homeScenario===key?'selected':''}>${t('homeScenario'+key)}</option>`).join('')}</select><label for="home-preview-clock">${t('homeClock')}</label><input id="home-preview-clock" type="datetime-local" min="2000-01-01T00:00" max="2099-12-31T23:59" step="60" data-control="home-clock" value="${esc(state.homeNow||homePreview.nowLocal)}" aria-describedby="home-clock-note"><p id="home-clock-note">${t('homeClockNote',{time:homePreview.reminderAt})}</p><a class="text-link" href="#home">${t('homeReturn')}</a></section>`;
 }

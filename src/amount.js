@@ -15,3 +15,21 @@ export function toMinorUnits(value) {
   const [whole, fraction = ''] = value.split('.');
   return Number(whole) * 100 + Number(fraction.padEnd(2, '0'));
 }
+// Transfer review: a positive amount, two different accounts, and no more than a
+// known source balance. An unrecorded balance cannot be checked and is not blocked.
+export function transferProblem(amountText, sourceBalanceMinor, sameAccounts) {
+  const minor = toMinorUnits(String(amountText ?? ''));
+  if (minor === null || minor <= 0 || sameAccounts) return 'transferAmountError';
+  if (Number.isSafeInteger(sourceBalanceMinor) && minor > sourceBalanceMinor) return 'transferInsufficient';
+  return null;
+}
+// Optional opening balance for a new sample account: '' → undefined (not recorded), invalid → null.
+export function openingBalanceMinor(text) {
+  const value = String(text ?? '').trim();
+  if (!value) return undefined;
+  if (!/^\d{1,9}(?:\.\d{1,2})?$/.test(value)) return null;
+  const [whole, fraction = ''] = value.split('.');
+  return Number(whole) * 100 + Number(fraction.padEnd(2, '0'));
+}
+// Entry dates may not be later than the app's mock "today" (a YYYY-MM-DD key).
+export const isFutureDate = (date, today) => /^\d{4}-\d{2}-\d{2}$/.test(String(date)) && String(date) > today;

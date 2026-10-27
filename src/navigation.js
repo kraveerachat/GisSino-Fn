@@ -64,3 +64,15 @@ export function navigationOverlay(sheet,closeSheet) {
   });
   return {close,isOpen};
 }
+
+// Unknown hashes fall back to a valid route and the address bar is replaced, so a
+// dead link like #bogus is never kept. "#main" is the skip-link target, not a route.
+export function routeForHash(hash, validRoutes, fallback = 'welcome') {
+  const name = String(hash || '').replace(/^#/, '');
+  if (name === 'main') return { route: null, replace: false };
+  if (!name) return { route: fallback, replace: false };
+  return validRoutes.includes(name) ? { route: name, replace: false } : { route: fallback, replace: true };
+}
+// A link inside an open sheet that points at the page already shown fires no
+// hashchange; the sheet must close itself.
+export const linksToCurrentPage = (href, currentHash) => typeof href === 'string' && href.startsWith('#') && href === (currentHash || '#');

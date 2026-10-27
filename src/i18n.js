@@ -909,3 +909,7 @@ Object.assign(messages.en, {
 
 Object.assign(messages.th, {pwaIphone:'iPhone'});
 Object.assign(messages.en, {pwaIphone:'iPhone'});
+
+// WP-19 QA quick fixes.
+Object.assign(messages.th, {partySearchFriends:'ค้นหาเพื่อน', transferInsufficient:'จำนวนเงินมากกว่ายอดคงเหลือของบัญชีต้นทาง', dateFutureError:'เลือกวันที่ไม่เกินวันนี้', profileOpeningBalance:'ยอดเงินเริ่มต้น (ไม่บังคับ)', profileOpeningError:'กรอกยอดเงินที่ไม่ติดลบ ทศนิยมไม่เกิน 2 ตำแหน่ง'});
+Object.assign(messages.en, {partySearchFriends:'Search friends', transferInsufficient:'The amount is more than the source account balance.', dateFutureError:'Choose a date no later than today.', profileOpeningBalance:'Opening balance (optional)', profileOpeningError:'Enter a non-negative amount with at most two decimal places.'});
