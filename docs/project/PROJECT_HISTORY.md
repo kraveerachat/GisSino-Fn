@@ -112,4 +112,4 @@ This timeline is append-only.
 
 - 2026-10-18 — Activity source follow-up `b92cf237a54ed364fda4fdb48b81b98e6c2188bf` committed/pushed after receipt feature checkpoint ae9c611;preserves salary category search compatibility,637-key/102-test rerun PASS. Receipt remains immutable;final docs checkpoint follows.
 
-- 2026-10-27 — Owner selected [Batch A WP-09/10](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md); prototype shell/install implementation reached local/browser verification. Draft delivery and physical-device acceptance pending; PR #12 remains unmerged.
+- 2026-10-27 — Owner selected [Batch A WP-09/10](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md); prototype shell/install implementation reached local/browser verification. [Draft PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13) contains source and evidence (134 tests/57 browser cases). Owner/physical-device acceptance pending; PR #12 remains unmerged.

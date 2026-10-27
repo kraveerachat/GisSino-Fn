@@ -11,7 +11,7 @@ related:
 ---
 # Batch A implementation and verification
 
-Owner selected WP-09 + WP-10 together under remediation v2. One branch `wp-09-10-pwa-shell` from main `bdbedaec24d781b928d8bf7747474032bfb9c384`; Draft PR creation/push pending. PR #12 is still open/Draft and was not merged. Production mutation, deletions, new paid services and merge remain unauthorized.
+Owner selected WP-09 + WP-10 together under remediation v2. One branch `wp-09-10-pwa-shell` from main `bdbedaec24d781b928d8bf7747474032bfb9c384`; Implementation committed/pushed as `b7bbd2752d6ff8c2af21bb0cc3fe5ada72de12bb`; [PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13) is OPEN/DRAFT, not merged. PR #12 is still open/Draft and was not merged. Production mutation, deletions, new paid services and merge remain unauthorized.
 
 ## Changes and reuse
 
@@ -25,4 +25,8 @@ Browser checks exercise real service worker install/cache/update lifecycle, pers
 
 ## Delivery boundary
 
-One Draft PR, owner review/merge pending. No immutable receipt until owner acceptance. The dedicated local preview runs on port 4188; previous preview servers were left as found. Stop only the Batch A server session if no longer needed. Physical iPhone/iPad launch, real Android/native install, Safari/WebKit, screen readers and physical safe areas remain not tested.
+[Draft PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13) is open; owner review/merge pending. No immutable receipt until owner acceptance. The dedicated local preview runs on port 4188; previous preview servers were left as found. Stop only the Batch A server session if no longer needed. Physical iPhone/iPad launch, real Android/native install, Safari/WebKit, screen readers and physical safe areas remain not tested.
+
+## Delivery checkpoint
+
+Implementation `b7bbd2752d6ff8c2af21bb0cc3fe5ada72de12bb` is pushed in [Draft PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13). Final complete Chrome 155.0.8059.86 verification passed 57 cases, zero page/installability errors, and all 66 served asset hashes match. Full tests pass 134/134; check passes 719 keys and fresh shell; detector has no findings. Initial-head Vercel status and Preview Comments checks are successful. Documentation reconciliation is a subsequent docs-only commit on the same branch; no future SHA is asserted. Keep Draft; owner review and physical-device acceptance pending. No immutable receipt or merge.

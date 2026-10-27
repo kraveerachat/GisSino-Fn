@@ -50,3 +50,7 @@ Financial data remains a page-local synthetic preview. Offline shell support is 
 - [Offline shell and disabled entry](pwa-2026-10/offline-shell.png)
 - [Waiting update with dirty input](pwa-2026-10/update-with-draft.png)
 - [Browser evidence](pwa-2026-10/browser-evidence.json)
+
+## Delivery checkpoint
+
+Implementation `b7bbd2752d6ff8c2af21bb0cc3fe5ada72de12bb` is pushed in [Draft PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13). Final complete Chrome 155.0.8059.86 verification passed 57 cases, zero page/installability errors, and all 66 served asset hashes match. Full tests pass 134/134; check passes 719 keys and fresh shell; detector has no findings. Initial-head Vercel status and Preview Comments checks are successful. Documentation reconciliation is a subsequent docs-only commit on the same branch; no future SHA is asserted. Keep Draft; owner review and physical-device acceptance pending. No immutable receipt or merge.
