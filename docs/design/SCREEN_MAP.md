@@ -3,14 +3,20 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
   - ONBOARDING_HOME_V2_ROADMAP.md
   - ../pages/Pages-Hub.md
+  - ../project/AUDIT_2026-10_LOGIC_AND_DATA.md
 ---
+
 # Screen map
+
+## Current audit checkpoint — 2026-10-27
+
+[WP-01 source/data audit](../project/AUDIT_2026-10_LOGIC_AND_DATA.md) inventories the existing routes, model boundaries, number lineage and reusable widgets at main bdbedae. It changes no screen, data contract or component. GitHub confirmed Activity PR #9, Bills PR #10 and Party PR #11 merged before this audit; earlier delivery/review-pending paragraphs below are historical checkpoints, superseded for current status by this note and the [task dashboard](../worklog/00-Index/Task-Dashboard.md).
 
 
 ## Activity v2 S1 navigation and period (2026-10-18)

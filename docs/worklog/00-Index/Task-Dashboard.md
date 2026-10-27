@@ -3,7 +3,7 @@ id: HUB-WORKLOG
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: ../../START_HERE.md
 related:
   - ../../project/PROJECT_HISTORY.md
@@ -27,3 +27,4 @@ related:
 | [TASK-GS-UI-ACTIVITY-V2-S1](../10-Tasks/TASK-GS-UI-ACTIVITY-V2-S1.md) | MERGED | [PR #9 merged](https://github.com/kraveerachat/GisSino-Fn/pull/9) | Embedded monthly donut/top-four expense preview/full fourteen-category dialog; coherent Activity-only data; merged at 18e087e360734d52b0a66a026da34834afdc70d3; prior source and test evidence preserved; [S1](../20-Sessions/TASK-GS-UI-ACTIVITY-V2-S1-S1.md) |
 | [TASK-GS-UI-BILLS-V2-S1](../10-Tasks/TASK-GS-UI-BILLS-V2-S1.md) | MERGED | [PR #10 merged](https://github.com/kraveerachat/GisSino-Fn/pull/10) | Compact Bills v2; selected-month/overdue projections, installment details and four preview-only forms; initial check and 94 tests passed; integrated 641 keys/112 tests/30 route-layout cases; nine original Chromium sizes and [review captures](../../design/reviews/BILLS_V2_REVIEW.md). Built from main after Wallet PR #8 merge; Activity PR #9 is merged; combined verification passed; merged at 40d52ff9e0ae9dc4f610b485f930f94855a9c0ca. |
 | [TASK-GS-UI-PARTY-V2-S1](../10-Tasks/TASK-GS-UI-PARTY-V2-S1.md) | MERGED | [PR #11 merged](https://github.com/kraveerachat/GisSino-Fn/pull/11) | Friends/Global weekly rankings and friend preview; integrated 693 keys/121 tests/30 route-layout cases plus focused Party actions; merged at cd1fa82906c203ba4db93616db6ad6fd3e70a0a3. |
+| [TASK-GS-WP01-REPOSITORY-AUDIT](../10-Tasks/TASK-GS-WP01-REPOSITORY-AUDIT.md) | AUDIT COMPLETE / REVIEW PENDING | [Draft PR #12 open](https://github.com/kraveerachat/GisSino-Fn/pull/12) | Baseline bdbedae;37 source files,174 exported bindings;121 tests/693 keys/30 layout cases; eight replacement numeric traces; original images unavailable; no source change |
