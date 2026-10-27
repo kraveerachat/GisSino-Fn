@@ -36,7 +36,7 @@ This timeline is append-only.
 
 - 2026-10-26 — [Party PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11) merged at `cd1fa82906c203ba4db93616db6ad6fd3e70a0a3` after normal main integration, 693 locale keys, 121 tests and responsive browser verification. PRs #9, #10 and #11 were confirmed merged; no open PRs were found. Final main passed the same checks and 30 five-route Chromium cases across 390/820/1440px and light/dark without errors or overflow. Activity D33, Party D34 and Bills D35 remain distinct; no production finance or social services are implied.
 
-- 2026-10-27 — [WP-01 audit](../worklog/10-Tasks/TASK-GS-WP01-REPOSITORY-AUDIT.md) recorded baseline bdbedae:37 src files/174 exports, numeric/helper/widget map,121 tests/693 locale keys/30 Chromium layouts. Documentation-only Draft PR pending; eight replacement images traced, original image set unavailable; no implementation or production milestone.
+- 2026-10-27 — [WP-01 audit](../worklog/10-Tasks/TASK-GS-WP01-REPOSITORY-AUDIT.md) recorded baseline bdbedae:37 src files/174 exports, numeric/helper/widget map,121 tests/693 locale keys/30 Chromium layouts. Documentation-only [Draft PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) open for owner review; eight replacement images traced, original image set unavailable; no implementation or production milestone.
 
 ## Change log
 

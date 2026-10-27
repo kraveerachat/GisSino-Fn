@@ -44,4 +44,8 @@ One dedicated branch and Draft PR; no force push, merge, deletion, dependency, f
 
 ## Remaining work
 
-Owner review of WP-01 and later decision gates. No proposed default in WP-02..18 is approved by this report. The task note and dashboard will record the actual Draft PR URL after creation.
+Owner review of WP-01 and later decision gates. No proposed default in WP-02..18 is approved by this report. [Draft PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) is OPEN/DRAFT. The task note and dashboard record its verified URL; no merge was performed.
+
+## GitHub delivery
+
+Audit evidence checkpoint2bccd2b35957b4d5b78a00d2b55362fd2288712e was pushed and Draft PR #12 was created and attached to this chat. The following documentation-only checkpoint synchronizes the PR URL/status. Final commit identity is verified from local/remote/PR heads in the handoff; no future SHA is invented.

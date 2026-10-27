@@ -20,7 +20,7 @@ related:
 
 WP-01 audits main at bdbedaec24d781b928d8bf7747474032bfb9c384. Remote main matched the plan's baseline; the checkout was clean and GitHub showed no open PRs before work. The owner explicitly selected **WP-01 only**. No application code, test, fixture, token, route, dependency, architecture decision or feature flag is changed.
 
-The prototype contains **27 JavaScript modules and 10 CSS files**. Page projections are guarded and tested, but there is no shared ledger, data Repository, persistent storage or authoritative cross-page habit state. Matching totals do not establish a shared source. Current results: 693 effective locale keys per language, 121 passing tests, and 30 passing Chromium route/width/theme cases.
+The prototype contains **27 JavaScript modules and 10 CSS files**. Page projections are guarded and tested, but there is no shared ledger, data Repository, persistent storage or authoritative cross-page habit state. Matching totals do not establish a shared source. [Draft PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) delivers this audit for owner review. Current results: 693 effective locale keys per language, 121 passing tests, and 30 passing Chromium route/width/theme cases.
 
 The remediation plan is PROPOSED_NOT_CANONICAL. Its local reference blueprint was consulted, not imported into the canonical vault. The eight original screenshots mentioned in the plan were **not attached or embedded in that reference**. This task captured eight explicitly identified replacement baseline views. Numeric trace acceptance is established for those views, not an unprovided image set.
 
@@ -329,6 +329,8 @@ The named skills inform baseline preservation, numerical context, consistency an
 | Eight captures | B01–B08 inspected; original plan images unavailable. Fonts/motion settled; dialogs use viewport captures. |
 | Impeccable detector | PASS, exit0; empty findings array. Mechanical scan only. |
 | Source scope | No application/test/script/package/token/fixture changes; documentation/evidence only. |
+
+Raw SHA-256 evidence compares Windows working-tree bytes, not Git blobs; platform newline conversion can change those hashes without changing code semantics.
 
 Not tested: the unprovided original screenshots; physical iPhone/iPad/Android/desktop installations; Safari/Firefox; screen readers; exhaustive touch gestures; measured contrast/performance; authentication/BOLA; persistence/IndexedDB/offline sync; financial posting; PWA updates; backup/restore. None is claimed as implemented or verified by WP-01. The30 cases emulate viewport sizes in Windows headless Chrome via Playwright, not devices.
 

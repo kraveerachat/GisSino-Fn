@@ -14,13 +14,13 @@ related:
   - ../../design/COMPONENT_INVENTORY.md
   - ../20-Sessions/TASK-GS-WP01-REPOSITORY-AUDIT-S1.md
 branch: wp-01-repository-audit
-pr: PENDING
+pr: https://github.com/kraveerachat/GisSino-Fn/pull/12
 ---
 # WP-01 — Repository logic and data audit
 
 ## Current state
 
-The owner selected WP-01 only from PLAN-GS-AGENT-REMEDIATION-2026-10-27. The [audit](../../project/AUDIT_2026-10_LOGIC_AND_DATA.md) covers all37 src files,174 exported bindings (including re-exports), numeric literal occurrences, computation helpers, reusable widgets and eight audit-created baseline captures. No implementation changes are included. Draft PR review and owner merge remain separate; WP-02 has not started.
+The owner selected WP-01 only from PLAN-GS-AGENT-REMEDIATION-2026-10-27. The [audit](../../project/AUDIT_2026-10_LOGIC_AND_DATA.md) covers all37 src files,174 exported bindings (including re-exports), numeric literal occurrences, computation helpers, reusable widgets and eight audit-created baseline captures. No implementation changes are included. [Draft PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) is OPEN/DRAFT; owner review and merge remain separate; WP-02 has not started.
 
 ## Preflight and authority
 
@@ -62,7 +62,7 @@ NEXT_ACTION=deliver Draft PR; await owner review before merge
 | Helper reuse | Exact parsers/formatters, clock/week/date projections, account/deck/provider, transaction/obligation rows, native sheets/states identified. |
 | Verification | Check693 locale keys;121/121 tests;30 Chromium cases;English routes;detector[]. |
 | Documentation | Audit, task/session, hub/design links, dashboard/history/current focus synchronized. |
-| GitHub checkpoint | PENDING Draft PR creation; no merge authorized. |
+| GitHub checkpoint | REMOTE_PUSHED; [PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) OPEN/DRAFT; audit evidence checkpoint 2bccd2b35957b4d5b78a00d2b55362fd2288712e. No merge authorized. |
 
 ## Acceptance and limits
 
@@ -79,3 +79,5 @@ All source and receipt files are preserved. Candidate future consolidation is do
 ## Change log
 
 - 2026-10-27 — Owner limited task to WP-01; baseline audited and evidence prepared for one Draft PR.
+
+- 2026-10-27 — Audit checkpoint pushed; GitHub confirmed Draft PR #12 open. Final PR-status documentation checkpoint follows without source changes.
