@@ -35,8 +35,8 @@ export const walletSnapshots = Object.freeze([
   archive('2025-11', [3940000, 2250000, 250000, 120000, 90000, 150000], 3400000, 1280000)
 ]);
 
-// Opening balances come from the October archive. The current screen values stay
-// in legacyDisplay until the owner decides which figures win.
+// Opening balances come from the October archive. The screen values in legacyDisplay
+// are canonical (D37); the gap to the derived ledger balances is an open question.
 export const OPENING_AS_OF = '2026-10-01T00:00:00+07:00';
 const october = walletSnapshots.find(snapshot => snapshot.period === '2026-10');
 export const worldAccounts = Object.freeze(legacyAccounts.map(account => Object.freeze({

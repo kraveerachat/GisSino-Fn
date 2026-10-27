@@ -1,6 +1,6 @@
 # Fixture World reconciliation — WP-02 (2026-10-28)
 
-Status: **PROPOSED — owner decision needed.** Nothing below was changed to force a match.
+Status: **Balances decided (D37, 2026-10-28): the screen values are canonical.** The missing October transactions are an [open gap](OPEN_QUESTIONS.md#fixture-world-october-gap--2026-10-28). Nothing below was changed to force a match.
 
 Source: [`src/fixtures/world.js`](../../src/fixtures/world.js), checked by [`tests/fixture-world.test.mjs`](../../tests/fixture-world.test.mjs).
 
@@ -73,6 +73,6 @@ Party level 8 and lifetime 1,240 XP stay Party-only.
 
 ## Owner questions
 
-1. Which balances should win: the archive plus ledger (฿137,060) or the screen values (฿116,850)? If the screen values win, what are the missing October transactions (about ฿22,510 more outflow from daily, plus ฿1,900 / ฿300 / ฿100 more inflow to savings / e-wallet / cash)?
+1. ~~Which balances should win?~~ Decided 2026-10-28: screen values (฿116,850), D37. Still open: the missing October transactions (about ฿22,510 more outflow from daily, plus ฿1,900 / ฿300 / ฿100 more inflow to savings / e-wallet / cash).
 2. Which account did the ฿5,000 "Move to savings" come from?
 3. ~~Confirm the Home habit set (3 / 80) or choose the Party set (7 / 92).~~ Decided 2026-10-28: Home set (D36).

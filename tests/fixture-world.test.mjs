@@ -35,7 +35,8 @@ test('October ledger reproduces Activity income 42,000, expense 15,240 and the c
 test('Derived 18 Oct balances differ from the screen values exactly as documented; nothing is forced', () => {
   const entries = ledgerEntries(worldTransactions);
   const diff = Object.fromEntries(worldAccounts.map(a => [a.id, balanceAt(a, entries, at) - a.legacyDisplay.balanceMinor]));
-  // Matches docs/project/FIXTURE_WORLD_RECONCILIATION.md; the owner decides which figures win.
+  // Screen values are canonical (D37); this pins the open October gap documented in
+  // docs/project/OPEN_QUESTIONS.md so it cannot drift silently.
   assert.deepEqual(diff, { daily: 2251000, savings: -190000, reserve: 0, 'everyday-wallet': -30000, 'pocket-cash': -10000, 'family-savings': 0 });
   assert.equal(assetsAt(worldAccounts, entries, at, 'THB'), 13706000);
   assert.equal(worldAccounts.reduce((sum, a) => sum + a.legacyDisplay.balanceMinor, 0), 11685000);
