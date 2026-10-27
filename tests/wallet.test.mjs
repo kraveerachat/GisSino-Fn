@@ -18,7 +18,7 @@ test('Wallet totals derive from records and count credit bill once',()=>{
   assert.equal(model.liabilities.length,4);
 });
 test('Movement uses legacy stable IDs, excludes own transfers, and preserves renamed accounts',()=>{
-  assert.deepEqual(movementMix({...accounts[0],nickname:'Renamed'}),{income:98,expense:2});
+  assert.deepEqual(movementMix({...accounts[0],nickname:'Renamed'}),{income:73,expense:27});
   assert.equal(movementMix(accounts[1]),null);
   assert.equal(movementMix(accounts[3]),null);
 });
@@ -44,7 +44,7 @@ test('Invalid amounts remain unknown; legacy decimals are exact and duplicate or
   assert.equal(walletOverview([record({balanceMinor:Number.MAX_SAFE_INTEGER}),record({id:'two',balanceMinor:1})],[],null).totals[0].assets,null);
 });
 test('Currency formatting retains exact cents near safe-integer limits and negative subunits',()=>{
-  assert.equal(walletMoney(1234,'THB','en'),'THB 12.34');
+  assert.equal(walletMoney(1234,'THB','en'),'฿12.34');
   assert.equal(walletMoney(-1,'USD','en'),'-$0.01');
   assert.equal(walletMoney(-101,'USD','en'),'-$1.01');
   assert.equal(walletMoney(Number.MAX_SAFE_INTEGER,'USD','en'),'$90,071,992,547,409.91');
@@ -52,7 +52,7 @@ test('Currency formatting retains exact cents near safe-integer limits and negat
 });
 test('Rendered Wallet leads with assets and preserves profile, Bills, transfer, and add actions',()=>{
   const html=walletScreen(state,translator('en'));
-  for(const match of ['#wallet/account/daily','data-account-id="daily"','href="#bills"','#transfer','data-action="add-account"','In 98% · Out 2%']) assert.ok(html.includes(match),match);
+  for(const match of ['#wallet/account/daily','data-account-id="daily"','href="#bills"','#transfer','data-action="add-account"','In 73% · Out 27%']) assert.ok(html.includes(match),match);
   for(const match of ['wallet-category-liabilities','Credit · debit · obligations','href="#credit-card"','wallet-mix-track']) assert.ok(!html.includes(match),match);
   assert.ok(!html.includes('16:00'));
   for (const cap of html.matchAll(/class="wallet-item wallet-obligation"[^>]*>[\s\S]*?class="wallet-item-cap">([\s\S]*?)<\/span>\s*<svg/g)) assert.ok(!cap[1].includes('wallet-movement'));
@@ -97,21 +97,21 @@ test('History balances and monthly activity follow the selected period, never cu
   const t=translator('en');
   const history={...state,walletMode:'history',walletPeriod:'2026-09',walletActivityValues:{daily:true}};
   const html=walletScreen(history,t);
-  assert.ok(html.includes('THB 102,300'));
-  assert.ok(html.includes('THB 59,800'));
-  assert.ok(html.includes('In THB 39,500 · Out THB 13,250'));
+  assert.ok(html.includes('฿102,300<'));
+  assert.ok(html.includes('฿59,800.00'));
+  assert.ok(html.includes('In ฿39,500.00 · Out ฿13,250.00'));
   assert.ok(html.includes('Opening balance'));
   assert.ok(html.includes('As of 1 Sept 2026'));
   assert.ok(!html.includes('Payments due this month'));
   assert.ok(html.includes('data-period="2026-01" aria-pressed="false" aria-label="Jan 2026 · No opening snapshot" disabled'));
-  assert.ok(!walletScreen({...history,balanceVisible:false},t).includes('THB 39,500'));
+  assert.ok(!walletScreen({...history,balanceVisible:false},t).includes('฿39,500'));
 });
 
 test('Activity uses an independent button rather than a nested link control',()=>{
   const html=walletScreen(state,translator('en'));
   assert.ok(html.includes('data-action="wallet-activity" data-id="daily" aria-pressed="false"'));
   for(const match of html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g))assert.ok(!match[0].includes('<button'));
-  assert.ok(walletScreen({...state,walletActivityValues:{daily:true}},translator('en')).includes('In THB 42,000 · Out THB 845'));
+  assert.ok(walletScreen({...state,walletActivityValues:{daily:true}},translator('en')).includes('In ฿42,000.00 · Out ฿15,240.00'));
 });
 
 test('Rounded ring keeps all positive categories without inventing slices for zeros or invalid values',()=>{

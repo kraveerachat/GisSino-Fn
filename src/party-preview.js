@@ -1,13 +1,14 @@
+import { bkkDate, bkkWeekRange } from './core/clock.js';
+import { rankFriends } from './core/ranking.js';
+import { habitStats } from './habit-preview.js';
+
 // Party-only synthetic aggregate and relationship fixtures. No finance records or network service.
-export const partyPreviewToday = (() => {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone:'Asia/Bangkok',year:'numeric',month:'2-digit',day:'2-digit'
-  }).formatToParts(new Date());
-  const value = type => parts.find(part => part.type === type)?.value;
-  return `${value('year')}-${value('month')}-${value('day')}`;
-})();
+// "Today" is the shared mock clock, so Party and Home show the same week.
+export const partyPreviewToday = bkkDate();
 const partySampleWeekStart = partyWeek(partyPreviewToday).start;
-export const partySelfStats = Object.freeze({level:8,totalXP:1240,nextLevelXP:1500,streak:7,freezes:2});
+// Streak and weekly XP come from the one shared habit source; level and lifetime XP are Party-only.
+const selfHabit = habitStats(partyPreviewToday);
+export const partySelfStats = Object.freeze({level:8,totalXP:1240,nextLevelXP:1500,streak:selfHabit.streak,freezes:2});
 export const partyBadges = Object.freeze([
   ['star','badgeFirst'],['flame','badgeWeek'],['wallet','badgeCalm'],['lock','badgeMonth']
 ]);
@@ -16,7 +17,7 @@ export const partyFeed = Object.freeze([
 ]);
 
 export const partyPeople = Object.freeze([
-  {id:'you',nickname:{th:'คุณกิส',en:'You'},username:'gissino',friendCode:'104208',initials:'GS',visibility:'status',rankingOptIn:true,globalOptIn:true,discoverable:false,weeklyXP:92,weekStart:partySampleWeekStart,streak:7},
+  {id:'you',nickname:{th:'คุณกิส',en:'You'},username:'gissino',friendCode:'104208',initials:'GS',visibility:'status',rankingOptIn:true,globalOptIn:true,discoverable:false,weeklyXP:selfHabit.weeklyXP,weekStart:partySampleWeekStart,streak:selfHabit.streak},
   {id:'lin',nickname:{th:'ลิน',en:'Lin'},username:'lin.blue',friendCode:'281604',initials:'LN',visibility:'status',rankingOptIn:true,globalOptIn:true,discoverable:true,weeklyXP:170,weekStart:partySampleWeekStart,streak:8},
   {id:'min',nickname:{th:'มิน',en:'Min'},username:'min.day',friendCode:'462718',initials:'MN',visibility:'status',rankingOptIn:true,globalOptIn:true,discoverable:true,weeklyXP:135,weekStart:partySampleWeekStart,streak:5},
   {id:'ton',nickname:{th:'ต้น',en:'Ton'},username:'ton.steps',friendCode:'813502',initials:'TN',visibility:'status',rankingOptIn:true,globalOptIn:true,discoverable:true,weeklyXP:110,weekStart:partySampleWeekStart,streak:4},
@@ -50,34 +51,13 @@ export function setPartyRelationship(session,id,action,people=partyPeople) {
   return true;
 }
 
+// Thin wrapper over the shared Bangkok week (merged with Home's bangkokWeek).
 export function partyWeek(date=partyPreviewToday) {
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return null;
-  const day=new Date(`${date}T00:00:00Z`);
-  if(Number.isNaN(day.getTime())||day.toISOString().slice(0,10)!==date)return null;
-  const mondayOffset=(day.getUTCDay()+6)%7;
-  const monday=new Date(day.getTime()-mondayOffset*86400000);
-  const sunday=new Date(monday.getTime()+6*86400000);
-  return {start:monday.toISOString().slice(0,10),end:sunday.toISOString().slice(0,10)};
+  try { const {start,end}=bkkWeekRange(date); return {start,end}; } catch { return null; }
 }
 
 export function rankedPartyPeople({audience,people=partyPeople,relationships=initialRelationships,weekStart=partyWeek()?.start,viewerVisibility='status',viewerRankingOptIn=true,viewerShareXP=true}={}) {
-  if(!['friends','global'].includes(audience)||!weekStart)return [];
-  const eligible=people.filter(person=>{
-    const isViewer=person.id==='you';
-    const visibility=isViewer?viewerVisibility:person.visibility;
-    const optedIn=isViewer?viewerRankingOptIn&&viewerShareXP:person.rankingOptIn;
-    if(visibility==='private'||!optedIn||person.weekStart!==weekStart)return false;
-    if(audience==='friends')return isViewer||relationships[person.id]==='accepted';
-    return (isViewer||person.globalOptIn===true)&&relationships[person.id]!=='blocked';
-  });
-  const sorted=eligible.filter(person=>Number.isSafeInteger(person.weeklyXP)&&person.weeklyXP>=0)
-    .sort((a,b)=>b.weeklyXP-a.weeklyXP||a.id.localeCompare(b.id));
-  let rank=0;
-  return sorted.map((person,index)=>{
-    if(!index||person.weeklyXP!==sorted[index-1].weeklyXP)rank=index+1;
-    return {id:person.id,nickname:person.nickname,initials:person.initials,
-      weeklyXP:person.weeklyXP,streak:person.streak,rank};
-  });
+  return rankFriends({audience,people,relationships,weekStart,viewerVisibility,viewerRankingOptIn,viewerShareXP});
 }
 
 export function acceptedPartyFriends(session,people=partyPeople) {

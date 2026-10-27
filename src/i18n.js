@@ -1,3 +1,4 @@
+import { formatMoney, minor as toMinor } from './core/money.js';
 export const messages = {
   th: {
     welcomeTitle: "ยินดีต้อนรับ",
@@ -672,7 +673,8 @@ export function translator(locale) {
     return text.replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
   };
 }
-export const money = (value, locale = 'th', decimals = false) => new Intl.NumberFormat(locale === 'th' ? 'th-TH' : 'en-GB', { style: 'currency', currency: 'THB', minimumFractionDigits: decimals ? 2 : 0, maximumFractionDigits: decimals ? 2 : 0 }).format(value);
+// @deprecated major-unit THB wrapper; call formatMoney(minorUnits, currency) from core/money.js.
+export const money = (value, locale = 'th', decimals = false) => formatMoney(toMinor(value, 'THB'), 'THB', { locale, decimals: decimals ? 'fixed' : 'auto' });
 export const number = (value, locale = 'th') => new Intl.NumberFormat(locale === 'th' ? 'th-TH' : 'en-GB').format(value);
 export const escapeHTML = (value) => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 

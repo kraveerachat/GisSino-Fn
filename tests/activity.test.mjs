@@ -50,7 +50,7 @@ test('Date keys use Bangkok boundaries and reject impossible or timezone-free ti
   for(const date of ['bad','2026-02-30','2026-10-18T09:00:00','2026-13-01'])assert.equal(activityDay(date),null);
   assert.equal(total([entry({date:'2026-09-30T18:00:00Z'})]).expense,100);
   assert.equal(total([entry({date:'2026-10-31T18:00:00Z'})]).expense,0);
-  assert.match(activityDateLabel('2026-10-01','th'),/2569/);assert.match(activityDateLabel('2026-10-01','en'),/2026/);
+  assert.match(activityDateLabel('2026-10-01','th'),/2026/);assert.doesNotMatch(activityDateLabel('2026-10-01','th'),/2569/);assert.match(activityDateLabel('2026-10-01','en'),/2026/);
 });
 test('Unknown expense categories fall back to Other; zero categories remain in full catalog',()=>{
   const summary=total([entry({categoryId:'unmapped'})]);

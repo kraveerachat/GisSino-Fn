@@ -4,23 +4,23 @@ import {
   acceptedPartyFriends,partyBadges,partyFeed,partyPeople,partyPreviewToday,partySelfStats,
   partyWeek,rankedPartyPeople,recommendedPartyFriends,relationFor
 } from './party-preview.js';
+import {formatDateRange} from './core/dates.js';
 
 const name=(person,locale)=>person.nickname?.[locale]||person.nickname?.th||'';
 const number=(value,locale)=>new Intl.NumberFormat(locale==='th'?'th-TH':'en-US').format(value);
 const weekLabel=(locale)=>{
   const week=partyWeek(partyPreviewToday);
-  const start=new Date(`${week.start}T00:00:00+07:00`);
-  const end=new Date(`${week.end}T00:00:00+07:00`);
-  const fmt=new Intl.DateTimeFormat(locale==='th'?'th-TH':'en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Bangkok'});
-  return `${fmt.format(start)} – ${fmt.format(end)}`;
+  return formatDateRange(week.start,week.end,{locale,day:'numeric',month:'short',year:'numeric'});
 };
 const policy=state=>({
   viewerVisibility:state.partyVisibility||'status',
   viewerRankingOptIn:state.partyRankingOptIn!==false,
   viewerShareXP:state.shareXP!==false
 });
+// Home check-in XP from this page session also counts for the viewer here.
+const withSessionXP=state=>partyPeople.map(person=>person.id==='you'&&state.homeDemoXP?{...person,weeklyXP:person.weeklyXP+state.homeDemoXP}:person);
 export const partyBoardRows=(audience,state,session)=>rankedPartyPeople({
-  audience,relationships:session.relationships,weekStart:partyWeek(partyPreviewToday).start,...policy(state)
+  audience,people:withSessionXP(state),relationships:session.relationships,weekStart:partyWeek(partyPreviewToday).start,...policy(state)
 });
 const avatar=(person,extra='')=>`<span class="avatar party-avatar ${extra}" aria-hidden="true">${esc(person.initials)}</span>`;
 const row=(person,state,t,ownRow=false)=>`<div class="party-rank-row ${person.id==='you'?'is-you':''} ${ownRow?'is-own-position':''}">

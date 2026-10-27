@@ -1,33 +1,16 @@
-import { accounts, preview, transactions } from './fixtures.js';
+import { accounts } from './fixtures.js';
+import { bkkMonth } from './core/clock.js';
+import { formatDate } from './core/dates.js';
+import { walletSnapshots, worldTransactions } from './fixtures/world.js';
 
 // Explicit illustrative archives, not reconstructed balances or a persisted ledger.
 // Each balance is the state at 00:00 Asia/Bangkok on the first of its month.
-export const walletCurrentPeriod = `${preview.year}-${String(preview.month + 1).padStart(2, '0')}`;
-const ids = ['daily', 'savings', 'reserve', 'everyday-wallet', 'pocket-cash', 'family-savings'];
-const archive = (period, balances, incoming, outgoing) => Object.freeze({
-  period, capturedAt: `${period}-01T00:00:00+07:00`,
-  accounts: Object.freeze(ids.map((id, index) => Object.freeze({
-    ...accounts.find(account => account.id === id), balanceMinor: balances[index]
-  }))),
-  entries: Object.freeze([
-    Object.freeze({ accountId: 'daily', type: 'income', amountMinor: incoming, currency: 'THB', date: `${period}-02` }),
-    Object.freeze({ accountId: 'daily', type: 'expense', amountMinor: outgoing, currency: 'THB', date: `${period}-10` })
-  ])
-});
-export const walletSnapshots = Object.freeze([
-  archive('2026-10', [6420000, 3550000, 500000, 220000, 140000, 200000], 4200000, 84500),
-  archive('2026-09', [5980000, 3300000, 450000, 180000, 120000, 200000], 3950000, 1325000),
-  archive('2026-08', [5520000, 3100000, 400000, 210000, 160000, 180000], 3800000, 1460000),
-  archive('2026-07', [5140000, 2850000, 400000, 190000, 110000, 180000], 3650000, 1180000),
-  archive('2025-12', [4260000, 2400000, 300000, 150000, 100000, 160000], 3500000, 1790000),
-  archive('2025-11', [3940000, 2250000, 250000, 120000, 90000, 150000], 3400000, 1280000)
-]);
+// The archives now live in the Fixture World, where they also seed opening balances.
+export { walletSnapshots };
+export const walletCurrentPeriod = bkkMonth();
 
-// Date the original relative-day records without modifying the shared fixture.
-// Other undated records never silently enter a monthly activity calculation.
-export const walletCurrentEntries = Object.freeze(transactions.map(entry => Object.freeze({
-  ...entry, date: `${walletCurrentPeriod}-${entry.day === 'today' ? '18' : '17'}`
-})));
+// Current-month entries are the Fixture World ledger, the same records Activity reads.
+export const walletCurrentEntries = worldTransactions;
 
 export function walletPeriod(state, records = accounts, snapshots = walletSnapshots) {
   const history = state.walletMode === 'history';
@@ -47,10 +30,7 @@ export function walletPeriod(state, records = accounts, snapshots = walletSnapsh
 }
 
 export function walletPeriodLabel(period, locale = 'th', options = {}) {
-  const [year, month] = period.split('-').map(Number);
-  return new Intl.DateTimeFormat(locale === 'th' ? 'th-TH-u-ca-gregory' : 'en-GB', {
-    month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok', ...options
-  }).format(new Date(Date.UTC(year, month - 1, 1)));
+  return formatDate(`${period}-01`, { locale, month: 'short', year: 'numeric', ...options });
 }
 
 // Round inside the exact proportional sector; no minimum-sized slices.

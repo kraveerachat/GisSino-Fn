@@ -18,6 +18,6 @@ export const flags = Object.freeze({
   needsDetailsXp: 'on_entry',        // D-16, Guide §6.1
   activityChart: 'd33_donut',        // D-17, D33
   copyRevision2026_10: false,        // D-18
-  habitSource: 'home',               // WP-02 candidate set; 'party' is the owner alternative
+  habitSource: 'home',               // D36: owner kept the Home set (3 / 80); 'party' (7 / 92) not adopted
   homeScenarioExtras: false          // WP-19: hide the no-op "Spending shortfall" and "Sample group context" Home scenarios
 });

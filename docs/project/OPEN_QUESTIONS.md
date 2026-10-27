@@ -82,6 +82,23 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 | Home weekly activity ring | [PROPOSED PRESENTATION] | D30 demonstrates qualifying Bangkok Monday-Sunday active dates /7, rounded. Confirm eventual integration alongside existing canonical metrics rather than replacing them. |
 | Daily welcome/reward scheduling | [PROPOSED / FUTURE M7] | Define first relevant visit, per-user/day first-visit and popup shown-state, authoritative grants and preferences. Current sheet is user-triggered with a page-lifetime date guard only. |
 
+## Fixture World October gap — 2026-10-28
+
+[D37](DECISIONS.md#d37--screen-balances-are-canonical-for-the-fixture-world) keeps the screen balances canonical. Opening balances (October archive, 1 Oct 00:00 Bangkok) plus the existing October transactions do not reach them. These transactions are missing; none was invented:
+
+| Account | Opening 1 Oct | Posted October ledger | Screen 18 Oct | Missing net movement | State |
+|---|---:|---|---:|---:|---|
+| Everyday account (daily) | 64,200 | +42,000 / −15,240 | 68,450 | **−22,510** (outflow) | [OPEN] |
+| For tomorrow (savings) | 35,500 | none | 37,400 | **+1,900** (inflow) | [OPEN] |
+| TrueMoney (everyday-wallet) | 2,200 | none | 2,500 | **+300** (inflow) | [OPEN] |
+| Cash on hand (pocket-cash) | 1,400 | none | 1,500 | **+100** (inflow) | [OPEN] |
+| Rainy-day reserve, BAAC | 5,000 / 2,000 | none | 5,000 / 2,000 | 0 | — |
+| **Total** | **110,300** | | **116,850** | **−20,210** | [OPEN] |
+
+- The THB 5,000 "Move to savings" transfer (17 Oct) has no source account. If it came from Everyday, the open gap becomes −17,510 on Everyday and −3,100 on savings; the total gap is unchanged. Source account [OPEN].
+- Likely shape (not confirmed, not implemented): own-account transfers out of Everyday and small top-ups to savings, wallet and cash. Any such records need owner-supplied dates, amounts and categories before they enter the fixture.
+- Until then, pages display `legacyDisplay`; `tests/fixture-world.test.mjs` pins the exact differences so the gap cannot drift silently.
+
 ## Change log
 
 - 2026-10-16 — Consolidated open decisions from both owner-supplied source documents.
@@ -101,3 +118,5 @@ These questions come from the Project Guide, System Architecture, and the GS-PLA
 - 2026-10-18 — [D32 S2](DECISIONS.md#d32-s2--assets-only-wallet-and-monthly-snapshots) confirms assets-only Wallet/monthly history and current-only Bills reference. No new Wallet design decision remains open; Home Q10 and production finance/snapshot architecture remain separate. [S2](../worklog/20-Sessions/TASK-GS-UI-WALLET-V2-001-S2.md) tested scope runtime verified/final SHIP; source184b2f7 pushed at the historical S2 checkpoint. PR8 is now merged at `90a81e8d7a44fc5472e254be7c2197c0e5fc411f`, per Activity start audit.
 
 - 2026-10-18 — D33 settles current Activity monthly placement; tab deferred and production classifications remain OPEN.
+
+- 2026-10-28 — D37 keeps screen balances canonical; added the Fixture World October gap (THB 20,210 net, transfer source) as OPEN.

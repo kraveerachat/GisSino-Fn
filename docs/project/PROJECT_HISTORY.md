@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -35,6 +35,8 @@ This timeline is append-only.
 - 2026-10-26 — [Bills PR #10](https://github.com/kraveerachat/GisSino-Fn/pull/10) merged at `40d52ff9e0ae9dc4f610b485f930f94855a9c0ca` after Activity/Bills integration checks. The existing Party PR #11 branch then merged this new main normally; D33 Activity, D34 Party and D35 Bills coexist. Party integration passed 693 locale keys, 121 tests and 30 Chromium route/theme/viewport cases plus focused Party, Activity and Bills actions. PR #11 merge remains pending GitHub confirmation.
 
 - 2026-10-26 — [Party PR #11](https://github.com/kraveerachat/GisSino-Fn/pull/11) merged at `cd1fa82906c203ba4db93616db6ad6fd3e70a0a3` after normal main integration, 693 locale keys, 121 tests and responsive browser verification. PRs #9, #10 and #11 were confirmed merged; no open PRs were found. Final main passed the same checks and 30 five-route Chromium cases across 390/820/1440px and light/dark without errors or overflow. Activity D33, Party D34 and Bills D35 remain distinct; no production finance or social services are implied.
+
+- 2026-10-27 — [WP-01 audit](../worklog/10-Tasks/TASK-GS-WP01-REPOSITORY-AUDIT.md) recorded baseline bdbedae:37 src files/174 exports, numeric/helper/widget map,121 tests/693 locale keys/30 Chromium layouts. Documentation-only [Draft PR #12](https://github.com/kraveerachat/GisSino-Fn/pull/12) open for owner review; eight replacement images traced, original image set unavailable; no implementation or production milestone.
 
 ## Change log
 
@@ -113,3 +115,5 @@ This timeline is append-only.
 - 2026-10-18 — Activity source follow-up `b92cf237a54ed364fda4fdb48b81b98e6c2188bf` committed/pushed after receipt feature checkpoint ae9c611;preserves salary category search compatibility,637-key/102-test rerun PASS. Receipt remains immutable;final docs checkpoint follows.
 
 - 2026-10-27 — Owner selected [Batch A WP-09/10](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md); prototype shell/install implementation reached local/browser verification. [Draft PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13) contains source and evidence (134 tests/57 browser cases). Owner/physical-device acceptance pending; PR #12 remains unmerged.
+
+- 2026-10-28 — Owner explicitly approved ordered merge commits for PRs #13, #14 and #15. PR #12's prior open status is superseded: it is merged. PR #13 merged at `d7ad46dae97e1a59b61f09f2b6c565d81afa2c8a` after docs-only conflict resolution / 134 tests; PR #14 merged at `11861094b299aa5ca64dc4298a7d6ba429d00e5d` after 163 tests / 48 Chromium cases. The combined PR #15 checkpoint passed 171 tests / 54 Chromium cases and all eight quick-fix browser checks; its final GitHub merge state is linked in the [ordered integration session](../worklog/20-Sessions/TASK-GS-MERGE-13-15-S1.md). No cleanup or production mutation.
