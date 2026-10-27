@@ -2,15 +2,15 @@ import { mountPwa } from './pwa.js';
 import { installEnvironment, badgeCount } from './pwa-install.js';
 import { billsOverview } from './bills-overview.js';
 import { activityCategoryDialog,activityTransactionDetail,activityContext } from './activity.js';
-import { bangkokClock,homeOverview,notificationPreview } from './home-overview.js';
+import { bangkokClock,homeOverview,notificationPreview,previewScenarios } from './home-overview.js';
 import { createCheckinPreview,habitOverview,mountHabitTimeline } from './habit-preview.js';
 import { shell, addMenu, addForm, activityResults } from './screens.js';
 import { translator, escapeHTML as esc } from './i18n.js';
 import { formatMoney, minor } from './core/money.js';
 import { icon } from './icons.js';
 import { transactions, bills, accounts, creditCard, homePreview } from './fixtures.js';
-import { amountKey, validAmountText } from './amount.js';
-import { navigationOverlay } from './navigation.js';
+import { amountKey, validAmountText, transferProblem, isFutureDate } from './amount.js';
+import { navigationOverlay, routeForHash, linksToCurrentPage } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
 import { accountBoard, parseAccountHash } from './account-board.js';
 import { assetAccounts, accountPreview } from './account-display.js';
@@ -28,8 +28,11 @@ import { validateBillDraft, validBillDate } from './bills-overview.js';
 const app = document.querySelector('#app');
 const sheet = document.querySelector('#sheet');
 const validRoutes = ['home','wallet','activity','bills','party','settings','transfer','credit-card',...publicRoutes];
+const initialRoute = parseAccountHash(location.hash) ? {route:'wallet',replace:false} : location.hash==='#add/expense' ? {route:'welcome',replace:false} : routeForHash(location.hash,validRoutes);
+// Unknown start hashes (e.g. #bogus) show Welcome and the address bar says so.
+if(initialRoute.replace)history.replaceState(null,'','#'+initialRoute.route);
 const state = {
-  locale: 'th', theme: 'light', route: parseAccountHash(location.hash)?'wallet':validRoutes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'welcome',
+  locale: 'th', theme: 'light', route: initialRoute.route||'welcome',
   homeScenario:'sample', homeNow:homePreview.nowLocal,
   balanceVisible: true, previewState: 'sample', filter: 'all', search: '', billsView: 'list', month: 'october', billMonth:'2026-10', billTypeFilter:'all', billPreviewPaid:[], activityPeriod:'2026-10', activityCurrency:'THB',
   mode: null, shareStreak: true, shareXP: true, partyVisibility:'status', partyRankingOptIn:true,
@@ -140,6 +143,10 @@ sheet.addEventListener('keydown',event=>{
   else if(controls.length===1||event.shiftKey&&document.activeElement===first||!event.shiftKey&&document.activeElement===last){event.preventDefault();(event.shiftKey?last:first).focus();}
 });
 sheet.addEventListener('click', event => {
+  // A sheet link to the page already shown (e.g. a Bills notice on Bills) fires no
+  // hashchange, so close the sheet here instead of leaving it open.
+  const link = event.target.closest?.('a[href^="#"]');
+  if (link && linksToCurrentPage(link.getAttribute('href'), location.hash)) { closeSheet(); return; }
   if (event.target !== sheet) return;
   const rect = sheet.getBoundingClientRect();
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeSheet();
@@ -292,10 +299,10 @@ document.addEventListener('click',event=>{
     state.transferDestination=button.dataset.id;render();document.querySelector(`[data-action="transfer-destination"][data-id="${state.transferDestination}"]`)?.focus({preventScroll:true});
   } else if(action==='review-transfer') {
     if(navigator.onLine===false){toast(t('pwaOfflineUnknown'));return;}
-    const invalid=!validAmountText(state.transferAmount)||state.transferSource===state.transferDestination;
+    const problem=transferProblem(state.transferAmount,accounts.find(a=>a.id===state.transferSource)?.balanceMinor,state.transferSource===state.transferDestination);
     const error=document.querySelector('#transfer-error');
-    document.querySelector('#transfer-amount').setAttribute('aria-invalid',String(invalid));
-    if(invalid){error.textContent=t('transferAmountError');error.hidden=false;document.querySelector('#transfer-amount').focus();return;}
+    document.querySelector('#transfer-amount').setAttribute('aria-invalid',String(!!problem));
+    if(problem){error.textContent=t(problem);error.hidden=false;document.querySelector('#transfer-amount').focus();return;}
     const from=accounts.find(a=>a.id===state.transferSource),to=accounts.find(a=>a.id===state.transferDestination);
     showSheet('sampleTransferSummary',`<div class="result-status">${icon('eye')}${t('resultNote')}</div>${definitionList([[t('fromAccount'),t(from.name)],[t('toAccount'),t(to.name)],[t('amount'),thb(minor(state.transferAmount))]])}<p class="info-callout">${icon('shield')}${t('unchangedBalance')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
   } else if(action==='card-preview') {
@@ -420,7 +427,7 @@ document.addEventListener('change',event=>{
   if(control==='bill-month') {state.billMonth=event.target.value;render();document.querySelector('[data-control="bill-month"]')?.focus({preventScroll:true});return;}
   if(control==='bill-type-filter') {state.billTypeFilter=event.target.value;render();document.querySelector('[data-control="bill-type-filter"]')?.focus({preventScroll:true});return;}
   if(control==='bill-type') {showSheet('billAddTitle',billForm(event.target.value,state.locale));sheet.querySelector('[data-control="bill-type"]')?.focus({preventScroll:true});return;}
-  if(control==='home-scenario') {state.homeScenario=homePreview.scenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
+  if(control==='home-scenario') {state.homeScenario=previewScenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
   else if(control==='home-clock') {if(bangkokClock(event.target.value)){state.homeNow=event.target.value;announce(t('homeClockChanged'));}else{event.target.value=state.homeNow;announce(t('homeClockInvalid'));}}
   else if(control==='wallet-year') {
     const candidates=walletSnapshots.filter(snapshot=>snapshot.period.startsWith(`${event.target.value}-`));
@@ -500,9 +507,10 @@ document.addEventListener('submit',event=>{
       render();
       opener=state.route==='home'?document.querySelector(`[data-action="add-account"]`):document.querySelector(`[data-account-id="${id}"]`);
       closeSheet();toast(t('profileApplied'));announce(t('profileApplied'));
-    } catch {
-      form.querySelector('#profile-name-error').hidden=false;
-      const input=form.elements.nickname;input.setAttribute('aria-invalid','true');input.focus();
+    } catch (error) {
+      const opening=error.message==='profileOpeningError';
+      form.querySelector(opening?'#profile-opening-error':'#profile-name-error').hidden=false;
+      const input=form.elements[opening?'openingBalance':'nickname'];input.setAttribute('aria-invalid','true');input.focus();
     }
     return;
   }
@@ -515,7 +523,8 @@ document.addEventListener('submit',event=>{
   const errors=[];
   if(invalidAmount) errors.push({field:'amount',key:'amountError'});
   if(!note) errors.push({field:'note',key:'noteError'});
-  if(form.elements.date&&!form.elements.date.validity.valid) errors.push({field:'date',key:'dateError'});
+  if(form.elements.date&&isFutureDate(form.elements.date.value,homePreview.nowLocal.slice(0,10))) errors.push({field:'date',key:'dateFutureError'});
+  else if(form.elements.date&&!form.elements.date.validity.valid) errors.push({field:'date',key:'dateError'});
   if(sameAccounts) errors.push({field:'destination',key:'transferError'});
   for(const field of ['amount','note','date','account','destination']) {
     const input=form.elements[field];if(!input) continue;
@@ -533,9 +542,13 @@ document.addEventListener('submit',event=>{
 });
 window.addEventListener('hashchange',()=>{
   const accountId=parseAccountHash(location.hash);
-  const next=accountId?'wallet':location.hash.slice(1)||'welcome';
+  let next=accountId?'wallet':location.hash.slice(1)||'welcome';
   if(next==='add/expense'){history.replaceState(null,'','#home');state.route='home';closeSheet(false);render(true);openMode('expense');return;}
-  if (!validRoutes.includes(next)) { if(next!=='main') location.hash='welcome';return; }
+  if (!validRoutes.includes(next)) {
+    const fallback=routeForHash(location.hash,validRoutes);
+    if(!fallback.route)return;
+    history.replaceState(null,'','#'+fallback.route);next=fallback.route;
+  }
   document.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   scrollPositions.set(state.route,window.scrollY);
   if(next==='credit-card')state.cardReturn=state.route==='wallet'?'wallet':'bills';

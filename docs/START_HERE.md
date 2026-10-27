@@ -3,7 +3,7 @@ id: START-HERE
 type: center
 level: 0
 status: CURRENT
-updated: 2026-10-27
+updated: 2026-10-28
 ---
 # GisSino_FN — Start Here
 
@@ -26,6 +26,8 @@ updated: 2026-10-27
 - [Obsidian home pointer](00-Home.md)
 
 ## Current focus
+
+2026-10-28 owner-approved integration: [PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13) is MERGED at `d7ad46dae97e1a59b61f09f2b6c565d81afa2c8a` and [PR #14](https://github.com/kraveerachat/GisSino-Fn/pull/14) at `11861094b299aa5ca64dc4298a7d6ba429d00e5d`. The [ordered integration session](worklog/20-Sessions/TASK-GS-MERGE-13-15-S1.md) records the verified combined [PR #15](https://github.com/kraveerachat/GisSino-Fn/pull/15) checkpoint; its live GitHub page is authoritative for the final merge state. Earlier delivery paragraphs below are historical.
 
 Owner selected [Batch A — PWA shell/install guide](worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) after the WP-01 audit in [PR #12 merged](https://github.com/kraveerachat/GisSino-Fn/pull/12). Batch A is delivered in separate [PR #13](https://github.com/kraveerachat/GisSino-Fn/pull/13), with source/browser verification and owner acceptance tracked in its [review](design/reviews/PWA_SHELL_REVIEW.md). It installs only the synthetic preview shell; production stack and offline financial writes remain unimplemented.
 
