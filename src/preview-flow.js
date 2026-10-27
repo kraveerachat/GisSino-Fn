@@ -1,3 +1,4 @@
+import { bkkYear } from './core/clock.js';
 // Transient design-preview values only. Credentials never enter this model.
 export const setupSteps = Object.freeze(['profile','about','consent','accounts','notifications','install']);
 export const publicRoutes = Object.freeze(['welcome','entry','login','signup',...setupSteps.map(step=>'setup/'+step),'postcard']);
@@ -25,10 +26,10 @@ export function stepNavigation(route) {
   const index=setupSteps.findIndex(step=>route==='setup/'+step);
   return index<0?null:{index,previous:index?'setup/'+setupSteps[index-1]:'signup',next:index===5?'postcard':'setup/'+setupSteps[index+1]};
 }
-export function approximateAge(year,currentYear=new Date().getFullYear()) {
+export function approximateAge(year,currentYear=bkkYear()) {
   return /^\d{4}$/.test(year)&&Number(year)>=1000&&Number(year)<=currentYear?currentYear-Number(year):null;
 }
-export function validatePreviewFields(kind,values,currentYear=new Date().getFullYear()) {
+export function validatePreviewFields(kind,values,currentYear=bkkYear()) {
   const errors={};
   if(kind==='about'&&values.birthYear&&approximateAge(values.birthYear,currentYear)===null)errors.birthYear='yearFormat';
   return errors;

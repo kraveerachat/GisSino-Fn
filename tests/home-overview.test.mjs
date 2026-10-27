@@ -43,8 +43,8 @@ test('Due list deduplicates representations and IDs, hides empty, caps four rows
   assert.match(upcomingDueList(one,state({locale:'en'}),translator('en')),/Due today/);
 });
 test('Home seven-day visibility does not widen the bell three-day preview',()=>{
-  const m=homeOverview(state());assert.deepEqual(m.upcoming.map(b=>b.id),['card','power','device']);
-  assert.deepEqual(dueNotices(m).map(b=>b.id),['card']);
+  const m=homeOverview(state());assert.deepEqual(m.upcoming.map(b=>b.id),['late-phone-2026-09','card-2026-10','power-2026-10','device-3']);
+  assert.deepEqual(dueNotices(m).map(b=>b.id),['late-phone-2026-09','card-2026-10']);
 });
 test('Bangkok clock validates dates and reminder starts only after the configured boundary',()=>{
   assert.equal(bangkokClock('2026-10-18T00:01').instant.toISOString(),'2026-10-17T17:01:00.000Z');

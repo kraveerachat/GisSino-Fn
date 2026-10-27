@@ -1,58 +1,35 @@
 import { homePreview } from './fixtures.js';
-import { bangkokClock } from './home-overview.js';
+import { bangkokClock, bkkDate, bkkWeekDays } from './core/clock.js';
+import { formatDate } from './core/dates.js';
+import { deriveHabitPreview, createCheckinPreview as createCheckin, streak, weeklyXp } from './core/habit.js';
+import { habitEvents, habitFreezeDays, habitCandidates } from './fixtures/world.js';
+import { flags } from './config/feature-flags.js';
 import { icon } from './icons.js';
 import { escapeHTML as esc } from './i18n.js';
 
-const dayMs = 86400000;
-const ordinal = date => Date.parse(date + 'T00:00:00Z') / dayMs;
-const dayKey = day => new Date(day * dayMs).toISOString().slice(0, 10);
-const validDay = date => typeof date === 'string' && /^20\d{2}-\d{2}-\d{2}$/.test(date) && Number.isFinite(ordinal(date)) && dayKey(ordinal(date)) === date;
-export function bangkokWeek(date) {
-  if (!validDay(date)) throw new TypeError('Invalid Bangkok calendar date');
-  const start = ordinal(date) - (new Date(date + 'T00:00:00Z').getUTCDay() + 6) % 7;
-  return Array.from({ length: 7 }, (_, i) => dayKey(start + i));
-}
+// The week helper, preview derivation and check-in grants live in core/ (one
+// implementation shared with Party); these names stay as thin wrappers.
+export const bangkokWeek = bkkWeekDays;
+export { deriveHabitPreview };
+export const createCheckinPreview = () => createCheckin(homePreview.habit.rewardXP);
 
-// Explicit fixtures and a page-lifetime Map. This is not a production habit/reward engine.
-export function deriveHabitPreview({ today, activeDays = [], freezeDays = [], streak = 0, weeklyXP = 0, selectedDay = today }) {
-  const week = bangkokWeek(today);
-  const active = new Set(activeDays.filter(date => validDay(date) && date <= today));
-  const frozen = new Set(freezeDays.filter(date => validDay(date) && date < today));
-  const count = week.filter(date => active.has(date)).length;
-  const missingDays = week.filter(date => date < today && !active.has(date));
-  const days = Array.from({ length: 21 }, (_, i) => {
-    const date = dayKey(ordinal(week[0]) - 7 + i);
-    const status = date > today ? 'future' : active.has(date) ? 'complete' : frozen.has(date) ? 'frozen' : date === today ? 'pending' : 'missed';
-    return { date, status, current: date === today };
-  });
-  const selected = days.find(day => day.date === selectedDay) || days.find(day => day.current);
-  return { today, week, count, missingDays, percentage: Math.round(count / 7 * 100), days, selected, streak, weeklyXP, complete: active.has(today) };
-}
-export function createCheckinPreview() {
-  const grants = new Map();
-  return {
-    days: () => [...grants.keys()],
-    xpForWeek: date => bangkokWeek(date).reduce((sum, day) => sum + (day <= date ? grants.get(day) || 0 : 0), 0),
-    confirm(date, alreadyActive = false, reward = homePreview.habit.rewardXP) {
-      if (!validDay(date) || !Number.isSafeInteger(reward) || reward < 0 || reward > 1000) throw new TypeError('Invalid synthetic check-in');
-      if (alreadyActive || grants.has(date)) return { awarded: false, xp: 0 };
-      grants.set(date, reward);
-      return { awarded: true, xp: reward };
-    }
-  };
+// One shared habit source for Home and Party (flag habitSource; Home set by default).
+export function habitStats(today = bkkDate()) {
+  if (flags.habitSource === 'party') return { ...habitCandidates.party, source: 'party' };
+  return { streak: streak(habitEvents, habitFreezeDays, today), weeklyXP: weeklyXp(habitEvents, today), source: 'home' };
 }
 export function habitOverview(state) {
   const today = (bangkokClock(state.homeNow || '') || bangkokClock(homePreview.nowLocal)).date;
   const fixture = homePreview.habit;
   const demoDays = state.homeDemoDays || [];
   const activeDays = [...fixture.activeDays, ...(state.homeScenario === 'clear' ? [today] : []), ...demoDays];
-  const sameWeek = bangkokWeek(today)[0] === fixture.weekStart;
-  const sameSnapshot = today === homePreview.nowLocal.slice(0, 10);
+  const snapshot = homePreview.nowLocal.slice(0, 10), stats = habitStats(snapshot);
+  const sameWeek = bangkokWeek(today)[0] === bangkokWeek(snapshot)[0];
   return deriveHabitPreview({ today, activeDays, freezeDays: fixture.freezeDays,
-    streak: sameSnapshot ? fixture.streak : null,
-    weeklyXP: (sameWeek ? fixture.weeklyXP : 0) + (state.homeDemoXP || 0), selectedDay: state.homeSelectedDay });
+    streak: today === snapshot ? stats.streak : null,
+    weeklyXP: (sameWeek ? stats.weeklyXP : 0) + (state.homeDemoXP || 0), selectedDay: state.homeSelectedDay });
 }
-const dateLabel = (date, locale, options) => new Intl.DateTimeFormat(locale === 'th' ? 'th-TH' : 'en-GB', { timeZone: 'Asia/Bangkok', ...options }).format(new Date(date + 'T00:00:00+07:00'));
+const dateLabel = (date, locale, options) => formatDate(date, { locale, ...options });
 const statusIcon = status => ({ complete: 'check', missed: 'close', frozen: 'snow', pending: 'plus', future: 'calendar' })[status];
 export function habitCard(model, state, t) {
   const selected = model.selected;
