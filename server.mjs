@@ -9,8 +9,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 const root = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp':'image/webp', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8' };
-const allowed = (name) => name === 'index.html' || name.startsWith('src/') || name.startsWith('assets/');
+const mime = { '.webmanifest':'application/manifest+json; charset=utf-8', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp':'image/webp', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8' };
+const allowed = (name) => ['index.html','manifest.webmanifest','sw.js'].includes(name) || name.startsWith('src/') || name.startsWith('assets/') || name.startsWith('icons/');
 export const server = http.createServer(async (req, res) => {
   const headers = {
     'Cache-Control': 'no-store',

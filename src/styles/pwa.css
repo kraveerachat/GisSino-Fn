@@ -1,0 +1,33 @@
+/* PWA additions reuse the existing enamel tokens and controls. */
+.pwa-offline { padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left)); background:var(--warning-well); color:var(--warning); text-align:center; font-size:12px; }
+#pwa-notices { position:fixed; z-index:45; left:max(16px,env(safe-area-inset-left)); right:max(16px,env(safe-area-inset-right)); bottom:calc(98px + env(safe-area-inset-bottom)); width:auto; max-width:540px; margin-inline:auto; display:grid; gap:8px; pointer-events:none; }
+.pwa-notice { pointer-events:auto; display:flex; align-items:center; gap:8px; padding:8px 12px; color:var(--text); background:var(--surface-raised); box-shadow:var(--contact-shadow); border-radius:var(--radius-control); }
+.pwa-notice>span { flex:1; min-width:0; font-size:13px; }
+.pwa-notice>button { min-height:44px; color:var(--accent-ink); font-weight:600; }
+.pwa-notice .icon-button { flex:0 0 44px; }
+.pwa-confirm { width:min(480px,calc(100% - 32px)); margin:auto; border:0; padding:24px; border-radius:var(--radius-sheet); box-shadow:var(--sheet-shadow); background:var(--surface-raised); color:var(--text); }
+.pwa-confirm::backdrop { background:var(--scrim); }
+.pwa-confirm p { margin-block:16px 24px; }
+.pwa-confirm-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.pwa-settings-tools { display:flex; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.install-platforms { flex-wrap:wrap; }
+.install-platforms button { min-height:44px; }
+.install-browser-diagram { position:relative; width:180px; height:130px; border:1px solid var(--strong-line); border-radius:var(--radius-control); margin:24px auto; display:grid; place-items:center; background:var(--ground); }
+.diagram-toolbar { position:absolute; left:0; right:0; bottom:0; padding:8px; display:flex; gap:12px; align-items:center; background:var(--well); border-radius:0 0 var(--radius-control) var(--radius-control); }
+.ipad .diagram-toolbar { top:0; bottom:auto; flex-direction:row-reverse; border-radius:var(--radius-control) var(--radius-control) 0 0; }
+.diagram-toolbar>.icon { color:var(--accent-ink); }
+.diagram-page { color:var(--muted); }
+.pwa-standalone body { padding-top:env(safe-area-inset-top); }
+.pwa-standalone .welcome-screen { padding-top:16px; }
+/* The existing bottom inset applies to the capsule and its sibling + together. */
+.floating-islands.mobile-navigation { left:max(14px,env(safe-area-inset-left)); right:max(14px,env(safe-area-inset-right)); }
+.cover-header { padding-left:max(1px,calc(env(safe-area-inset-left) - 16px)); padding-right:max(1px,calc(env(safe-area-inset-right) - 16px)); }
+.pwa-standalone .app-header { padding-left:max(16px,env(safe-area-inset-left)); padding-right:max(16px,env(safe-area-inset-right)); }
+@media(min-width:1100px) { #pwa-notices { bottom:max(24px,env(safe-area-inset-bottom)); } }
+@media(max-width:359px) { .pwa-notice { flex-wrap:wrap; } .pwa-confirm-actions .button { width:100%; } }
+
+[data-install-guide] { display:grid; gap:24px; }
+[data-install-guide] .install-platforms button { color:var(--text); }
+[data-install-guide] .install-platforms button[aria-pressed=true] { color:var(--accent-ink); border-color:var(--action); }
+
+.sheet-content>[data-action="confirm-entry-preview"] { margin-bottom:var(--space-3); }

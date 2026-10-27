@@ -1,3 +1,4 @@
+import { installGuide } from './pwa-install.js';
 import { logo,icon } from './icons.js';
 import { escapeHTML as esc } from './i18n.js';
 import { providerOptions,resolveProvider } from './providers.js';
@@ -61,8 +62,7 @@ function notifications(flow,t) {
   return `<div class="notification-options">${[['inApp','inAppPreview'],['push','pushPreview'],['emailNotice','emailNotificationPreview']].map(([name,label])=>`<label class="flow-check"><input type="checkbox" data-preview-field="${name}" ${flow[name]?'checked':''}><span>${t(label)}</span></label>`).join('')}</div>`;
 }
 function install(flow,t) {
-  const platform=flow.installPlatform;
-  return `<div class="install-platforms" aria-label="${t('platformLabel')}">${['ios','android','desktop'].map(name=>`<button type="button" id="install-${name}" data-preview-action="platform" data-platform="${name}" aria-pressed="${platform===name}">${t('platform'+name)}</button>`).join('')}</div><ol class="install-instructions">${[1,2,3].map(n=>`<li>${t('install'+platform+n)}</li>`).join('')}</ol>`;
+  return installGuide(t,{platform:flow.installPlatform});
 }
 function stepForm(route,flow,state,t) {
   const step=route.split('/')[1];

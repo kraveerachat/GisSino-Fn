@@ -1,0 +1,466 @@
+{
+  "capturedAt": "2026-10-27T08:07:27.815Z",
+  "browser": "155.0.8059.86",
+  "shellVersion": "0ed64e53298b2112",
+  "servedAssetHashes": {
+    "/assets/brand/gissino-s-shield.png": "76a80a0d5f6eb73a5f8a1217edf4f814e3c56a6b10b77c30081a05e3bf03e273",
+    "/assets/fonts/noto-sans-thai.ttf": "5a1c559bb539583c8a1fd99d1c5b9491e5e14478c9cd2bd0970d5c3096cc9ef8",
+    "/assets/providers/Paotang.png": "c0350ff9d99d8f625ea8061985a9d30b68724c8ead64ac64573933ea96c4c7bc",
+    "/assets/providers/baac.png": "d86f257596b9e52b8e973d0f730d1162c2c45f3c6605c879c83d01250db9285d",
+    "/assets/providers/bbl.png": "9e6eb7b8b54832ba9f13ec14152a2594f4efbf1f2d3037b2f2c4b63696453cec",
+    "/assets/providers/cimb.png": "7459210dd70804c3aadf3a970212c581029afe63e229c9cad4be844172fcd72a",
+    "/assets/providers/gsb.png": "b072a536f03e6f7669d923e70d7b9ed9d9e6154464fab30b9f26f81e0cf46df0",
+    "/assets/providers/kbank.png": "704f872d0438f750c206fd51241bb2a34215f46cc36f37205069c930a5691fe1",
+    "/assets/providers/krungsri.png": "b430a2a13a58a005713e0dbdee541651a664da7dc0938130a47494c7331636de",
+    "/assets/providers/ktb.png": "022b86b40430d97bd28ddb311c1a97319a7fedf259cd8e9968267826a244e4ad",
+    "/assets/providers/scb.png": "38555cc805d946967c6e49d739dcd029466fbb7d6588e0685de9d53cf3c57f63",
+    "/assets/providers/shoppeepay.png": "e636431abaf0ae10453241439a77d658416e27a60d6b911b50eda52eacab7f69",
+    "/assets/providers/truemoney.png": "e70b2ee725f652243a7fac1580000dc98de69107db4bee142bc1f55b97410e77",
+    "/assets/providers/ttb.png": "f43734798abb29e7607206e84a781c792d8f845cdf121bcd658042fa9ea9d354",
+    "/assets/providers/uob.png": "edb7057fc9e9d4a671209f72b1e5eb1539dbee6fd8827711aea5de7da303aad9",
+    "/assets/welcome/desktop.webp": "8faf7a9097b6faa892ddbb06a17d4259729277747daa6eb89b1dd72dd6d5eb1c",
+    "/assets/welcome/mobile.webp": "24f76eaf28a52ef5793cc0af8fe07261adb611dc49d71b181c7a3c579bb4cf64",
+    "/assets/welcome/tablet-landscape.webp": "bebaeffa6c1f6b1e913a54de1a447825e730a47f4b6a822582ee0c46c6948968",
+    "/assets/welcome/tablet-portrait.webp": "2732ad11331c408d3379bbe1a9665daf312d23734ec2d9cf4731146db0bd4de8",
+    "/icons/apple-touch-icon.png": "7132f3b894048053e3d6c1f4f236a23d31a2e084987a5fc57bfda24ea2dad693",
+    "/icons/favicon.svg": "7c80a5ab6bd1c2db59f88fda710198980ff499bc0e0009cdcc6eef5472c68806",
+    "/icons/icon-192.png": "d37503aa2316d1f494c7c20574653a3ad21205eb16c3739740d72e1dd90b8a75",
+    "/icons/icon-512.png": "3fdbe74240ac9c9ce71bd1ab090c134e8c892c40fadb23bfa4b8cabfe51a0dfd",
+    "/icons/maskable-512.png": "599441e5054b33977e6ff80e21a1353ae0e45c484d8cd89c0ec5815c32f44282",
+    "/index.html": "b77c635f19b935c8a62ee5ff2e06b13f9e36ed5633b65574cfbafc10adb4ec94",
+    "/manifest.webmanifest": "8b3abb9ab5c2f3d33af321281cea4a0f424c8888601adee7d56c9b8b46456d73",
+    "/src/account-board.js": "a5664980636f97caf18d8034f8fdbc7a09969e80feae1b6eb09e338758126807",
+    "/src/account-deck.js": "635266bec63130bf62cbb4c16a834b061ba8e7ed18f91070aa1f8f93cdc94511",
+    "/src/account-display.js": "7cb8f8fcc1aa0fd708fd0d6848e4aaf80c6812ef556dffd2d57a8f153f8f282e",
+    "/src/account-profile.js": "c87033ae17b2c953681dcacbab9bd6b9b9538c832fe726adaf6455049ef4a9cf",
+    "/src/activity-data.js": "a9defa1a7c60a900a2d89031f2456db06b114b071bce10374e77a3df87adf83f",
+    "/src/activity.js": "870032619d927442be2122d3ad3d8096a1ecec9098fd1e8d9930b3293040c8be",
+    "/src/amount.js": "fa1e02183ecf7104394fa0ba556d67bfc4147cf2f5011d39501ac7994dfd7298",
+    "/src/app.js": "78ff3f599cd25ef04f5f2adb58bef6cd368bf5209105fa3159820d31a2887fb1",
+    "/src/bills-overview.js": "312141341c75f94fe8f465d9eec44da58c11bc050be874abb382b54ccc2d1a68",
+    "/src/bills-ui.js": "89c7bca6bbf6127441bb6f8dec89c3406a43eab42b5d487423a593f68fdb6943",
+    "/src/blue-screens.js": "7052f1bb967f0a9a8637386aa4ff0b56a482c65d28d1cffaa26f9ecb36b922fc",
+    "/src/desktop-sidebar.js": "5052e9e9d64ef3854a72ff8b43a003092cfd6a0f88308c81fc30d8bd973afbd8",
+    "/src/fixtures.js": "cef98721fa5858ed6b6fab59c51eedd036e753e542e4bc7fbe354664bf451cbb",
+    "/src/habit-preview.js": "32a327849e255e504e40dd806537869af2368abac32c0133144880b012ddd6a5",
+    "/src/home-overview.js": "773117983acd11db10b98bbb78f93e234ab25b56e6d6466b198d6602d3a1fff4",
+    "/src/i18n.js": "0671427cb60c89b75cc440075637b1754b167fe797b59ed555b443f4b7c26872",
+    "/src/icons.js": "9d7db185573803133f0ceb01aa910c97e05da1693aa570da9bd319702f643e75",
+    "/src/navigation.js": "d1950c886f80cbd48a87e2201e6f6b69618177cdf67d3ed15937a4d4735fe678",
+    "/src/party-preview.js": "e980747833aaa85dac83d4ef8b2a9230c17500df23286bc443ca8711efd5f739",
+    "/src/party-ui.js": "0654cb21552568d327b2ba7dd1f40655ad7fa5cbf46aa4d9e13b70a473353ab8",
+    "/src/preview-flow.js": "7b4d7a33848a2ad6b0c510a87efafb0e33b325f607c0f47933b2bdd1c81f5ddb",
+    "/src/providers.js": "393341619348f99030c33ab2c97f6e0deb49d5e1da59145eb5ec17889d51abf5",
+    "/src/pwa-install.js": "d5f32199c1eaf3ca7e37024e6072518ed03fc7df545de16451887aeb43e48bf1",
+    "/src/pwa.js": "22295979910f4ce95104c994cf0fb9aea99aeb710b03cd9d9a89e4bdcea6a6ca",
+    "/src/screens.js": "2f5bd427983c181b05784bc3ad6af0a1dca8a6b2377bb46cecb6f97bd84cc110",
+    "/src/styles/accounts.css": "6b12770037c3149c1ab53d22458b817e50d06a60ac0c18dfa2e35ec195ff3406",
+    "/src/styles/activity.css": "a8dd49b315eda6ccf5b336379f3ff89a14df21629650fedb904e645fb774238b",
+    "/src/styles/app.css": "2a1103eb7476c6b5df3312d3296da31d99222c7d06129d92e607f2a5cdeba40f",
+    "/src/styles/bills.css": "714b3b9ecd5c5e73c783456550cebea8978b548570793f9c306ba19a25e4cf9d",
+    "/src/styles/blue.css": "b89680fa374c3216be86889bda938ced35f26e5a9c14e608c874118bbb665421",
+    "/src/styles/navigation.css": "03a8ca014dce871915aa20da3f86ae5b401eed97970bbed017d734ed8c155887",
+    "/src/styles/party.css": "32f01a2cac7a6a700d86a98e6bd4481d8ae8379de141ea3209fbd13d3566a3d2",
+    "/src/styles/pwa.css": "8e8709cccad1f41c6f4a959ea427dfaad483550dad7ef163755334f7f17ec317",
+    "/src/styles/tokens.css": "1c54609f5e826901dbc1559eb785ff8f8f88b1b0078c9583d1e4067f4c05f268",
+    "/src/styles/wallet.css": "35549aab2c8e1944279c18a5a3bb52a93cfa64c3455ceeba2d9645e559c5d95a",
+    "/src/styles/welcome.css": "dc086d497b87283a93facbb83d1591421e07ade768c1884c60623c4a7efd978e",
+    "/src/wallet-history.js": "e064f1386c01facef3e30696f25d243c9c097aa8821de89b9d3e4adf1495ddd8",
+    "/src/wallet-overview.js": "b292801776b34c415788ba44c0f3d9f236453587e1a8726ff7498fb34606a666",
+    "/src/wallet.js": "da319cc157a995bd7ddc4fd9e066d9924ed47b03cc16c143c579d4b111e3603d",
+    "/src/welcome.js": "596b480b7f69da94e7ab6aaa6ccbccf16a7481ff9f23668876bcb681a3080ba2"
+  },
+  "results": [
+    {
+      "test": "Chrome persistent-profile installability",
+      "installabilityErrors": []
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "home",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "home",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "home",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "home",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "route": "home",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "wallet",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "activity",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "bills",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "route": "party",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 320,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 320,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 360,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 360,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 390,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 390,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 430,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 430,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 768,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 820,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 820,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 1024,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 1024,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 1440,
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "test": "Settings install guide",
+      "width": 1440,
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "test": "Install prompt capture / preview gate / dismissed cooldown",
+      "pass": true
+    },
+    {
+      "test": "Dirty form refresh cancel preserves input",
+      "pass": true
+    },
+    {
+      "test": "Offline reload / six routes / writes disabled / API cache exclusion",
+      "pass": true,
+      "cachePaths": [
+        "/assets/brand/gissino-s-shield.png",
+        "/assets/fonts/noto-sans-thai.ttf",
+        "/assets/providers/Paotang.png",
+        "/assets/providers/baac.png",
+        "/assets/providers/bbl.png",
+        "/assets/providers/cimb.png",
+        "/assets/providers/gsb.png",
+        "/assets/providers/kbank.png",
+        "/assets/providers/krungsri.png",
+        "/assets/providers/ktb.png",
+        "/assets/providers/scb.png",
+        "/assets/providers/shoppeepay.png",
+        "/assets/providers/truemoney.png",
+        "/assets/providers/ttb.png",
+        "/assets/providers/uob.png",
+        "/assets/welcome/desktop.webp",
+        "/assets/welcome/mobile.webp",
+        "/assets/welcome/tablet-landscape.webp",
+        "/assets/welcome/tablet-portrait.webp",
+        "/icons/apple-touch-icon.png",
+        "/icons/favicon.svg",
+        "/icons/icon-192.png",
+        "/icons/icon-512.png",
+        "/icons/maskable-512.png",
+        "/index.html",
+        "/manifest.webmanifest",
+        "/src/account-board.js",
+        "/src/account-deck.js",
+        "/src/account-display.js",
+        "/src/account-profile.js",
+        "/src/activity-data.js",
+        "/src/activity.js",
+        "/src/amount.js",
+        "/src/app.js",
+        "/src/bills-overview.js",
+        "/src/bills-ui.js",
+        "/src/blue-screens.js",
+        "/src/desktop-sidebar.js",
+        "/src/fixtures.js",
+        "/src/habit-preview.js",
+        "/src/home-overview.js",
+        "/src/i18n.js",
+        "/src/icons.js",
+        "/src/navigation.js",
+        "/src/party-preview.js",
+        "/src/party-ui.js",
+        "/src/preview-flow.js",
+        "/src/providers.js",
+        "/src/pwa-install.js",
+        "/src/pwa.js",
+        "/src/screens.js",
+        "/src/styles/accounts.css",
+        "/src/styles/activity.css",
+        "/src/styles/app.css",
+        "/src/styles/bills.css",
+        "/src/styles/blue.css",
+        "/src/styles/navigation.css",
+        "/src/styles/party.css",
+        "/src/styles/pwa.css",
+        "/src/styles/tokens.css",
+        "/src/styles/wallet.css",
+        "/src/styles/welcome.css",
+        "/src/wallet-history.js",
+        "/src/wallet-overview.js",
+        "/src/wallet.js",
+        "/src/welcome.js",
+        "/__gissino-shell-stamp__"
+      ]
+    },
+    {
+      "test": "Expense manifest shortcut",
+      "pass": true
+    },
+    {
+      "test": "iPhone Safari",
+      "pass": true
+    },
+    {
+      "test": "iPad desktop Safari",
+      "pass": true
+    },
+    {
+      "test": "iOS Chrome",
+      "pass": true
+    },
+    {
+      "test": "standalone",
+      "pass": true
+    },
+    {
+      "test": "storage denied",
+      "pass": true
+    },
+    {
+      "test": "Worker v1/v2/v3 waiting, explicit activation, cleanup, dirty cancel and other-tab activation without reload",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "physicalDevices": "Not tested"
+}

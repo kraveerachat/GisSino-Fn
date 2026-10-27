@@ -3,7 +3,7 @@ id: DESIGN-SCREEN-MAP
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: Design-Hub.md
 related:
   - COMPONENT_INVENTORY.md
@@ -11,6 +11,11 @@ related:
   - ../pages/Pages-Hub.md
 ---
 # Screen map
+
+## PWA shell and install entry points (2026-10-27)
+
+Manifest start /?source=pwa#home; shortcuts to existing Expense form (#add/expense), #transfer and #bills. Existing #setup/install and Settings native sheet share one guide; no parallel route. Settings Back/Refresh available. Sub-screen Back/Close remains in-app. Standalone suppresses install prompts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
+
 
 
 ## Activity v2 S1 navigation and period (2026-10-18)

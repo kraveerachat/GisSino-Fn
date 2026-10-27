@@ -33,3 +33,5 @@ Living UI specifications and historical verification/review evidence.
 
 | [Activity Analytics Review](reviews/ACTIVITY_ANALYTICS_REVIEW.md) | 2 | CURRENT | Runtime verified:637 keys/102 tests,32 layouts/12 functions/six edges,200% text/contrast;final A SHIP for owner review;PR #9 merged; historical review evidence preserved |
 | [Party v2 Review](reviews/PARTY_V2_REVIEW.md) | 2 | REVIEW | Friends/Global preview, Add Friend sheet and responsive captures |
+
+| [PWA Shell Review](reviews/PWA_SHELL_REVIEW.md) | 2 | REVIEW | Batch A install/offline/update verification |

@@ -850,3 +850,62 @@ Object.assign(messages.en, {
   partyRankingOptIn:'Join habit rankings',partyRankingSeparate:'Leave rankings while remaining in the party',
   partyVisibilityPreviewNote:'These controls affect this preview only. No real data is saved or shared.'
 });
+
+Object.assign(messages.th, {
+  "pwaInstall": "ติดตั้งแอป",
+  "pwaInstallHint": "เพิ่ม GisSino ไว้บนหน้าจอโฮม",
+  "pwaIpad": "iPad",
+  "pwaInstalled": "เปิดเป็นแอปแล้ว",
+  "pwaUseSafari": "เปิดหน้านี้ใน Safari เพื่อติดตั้งบนหน้าจอโฮม",
+  "pwaios1": "เปิดหน้านี้ใน Safari",
+  "pwaios2": "แตะแชร์ที่แถบด้านล่าง แล้วเลือก “เพิ่มไปยังหน้าจอโฮม”",
+  "pwaios3": "ตรวจชื่อ GisSino แล้วแตะ “เพิ่ม”",
+  "pwaipad1": "เปิดหน้านี้ใน Safari บน iPad",
+  "pwaipad2": "แตะแชร์ที่ด้านขวาบน แล้วเลือก “เพิ่มไปยังหน้าจอโฮม”",
+  "pwaipad3": "ตรวจชื่อ GisSino แล้วแตะ “เพิ่ม”",
+  "pwaBrowserInstall": "หากไม่มีปุ่มติดตั้ง ให้ใช้เมนูติดตั้งของเบราว์เซอร์ที่รองรับ",
+  "pwaShellOnly": "ติดตั้งตัวอย่างแอปได้ · ยังไม่มีการบันทึกบัญชีหรือซิงก์ออฟไลน์",
+  "pwaUpdate": "มีเวอร์ชันใหม่",
+  "pwaRefresh": "รีเฟรช",
+  "pwaOffline": "ออฟไลน์ · ตัวอย่างแอปที่แคชไว้เมื่อ {time} · บันทึกออฟไลน์ไม่ได้",
+  "pwaOfflineUnknown": "ออฟไลน์ · แสดงตัวอย่างแอปที่แคชไว้ · บันทึกออฟไลน์ไม่ได้",
+  "pwaDirtyTitle": "รีเฟรชและทิ้งข้อมูลที่กรอกหรือไม่",
+  "pwaDirtyBody": "ข้อมูลตัวอย่างที่ยังไม่ได้ส่งจะหายไปเมื่อรีเฟรช",
+  "pwaKeepEditing": "แก้ไขต่อ",
+  "pwaDiscardRefresh": "ทิ้งข้อมูลและรีเฟรช",
+  "pwaInstallFailed": "ยังติดตั้งไม่ได้ ลองอีกครั้งจากการตั้งค่า",
+  "pwaUnavailable": "ยังอัปเดตแอปออฟไลน์ไม่ได้ ลองรีเฟรชเมื่อเชื่อมต่อ",
+  "pwaConfirmPreview": "ยืนยันรายการตัวอย่าง",
+  "pwaPreviewConfirmed": "ยืนยันตัวอย่างแล้ว · ไม่มีการบันทึกบัญชีจริง"
+});
+
+Object.assign(messages.en, {
+  "pwaInstall": "Install app",
+  "pwaInstallHint": "Keep GisSino on your home screen",
+  "pwaIpad": "iPad",
+  "pwaInstalled": "Already running as an app",
+  "pwaUseSafari": "Open this page in Safari to add it to your home screen",
+  "pwaios1": "Open this page in Safari",
+  "pwaios2": "Tap Share in the bottom toolbar, then Add to Home Screen",
+  "pwaios3": "Check the GisSino name, then tap Add",
+  "pwaipad1": "Open this page in Safari on iPad",
+  "pwaipad2": "Tap Share at the top right, then Add to Home Screen",
+  "pwaipad3": "Check the GisSino name, then tap Add",
+  "pwaBrowserInstall": "If an install button is unavailable, use the install menu in a supported browser",
+  "pwaShellOnly": "Installable sample app · No account saving or offline sync",
+  "pwaUpdate": "An update is available",
+  "pwaRefresh": "Refresh",
+  "pwaOffline": "Offline · Sample shell cached at {time} · Offline writes unavailable",
+  "pwaOfflineUnknown": "Offline · Showing cached sample shell · Offline writes unavailable",
+  "pwaDirtyTitle": "Refresh and discard your input?",
+  "pwaDirtyBody": "Refreshing clears the sample input you have not submitted.",
+  "pwaKeepEditing": "Keep editing",
+  "pwaDiscardRefresh": "Discard and refresh",
+  "pwaInstallFailed": "Installation could not start. Try again from Settings.",
+  "pwaUnavailable": "Offline app update unavailable. Try refreshing when connected.",
+  "pwaConfirmPreview": "Confirm sample preview",
+  "pwaPreviewConfirmed": "Sample preview confirmed · No real account entry saved"
+});
+
+Object.assign(messages.th, {pwaIphone:'iPhone'});
+Object.assign(messages.en, {pwaIphone:'iPhone'});

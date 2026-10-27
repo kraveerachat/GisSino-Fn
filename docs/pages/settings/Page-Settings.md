@@ -3,7 +3,7 @@ id: PAGE-settings
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-18
+updated: 2026-10-27
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
@@ -15,6 +15,8 @@ tasks: [TASK-GS-UI-BASELINE-001, TASK-GS-PLAN-005, TASK-GS-UI-HOME-V2-S1]
 # Settings
 
 ## Current state
+
+Batch A extends the current sample app with installable shell support, offline disclosure and explicit refresh/update protection. Settings and #setup/install reuse one iPhone/iPad/Android/desktop guide. Installation prompts are hidden in standalone. The explicit confirmed sample entry gates proactive install offers; no real entry is saved and offline financial writes remain unavailable. See [PWA task](../../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [review](../../design/reviews/PWA_SHELL_REVIEW.md); Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier owner-merge-pending prose is historical: Welcome PR #6 and dashboard PRs #9–#11 are already merged.
 
 A mock settings page in [screens.js](../../../src/screens.js), with theme, language, profile, currency/FX, categories, notifications, privacy, security, and installation explanations.
 
@@ -32,7 +34,7 @@ No Level-3 notes exist yet.
 
 ## Data and engines used
 
-Session memory only. Account, security, notification, FX, and installation services are not implemented.
+Session memory only. Account, security, notification and FX services are not implemented. Installation guide and shell behavior are implemented by Batch A; real device installation remains to be verified.
 
 ## States and edge cases
 
@@ -50,3 +52,5 @@ Provider and infrastructure choices are tracked in [Open Questions](../../projec
 - 2026-10-18 — Documented Home-only synthetic scenario/time controls for [Home S1](../../worklog/10-Tasks/TASK-GS-UI-HOME-V2-S1.md).
 
 - 2026-10-18 — Clarified Home S2 dated habit/notification previews and unchanged mode/transient Settings boundaries.
+
+- 2026-10-27 — Added scoped Batch A PWA/install/refresh notes; finance behavior unchanged.

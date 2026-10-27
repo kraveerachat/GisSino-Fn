@@ -3,13 +3,18 @@ id: DESIGN-UI-DATA-CONTRACTS
 type: design
 level: 2
 status: CURRENT
-updated: 2026-10-26
+updated: 2026-10-27
 up: Design-Hub.md
 related:
   - UI_DESIGN_SPEC.md
   - ../architecture/SYSTEM_ARCHITECTURE.md
 ---
 # UI data contracts and future boundaries
+
+## PWA shell boundary (2026-10-27)
+
+Only immutable app code/assets and bundled synthetic fixtures enter the versioned shell cache. API responses, form input, credentials and financial mutations never enter Cache Storage. Offline writes remain off. Preview confirmation gates an install offer without posting or awarding XP. Dismissal timestamp is the only new user state in localStorage. Badging reuses overdue-cycle and needs-details counts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.
+
 
 
 ## Activity v2 S1 monthly analytics contract (2026-10-18)

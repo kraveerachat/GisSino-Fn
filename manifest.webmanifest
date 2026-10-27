@@ -1,0 +1,60 @@
+{
+  "id": "/",
+  "name": "GisSino FN",
+  "short_name": "GisSino",
+  "description": "GisSino synthetic-data design preview",
+  "lang": "th",
+  "start_url": "/?source=pwa#home",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f9fd",
+  "theme_color": "#0860d4",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "บันทึกรายจ่าย",
+      "url": "/?source=pwa#add/expense"
+    },
+    {
+      "name": "โอนเงิน",
+      "url": "/?source=pwa#transfer"
+    },
+    {
+      "name": "บิลใกล้ครบ",
+      "url": "/?source=pwa#bills"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/pwa/screenshots/home-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "GisSino sample Home dashboard"
+    },
+    {
+      "src": "/assets/pwa/screenshots/home-wide.png",
+      "sizes": "1440x1000",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "GisSino sample desktop dashboard"
+    }
+  ]
+}

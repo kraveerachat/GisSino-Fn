@@ -7,7 +7,7 @@ async function filesAt(dir) {
   const entries=await readdir(dir,{withFileTypes:true});
   return (await Promise.all(entries.map(e=>e.isDirectory()?filesAt(path.join(dir,e.name)):[path.join(dir,e.name)]))).flat();
 }
-const files=[...await filesAt(path.join(root,'src')),...await filesAt(path.join(root,'scripts')),...await filesAt(path.join(root,'tests')),path.join(root,'server.mjs')];
+const files=[...await filesAt(path.join(root,'src')),...await filesAt(path.join(root,'scripts')),...await filesAt(path.join(root,'tests')),path.join(root,'server.mjs'),path.join(root,'sw.js')];
 for(const file of files.filter(p=>/\.(mjs|js)$/.test(p))) {
   const check=spawnSync(process.execPath,['--check',file],{encoding:'utf8'});
   if(check.status!==0) { console.error(check.stderr);process.exit(1); }
@@ -19,4 +19,6 @@ for(const match of html.matchAll(/(?:src|href)="(\/(?!\/)[^"]+)"/g)) await acces
 for(const file of ['src/app.js','src/screens.js','src/welcome.js','src/preview-flow.js']) {
   if(/[\u0E00-\u0E7F]/u.test(await readFile(path.join(root,file),'utf8'))) throw new Error(`Thai text must come from catalog: ${file}`);
 }
+const shellCheck=spawnSync(process.execPath,['scripts/build-pwa.mjs','--check'],{cwd:root,encoding:'utf8'});
+if(shellCheck.status!==0){console.error(shellCheck.stderr);process.exit(1);}
 console.log(`PASS: syntax, locale parity (${Object.keys(messages.th).length} keys per locale), local assets, and catalog-only Thai UI copy.`);

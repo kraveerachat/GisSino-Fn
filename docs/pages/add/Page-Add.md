@@ -3,7 +3,7 @@ id: PAGE-add
 type: page
 level: 2
 status: PROTOTYPE (mock data)
-updated: 2026-10-16
+updated: 2026-10-27
 up: ../Pages-Hub.md
 related:
   - ../../architecture/SYSTEM_ARCHITECTURE.md
@@ -14,6 +14,8 @@ tasks: [TASK-GS-UI-BASELINE-001, TASK-FLOATING-ISLAND-NAVIGATION, TASK-GS-UI-002
 # Add
 
 ## Current state
+
+Batch A extends the current sample app with installable shell support, offline disclosure and explicit refresh/update protection. Settings and #setup/install reuse one iPhone/iPad/Android/desktop guide. Installation prompts are hidden in standalone. The explicit confirmed sample entry gates proactive install offers; no real entry is saved and offline financial writes remain unavailable. See [PWA task](../../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [review](../../design/reviews/PWA_SHELL_REVIEW.md); Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier owner-merge-pending prose is historical: Welcome PR #6 and dashboard PRs #9–#11 are already merged.
 
 A shared modal action implemented in [app.js](../../../src/app.js). It previews expense, income, own-account transfer, synthetic receipt, and no-spend check-in flows. Results are explicitly unsaved.
 
@@ -42,3 +44,5 @@ Placement follows [D23](../../project/DECISIONS.md#d23--responsive-primary-navig
 ## Change log
 
 - 2026-10-16 — Added from the current Add modal.
+
+- 2026-10-27 — Added scoped Batch A PWA/install/refresh notes; finance behavior unchanged.
