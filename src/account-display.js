@@ -3,8 +3,11 @@ import { resolveProvider, providerTheme } from './providers.js';
 import { escapeHTML as esc } from './i18n.js';
 import { icon } from './icons.js';
 import { formatMoney } from './core/money.js';
+import { assetAccounts as coreAssetAccounts, accountsForPicker } from './core/accounts.js';
 
-export const assetAccounts = (records=accounts) => records.filter(a=>['bank','ewallet','cash'].includes(a.accountType)&&!a.archived).slice().sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));
+export const assetAccounts = (records=accounts) => coreAssetAccounts(records);
+// Picker accounts for a page state; falls back to the fixture accounts before any profile exists.
+export const pickerAccounts = (state={},currency='THB') => accountsForPicker(state,{currency,records:state.accountProfiles||accounts});
 export function accountDisplay(account,state,t) {
   const provider=resolveProvider(account.providerId,account.accountType);
   const currency=['THB','USD'].includes(account.currency)?account.currency:null;
@@ -18,6 +21,13 @@ export function accountDisplay(account,state,t) {
     suffix:account.suffix?t('demoSuffix',{suffix:account.suffix}):null,
     context:account.context?t(account.context):null};
 }
+// The one display-name resolver for account pickers (Add, Transfer, Bills funding):
+// the session nickname or the localized fixture name, plus the masked suffix if any.
+export function accountOptionLabel(account,state,t) {
+  const name=account.nickname?String(account.nickname):t(account.name||'account');
+  return account.suffix?`${name} •••• ${account.suffix}`:name;
+}
+export const accountName = (account,state,t) => account.nickname?String(account.nickname):t(account.name||'account');
 export const providerBadge = display => `<span class="provider-badge ${display.provider.logoPath?'has-provider-logo':''}" aria-hidden="true">${display.provider.logoPath?`<img src="${display.provider.logoPath}" alt="" width="36" height="36" draggable="false">`:''}<span class="provider-fallback">${icon(display.provider.icon)}</span></span>`;
 export function accountPreview(account,state,t) {
   const d=accountDisplay(account,state,t);

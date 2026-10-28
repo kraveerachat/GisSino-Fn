@@ -13,7 +13,11 @@ import { amountKey, validAmountText, transferProblem, isFutureDate } from './amo
 import { navigationOverlay, routeForHash, linksToCurrentPage } from './navigation.js';
 import { desktopSidebar } from './desktop-sidebar.js';
 import { accountBoard, parseAccountHash } from './account-board.js';
-import { assetAccounts, accountPreview } from './account-display.js';
+import { assetAccounts, accountPreview, pickerAccounts, accountOptionLabel, accountName } from './account-display.js';
+import { duplicateAccountName } from './core/accounts.js';
+import { formatDate } from './core/dates.js';
+import { activityCategories } from './core/activity.js';
+import { flags } from './config/feature-flags.js';
 import { mountAccountDeck } from './account-deck.js';
 import { accountProfileForm, profileDraft, applyProfile } from './account-profile.js';
 import { publicRoutes, isPublicRoute, welcomeScreen } from './welcome.js';
@@ -22,7 +26,7 @@ import { walletScreen } from './wallet.js';
 import { walletSnapshots, walletPeriodLabel } from './wallet-history.js';
 import { createPartySession, exactPartyLookup, setPartyRelationship } from './party-preview.js';
 import { partyFriendsSheet, partyGrid, partyRankingSheet, partyVisibilitySheet } from './party-ui.js';
-import { billDetail, billDaySheet, billForm, billReview, billEditData, billsText } from './bills-ui.js';
+import { billDetail, billDaySheet, billForm, billReview, billEditData, billsText, billFieldError, creditCardCycle } from './bills-ui.js';
 import { validateBillDraft, validBillDate } from './bills-overview.js';
 
 const app = document.querySelector('#app');
@@ -56,6 +60,12 @@ let editingProfileId=null;
 let accountDeck=null;
 let habitTimelineCleanup=null;
 let billDraftData=null;
+// Sheet history (WP-20 F6): opening a sheet pushes one same-URL entry so browser/Android
+// Back closes the sheet first. Closing by X/Escape/backdrop pops that entry again.
+let sheetEntry=false;
+let closingFromHistory=false;
+let pendingHash=null;
+const desktopLayout=matchMedia('(min-width:1100px)');
 const moreOverlay=navigationOverlay(sheet,closeSheet);
 const t = (key, values) => translator(state.locale)(key, values);
 const sidebar=desktopSidebar(app,t);
@@ -82,11 +92,37 @@ function render(focusMain = false) {
   if(isPublicRoute(state.route))mountPreviewFlow(app,previewFlow,t,id=>{render();document.getElementById(id)?.focus({preventScroll:true});});
   if(activityToolsOpen&&state.route==='activity')app.querySelector('.activity-preview-tools').open=true;
   sidebar.rendered();
+  syncProfileTabStops();
   mountDeck();
   habitTimelineCleanup=mountHabitTimeline(app.querySelector('[data-habit-card]'),habitOverview(state),state,t);
   if(state.route==='wallet'&&state.walletMode==='history') app.querySelector('.wallet-months [aria-pressed="true"]')?.scrollIntoView({block:'nearest',inline:'center',behavior:'instant'});
   pwa.refresh();
   if (focusMain) document.querySelector('#main').focus({ preventScroll: true });
+}
+// The sidebar profile button and the header profile button open the same Settings page;
+// only one is a tab stop on desktop (WP-20 F15). Both stay clickable.
+function syncProfileTabStops() {
+  app.querySelectorAll('.app-header .avatar-button,.cover-header .cover-profile').forEach(button=>{
+    if(desktopLayout.matches)button.setAttribute('tabindex','-1');else button.removeAttribute('tabindex');
+  });
+}
+desktopLayout.addEventListener('change',syncProfileTabStops);
+function resetTransferDraft() {
+  const options=pickerAccounts(state);
+  state.transferAmount='0';
+  state.transferSource=options[0]?.id||'daily';
+  state.transferDestination=options[1]?.id||options[0]?.id||'savings';
+}
+function routeHash(href) {
+  const name=String(href||'').replace(/^#/,'');
+  return validRoutes.includes(name)||name==='add/expense'||!!parseAccountHash('#'+name);
+}
+// Route changes requested while a history-backed sheet is open wait for its entry to be
+// popped, so the sheet entry never stays between two pages.
+function navigate(hash) {
+  const next='#'+String(hash).replace(/^#/,'');
+  if(sheet.open&&sheetEntry){pendingHash=next;closeSheet(false);return;}
+  closeSheet(false);location.hash=next;
 }
 function syncHabitPreview() {
   state.homeDemoDays=checkinPreview.days();
@@ -104,7 +140,7 @@ function toast(message) {
   element.textContent = message; element.hidden = false;
   toastTimer = setTimeout(() => { element.hidden = true; }, 4000);
 }
-function showSheet(titleKey, content, back = false) {
+function showSheet(titleKey, content, back = false, { fromHash = false } = {}) {
   sidebar.suspend();
   moreOverlay.close();
   if (!sheet.open) opener = document.activeElement;
@@ -112,7 +148,11 @@ function showSheet(titleKey, content, back = false) {
   sheet.classList.toggle('add-sheet', titleKey === 'addTitle');
   sheet.classList.toggle('party-dialog', ['partyFriendsTitle','partyFriendsRanking','partyGlobalRanking'].includes(titleKey));
   sheet.classList.toggle('activity-category-sheet',titleKey==='activityAllCategories');
-  if (!sheet.open) { sheet.showModal(); document.body.classList.add('has-sheet'); }
+  if (!sheet.open) {
+    sheet.showModal(); document.body.classList.add('has-sheet');
+    // Hash-routed sheets (#wallet/account/…) already own a history entry.
+    if(!fromHash){history.pushState({gsSheet:true},'',location.href);sheetEntry=true;}
+  }
   sheet.scrollTop = 0;
   document.querySelector('#sheet-title').focus({ preventScroll: true });
   pwa.refresh();
@@ -121,6 +161,8 @@ function closeSheet(restoreFocus=true) { if (sheet.open) {suppressSheetFocus=!re
 sheet.addEventListener('close', () => {
   // A queued close event can arrive after hash navigation has opened the next dialog.
   if(sheet.open){accountSheetClosingForNavigation=false;suppressSheetFocus=false;return;}
+  if(sheetEntry){sheetEntry=false;if(!closingFromHistory)history.back();}
+  closingFromHistory=false;
   document.body.classList.remove('has-sheet');
   state.mode = null;
   if(!accountSheetClosingForNavigation&&parseAccountHash(location.hash)) history.replaceState(null,'','#wallet');
@@ -134,10 +176,10 @@ sheet.addEventListener('close', () => {
   accountDetailId=null;
 });
 sheet.addEventListener('keydown',event=>{
-  if(event.key!=='Tab'||!sheet.classList.contains('activity-category-sheet'))return;
-  // The catalog has one interactive close control. Keep traversal inside the
-  // modal even when Chromium's native dialog traversal would focus body.
-  const controls=[...sheet.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),[tabindex="0"]')];
+  if(event.key!=='Tab')return;
+  // Keep Tab traversal inside every sheet; Chromium's native dialog traversal can
+  // otherwise leave focus on body between the last and first control (WP-20 F15).
+  const controls=[...sheet.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]')].filter(control=>control.getClientRects().length&&!control.closest('[inert],[hidden]'));
   const first=controls[0],last=controls.at(-1);
   if(!first){event.preventDefault();sheet.querySelector('#sheet-title').focus();}
   else if(controls.length===1||event.shiftKey&&document.activeElement===first||!event.shiftKey&&document.activeElement===last){event.preventDefault();(event.shiftKey?last:first).focus();}
@@ -147,13 +189,14 @@ sheet.addEventListener('click', event => {
   // hashchange, so close the sheet here instead of leaving it open.
   const link = event.target.closest?.('a[href^="#"]');
   if (link && linksToCurrentPage(link.getAttribute('href'), location.hash)) { closeSheet(); return; }
+  if (link && routeHash(link.getAttribute('href'))) { event.preventDefault(); navigate(link.getAttribute('href')); return; }
   if (event.target !== sheet) return;
   const rect = sheet.getBoundingClientRect();
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeSheet();
 });
 
 function openMode(mode) {
-  if(mode==='transfer') {closeSheet();location.hash='transfer';return;}
+  if(mode==='transfer') {navigate('transfer');return;}
   state.mode = mode;
   if (['expense','income','transfer'].includes(mode)) {
     showSheet(({expense:'manualExpense',income:'manualIncome',transfer:'transferAction'})[mode], addForm(mode,state,t),true);
@@ -175,7 +218,7 @@ function openTransaction(id) {
   showSheet('transactionDetail',`<div class="detail-hero"><span class="well-icon ${item.type}">${icon(item.icon)}</span><h3>${t(item.name)}</h3><strong>${value}</strong>${item.needsDetails?`<span class="status warning">${t('needsDetails')}</span>`:''}</div>${definitionList([[t('category'),t(item.category)],[t('account'),t(item.account)],[t('time'),item.time],[t('reference'),`DEMO-${item.id.toUpperCase()}`]])}<p class="info-callout">${icon('info')}${t(item.type==='transfer'?'transferNote':item.needsDetails?'needDetailBody':'detailNote')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
 }
 function openBill(id) {
-  if(id==='card'){closeSheet();location.hash='credit-card';return;}
+  if(id==='card'){navigate('credit-card');return;}
   const legacy={power:'power-2026-10',device:'device-3',music:'music-2026-10'};
   const content=billDetail(legacy[id]||id,state,t);
   if(content)showSheet('billDetail',content);
@@ -199,10 +242,10 @@ function openPartyFriends(tab='search') {
   state.partySession.tab=['search','requests','friends'].includes(tab)?tab:'search';
   showSheet('partyFriendsTitle',partyFriendsSheet(state,t,state.partySession));
 }
-function openAccount(id) {
+function openAccount(id,fromHash=false) {
   accountDetailId=id;
   const account=assetAccounts(state.accountProfiles).find(a=>a.id===id);
-  showSheet('accountDetail',account?`${state.walletMode==='history'?`<p class="info-callout">${icon('info')}${t('walletCurrentAccountDetails')}</p>`:''}${accountPreview(account,state,t)}`:`<p class="settings-info">${t('boardUnavailableBody')}</p>`);
+  showSheet('accountDetail',account?`${state.walletMode==='history'?`<p class="info-callout">${icon('info')}${t('walletCurrentAccountDetails')}</p>`:''}${accountPreview(account,state,t)}`:`<p class="settings-info">${t('boardUnavailableBody')}</p>`,false,{fromHash});
 }
 function openProfile(id=null) {
   const account=state.accountProfiles.find(a=>a.id===id);
@@ -278,7 +321,7 @@ document.addEventListener('click',event=>{
   else if (action==='add') { state.mode=null; showSheet('addTitle',addMenu(t)); }
   else if (action==='close') closeSheet();
   else if (action==='mode') openMode(button.dataset.mode);
-  else if (action==='all-accounts') location.hash='wallet';
+  else if (action==='all-accounts') navigate('wallet');
   else if(action==='account-select') {
     const focus=button.classList.contains('account-choice')?`.account-choice[data-id="${button.dataset.id}"]`:'[data-account-deck]';
     selectBoardAccount(button.dataset.id,focus);
@@ -299,21 +342,31 @@ document.addEventListener('click',event=>{
     state.transferDestination=button.dataset.id;render();document.querySelector(`[data-action="transfer-destination"][data-id="${state.transferDestination}"]`)?.focus({preventScroll:true});
   } else if(action==='review-transfer') {
     if(navigator.onLine===false){toast(t('pwaOfflineUnknown'));return;}
-    const problem=transferProblem(state.transferAmount,accounts.find(a=>a.id===state.transferSource)?.balanceMinor,state.transferSource===state.transferDestination);
+    const options=pickerAccounts(state);
+    const problem=transferProblem(state.transferAmount,options.find(a=>a.id===state.transferSource)?.balanceMinor,state.transferSource===state.transferDestination);
     const error=document.querySelector('#transfer-error');
     document.querySelector('#transfer-amount').setAttribute('aria-invalid',String(!!problem));
     if(problem){error.textContent=t(problem);error.hidden=false;document.querySelector('#transfer-amount').focus();return;}
-    const from=accounts.find(a=>a.id===state.transferSource),to=accounts.find(a=>a.id===state.transferDestination);
-    showSheet('sampleTransferSummary',`<div class="result-status">${icon('eye')}${t('resultNote')}</div>${definitionList([[t('fromAccount'),t(from.name)],[t('toAccount'),t(to.name)],[t('amount'),thb(minor(state.transferAmount))]])}<p class="info-callout">${icon('shield')}${t('unchangedBalance')}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
+    const from=options.find(a=>a.id===state.transferSource),to=options.find(a=>a.id===state.transferDestination);
+    if(!from||!to)return;
+    // Same explicit confirmation and disclosure as the expense review; still nothing is posted (WP-20 F4).
+    showSheet('sampleTransferSummary',`<div class="result-status">${icon('eye')}${t('resultNote')}</div>${definitionList([[t('fromAccount'),esc(accountOptionLabel(from,state,t))],[t('toAccount'),esc(accountOptionLabel(to,state,t))],[t('amount'),thb(minor(state.transferAmount))]])}<p class="info-callout">${icon('shield')}${t('unchangedBalance')} ${t('transferNotRecorded')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><p class="sheet-disclaimer">${t('detailNote')}</p>`);
   } else if(action==='card-preview') {
     const view=button.dataset.view;
     if(view==='activity') {showSheet('cardSampleActivity',`<p class="sheet-subtitle">${t('noIssuerSync')}</p>${definitionList(transactions.slice(0,2).map(item=>[t(item.name),state.balanceVisible?thb(minor(item.amount)):t('hiddenAmount')]))}`);return;}
     const titles={statement:'cardStatement',due:'cardAmountDue',payment:'cardPayment',reminder:'cardReminder',account:'cardInformation'};
     const copy={statement:'cardStatementPreview',payment:'cardPaymentPreview',reminder:'reminderPreview',account:'accountNote'};
-    showSheet(titles[view],view==='due'?`${definitionList([[t('fullPayment'),state.balanceVisible?thb(creditCard.fullAmountMinor):t('hiddenAmount')],[t('paymentDueDate'),t('dayMonth',{day:creditCard.dueDay})],[t('minimumPayment'),t('notRecorded')]])}<p class="sheet-disclaimer">${t('detailNote')}</p>`:`<p class="settings-info">${t(copy[view])}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
+    const card=creditCardCycle(state);
+    if(flags.creditCardInBillDetail&&card){
+      // G3 (off by default): quick actions open the Bills detail or payment flow instead.
+      if(view==='payment'&&!card.paid){showSheet('billPaidTitle',`<p class="info-callout">${icon('shield')}${billsText(state.locale,'payNote')}</p><div class="bills-v2-review-actions"><button type="button" class="button secondary" data-action="bill" data-id="${esc(card.cycle.id)}">${t('back')}</button><button type="button" class="button primary" data-action="bill-pay-confirm" data-id="${esc(card.cycle.id)}">${billsText(state.locale,'markPaidConfirm')}</button></div>`);return;}
+      showSheet('billDetail',billDetail(card.cycle.id,state,t));return;
+    }
+    const dueMinor=card?card.dueMinor:creditCard.fullAmountMinor;
+    showSheet(titles[view],view==='due'?`${definitionList([[t('fullPayment'),state.balanceVisible?(dueMinor===null?t('notRecorded'):thb(dueMinor)):t('hiddenAmount')],[t('paymentDueDate'),t('dayMonth',{day:creditCard.dueDay})],[t('minimumPayment'),t('notRecorded')]])}<p class="sheet-disclaimer">${t('detailNote')}</p>`:`<p class="settings-info">${t(copy[view])}</p><p class="sheet-disclaimer">${t('detailNote')}</p>`);
   }
   else if (action==='focus-field') { event.preventDefault(); document.querySelector(`#entry-${button.dataset.field}`)?.focus(); }
-  else if (action==='settings') location.hash='settings';
+  else if (action==='settings') navigate('settings');
   else if (action==='theme'||action==='set-theme') {
     const focusAction=action==='theme'?'[data-action="theme"]':`[data-action="set-theme"][data-theme="${button.dataset.theme}"]`;
     state.theme=action==='theme'?(state.theme==='light'?'dark':'light'):button.dataset.theme;
@@ -325,12 +378,12 @@ document.addEventListener('click',event=>{
   else if (action==='bill-calendar-day') {
     if(validBillDate(button.dataset.date))showSheet('billDayTitle',billDaySheet(button.dataset.date,state,t));
   } else if (action==='bill-add') {
-    billDraftData=null;showSheet('billAddTitle',billForm('installments',state.locale));
+    billDraftData=null;showSheet('billAddTitle',billForm('installments',state.locale,{},pickerAccounts(state)));
   } else if (action==='bill-edit-sample') {
     const data=billEditData(button.dataset.id,state);
-    if(data){billDraftData=null;showSheet('billAddTitle',billForm(data.type,state.locale,data));}
+    if(data){billDraftData=null;showSheet('billAddTitle',billForm(data.type,state.locale,data,pickerAccounts(state)));}
   } else if (action==='bill-edit') {
-    if(billDraftData)showSheet('billAddTitle',billForm(billDraftData.draft.type,state.locale,billDraftData.raw));
+    if(billDraftData)showSheet('billAddTitle',billForm(billDraftData.draft.type,state.locale,billDraftData.raw,pickerAccounts(state)));
   } else if (action==='bill-discard') {billDraftData=null;closeSheet();}
   else if (action==='bill-pay-review') {
     const id=button.dataset.id;
@@ -347,7 +400,7 @@ document.addEventListener('click',event=>{
     announce(billsText(state.locale,'paidPreview'));
   }
   else if (action==='account') {
-    if(assetAccounts(state.accountProfiles).some(a=>a.id===button.dataset.id)) location.hash=`wallet/account/${encodeURIComponent(button.dataset.id)}`;
+    if(assetAccounts(state.accountProfiles).some(a=>a.id===button.dataset.id)) navigate(`wallet/account/${encodeURIComponent(button.dataset.id)}`);
   } else if (action==='filter') {
     state.filter=button.dataset.filter;
     render(); document.querySelector(`[data-action="filter"][data-filter="${state.filter}"]`)?.focus({preventScroll:true});
@@ -383,7 +436,9 @@ document.addEventListener('click',event=>{
   else if (action==='settings-detail') {
     if (button.dataset.title==='install') { pwa.openGuide(); return; }
     if (button.dataset.title==='privacy') { openVisibility(); return; }
-    showSheet(button.dataset.title,`<p class="settings-info">${t(button.dataset.content)}</p><p class="sheet-disclaimer">${icon('info')}${t('settingsPreview')}</p>`);
+    // The Categories row is derived from the same registry Activity uses (WP-20 F11a).
+    const values=button.dataset.title==='categories'?{n:activityCategories.length,list:activityCategories.map(category=>t(category.label)).join(', ')}:{};
+    showSheet(button.dataset.title,`<p class="settings-info">${t(button.dataset.content,values)}</p><p class="sheet-disclaimer">${icon('info')}${t('settingsPreview')}</p>`);
   } else if (action==='sample-slip') {
     showSheet('slipTitle',`<div class="sample-attachment">${icon('bills')}<strong>${t('slipBody')}</strong><span class="status">${t('sampleOnly')}</span></div><p class="info-callout">${icon('shield')}${t('slipPrivacy')}</p>`,true);
   } else if (action==='habit-checkin') openHabitCheckin();
@@ -401,6 +456,9 @@ document.addEventListener('input',event=>{
   if(event.target.id==='profile-nickname') {
     event.target.removeAttribute('aria-invalid');
     document.querySelector('#profile-name-error').hidden=true;
+    // Non-blocking hint only; duplicate names are still allowed (WP-20 F13).
+    const hint=document.querySelector('#profile-name-duplicate');
+    if(hint)hint.hidden=!duplicateAccountName(state.accountProfiles,event.target.value,editingProfileId,account=>accountName(account,state,t));
   }
   if(event.target.id==='transfer-amount') {state.transferAmount=event.target.value;updateTransferAmount(false);}
   if (event.target.id==='activity-search') {
@@ -426,7 +484,7 @@ document.addEventListener('change',event=>{
   const control=event.target.dataset.control;
   if(control==='bill-month') {state.billMonth=event.target.value;render();document.querySelector('[data-control="bill-month"]')?.focus({preventScroll:true});return;}
   if(control==='bill-type-filter') {state.billTypeFilter=event.target.value;render();document.querySelector('[data-control="bill-type-filter"]')?.focus({preventScroll:true});return;}
-  if(control==='bill-type') {showSheet('billAddTitle',billForm(event.target.value,state.locale));sheet.querySelector('[data-control="bill-type"]')?.focus({preventScroll:true});return;}
+  if(control==='bill-type') {showSheet('billAddTitle',billForm(event.target.value,state.locale,{},pickerAccounts(state)));sheet.querySelector('[data-control="bill-type"]')?.focus({preventScroll:true});return;}
   if(control==='home-scenario') {state.homeScenario=previewScenarios.includes(event.target.value)?event.target.value:'sample';if(state.homeScenario==='actionable')state.homeNow='2026-10-23T20:30';else state.homeNow=homePreview.nowLocal;render();document.querySelector('#home-preview-scenario')?.focus({preventScroll:true});}
   else if(control==='home-clock') {if(bangkokClock(event.target.value)){state.homeNow=event.target.value;announce(t('homeClockChanged'));}else{event.target.value=state.homeNow;announce(t('homeClockInvalid'));}}
   else if(control==='wallet-year') {
@@ -447,7 +505,7 @@ document.addEventListener('change',event=>{
   else if (control==='locale') { state.locale=event.target.value; render(); document.querySelector('#locale-select')?.focus({preventScroll:true}); announce(t('localeChanged')); }
   else if(control==='transfer-source') {
     state.transferSource=event.target.value;
-    if(state.transferSource===state.transferDestination)state.transferDestination=accounts.find(a=>a.id!==state.transferSource).id;
+    if(state.transferSource===state.transferDestination)state.transferDestination=pickerAccounts(state).find(a=>a.id!==state.transferSource)?.id||state.transferDestination;
     render();document.querySelector('#transfer-source')?.focus({preventScroll:true});
   } else if(control==='card-reminder') {state.cardReminder=event.target.checked;announce(t(state.cardReminder?'cardReminderEnabled':'cardReminderDisabled'));}
   else if(['shareStreak','shareXP','party-visibility','party-ranking-opt-in'].includes(control)) {
@@ -482,20 +540,21 @@ document.addEventListener('submit',event=>{
     event.preventDefault();
     const form=event.target,raw=Object.fromEntries(new FormData(form)),result=validateBillDraft(raw);
     form.querySelectorAll('.bills-v2-field-error').forEach(node=>node.remove());
-    form.querySelectorAll('[aria-invalid]').forEach(node=>node.removeAttribute('aria-invalid'));
+    form.querySelectorAll('[aria-invalid]').forEach(node=>{node.removeAttribute('aria-invalid');node.removeAttribute('aria-describedby');});
     if(!result.valid){
       const B=key=>billsText(state.locale,key);
       for(const [field,kind] of Object.entries(result.errors)){
         const input=form.elements[field];if(!input)continue;
-        input.setAttribute('aria-invalid','true');
-        const error=document.createElement('small');error.className='bills-v2-field-error';error.textContent=kind==='schedule'?B('scheduleError'):B('required');
+        // Each invalid field gets its own message, linked for assistive technology (WP-20 F12).
+        input.setAttribute('aria-invalid','true');input.setAttribute('aria-describedby',`bill-error-${field}`);
+        const error=document.createElement('small');error.className='bills-v2-field-error';error.id=`bill-error-${field}`;error.textContent=billFieldError(kind,state.locale);
         input.insertAdjacentElement('afterend',error);
       }
       const summary=form.querySelector('#bill-form-error');summary.textContent=B('error');summary.hidden=false;summary.focus();
       form.elements[Object.keys(result.errors)[0]]?.focus();return;
     }
     billDraftData={raw,draft:result.draft};
-    showSheet('billReviewTitle',billReview(result.draft,state.locale));return;
+    showSheet('billReviewTitle',billReview(result.draft,state.locale,pickerAccounts(state)));return;
   }
   if(event.target.id==='account-profile-form') {
     event.preventDefault();
@@ -537,10 +596,15 @@ document.addEventListener('submit',event=>{
     error.innerHTML=`<strong>${t('formError')}</strong><ul>${errors.map(item=>`<li><a href="#entry-${item.field}" data-action="focus-field" data-field="${item.field}">${t(item.key)}</a></li>`).join('')}</ul>`;
     error.hidden=false;error.focus();return;
   }
-  const account=accounts.find(a=>a.id===data.get('account'));
-  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${thb(minor(String(data.get('amount'))))}</strong></div>${definitionList([[t('category'),t(state.mode)],[t('account'),t(account.name)],...(state.mode==='transfer'?[[t('toAccount'),t(accounts.find(a=>a.id===data.get('destination')).name)]]:[[t('date'),esc(data.get('date'))]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
+  const options=pickerAccounts(state),account=options.find(a=>a.id===data.get('account')),destination=options.find(a=>a.id===data.get('destination'));
+  if(!account||(state.mode==='transfer'&&!destination))return;
+  // "Type", not "Category": there is no category picker yet; dates use the shared formatter (WP-20 F7).
+  const entryDate=formatDate(String(data.get('date')||''),{locale:state.locale,day:'numeric',month:'long',year:'numeric'})||t('notRecorded');
+  showSheet('resultTitle',`<div class="result-status">${icon('eye')}<span>${t('resultNote')}</span></div><div class="detail-hero"><h3>${esc(note)}</h3><strong>${thb(minor(String(data.get('amount'))))}</strong></div>${definitionList([[t('entryType'),t(state.mode)],[t('account'),esc(accountOptionLabel(account,state,t))],...(state.mode==='transfer'?[[t('toAccount'),esc(accountOptionLabel(destination,state,t))]]:[[t('date'),esc(entryDate)]])])}<p class="info-callout">${icon('shield')}${t('detailNote')}</p><button type="button" class="button primary full-width" data-action="confirm-entry-preview">${t('pwaConfirmPreview')}</button><button class="button secondary full-width" data-action="add">${t('makeAnother')}</button>`,true);
 });
 window.addEventListener('hashchange',()=>{
+  // A route change already added its own entry; never pop it while closing the sheet.
+  sheetEntry=false;pendingHash=null;
   const accountId=parseAccountHash(location.hash);
   let next=accountId?'wallet':location.hash.slice(1)||'welcome';
   if(next==='add/expense'){history.replaceState(null,'','#home');state.route='home';closeSheet(false);render(true);openMode('expense');return;}
@@ -552,12 +616,18 @@ window.addEventListener('hashchange',()=>{
   document.querySelectorAll('[data-credential]').forEach(input=>input.value='');
   scrollPositions.set(state.route,window.scrollY);
   if(next==='credit-card')state.cardReturn=state.route==='wallet'?'wallet':'bills';
+  // Entering or leaving Transfer starts a fresh draft; the review sheet stays on the same route (WP-20 F4).
+  if(next!==state.route&&(next==='transfer'||state.route==='transfer'))resetTransferDraft();
   moreOverlay.close();
   if(sheet.open)accountSheetClosingForNavigation=true;
   closeSheet(false); state.route=next;state.previewState='sample';render(true);
   window.scrollTo({top:scrollPositions.get(next)||0,behavior:'instant'});
-  if(accountId)openAccount(accountId);
+  if(accountId)openAccount(accountId,true);
+});
+window.addEventListener('popstate',()=>{
+  if(pendingHash!==null){const hash=pendingHash;pendingHash=null;if(location.hash!==hash)location.hash=hash;return;}
+  if(sheet.open&&sheetEntry&&!history.state?.gsSheet){closingFromHistory=true;closeSheet();}
 });
 render();
 if(location.hash==='#add/expense'){state.route='home';history.replaceState(null,'','#home');render();openMode('expense');}
-if(parseAccountHash(location.hash))openAccount(parseAccountHash(location.hash));
+if(parseAccountHash(location.hash))openAccount(parseAccountHash(location.hash),true);

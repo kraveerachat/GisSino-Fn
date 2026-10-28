@@ -143,6 +143,8 @@
 .profile-options .field { margin-top: 16px; }
 .profile-field-error { font-size: 13px; color: var(--text); }
 .profile-field-error:not([hidden]) { display: block; }
+.profile-field-hint { font-size: 12px; color: var(--muted); }
+.profile-field-hint:not([hidden]) { display: block; }
 #account-profile-form [aria-invalid='true'] { border: 2px solid var(--danger,#b62942); }
 #account-profile-form input,#account-profile-form select { font-size: 16px; min-height: 44px; }
 .profile-form-actions { display: grid; gap: 10px; }

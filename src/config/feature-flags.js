@@ -19,5 +19,13 @@ export const flags = Object.freeze({
   activityChart: 'd33_donut',        // D-17, D33
   copyRevision2026_10: false,        // D-18
   habitSource: 'home',               // D36: owner kept the Home set (3 / 80); 'party' (7 / 92) not adopted
-  homeScenarioExtras: false          // WP-19: hide the no-op "Spending shortfall" and "Sample group context" Home scenarios
+  homeScenarioExtras: false,         // WP-19: hide the no-op "Spending shortfall" and "Sample group context" Home scenarios
+  // WP-20 owner gates. Each default is today's behaviour; switching one on needs owner approval.
+  homeDueTodayFirst: false,          // G1, touches D31 sort/limit: "due today" before older overdue, extra overdue collapsed
+  showPreviewControls: true,         // G2, touches D28: false hides preview states/scenarios/clock unless the URL has ?dev=1
+  creditCardInBillDetail: false      // G3, proposal: card quick actions open the Bills detail/payment flow
 });
+// Preview controls stay reachable for developers with ?dev=1 even when the flag is off.
+export function previewControlsVisible(search = typeof location === 'undefined' ? '' : location.search, value = flags.showPreviewControls) {
+  return value || /(?:^\?|&)dev=1(?:&|$)/.test(String(search || ''));
+}

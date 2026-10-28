@@ -3,6 +3,9 @@
 .bills-v2-heading h1 { font-size:clamp(25px,3vw,35px); letter-spacing:-.025em; }
 .bills-v2-heading p { color:var(--muted); margin-top:3px; }
 .bills-v2-add { flex:none; min-height:48px; white-space:nowrap; }
+/* Large-text reflow (WP-20 F16): the heading copy shrinks and the button wraps its label. */
+.bills-v2-heading>div { min-width:0; overflow-wrap:anywhere; }
+.bills-v2-add { max-width:50%; white-space:normal; text-align:center; }
 .bills-v2-period { margin-bottom:12px; }
 .bills-v2-period label,.bills-v2-list-head label { display:flex; align-items:center; gap:10px; color:var(--muted); font-size:13px; font-weight:600; }
 .bills-v2-period select,.bills-v2-list-head select { min-height:44px; padding:8px 34px 8px 13px; border:1px solid var(--line); border-radius:12px; background:var(--surface-raised); color:var(--text); box-shadow:var(--key-shadow); }

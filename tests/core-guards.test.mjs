@@ -47,6 +47,7 @@ test('Every decision flag defaults to the canonical behaviour', () => {
     heroLiabilityLine: false, safeToSpendChip: false, dailyClose: false, rankingKey: 'weekly_xp', globalBoard: 'shown',
     savingsAsTransfer: false, installmentNesting: false, dateEra: 'CE', appLock: false, offlineWrites: false, templates: false,
     monthCompare: false, fundingCheck: false, needsDetailsXp: 'on_entry', activityChart: 'd33_donut', copyRevision2026_10: false,
-    habitSource: 'home', homeScenarioExtras: false
+    habitSource: 'home', homeScenarioExtras: false,
+    homeDueTodayFirst: false, showPreviewControls: true, creditCardInBillDetail: false
   });
 });

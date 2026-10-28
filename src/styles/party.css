@@ -71,7 +71,8 @@
 .party-visibility-levels {border:0;margin:0 0 15px;padding:0}
 .party-visibility-levels legend {font-size:12px;font-weight:700;margin-bottom:7px}
 .party-visibility-choice {display:flex;align-items:center;gap:12px;padding:10px 3px;border-top:1px solid var(--line)}
-.party-visibility-choice input {width:18px;height:18px;flex:none}
+.party-visibility-choice {min-height:44px;cursor:pointer}
+.party-visibility-choice input {width:24px;height:24px;flex:none;margin:0}
 .party-visibility-choice span {display:flex;flex-direction:column;line-height:1.4}
 .party-visibility-choice strong {font-size:12px}
 .party-visibility-choice small,.party-visibility-hint {font-size:11px;color:var(--muted)}

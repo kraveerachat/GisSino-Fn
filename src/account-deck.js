@@ -63,7 +63,8 @@ export function mountAccountDeck(root,{onSelect,t}) {
       const content=card.querySelector('.folder-content');content.inert=i!==index;content.setAttribute('aria-hidden',String(i!==index));
       card.querySelector('.deck-card-select').hidden=i===index;
     });
-    board.querySelectorAll('.account-choice').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.id===ids[index])));
+    // Roving tabindex: the account list is one tab stop; arrow keys move within it (WP-20 F15).
+    board.querySelectorAll('.account-choice').forEach(button=>{button.setAttribute('aria-pressed',String(button.dataset.id===ids[index]));button.tabIndex=button.dataset.id===ids[index]?0:-1;});
     board.querySelectorAll('[data-deck-dot]').forEach(dot=>dot.dataset.current=String(dot.dataset.deckDot===ids[index]));
     for(const button of board.querySelectorAll('[data-deck-step]'))button.disabled=boundedIndex(index,Number(button.dataset.deckStep),ids.length)===index;
     handle.setAttribute('aria-valuenow',String(index+1));handle.setAttribute('aria-valuetext',name(index));
@@ -173,6 +174,12 @@ export function mountAccountDeck(root,{onSelect,t}) {
     const previous=mode==='vertical'?'ArrowUp':'ArrowLeft',next=mode==='vertical'?'ArrowDown':'ArrowRight';
     const target=event.key==='Home'?0:event.key==='End'?ids.length-1:event.key===previous?boundedIndex(index,-1,ids.length):event.key===next?boundedIndex(index,1,ids.length):-1;
     if(target<0)return;event.preventDefault();select(ids[target]);
+  },{signal});
+  board.querySelector('.account-overview-list')?.addEventListener('keydown',event=>{
+    const choices=[...board.querySelectorAll('.account-choice')],current=choices.indexOf(event.target.closest('.account-choice'));
+    if(current<0||event.altKey||event.ctrlKey||event.metaKey)return;
+    const target=event.key==='Home'?0:event.key==='End'?choices.length-1:['ArrowUp','ArrowLeft'].includes(event.key)?Math.max(0,current-1):['ArrowDown','ArrowRight'].includes(event.key)?Math.min(choices.length-1,current+1):-1;
+    if(target<0)return;event.preventDefault();choices[target].focus({preventScroll:true});select(choices[target].dataset.id);
   },{signal});
   board.addEventListener('click',event=>{const step=event.target.closest('[data-deck-step]');if(step)select(ids[boundedIndex(index,Number(step.dataset.deckStep),ids.length)]);},{signal});
   root.addEventListener('wheel',event=>{

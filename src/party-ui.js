@@ -38,7 +38,8 @@ function board(audience,state,t,session) {
   const intro=t(isFriends?'partyFriendsRankingIntro':'partyGlobalRankingIntro');
   const empty=isFriends&&!friends.length?'partyNoFriendsBoard':isFriends?'partyMetricUnavailable':'partyNoGlobalBoard';
   const top=isFriends&&!friends.length?[]:rows.slice(0,3);
-  const own=!isFriends&&rows.length>3?rows.find(item=>item.id==='you'&&!top.some(topItem=>topItem.id==='you')):null;
+  // Friends and Global both show "your position" when you are outside the top three (WP-20 F14).
+  const own=rows.length>3&&top.length?rows.find(item=>item.id==='you'&&!top.some(topItem=>topItem.id==='you')):null;
   return `<section class="panel party-board party-board-${audience}" aria-labelledby="party-${audience}-title">
     <div class="party-board-heading"><div><h2 id="party-${audience}-title">${title}</h2><p>${intro}</p></div><span class="party-board-icon" aria-hidden="true">${icon(isFriends?'party':'globe')}</span></div>
     <p class="party-period">${icon('calendar')}${esc(weekLabel(state.locale))}</p>

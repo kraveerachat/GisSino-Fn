@@ -6,6 +6,9 @@ export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPend
   const environment = installEnvironment({ userAgent: navigator.userAgent, platform: navigator.platform, maxTouchPoints: navigator.maxTouchPoints, standalone: mode.matches || navigator.standalone === true });
   let storage; try { storage = window.localStorage; } catch { /* Storage disabled. */ }
   let worker = null, registration = null, reloadRequested = false, lastOnline = null;
+  // Update-failure toasts appear only after this tab started an update flow (WP-20 F10);
+  // a first-time visitor whose browser blocks the service worker sees no error.
+  let updateRequested = false;
   const dirtyForms = new WeakSet();
   const dirtyRoutes = new Set();
   let transferDirty = false;
@@ -39,7 +42,16 @@ export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPend
     if (worker) { worker.postMessage({ type: 'ACTIVATE_UPDATE' }); }
     else window.location.reload();
   }
+  async function checkForUpdate() {
+    updateRequested = true;
+    if (!registration) { toast(t('pwaNothingToRefresh')); return; }
+    try { await registration.update(); } catch { toast(t('pwaUnavailable')); return; }
+    if (registration.waiting || registration.installing) { worker = registration.waiting || worker; refresh(); toast(t('pwaUpdateFound')); }
+    else toast(t('pwaNothingToRefresh'));
+  }
   function requestRefresh() {
+    // Nothing waiting: say so instead of silently reloading the page (WP-20 F11b).
+    if (!worker) { checkForUpdate(); return; }
     if (!dirty()) { performRefresh(); return; }
     confirm.innerHTML = `<h2 id="pwa-refresh-title">${t('pwaDirtyTitle')}</h2><p>${t('pwaDirtyBody')}</p><div class="pwa-confirm-actions"><button type="button" class="button secondary" data-pwa-action="cancel-refresh">${t('pwaKeepEditing')}</button><button type="button" class="button primary" data-pwa-action="confirm-refresh">${t('pwaDiscardRefresh')}</button></div>`;
     if (!confirm.open) confirm.showModal();
@@ -94,13 +106,13 @@ export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPend
           // reg.waiting may not be assigned yet during the installed event.
           if (pending.state === 'installed' && navigator.serviceWorker.controller) {
             worker = reg.waiting || pending; refresh();
-          } else if (pending.state === 'redundant' && !reg.active) toast(t('pwaUnavailable'));
+          } else if (pending.state === 'redundant' && !reg.active && updateRequested) toast(t('pwaUnavailable'));
         });
       };
       reg.addEventListener('updatefound', observeInstalling);
       observeInstalling();
       navigator.serviceWorker.ready.then(() => navigator.serviceWorker.controller?.postMessage({ type: 'GET_SHELL_STATUS' }));
-    }).catch(() => toast(t('pwaUnavailable')));
+    }).catch(() => { if (updateRequested) toast(t('pwaUnavailable')); });
   }
   refresh(); updateBadge(navigator, getBadgeCount());
   return {
@@ -108,6 +120,6 @@ export function mountPwa({ t, showSheet, toast, getBadgeCount, isPublic, hasPend
     confirmedEntry() { installer.confirm(); },
     transferChanged() { transferDirty = true; },
     updateBadge() { updateBadge(navigator, getBadgeCount()); },
-    async checkUpdate() { try { await registration?.update(); } catch { toast(t('pwaUnavailable')); } }
+    checkUpdate: checkForUpdate
   };
 }
