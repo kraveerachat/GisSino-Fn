@@ -2,9 +2,9 @@
 
 ## Preserved owner background sources — 2026-10-28
 
-The four original PNGs below are preserved byte-for-byte. No code or CSS references these filenames; Welcome continues to use `assets/welcome/*.webp`. Adding the PNGs changes the generated PWA shell inventory only, not the visible background. The logo is unchanged.
+The four original PNGs below are preserved byte-for-byte in [`docs/design/sources/brand-backgrounds/`](../../docs/design/sources/brand-backgrounds/). They were moved there with `git mv` on 2026-10-28 so that `scripts/build-pwa.mjs` does not cache them. That builder walks only `src/`, `icons/` and `assets/`, and the dev server does not serve `docs/`. No code or CSS references these filenames. Welcome continues to use `assets/welcome/*.webp`. The PWA shell inventory is identical to main, and the logo is unchanged.
 
-| File | SHA-256 |
+| File (`docs/design/sources/brand-backgrounds/`) | SHA-256 |
 |---|---|
 | GisSino_BG_light-Desktop.png | 366dfa070bd02759ed0f0ce3d1c9449c2982f55fd57f8e9ac50e70d2a0249885 |
 | GisSino_BG_light-Ipad-L.png | 810815b3535e3ba5da852e7a48ca95b764f7c8b0e9141e55e16cd0d335c07808 |

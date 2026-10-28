@@ -13,7 +13,7 @@ related:
 
 ## Current state
 
-Owner-approved branch `assets/brand-backgrounds` starts from main `e584fac22163d6a009f930bfd32a596fd5904058`. Source commit `0272198e313560aef00697144aa8d354618c7de4` contains exactly the four owner PNGs and regenerated `assets/pwa/shell.js` together. The logo already matches main and is not committed. One Draft PR is required; merge is not authorized.
+Owner-approved branch `assets/brand-backgrounds` starts from main `e584fac22163d6a009f930bfd32a596fd5904058`. Source commit `0272198e313560aef00697144aa8d354618c7de4` first added the four owner PNGs under `assets/brand/` together with a regenerated `assets/pwa/shell.js`. Because `scripts/build-pwa.mjs` walks `assets/`, that put about 5.8 MB of unreferenced images into the PWA shell cache (81 assets). A follow-up on the same branch used `git mv` to move the PNGs to `docs/design/sources/brand-backgrounds/`. That folder is outside the builder's walk (`src/`, `icons/`, `assets/`) and outside the dev server's allowlist. `assets/pwa/shell.js` was then reverted to match main. The PR no longer changes the shell. The logo already matches main and is not committed. One Draft PR is required; merge is not authorized.
 
 ## Scope and task map
 
@@ -33,6 +33,14 @@ No UI redesign, asset conversion, background wiring, logo replacement or product
 - Extracted all four PNGs directly from source commit using `git archive`; SHA-256 of every committed image matches the original. [Brand provenance](../../../assets/brand/README.md) lists all filenames/hashes.
 - `git diff origin/main -- assets/brand/gissino-s-shield.png` is empty.
 - No browser visual test was needed: no displayed image reference changes. Real-device installation and production are not tested.
+
+## Relocation follow-up — 2026-10-28
+
+- `git mv` moved the 4 PNGs from `assets/brand/` to `docs/design/sources/brand-backgrounds/`. The builder is unchanged.
+- `git checkout origin/main -- assets/pwa/shell.js`, then `npm run pwa:build`: shell `ba4143bef3ecef23`, 77 allowlisted assets. `git diff origin/main -- assets/pwa/shell.js` is empty.
+- `npm run check`: PASS, 724 keys per locale.
+- `npm test`: PASS, 171/171.
+- SHA-256 after the move matches the provenance table in `assets/brand/README.md` for all four files.
 
 ## Delivery
 
