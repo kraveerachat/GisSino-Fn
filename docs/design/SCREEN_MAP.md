@@ -14,6 +14,10 @@ related:
 
 # Screen map
 
+## WP-20 QA round 2 — account source, sheet history, transfer draft (2026-10-28)
+
+No route is added. Every native sheet opened from a page pushes one same-URL history entry. Browser or Android Back closes the sheet and stays on the page. X, Escape or a backdrop click closes the sheet and pops the entry. Account detail sheets keep their own `#wallet/account/<id>` entry. Deep links, reload and the `#bogus` → `#welcome` replacement are unchanged. Entering or leaving `#transfer` starts an empty draft. The Transfer review, like the Expense review, ends with "Confirm sample preview" and posts nothing. `#credit-card` shows the Bills card cycle's amount due and its paid state. See [WP-20](../worklog/10-Tasks/TASK-GS-WP20-QA-ROUND2.md).
+
 ## PWA shell and install entry points (2026-10-27)
 
 Manifest start /?source=pwa#home; shortcuts to existing Expense form (#add/expense), #transfer and #bills. Existing #setup/install and Settings native sheet share one guide; no parallel route. Settings Back/Refresh available. Sub-screen Back/Close remains in-app. Standalone suppresses install prompts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.

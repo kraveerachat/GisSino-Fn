@@ -25,7 +25,8 @@ test('Fix 1: Transfer review blocks amounts above the source balance and at or b
   assert.equal(transferProblem('10', daily, true), 'transferAmountError');
   assert.equal(transferProblem('10', undefined, false), null);
   const app = await source('src/app.js');
-  assert.match(app, /transferProblem\(state\.transferAmount,accounts\.find\(a=>a\.id===state\.transferSource\)\?\.balanceMinor/);
+  // WP-20 F2: the source balance comes from the shared picker list, not the fixture array.
+  assert.match(app, /transferProblem\(state\.transferAmount,options\.find\(a=>a\.id===state\.transferSource\)\?\.balanceMinor/);
   assert.match(app, /error\.textContent=t\(problem\);error\.hidden=false/);
   for (const locale of ['th', 'en']) assert.ok(translator(locale)('transferInsufficient').length > 5);
 });

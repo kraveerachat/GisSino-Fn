@@ -85,7 +85,8 @@
 .mobile-navigation .nav-active-mark { display: none; }
 .mobile-navigation .add-disc { width: 56px; height: 56px; border-radius: 50%; margin-top: -23px; background: linear-gradient(145deg,var(--plate-blue),var(--plate-blue-dark)); border: 2px solid var(--blue-bevel); box-shadow: var(--cobalt-shadow); }
 .mobile-navigation .add-disc .icon { width: 27px; height: 27px; }
-.page-footer { padding-bottom: 128px; }
+/* Room for the floating island plus the safe area, so the last action is never under it (WP-20 F1). */
+.page-footer { padding-bottom: calc(var(--island-height,64px) + var(--island-bottom,12px) + env(safe-area-inset-bottom,0px) + 52px); }
 .source-account { padding: 11px 14px 13px; border-radius: 28px; background: linear-gradient(145deg,var(--enamel-top),var(--blue-recess)); }
 .source-label { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 5px; }
 .source-label .icon { height: 15px; width: 15px; }
@@ -102,8 +103,9 @@
 .transfer-amount-label .currency-capsule { color: var(--text); background: var(--enamel-bottom); padding: 2px 11px; min-height: 24px; }
 .oval-amount { min-height: 70px; display: flex; align-items: center; justify-content: center; padding: 5px 23px; border-radius: 999px; background: linear-gradient(var(--enamel-top),var(--blue-recess)); color: var(--text); border: 1px solid var(--white-edge); box-shadow: var(--blue-contact); }
 .oval-amount>span { font-size: 32px; font-weight: 650; margin-right: 3px; }
-.oval-amount input { font-size: 38px; line-height: 1.3; font-weight: 650; letter-spacing: -.8px; text-align: center; width: 100%; min-width: 0; background: transparent; border: 0; outline: none; font-variant-numeric: tabular-nums; }
-.oval-amount:focus-within { outline: 3px solid var(--on-cobalt); outline-offset: 4px; }
+.oval-amount input { font-size: 38px; line-height: 1.3; font-weight: 650; letter-spacing: -.8px; text-align: center; width: 100%; min-width: 0; background: transparent; border: 0; outline: none; font-variant-numeric: tabular-nums; border-radius: 14px; }
+/* The ring sits on the input itself so it is detectable and visible (WP-20 F15). */
+.oval-amount input:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; box-shadow: 0 0 0 7px var(--on-cobalt); }
 .transfer-help { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--cobalt-muted); font-size: 11px; margin-top: 10px; }
 .transfer-help .icon { height: 13px; width: 13px; }
 .transfer-inline-error { color: var(--on-cobalt); font-size: 12px; padding-top: 8px; }
@@ -161,6 +163,7 @@
 .card-info-row+.card-info-row { border-top: 1px solid var(--line); }
 .card-info-row>span { color: var(--muted); }
 .card-info-row>strong { text-align: right; font-size: 12px; }
+.card-paid-status { display: block; font-weight: 500; font-size: 11px; color: var(--muted); }
 .card-reminder-row { display: flex; align-items: center; min-height: 73px; gap: 9px; position: relative; cursor: pointer; border-top: 1px solid var(--line); padding-block: 10px; }
 .card-reminder-row .mini-plate { width: 32px; height: 32px; border-radius: 11px; color: var(--text); background: var(--enamel-top); border-color: var(--line); }
 .card-reminder-row>span:nth-child(2) { display: flex; flex-direction: column; flex: 1; }

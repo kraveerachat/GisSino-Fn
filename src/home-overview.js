@@ -7,7 +7,7 @@ import { formatDate } from './core/dates.js';
 import { safeToSpend } from './core/safe-to-spend.js';
 import { withPaid } from './core/obligations.js';
 import { worldObligations } from './fixtures/world.js';
-import { flags } from './config/feature-flags.js';
+import { flags, previewControlsVisible } from './config/feature-flags.js';
 
 export { bangkokClock };
 
@@ -78,7 +78,15 @@ function uniqueObligations(items) {
   });
 }
 export function dueNotices(model) { return uniqueObligations(model.notices); }
-export function upcomingDueList(model,state,t) {
+// G1 (flags.homeDueTodayFirst, off by default; D31 sort/limit needs owner approval):
+// rows due today come first and overdue rows beyond the first collapse into one summary row.
+export function dueTodayFirst(rows,today,limit=4) {
+  const days=row=>dayOrdinal(row.dueDate)-dayOrdinal(today);
+  const dueToday=rows.filter(row=>days(row)===0),overdue=rows.filter(row=>days(row)<0),later=rows.filter(row=>days(row)>0);
+  const shownOverdue=overdue.slice(0,1),hidden=overdue.length-shownOverdue.length;
+  return {rows:[...dueToday,...shownOverdue,...later].slice(0,hidden?limit-1:limit),hiddenOverdue:hidden};
+}
+export function upcomingDueList(model,state,t,{todayFirst=flags.homeDueTodayFirst}={}) {
   if(!model.upcoming.length)return '';
   const row=b=>{
     const days=dayOrdinal(b.dueDate)-dayOrdinal(model.clock.date);
@@ -87,7 +95,9 @@ export function upcomingDueList(model,state,t) {
     const date=formatDate(b.dueDate,{locale:state.locale,day:'numeric',month:'short'});
     return `<li><${known?'button':'a'} class="home-due-row is-${urgency}" ${known?`type="button" data-action="bill" data-id="${esc(b.id)}"`:'href="#bills"'}><span class="home-due-icon">${icon(b.icon||'calendar')}</span><span class="home-due-copy"><strong>${esc(obligationName(b,state,t))}</strong><small><span class="home-due-status">${dayStatus(days,t)}</span><time datetime="${b.dueDate}">${date}</time></small></span>${icon('chevron')}</${known?'button':'a'}></li>`;
   };
-  return `<section class="home-due-list" aria-labelledby="home-due-title"><div class="home-due-heading"><h2 id="home-due-title">${t('homeDueSoon')}</h2><a href="#bills">${t('viewAll')}${icon('chevron')}</a></div><ul>${model.upcoming.slice(0,4).map(row).join('')}</ul></section>`;
+  const ordered=todayFirst?dueTodayFirst(model.upcoming,model.clock.date):{rows:model.upcoming.slice(0,4),hiddenOverdue:0};
+  const collapsed=ordered.hiddenOverdue?`<li><a class="home-due-row is-overdue home-due-more" href="#bills"><span class="home-due-icon">${icon('calendar')}</span><span class="home-due-copy"><strong>${t('homeMoreOverdue',{n:ordered.hiddenOverdue})}</strong></span>${icon('chevron')}</a></li>`:'';
+  return `<section class="home-due-list" aria-labelledby="home-due-title"><div class="home-due-heading"><h2 id="home-due-title">${t('homeDueSoon')}</h2><a href="#bills">${t('viewAll')}${icon('chevron')}</a></div><ul>${ordered.rows.map(row).join('')}${collapsed}</ul></section>`;
 }
 export function notificationPreview(model,state,t) {
   const notices=dueNotices(model);
@@ -101,7 +111,7 @@ export function homeMonthly(model,state,t) {
   return `<a class="home-monthly" href="#activity"><span>${t('monthlySummary')} <span class="monthly-value">${monthly?showMoney(monthly.amountMinor,monthly.currency,state,t):t('homeNoMonthly')}</span></span><span class="monthly-destination">${t('homeActivityLink')}${icon('chevron')}</span></a>`;
 }
 export function homeSnapshot(model,state,t) {
-  return `<p class="home-snapshot">${icon('info')}<span>${t('homeSnapshot',{date:formatDate(model.clock.instant,{locale:state.locale,dateStyle:'medium',timeStyle:'short'})})}</span><a href="#settings">${t('homePreviewAdjust')}</a></p>`;
+  return `<p class="home-snapshot">${icon('info')}<span>${t('homeSnapshot',{date:formatDate(model.clock.instant,{locale:state.locale,dateStyle:'medium',timeStyle:'short'})})}</span>${previewControlsVisible()?`<a href="#settings">${t('homePreviewAdjust')}</a>`:''}</p>`;
 }
 export function homePreviewControls(state,t) {
   return `<section class="panel home-preview-controls"><h2>${t('homePreviewControls')}</h2><p>${t('homePreviewScope')}</p><label for="home-preview-scenario">${t('homeScenario')}</label><select id="home-preview-scenario" data-control="home-scenario">${previewScenarios.map(key=>`<option value="${key}" ${state.homeScenario===key?'selected':''}>${t('homeScenario'+key)}</option>`).join('')}</select><label for="home-preview-clock">${t('homeClock')}</label><input id="home-preview-clock" type="datetime-local" min="2000-01-01T00:00" max="2099-12-31T23:59" step="60" data-control="home-clock" value="${esc(state.homeNow||homePreview.nowLocal)}" aria-describedby="home-clock-note"><p id="home-clock-note">${t('homeClockNote',{time:homePreview.reminderAt})}</p><a class="text-link" href="#home">${t('homeReturn')}</a></section>`;

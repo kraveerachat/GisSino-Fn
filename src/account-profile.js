@@ -9,7 +9,9 @@ export function profileDraft(account,state,t) {
   return {
     accountType:account?.accountType||'bank', providerId:account?.providerId||'kbank',
     nickname:account?accountDisplay(account,state,t).name:'', suffix:account?.suffix||'',
-    profileLabel:account?.profileLabel||({bank:'profileSavings',ewallet:'profileWallet',cash:'profileCash'})[account?.accountType||'bank'],
+    // An existing account without a label keeps none, so editing only the name never
+    // turns "Bank account" into "Savings" (WP-20 F8). New accounts keep the type default.
+    profileLabel:account?(account.profileLabel||''):({bank:'profileSavings',ewallet:'profileWallet',cash:'profileCash'})[account?.accountType||'bank'],
     folderTone:account?.folderTone||'navy', accentTone:account?.accentTone||'provider'
   };
 }
@@ -18,7 +20,7 @@ export function normalizeProfile(input) {
   const provider=resolveProvider(input.providerId,accountType);
   return {accountType,providerId:provider.providerId,nickname:String(input.nickname||'').trim().slice(0,60),
     suffix:String(input.suffix||'').trim().slice(0,12),
-    profileLabel:labelsForType(accountType).includes(input.profileLabel)?input.profileLabel:labelsForType(accountType)[0],
+    profileLabel:input.profileLabel===''?'':labelsForType(accountType).includes(input.profileLabel)?input.profileLabel:labelsForType(accountType)[0],
     folderTone:['navy','cobalt','slate'].includes(input.folderTone)?input.folderTone:'navy',
     accentTone:input.accentTone==='neutral'?'neutral':'provider'};
 }
@@ -41,11 +43,11 @@ export function accountProfileForm(draft,state,t,editing=false) {
       <div class="profile-provider-preview ${display.theme}">${providerBadge(display)}<span>${esc(state.locale==='th'?provider.nameTh:provider.nameEn)}</span></div>
       ${select('accountType','providerType',[['bank',t('bankAccounts')],['ewallet',t('eWallets')],['cash',t('cashAccounts')]])}
       ${d.accountType!=='cash'?select('providerId','profileProvider',providerOptions(d.accountType).map(p=>[p.providerId,state.locale==='th'?p.nameTh:p.nameEn])):''}
-      <label class="field" for="profile-nickname">${t('profileNickname')}<input id="profile-nickname" name="nickname" value="${esc(d.nickname)}" maxlength="60" required autocomplete="off" aria-describedby="profile-name-error"><span class="profile-field-error" id="profile-name-error" hidden>${t('profileNameRequired')}</span></label>
+      <label class="field" for="profile-nickname">${t('profileNickname')}<input id="profile-nickname" name="nickname" value="${esc(d.nickname)}" maxlength="60" required autocomplete="off" aria-describedby="profile-name-error profile-name-duplicate"><span class="profile-field-error" id="profile-name-error" hidden>${t('profileNameRequired')}</span><span class="profile-field-hint" id="profile-name-duplicate" role="status" hidden>${t('profileDuplicateName')}</span></label>
       ${editing?'':`<label class="field" for="profile-opening">${t('profileOpeningBalance')}<input id="profile-opening" name="openingBalance" value="${esc(draft.openingBalance||'')}" inputmode="decimal" maxlength="12" autocomplete="off" aria-describedby="profile-opening-error"><span class="profile-field-error" id="profile-opening-error" hidden>${t('profileOpeningError')}</span></label>`}
       <details class="profile-options" ${draft.optionsOpen?'open':''}><summary>${t('profileOptions')}</summary>
         <label class="field" for="profile-suffix">${t('profileSuffix')}<input id="profile-suffix" name="suffix" value="${esc(d.suffix)}" maxlength="12" autocomplete="off"></label>
-        ${select('profileLabel','profileAccountLabel',labelsForType(d.accountType).map(key=>[key,t(key)]))}
+        ${select('profileLabel','profileAccountLabel',[...(d.profileLabel===''?[['',t(({bank:'bankAccounts',ewallet:'eWallets',cash:'cashAccounts'})[d.accountType])]]:[]),...labelsForType(d.accountType).map(key=>[key,t(key)])])}
         ${select('folderTone','profileFolderTone',['navy','cobalt','slate'].map(value=>[value,t(`tone${value[0].toUpperCase()+value.slice(1)}`)]))}
         ${select('accentTone','profileAccent',[['provider',t('profileProviderAccent')],['neutral',t('profileNeutralAccent')]])}
       </details>
