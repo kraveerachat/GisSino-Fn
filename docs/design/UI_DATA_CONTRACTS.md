@@ -13,6 +13,10 @@ related:
 
 # UI data contracts and future boundaries
 
+## WP-20 account picker source (2026-10-28)
+
+Add Expense, Add Income, Transfer (source and destination), Bills funding and the Home hero caption read the same account list: `accountsForPicker(state,{currency})` in `src/core/accounts.js`. That list is the session `state.accountProfiles` (fixture accounts plus profiles added or renamed this session), with archived accounts hidden, one currency (THB by default, never mixed) and `sortOrder` order. Labels use one resolver, `accountOptionLabel` (nickname or localized fixture name, plus the masked suffix). The hero caption counts the same THB asset accounts the hero total adds. The credit-card page reads the `card` obligation cycle with the session mark-paid overlay (`creditCardCycle`). Still in memory only; no ledger, persistence or currency conversion.
+
 ## PWA shell boundary (2026-10-27)
 
 Only immutable app code/assets and bundled synthetic fixtures enter the versioned shell cache. API responses, form input, credentials and financial mutations never enter Cache Storage. Offline writes remain off. Preview confirmation gates an install offer without posting or awarding XP. Dismissal timestamp is the only new user state in localStorage. Badging reuses overdue-cycle and needs-details counts. See [Batch A task](../worklog/10-Tasks/TASK-GS-WP09-10-PWA.md) and [PWA review](reviews/PWA_SHELL_REVIEW.md). Batch A is locally/browser verified; Draft delivery/owner review pending. Earlier pending-delivery statements below are historical: Activity PR #9, Bills #10 and Party #11 are merged; the current task remains separate.

@@ -71,8 +71,22 @@ The 20 XP per qualifying day rate is inferred from the Home set (80 XP ÷ 4 days
 
 Party level 8 and lifetime 1,240 XP stay Party-only.
 
+## Credit-card sample rows vs Activity accounts (WP-20 F5, 2026-10-28)
+
+The `#credit-card` page lists "Sample card activity" from the first two shared transactions, which Activity attributes to the Everyday bank account, not the card.
+
+| Row | Card page source | Activity / ledger attribution |
+|---|---|---|
+| Coffee ฿85, 18 Oct 09:42 | `src/blue-screens.js:47` (`transactions.slice(0,2)`) and the "Recent" quick action `src/app.js:356` | `src/fixtures.js:16` `account: 'accountDaily'` → `src/fixtures/world.js:69` `accountId: 'daily'` |
+| Groceries ฿640, 18 Oct 08:15 | same | `src/fixtures.js:17` `account: 'accountDaily'` → `src/fixtures/world.js:69` `accountId: 'daily'` |
+
+- **Conflict:** the same two rows appear as Everyday-account spending (Activity, Wallet movement) and as card activity. The card statement (฿8,250, cycle `card-2026-10`) does not contain them.
+- **Treatment:** amounts and attributions are unchanged. No card transactions were invented. WP-20 only made the card's amount due and paid status read the Bills obligation cycle.
+- **Owner question:** should the card page show no sample rows, or should dedicated card-only rows be added to the Fixture World later?
+
 ## Owner questions
 
 1. ~~Which balances should win?~~ Decided 2026-10-28: screen values (฿116,850), D37. Still open: the missing October transactions (about ฿22,510 more outflow from daily, plus ฿1,900 / ฿300 / ฿100 more inflow to savings / e-wallet / cash).
 2. Which account did the ฿5,000 "Move to savings" come from?
 3. ~~Confirm the Home habit set (3 / 80) or choose the Party set (7 / 92).~~ Decided 2026-10-28: Home set (D36).
+4. Credit-card page sample rows duplicate Everyday-account spending (see the WP-20 F5 section). Keep, remove, or replace them with card-only rows?
