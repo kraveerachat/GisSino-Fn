@@ -16,7 +16,7 @@ related:
 
 ## Current state — 2026-10-28
 
-Branch `wp-20-qa-fixes-round2` starts from `origin/main` `e584fac22163d6a009f930bfd32a596fd5904058`. The source commit `0d5ae91` fixes every Phase 0 item that reproduced (V1 partly, V2–V4). It adds F1–F16 and puts G1–G3 behind flags whose defaults keep today's behaviour. One Draft PR is opened for owner review. It is not merged. No canonical decision changed. No persistence, ledger or backend was added. Mode: REPO_WRITE + GIT_WRITE on the task branch only.
+Branch `wp-20-qa-fixes-round2` starts from `origin/main` `e584fac22163d6a009f930bfd32a596fd5904058`. The source commit `0d5ae91` fixes every Phase 0 item that reproduced (V1 partly, V2–V4). It adds F1–F16 and puts G1–G3 behind flags whose defaults keep today's behaviour. Docs commit `dbc1129` follows it. [Draft PR #17](https://github.com/kraveerachat/GisSino-Fn/pull/17) is open for owner review. It is not merged. No canonical decision changed. No persistence, ledger or backend was added. Mode: REPO_WRITE + GIT_WRITE on the task branch only.
 
 ## Scope
 
@@ -49,4 +49,4 @@ Reused: `assetAccounts` (moved to `src/core/accounts.js`; `account-display.js` r
 
 ## Next action
 
-Owner reviews the Draft PR, the flagged items (G1–G3) and the candidate OPEN questions in the QA summary. No merge or receipt until owner acceptance.
+Owner reviews [Draft PR #17](https://github.com/kraveerachat/GisSino-Fn/pull/17), the flagged items (G1–G3) and the candidate OPEN questions in the QA summary. No merge or receipt until owner acceptance.
