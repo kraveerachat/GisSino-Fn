@@ -51,9 +51,9 @@ PR 2 code upload remains deferred until the owner-approved Discord checkpoint; f
 
 ## GitHub / Obsidian checkpoint
 
-Published checkpoint: PR #18 is OPEN / DRAFT / UNMERGED at 8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175; local and remote committed HEAD still match.
-GITHUB_SYNC=LOCAL_EDIT_ONLY (this follow-up); prior checkpoint REMOTE_PUSHED / DRAFT_PR_OPEN.
-OBSIDIAN_SYNC=LOCAL_MARKDOWN_VERIFIED / FOLLOWUP_REMOTE_PENDING; DESKTOP_UI=NOT TESTED. The owner authorized local documentation synchronization only. Four existing records are updated in the working tree; none is staged, committed or pushed. The earlier six-file GIT_WRITE approval was consumed by the published checkpoint and does not authorize this follow-up. No future SHA, merge or final receipt is claimed.
+Current published checkpoint: [worklog-sync commit](https://github.com/kraveerachat/GisSino-Fn/commit/11013f3bc5489840929ff1e5908f9018bff140f5) in [Draft PR #18](https://github.com/kraveerachat/GisSino-Fn/pull/18), freshly verified OPEN/DRAFT/UNMERGED. It supersedes the earlier pending-publication status; older dated sections remain historical.
+GITHUB_SYNC=LOCAL_EDIT_ONLY (new roadmap candidate); existing docs REMOTE_PUSHED / DRAFT_PR_OPEN.
+OBSIDIAN_SYNC=LOCAL_MARKDOWN_VERIFIED / ROADMAP_REMOTE_PENDING; DESKTOP_UI=NOT TESTED. Current authority is local documentation only; separate approval is required before stage/commit/push or remote body changes. No future SHA, merge or final receipt is claimed.
 
 ## Local verification checkpoint
 
@@ -63,10 +63,14 @@ npm run check passed (734 keys per locale, syntax/assets/PWA shell check); npm t
 
 Precommit recomputation matched the approved manifest. The history body retains the complete previous body as a prefix; only dated entries were appended. Privacy scan has zero findings and the four inherited vault findings are unchanged. Local and remote docs branch point to 8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175; main and the reserved local implementation branch remain at the original base. No implementation branch was pushed. The reviewed PR body matches GitHub and all six filenames match the approval.
 
-Next: owner reviews the four-file local synchronization diff and Draft PR #18. Separate GIT_WRITE approval is required before staging/committing/pushing this follow-up to the same branch/PR. The published six-file checkpoint and the original proposal remain preserved. No merge or integration deployment.
+Current next action: review the [Master V1 roadmap](TASK-ELEUTHEX-OPERATIONS-V1-ROADMAP.md), local publication manifest and proposed PR-body update. The four-file synchronization was separately approved and published at 11013f3bc5489840929ff1e5908f9018bff140f5. Older preparation notes are preserved; new publication authorization is required for the roadmap. No merge or integration deployment.
 
 ## Local worklog synchronization — 2026-11-01
 
 Mode: DOCS_WRITE only. Before edits, live GitHub and local Git confirmed PR #18 OPEN/DRAFT/UNMERGED and expected HEAD; the working tree and index were clean. Reviewed the complete existing four-file proposal, applied it locally, then corrected its proposal-only wording to the actual local-edit state. Updated this task, the existing session addendum, dashboard row and append-only history. PR 2 source remains unpublished.
 
 Documentation checks executed in this follow-up: PASS; 93 relative links in the four edited files, required frontmatter/up/related targets and unique IDs checked across 104 notes, zero new vault findings, zero privacy findings in all six publication documents, and git diff --check PASS. The same four inherited vault findings remain unchanged. All 275 unrelated tracked files match the pre-edit hashes. Project history and the original S1 text are append-only; the original proposal and protected source/journals/artifacts are preserved. HEAD is unchanged, the index is empty and the implementation branch is unchanged. Application checks/tests are earlier evidence, not executions in this documentation-only session.
+
+## Roadmap reconciliation — 2026-11-01
+
+The owner requested a full evidence-backed V1 tracker in the existing Draft PR. The [roadmap](TASK-ELEUTHEX-OPERATIONS-V1-ROADMAP.md) and its [session](../20-Sessions/TASK-ELEUTHEX-OPERATIONS-V1-ROADMAP-S1.md) supersede earlier partial pending-work summaries. All forty supplied IDs remain, with five extra explicit security/UI/scope gates. Historical local-only synchronization statements above describe the earlier review snapshot; that patch is now remotely published. This new six-file candidate remains unstaged/uncommitted/unpushed. No source, runtime or actual-account test is performed.

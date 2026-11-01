@@ -14,6 +14,8 @@ related:
 
 ## Current state
 
+[Master V1 checklist](../worklog/10-Tasks/TASK-ELEUTHEX-OPERATIONS-V1-ROADMAP.md) is the canonical full-scope tracker. It separates historical API foundation and incomplete real-account acceptance, the blocked v2 copy gate, welcome/manual access, separate Hermes chat/security tests, optional monitoring and deferred app automation/source publication. Reconciliation uses saved local evidence and current source; runtime was not rechecked. This roadmap is a local publication candidate, not a delivered migration.
+
 Eleuthex is a personal technology community and workfolio. GisSino is its only active project. This note records community operations; it does not change the GisSino application architecture or its proposed production milestones.
 
 | Component | Evidence-backed state as of 2026-11-01 | Not established |
@@ -80,3 +82,5 @@ See the [publication task](../worklog/10-Tasks/TASK-ELEUTHEX-STRUCTURE-PUBLICATI
 ## Change log
 
 - 2026-11-01 — Added a sanitized operations record and publication boundary; no application or live-service change.
+
+- 2026-11-01 — Linked the evidence-reconciled Master V1 checklist; no runtime or implementation change.
