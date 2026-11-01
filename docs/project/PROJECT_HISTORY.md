@@ -3,7 +3,7 @@ id: PROJECT-HISTORY
 type: history
 level: 2
 status: CURRENT
-updated: 2026-10-27
+updated: 2026-11-01
 up: Project-Hub.md
 related:
   - PROJECT_GUIDE.md
@@ -119,3 +119,7 @@ This timeline is append-only.
 - 2026-10-28 — Owner explicitly approved ordered merge commits for PRs #13, #14 and #15. PR #12's prior open status is superseded: it is merged. PR #13 merged at `d7ad46dae97e1a59b61f09f2b6c565d81afa2c8a` after docs-only conflict resolution / 134 tests; PR #14 merged at `11861094b299aa5ca64dc4298a7d6ba429d00e5d` after 163 tests / 48 Chromium cases. The combined PR #15 checkpoint passed 171 tests / 54 Chromium cases and all eight quick-fix browser checks; its final GitHub merge state is linked in the [ordered integration session](../worklog/20-Sessions/TASK-GS-MERGE-13-15-S1.md). No cleanup or production mutation.
 
 - 2026-10-28 — Owner requested preservation of four original background PNGs on separate branch assets/brand-backgrounds during local repository consolidation. [Asset task](../worklog/10-Tasks/TASK-GS-BRAND-BACKGROUNDS.md): source 0272198e313560aef00697144aa8d354618c7de4 contains PNGs and shell together; 724 keys / 171 tests pass and committed hashes match originals. No code/CSS references these filenames; displayed Welcome backgrounds and logo are unchanged. Follow-up: PNGs moved with `git mv` to `docs/design/sources/brand-backgrounds/` so the PWA shell stays identical to main (77 assets); hashes re-verified. Draft PR only; merge awaits owner approval.
+
+- 2026-11-01 — Owner selected the existing public repository for sanitized [Eleuthex operations documentation](../architecture/ELEUTHEX_OPERATIONS_V1.md), superseding an unimplemented separate-repository proposal. [Publication task](../worklog/10-Tasks/TASK-ELEUTHEX-STRUCTURE-PUBLICATION.md) prepares local documentation only; no source/runtime/authentication change or GitHub publication is claimed.
+
+- 2026-11-01 — GitHub metadata recheck confirmed background PR #16 and QA PR #17 MERGED. Their earlier pending/Draft statements above are preserved historical snapshots, superseded by this entry; current dashboard states are reconciled without changing application source or old receipts.
