@@ -42,3 +42,24 @@ The initial auxiliary validator trimmed the first porcelain status column and re
 ## Required touched-note status reconciliation
 
 Vault rules require stale statuses noticed in touched notes to be corrected. Fresh GitHub metadata confirms PR 16 and PR 17 merged. Only their current dashboard status/link cells were corrected, with an append-only history supersession; historical task/session/receipt records and application source remain unchanged.
+
+## Post-publication addendum — 2026-11-01
+
+This dated addendum supersedes the earlier pending-publication statements as current status while preserving S1 as historical evidence. Owner approved the exact six-file manifest and GIT_WRITE. Checkpoint [8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175](https://github.com/kraveerachat/GisSino-Fn/commit/8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175) is committed/pushed; [Draft PR #18](https://github.com/kraveerachat/GisSino-Fn/pull/18) targets main and contains exactly the six reviewed files (196 additions, 5 deletions). It is OPEN/DRAFT and not merged.
+
+Fresh precommit checks confirm manifest equality, zero privacy findings, history-body append-only preservation, clean scope and no worsening of the four inherited vault findings. Recorded npm check (734 locale keys) and tests (190/190) remain valid; those application commands were not rerun in this publication session. An initial auxiliary evidence parser expected TAP output; the saved Node spec-reporter totals were inspected and confirmed, with no test failure or content change.
+
+Remote head equals the committed SHA. API commit statuses and PR workflows are empty; gh pr checks reports no checks. CI is NO CHECKS REPORTED, not PASS. No runtime, Discord account or Hermes test was run. The implementation branch remains local at the original base.
+
+Published checkpoint remains REMOTE_PUSHED / DRAFT_PR_OPEN / UNMERGED. The owner subsequently authorized DOCS_WRITE for these four records. This addendum is now applied locally; it is not staged, committed or pushed.
+GITHUB_SYNC=LOCAL_EDIT_ONLY (follow-up). OBSIDIAN_SYNC=LOCAL_MARKDOWN_VERIFIED / FOLLOWUP_REMOTE_PENDING; DESKTOP_UI=NOT TESTED. Separate GIT_WRITE approval and owner PR review remain pending; no final receipt.
+
+## Local synchronization session — 2026-11-01
+
+The owner requested a local-only follow-up on the same branch/PR. Fresh GitHub metadata confirmed expected head 8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175, OPEN/DRAFT and not merged. Read current governance/canonical records and the complete saved proposal. Its four targets are the existing task, this session, dashboard and project history; no extra note or PR is created.
+
+Applied the proposal in the working tree and corrected prepared-only statements to local-edit status. Retained the original S1 text and proposal artifact as historical evidence; dated additions supersede pending-publication claims. The history is append-only. Main and the implementation branch are preserved, and no source or runtime action is performed.
+
+The initial local text guard stopped after patch application because Windows CRLF differed from its LF match. No content was lost; text matching was normalized before completing the same four edits. No commit or push occurred.
+
+Documentation checks executed in this follow-up: PASS; 93 relative links in the four edited files, required frontmatter/up/related targets and unique IDs checked across 104 notes, zero new vault findings, zero privacy findings in all six publication documents, and git diff --check PASS. The same four inherited vault findings remain unchanged. All 275 unrelated tracked files match the pre-edit hashes. Project history and the original S1 text are append-only; the original proposal and protected source/journals/artifacts are preserved. HEAD is unchanged, the index is empty and the implementation branch is unchanged. Historical npm check/tests and live/simulated Discord evidence are not rerun or reclassified. No stage, commit, push, merge or future synchronization SHA. Next: owner review of the local diff, then separate approval for a follow-up commit/push to PR #18.
