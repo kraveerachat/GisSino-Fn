@@ -2,7 +2,7 @@
 id: SESSION-TASK-GS-UX-V2-PLANNING-S1
 type: session
 level: log
-status: IN PROGRESS
+status: DRAFT PR OPEN
 updated: 2026-11-06
 up: ../10-Tasks/TASK-GS-UX-V2-PLANNING.md
 related:
@@ -65,8 +65,8 @@ Initiate Product-wide UX Planning V2 and document Responsive Navigation V2 as th
 - Markdown formatting and relative links: Verified valid across all modified and newly created files.
 - Application code, CSS, assets, tests, database: Zero modifications.
 
-## Next Steps
+## Delivery & PR Status
 
-1. Commit documentation files and push branch `task/gs-ux-v2-planning` to origin.
-2. Open one Draft Pull Request against `main`.
-3. Report actual PR URL, changed files, checks, and next planning slice (Home Dashboard) to owner.
+- **Draft PR:** [Draft PR #19](https://github.com/kraveerachat/GisSino-Fn/pull/19) (`docs(plan): start product-wide UX V2 with responsive navigation draft`)
+- **PR Status:** OPEN / DRAFT — awaiting owner review and feedback.
+- **Proposed Next Slice:** Home Dashboard V2 functional and layout planning.

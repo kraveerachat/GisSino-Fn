@@ -2,7 +2,7 @@
 id: TASK-GS-UX-V2-PLANNING
 type: task
 level: log
-status: IN PROGRESS
+status: DRAFT PR OPEN
 updated: 2026-11-06
 up: ../00-Index/Task-Dashboard.md
 related:
@@ -29,7 +29,7 @@ This task is **documentation-only**. It contains no frontend code implementation
 - **Task Branch:** `task/gs-ux-v2-planning`
 - **Base Commit:** `1163e98bf7590bae52a3a6b92926201b1181032c` (`origin/main`, verified up to date with merged PR #18)
 - **Execution Mode:** `DOCS_WRITE` / `PLAN_ONLY`
-- **Target Pull Request:** Exactly one Draft PR titled `docs(plan): start product-wide UX V2 with responsive navigation draft`
+- **Target Pull Request:** [Draft PR #19](https://github.com/kraveerachat/GisSino-Fn/pull/19) (`docs(plan): start product-wide UX V2 with responsive navigation draft`) — OPEN/DRAFT
 - **Application Code & Assets:** ZERO modifications (`src/`, `assets/`, styles, fixtures, tests untouched)
 - **Canonical Decision Log:** `DECISIONS.md` remains untouched; D23 remains canonical `[DECIDED]`
 - **Sensitive Systems:** AEGIS server, Cloudflare tunnels, firewall, Docker networks/volumes, and production hosts are strictly off-limits
