@@ -3,7 +3,7 @@ id: HUB-WORKLOG
 type: hub
 level: 1
 status: CURRENT
-updated: 2026-11-01
+updated: 2026-11-06
 up: ../../START_HERE.md
 related:
   - ../../project/PROJECT_HISTORY.md
@@ -34,3 +34,4 @@ related:
 | [TASK-GS-WP20-QA-ROUND2](../10-Tasks/TASK-GS-WP20-QA-ROUND2.md) | MERGED | [PR #17 merged](https://github.com/kraveerachat/GisSino-Fn/pull/17) | QA fixes round 2: Phase 0 V1 partly, V2–V4 reproduced and fixed; F1–F16; flags G1–G3 default off/unchanged; 190/190 tests, 734 keys, 72/72 browser checks incl. 192-cell matrix; [QA summary](../../project/QA_USER_TEST_2026-10-28_SUMMARY.md) |
 | [TASK-ELEUTHEX-STRUCTURE-PUBLICATION](../10-Tasks/TASK-ELEUTHEX-STRUCTURE-PUBLICATION.md) | LOCALLY VERIFIED / DRAFT PR OPEN | [PR #18 draft](https://github.com/kraveerachat/GisSino-Fn/pull/18) | Exact six-file checkpoint 8e2a228a2bdd3a1f31ffa73050fb27e9ff11e175 committed/pushed; check734/tests190 evidence valid; no GitHub checks reported; owner review/merge pending; worklog sync published at 11013f3bc5489840929ff1e5908f9018bff140f5; roadmap review is local-only |
 | [Eleuthex Operations V1 Master Checklist](../10-Tasks/TASK-ELEUTHEX-OPERATIONS-V1-ROADMAP.md) | LOCAL REVIEW / RUNTIME ACCEPTANCE PENDING | [PR #18 draft](https://github.com/kraveerachat/GisSino-Fn/pull/18) | A–H status/dependency/evidence gates; historical v1 API verified, v2 blocked/not applied, integrations not tested; new roadmap publication approval pending |
+| [TASK-GS-UX-V2-PLANNING](../10-Tasks/TASK-GS-UX-V2-PLANNING.md) | DRAFT PR PENDING | [PR pending] | Product-wide UX Planning V2 master workspace; Responsive Navigation V2 candidate; post-WP-20 functional inventory & dependency map |
